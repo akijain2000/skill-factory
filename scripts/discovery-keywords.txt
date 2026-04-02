@@ -1,0 +1,59 @@
+# Keywords for filtering GitHub rankings to find AI coding repos
+# One keyword per line. Case-insensitive matching against repo name + description.
+# Lines starting with # are comments.
+
+# Core skill/agent terms
+agent
+skill
+agentic
+mcp
+prompt
+workflow
+
+# AI coding tools
+cursor
+codex
+copilot
+claude
+openai
+anthropic
+gemini
+coding-assistant
+code-review
+code-gen
+ai-code
+lint
+devtools
+dev-tool
+
+# LLM / AI frameworks
+llm
+gpt
+transformer
+langchain
+llamaindex
+autogen
+crewai
+swarm
+
+# IDE / editor extensions
+vscode
+neovim
+vim-plugin
+extension
+
+# Automation / CI
+automation
+ci-cd
+github-action
+deploy
+
+# Rules / config
+cursorrules
+rules
+dotfiles
+config
+boilerplate
+template
+scaffold
+starter

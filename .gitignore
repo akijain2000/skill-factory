@@ -1,0 +1,7 @@
+# Cloned repos (too large for GitHub, clone locally)
+raw/repos/*/
+!raw/repos/SOURCES.md
+
+# Node
+node_modules/
+.DS_Store
