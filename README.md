@@ -41,8 +41,9 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
 This repo is three things:
 
 1. **A knowledge base** -- 30+ wiki articles distilled from 19 top AI agent repos (700K+ stars combined), covering every pattern, anti-pattern, and technique for writing skills
-2. **A 10-module course** -- Zero-to-hero curriculum that teaches you skill authoring from scratch
-3. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
+2. **An 11-module course** -- Zero-to-hero curriculum with hands-on labs, sample problems, and before/after examples
+3. **A Skill Maker** -- A gstack-style interactive `skill-maker/SKILL.md` that asks forcing questions, challenges assumptions, and guides you through creating validated skills
+4. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
 
 ## Why this exists
 
@@ -105,6 +106,9 @@ skill-factory/
 │   │   └── bad/                 # 4 anti-pattern skills with analysis
 │   └── queries/                 # Filed Q&A and update logs
 │
+├── skill-maker/                 # Interactive skill creator
+│   └── SKILL.md                 # gstack-style guided creation with 7 phases
+│
 ├── authoring/                   # The meta-skill
 │   └── SKILL.md                 # Queries wiki to help author skills
 │
@@ -138,17 +142,27 @@ skill-factory/
 
 Start with [course/README.md](course/README.md). Read the 10 modules in order. Each builds on the previous one.
 
-### 2. Use the meta-skill to write a skill
+### 2. Use the Skill Maker for guided creation
 
 Tell your AI agent:
+
+```
+Read skill-maker/SKILL.md and help me create a skill for [your idea].
+```
+
+The Skill Maker asks 5 diagnostic questions, challenges your scope, designs the skill section by section, writes it, validates it, and suggests test prompts. Like pair programming for skill authoring.
+
+### 3. Use the meta-skill for wiki-backed authoring
+
+For a faster, less interactive flow:
 
 ```
 Read authoring/SKILL.md and help me create a skill for [your idea].
 ```
 
-The meta-skill will query the wiki, apply best practices, and draft a validated SKILL.md.
+The meta-skill queries the wiki, applies best practices, and drafts a validated SKILL.md.
 
-### 3. Validate a skill
+### 4. Validate a skill
 
 ```bash
 # Using Bun
@@ -160,7 +174,7 @@ npx tsx scripts/validate-skill.ts path/to/your-skill/
 
 The validator checks: name format, description quality (WHAT verb + WHEN trigger), body length, empty sections, AI slop words, path format, and nested references.
 
-### 4. Compile the wiki (if you add new sources)
+### 5. Compile the wiki (if you add new sources)
 
 ```
 Read scripts/compile-wiki.md and compile the wiki.
@@ -168,7 +182,7 @@ Read scripts/compile-wiki.md and compile the wiki.
 
 This scans `raw/repos/` and `raw/docs/`, then writes/updates concept articles, research articles, curated examples, and regenerates INDEX.md and GLOSSARY.md.
 
-### 5. Run a health check
+### 6. Run a health check
 
 ```
 Read scripts/health-check.md and run a health check.
@@ -242,20 +256,21 @@ Source manifest: [raw/repos/SOURCES.md](raw/repos/SOURCES.md)
 
 ## Course Overview
 
-The [course/](course/) directory contains a 10-module curriculum:
+The [course/](course/) directory contains an 11-module curriculum with hands-on labs:
 
 | # | Module | Time | What You Learn |
 |---|--------|------|----------------|
-| 1 | What Are Skills? | 30 min | Foundation: how agents discover, activate, and execute skills |
-| 2 | The SKILL.md Format | 30 min | Spec mastery: frontmatter fields, body structure, size limits |
-| 3 | Writing Descriptions | 30 min | The #1 failure point -- CSO rule, WHAT+WHEN formula, trigger keywords |
-| 4 | Progressive Disclosure | 20 min | Token economics, micro-skills, reference splitting |
-| 5 | Patterns That Work | 30 min | 8 battle-tested patterns from 18 repos |
-| 6 | Anti-Patterns | 20 min | 14 mistakes to avoid with real examples |
-| 7 | Your First Skill | 40 min | Hands-on lab: write, validate, test, iterate |
-| 8 | Advanced Techniques | 30 min | Meta-skills, composition, instincts, anti-rationalization |
-| 9 | Multi-Host Compatibility | 20 min | Ship to Cursor, Claude Code, Codex CLI, Gemini CLI |
-| 10 | Maintaining a Library | 20 min | Feedback loops, stocktakes, health checks |
+| 1 | What Are Skills? | 30 min | Foundation + dissect 3 real skills (micro, standard, anti-pattern) |
+| 2 | The SKILL.md Format | 30 min | Spec mastery + build and validate a skeleton from scratch |
+| 3 | Writing Descriptions | 40 min | CSO rule + 5 progressive description-writing challenges |
+| 4 | Progressive Disclosure | 30 min | Token economics + cut-the-fat and micro-skill writing labs |
+| 5 | Patterns That Work | 40 min | 8 patterns + scenario-based pattern matching exercise |
+| 6 | Anti-Patterns | 30 min | 14 mistakes + 3 broken skills to find and fix (bug hunt) |
+| 7 | Your First Skill | 45 min | 3 guided tracks: beginner (micro), intermediate (standard), advanced (reference-heavy) |
+| 8 | Advanced Techniques | 40 min | Instinct writing lab + rationalization table exercise + degrees of freedom |
+| 9 | Multi-Host Compatibility | 30 min | Portability audit + OpenClaude model-agnostic insight |
+| 10 | Maintaining a Library | 30 min | Full maintenance loop: inventory, validate, extract shared rules |
+| 11 | Using the Skill Maker | 30 min | Capstone: guided skill creation with the interactive Skill Maker |
 
 ---
 

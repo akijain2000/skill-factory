@@ -1,6 +1,6 @@
 # Module 8: Advanced Techniques
 
-Patterns from the top 1% of skills across 18 repos.
+Patterns from the top 1% of skills across 19 repos.
 
 ## Meta-skills: skills that govern skills
 
@@ -101,11 +101,96 @@ Match instruction specificity to task fragility:
 
 Narrow bridge with cliffs = exact instructions. Open field = general direction.
 
-## Exercise
+---
 
-1. Look at your skill library. Are there principles repeated across 3+ skills? Extract them.
-2. Write one instinct for a behavior you keep correcting your agent on.
-3. Add a rationalization table to your most important skill.
+## Try It: Advanced pattern exercises
+
+### Lab 8A: Write 3 instincts (10 min)
+
+Think of 3 behaviors you keep correcting your AI agent on. Write each as an instinct:
+
+```yaml
+id: [short-kebab-case-id]
+trigger: "[when does this apply?]"
+confidence: [0.0 to 1.0]
+action: [one sentence -- what to do]
+evidence: "[what caused you to create this]"
+scope: [global | project | language]
+```
+
+Example instincts to get you started:
+
+```yaml
+id: check-imports-after-rename
+trigger: "after renaming a function or variable"
+confidence: 0.9
+action: Search for all import sites and update them before moving on.
+evidence: "Broken imports after rename caused 3 failed builds this month"
+scope: global
+```
+
+```yaml
+id: run-prettier-before-commit
+trigger: "before creating a git commit"
+confidence: 0.7
+action: Run prettier --write on all changed files.
+evidence: "CI format check failed on 5 of last 10 PRs"
+scope: project
+```
+
+When you have 3+ instincts on the same theme (e.g., all about "pre-commit checks"), consider promoting them to a full skill.
+
+### Lab 8B: Add a rationalization table (10 min)
+
+Pick your most important skill (or use the `test-fix-loop` from Module 7). Add a rationalization table for the behaviors the agent is most likely to skip.
+
+Template:
+
+```markdown
+## Common rationalizations
+
+| Thought | Reality |
+|---------|---------|
+| "[excuse the agent makes]" | [why it should follow the skill anyway] |
+| "[another excuse]" | [correction] |
+| "[yet another]" | [correction] |
+```
+
+Real example from superpowers' verification-before-completion:
+
+```markdown
+| Thought | Reality |
+|---------|---------|
+| "I just ran it successfully" | Previous run ≠ current state. Run it again. |
+| "The change is too small to break anything" | Small changes cause big bugs. Verify. |
+| "I can see from the code that it works" | Reading is not running. Run the test. |
+```
+
+### Lab 8C: Choose the right degree of freedom (10 min)
+
+For each scenario, decide: high, medium, or low freedom?
+
+1. **Formatting code before commit** -- Answer: **Low**. Exact command: `npx prettier --write .` There's one right answer.
+
+2. **Writing a README for a new project** -- Answer: **High**. "Write a clear, concise README covering setup, usage, and contributing." The agent knows what a good README looks like.
+
+3. **Running database migrations** -- Answer: **Medium**. "Check for pending migrations, run them in order, verify each succeeded." The exact commands depend on the framework.
+
+4. **Generating a JWT token** -- Answer: **Low**. Specific library, specific algorithm, specific expiration. Wrong choices = security vulnerability.
+
+5. **Refactoring a messy function** -- Answer: **High**. "Improve readability and reduce complexity." The agent's judgment is the point.
+
+Now apply this to a skill you're writing: for each workflow step, label it high/medium/low and adjust the instruction specificity accordingly.
+
+---
+
+## Checkpoint
+
+Before moving on, you should be able to:
+- Write an instinct in YAML with all required fields
+- Add a rationalization table to prevent agent shortcutting
+- Choose the right degree of freedom for each workflow step
+- Explain when instincts should be promoted to full skills
 
 ## Further reading
 

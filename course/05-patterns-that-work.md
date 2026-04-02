@@ -1,6 +1,6 @@
 # Module 5: Patterns That Work
 
-Battle-tested patterns from analyzing 18 repos and 4000+ skills.
+Battle-tested patterns from analyzing 19 repos and 4000+ skills.
 
 ## 1. Validation loops
 
@@ -47,7 +47,7 @@ More reliable than prose descriptions. Show the exact format.
 ```markdown
 ## Output format
 
-```json
+\```json
 {
   "status": "pass" | "fail",
   "issues": [
@@ -55,6 +55,7 @@ More reliable than prose descriptions. Show the exact format.
   ],
   "summary": "2 errors, 1 warning"
 }
+\```
 ```
 
 ## 5. Checklists for multi-step workflows
@@ -110,11 +111,124 @@ Predictable structure makes skills scannable:
 [exact format, word limits, forbidden behaviors]
 ```
 
-## Exercise
+---
 
-1. Pick 3 patterns from above
-2. Apply them to a draft skill you're working on
-3. Compare before/after: is the skill clearer?
+## Try It: Pattern Matching
+
+For each scenario below, identify which pattern(s) to use, then write the relevant section of a SKILL.md.
+
+### Scenario 1: Database migration runner
+
+> Your skill runs database migrations. Some migrations are destructive (DROP TABLE). You need the agent to show what will happen before executing.
+
+Which pattern? **Plan-validate-execute**
+
+Write the workflow section:
+
+```markdown
+## Workflow
+1. Scan `migrations/` for pending files
+2. Classify each as safe (CREATE, ADD) or destructive (DROP, ALTER, DELETE)
+3. Present a migration plan showing each file and its classification
+4. If any migration is destructive, ask for explicit user approval
+5. Execute migrations in order
+6. Verify each migration succeeded before proceeding to the next
+```
+
+### Scenario 2: Linter auto-fixer
+
+> Your skill runs ESLint, reads the errors, fixes them in the source files, and re-runs until clean. But sometimes fixes introduce new errors.
+
+Which pattern? **Validation loop** (with a stop condition)
+
+Write the workflow section:
+
+```markdown
+## Workflow
+1. Run `npx eslint . --format json`
+2. If no errors, done
+3. Read each error, fix it in the source file
+4. Re-run `npx eslint . --format json`
+5. Repeat steps 3-4 until clean or 5 iterations reached
+6. If still failing after 5 iterations, report remaining issues to the user
+```
+
+### Scenario 3: API integration
+
+> Your skill calls a third-party API. The API has quirky error codes that aren't standard HTTP errors. The agent needs to handle code 4201 ("silent rate limit") and code 5500 ("temporary maintenance").
+
+Which pattern? **Gotchas section**
+
+Write the gotchas:
+
+```markdown
+## Gotchas
+- Code 4201 means silent rate limit: wait 120s and retry (API returns 200 with this error code in the body, not a 429)
+- Code 5500 means temporary maintenance: retry after 5 minutes, do not alert the user
+- All timestamps in responses are Unix milliseconds, not seconds
+```
+
+### Scenario 4: Code review output
+
+> Your skill reviews code and reports issues. You need consistent output so the team can parse it programmatically.
+
+Which pattern? **Output format template**
+
+Write the output section:
+
+```markdown
+## Output format
+
+For each issue found, output:
+
+\```
+[SEVERITY] file.ts:42 -- Description of the issue
+\```
+
+Severity levels: ERROR (must fix), WARN (should fix), INFO (suggestion)
+
+End with a summary line:
+
+\```
+Review complete: 2 errors, 1 warning, 3 info across 5 files
+\```
+```
+
+### Scenario 5: Ship workflow
+
+> Your skill ships code. Developers keep skipping the CHANGELOG step because "it's just a small change." The agent also tends to skip it.
+
+Which pattern? **Rationalization table** + **Checklist**
+
+Write both:
+
+```markdown
+## Before shipping
+
+- [ ] All tests pass
+- [ ] CHANGELOG updated
+- [ ] Version bumped in package.json
+- [ ] PR description written
+
+## Common rationalizations
+
+| Thought | Reality |
+|---------|---------|
+| "This is too small for a CHANGELOG entry" | Users read changelogs. Every user-facing change gets an entry. |
+| "I'll update the CHANGELOG later" | Later never comes. Update it now. |
+| "The PR description covers it" | PR descriptions are for reviewers. CHANGELOG is for users. |
+```
+
+---
+
+## Checkpoint
+
+Before moving on, you should be able to:
+- Identify which pattern fits a given scenario
+- Write a validation loop with a stop condition
+- Write a plan-validate-execute workflow for destructive operations
+- Write gotchas that capture environment-specific facts
+- Write a rationalization table that prevents agent shortcutting
 
 ## Further reading
 

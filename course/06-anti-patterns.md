@@ -1,6 +1,6 @@
 # Module 6: Anti-Patterns
 
-From validating 4000+ skills across 18 repos. Avoid these.
+From validating 4000+ skills across 19 repos. Avoid these.
 
 ## 1. Missing WHEN trigger in description
 
@@ -95,11 +95,174 @@ Fix: Keep SKILL.md under 500 lines. Move reference material to separate files wi
 
 Fix: Always use forward slashes.
 
-## Exercise
+---
 
-1. Run the validator against 3 of your skills: `bun run scripts/validate-skill.ts <path>`
-2. Read wiki/research/anti-patterns.md for the full list with real examples
-3. Fix every issue the validator flags
+## Try It: Bug Hunt
+
+Three intentionally broken skills. Find and fix every issue in each one.
+
+### Broken Skill 1: "deploy helper"
+
+```markdown
+---
+name: Deploy Helper
+description: A comprehensive tool that assists developers with the deployment
+  process by leveraging cloud infrastructure to facilitate seamless production
+  releases.
+---
+
+## What is Deployment?
+
+Deployment is the process of making your application available to users.
+It involves building the code, running tests, and pushing to a server.
+
+## Overview
+
+## Steps
+
+1. You can use Vercel, AWS, GCP, Heroku, Fly.io, Railway, or Render
+2. Build the project
+3. Deploy it
+4. Check if it works
+```
+
+Issues to find (at least 8):
+
+1. **Name has uppercase and space** -- should be `deploy-helper`
+2. **Name uses "helper"** -- banned vague word. Use `deploy-to-vercel` or `deploying-apps`
+3. **No WHAT verb** in description -- "assists" is weak. Use "Deploy"
+4. **No WHEN trigger** -- missing "Use when..."
+5. **AI slop words** -- "comprehensive", "leveraging", "facilitate", "seamless"
+6. **Explains what the agent knows** -- "What is Deployment?" section is unnecessary
+7. **Empty "Overview" section** -- heading with no content
+8. **Too many options without default** -- step 1 lists 7 platforms with no recommendation
+9. **No output format** -- what does a successful deploy look like?
+10. **No gotchas** -- every deploy target has quirks
+
+Fixed version:
+
+```markdown
+---
+name: deploy-to-vercel
+description: Deploy applications to Vercel with build verification and smoke
+  tests. Use when asked to deploy, ship to production, or push to Vercel.
+---
+
+# Deploy to Vercel
+
+Deploy the current project to Vercel, verify the build, and run smoke tests.
+
+## Workflow
+1. Run `vercel --prod` to deploy
+2. Capture the deployment URL from output
+3. Run smoke tests against the URL: `curl -f <url>/api/health`
+4. If smoke test fails, run `vercel rollback` and report the error
+5. If smoke test passes, report the deployment URL
+
+## Gotchas
+- Vercel CLI needs `VERCEL_TOKEN` in environment; check `.env` first
+- Monorepos need `--cwd <path>` to target the right package
+- First deploy requires `vercel link` to connect the project
+```
+
+### Broken Skill 2: "code review"
+
+```markdown
+---
+name: code-review
+description: Review code by first reading all changed files, then categorizing
+  issues into security, performance, and style buckets, then scoring each
+  file 1-10, then generating a summary report with actionable recommendations
+  and a final pass/fail verdict based on weighted scores.
+---
+
+# Code Review
+
+Be concise in your review. Provide comprehensive details for every issue found.
+
+## Workflow
+1. Read the diff
+2. Review for issues
+3. Report findings
+
+## References
+See references/security/owasp/top10/2024/injection/sql/prevention.md
+```
+
+Issues to find (at least 5):
+
+1. **CSO violation** -- description summarizes the entire workflow (read, categorize, score, summarize, verdict). The agent will follow this summary and skip the body.
+2. **Contradictory instructions** -- "Be concise" + "comprehensive details" in the same sentence.
+3. **Deeply nested reference** -- 7 levels deep. Should be `references/owasp-top10.md`.
+4. **Workflow too vague** -- "Review for issues" doesn't specify what to look for.
+5. **No output format** -- what does the review report look like?
+
+### Broken Skill 3: "test automation"
+
+```markdown
+---
+name: test-automation
+description: I help you write and run tests for your application.
+---
+
+# Test Automation Skill
+
+This skill is designed to help developers write better tests. Testing is
+an important part of software development because it helps catch bugs
+early and ensures code quality. There are many types of tests including
+unit tests, integration tests, end-to-end tests, performance tests,
+and smoke tests.
+
+## Unit Testing
+
+Unit tests test individual functions or components in isolation. They
+are fast and reliable. Common frameworks include Jest, Vitest, pytest,
+and JUnit.
+
+## Integration Testing
+
+Integration tests verify that different parts of the system work
+together correctly.
+
+## End-to-End Testing
+
+E2E tests simulate real user interactions with the application.
+Popular tools include Playwright, Cypress, and Selenium.
+
+## Running Tests
+
+You can use any of the following:
+- `npm test`
+- `yarn test`
+- `pnpm test`
+- `bun test`
+- `pytest`
+- `cargo test`
+- `go test ./...`
+```
+
+Issues to find (at least 7):
+
+1. **First person description** -- "I help you" should be third person
+2. **No WHAT verb** -- "help" is not actionable
+3. **No WHEN trigger** -- missing "Use when..."
+4. **Explains what agent knows** -- entire "what is unit/integration/e2e testing" is unnecessary
+5. **Too many options without default** -- lists 7 test runners with no recommendation
+6. **No workflow** -- lists concepts but never says what to DO
+7. **No output format** -- what does the result look like?
+8. **No gotchas** -- every test framework has quirks
+9. **AI slop language** -- "designed to help developers write better tests"
+10. **Over-broad scope** -- this is really 3 skills (unit, integration, e2e)
+
+---
+
+## Checkpoint
+
+Before moving on, you should be able to:
+- Spot 5+ issues in any skill within 2 minutes
+- Distinguish between errors (must fix) and warnings (should fix)
+- Fix a broken description in under 60 seconds
+- Explain why CSO violations are the most dangerous anti-pattern
 
 ## Further reading
 
