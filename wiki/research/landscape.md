@@ -1,6 +1,6 @@
 # State of the Agent Skill Ecosystem
 
-The “skill” layer for coding agents sits between the base model and project-specific rules: packaged procedures, bundled scripts, and domain playbooks that hosts discover and load on demand. This article compares **seventeen** high-signal repositories in the local Skill Factory corpus—by format, scale, host compatibility, and engineering trade-offs—not to crown a winner but to show where each system optimizes. (The first seven entries were the original batch; ten more were added in April 2026.)
+The “skill” layer for coding agents sits between the base model and project-specific rules: packaged procedures, bundled scripts, and domain playbooks that hosts discover and load on demand. This article compares **eighteen** high-signal repositories in the local Skill Factory corpus—by format, scale, host compatibility, and engineering trade-offs—not to crown a winner but to show where each system optimizes. (The first seven entries were the original batch; eleven more were added in April 2026.)
 
 ## gstack (`garrytan/gstack`)
 
@@ -189,6 +189,17 @@ The “skill” layer for coding agents sits between the base model and project-
 - **Weaknesses:** Not a general skill marketplace repo—most users consume **released** CLI, not skill sources here.  
 - **Notable patterns:** **Rust-native** agent core; **sample** skill-creator/plugin-creator/imagegen embedded for tooling UX.
 
+## openclaude (`Gitlawb/openclaude`)
+
+- **GitHub:** https://github.com/Gitlawb/openclaude  
+- **Stars (approx., 2026-04):** ~7,200  
+- **Skill count:** **0** `SKILL.md`; this is a **Claude Code source fork** with a provider abstraction shim, not a skill repository.  
+- **Formats:** TypeScript codebase forked from the Claude Code npm source map exposure (March 31, 2026); added **`openaiShim.ts`** (~1,098 lines) translating Anthropic SDK interface to OpenAI Chat Completions API.  
+- **Host compatibility:** Runs Claude Code's full tool system (Bash, FileRead/Write/Edit, Glob, Grep, WebFetch, WebSearch, Agent, MCP, Tasks) against **any** OpenAI-compatible model (GPT-4o, DeepSeek, Gemini, Llama, Mistral, Ollama, Codex backend, Atomic Chat).  
+- **Strengths:** Proves Claude Code's tool surface is **model-agnostic** via a 786-line shim layer; streaming, multi-step tool chains, sub-agents, images all work; reveals internal tool translation architecture (Anthropic blocks to/from OpenAI function calls and SSE events).  
+- **Weaknesses:** No thinking mode, no prompt caching, no beta features; model quality varies (smaller models struggle with agentic tool use); based on leaked/exposed source (legal/ToS sensitivity).  
+- **Notable patterns:** **Provider shim as portability layer** -- skills authored for Claude Code's tool set work unchanged on 200+ models; the skill instructions stay constant, only the underlying LLM changes. This validates the thesis that **well-written SKILL.md files are model-independent**, not just host-independent.
+
 ## Comparison summary
 
 | Repo | Primary unit | Scale | Discovery model | Best for |
@@ -213,8 +224,9 @@ The “skill” layer for coding agents sits between the base model and project-
 | A2A | protocol spec | n/a | Agent cards / JSON-RPC | Agent-to-agent interoperability |
 | awesome-claude-skills | README + skills | 800+ SKILL.md in clone | Awesome + Composio plugin | Curated links + action integrations |
 | openai-codex | Rust CLI + samples | 8 SKILL.md samples | Codex product | Terminal agent + embedded skill samples |
+| openclaude | Provider shim | 0 (fork) | Any OpenAI-compat model | Model-agnostic skill execution proof |
 
-**Analytical takeaway:** The ecosystem splits into **host-native packs** (gstack, OpenAI system skills, superpowers, ECC), **marketplace/directory** layers (Antigravity, VoltAgent, awesome-claude-skills), **editor rules** (awesome-cursorrules), **protocol/sidecar** layers (**MCP** tool servers, **A2A** agent mesh), **prompt libraries** (fabric, system-prompts research), and **agent distributions** (**Codex**, **goose**) that embed or accompany skill-like assets. Authors should pick the layer that matches **how often** the guidance must apply, **how narrow** the triggering intent is, and whether capability lives in **prose skills**, **tools (MCP)**, or **remote agents (A2A)**.
+**Analytical takeaway:** The ecosystem splits into **host-native packs** (gstack, OpenAI system skills, superpowers, ECC), **marketplace/directory** layers (Antigravity, VoltAgent, awesome-claude-skills), **editor rules** (awesome-cursorrules), **protocol/sidecar** layers (**MCP** tool servers, **A2A** agent mesh), **prompt libraries** (fabric, system-prompts research), **agent distributions** (**Codex**, **goose**) that embed or accompany skill-like assets, and **provider shims** (**openclaude**) that prove the tool surface is model-agnostic. Authors should pick the layer that matches **how often** the guidance must apply, **how narrow** the triggering intent is, and whether capability lives in **prose skills**, **tools (MCP)**, or **remote agents (A2A)**.
 
 **Cross-repo synthesis (2026-04):** **superpowers** contributed test-backed **Claude Search Optimization (CSO)** lessons—YAML descriptions that summarize workflows can cause models to **skip SKILL.md bodies**—plus **rationalization tables** and other guardrails in skills such as **verification-before-completion**. **everything-claude-code** pairs a very large bundled skill surface with **meta-governance** (instincts, stocktake, rules distillation, compliance measurement, hook-driven session memory) so libraries are maintained, not only grown. **Fabric** remains the reference for **composable** prompts: routers like **suggest_pattern**, meta-patterns like **create_pattern**, and runtime **stacking** of strategy + context + pattern. **mattpocock/skills** demonstrates **micro-skills** (e.g. **grill-me**): a few lines of body can still encode a sharp behavioral loop when discovery text is precise.
 
@@ -237,6 +249,7 @@ The “skill” layer for coding agents sits between the base model and project-
 - `skill-factory/raw/repos/A2A/README.md`  
 - `skill-factory/raw/repos/awesome-claude-skills/README.md`  
 - `skill-factory/raw/repos/openai-codex/README.md`  
+- `skill-factory/raw/repos/openclaude/README.md`, `src/services/api/openaiShim.ts`  
 - `skill-factory/raw/docs/agentskills-io-spec.md`, `agentskills-io-best-practices.md`  
 - GitHub REST API `stargazers_count` for repos listed above (queried 2026-04-02)  
 - Local counts: `find … -name 'SKILL.md' | wc -l`, `find … -name '.cursorrules' | wc -l`

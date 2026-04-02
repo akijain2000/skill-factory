@@ -2,11 +2,11 @@
 
 **An LLM knowledge base and course for authoring production-quality AI agent skills.**
 
-Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 18 repositories and 6 reference documents, LLM-compiled into a structured wiki of 30+ articles, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files.
+Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 19 repositories and 6 reference documents, LLM-compiled into a structured wiki of 30+ articles, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files.
 
 ```
                 ┌─────────────────────────────────────────────┐
-                │            RAW SOURCES (18 repos)           │
+                │            RAW SOURCES (19 repos)           │
                 │  gstack, superpowers, fabric, codex, ...    │
                 │  + 6 reference docs (specs, best practices) │
                 └────────────────────┬────────────────────────┘
@@ -40,7 +40,7 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
 
 This repo is three things:
 
-1. **A knowledge base** -- 30+ wiki articles distilled from 18 top AI agent repos (131K+ stars combined), covering every pattern, anti-pattern, and technique for writing skills
+1. **A knowledge base** -- 30+ wiki articles distilled from 19 top AI agent repos (700K+ stars combined), covering every pattern, anti-pattern, and technique for writing skills
 2. **A 10-module course** -- Zero-to-hero curriculum that teaches you skill authoring from scratch
 3. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
 
@@ -109,7 +109,7 @@ skill-factory/
 │   └── SKILL.md                 # Queries wiki to help author skills
 │
 ├── raw/                         # Source material (repos gitignored)
-│   ├── repos/                   # 18 cloned repositories (local only)
+│   ├── repos/                   # 19 cloned repositories (local only)
 │   │   └── SOURCES.md           # Manifest with URLs, stars, relevance
 │   └── docs/                    # 6 reference documents saved as markdown
 │       ├── anthropic-best-practices.md
@@ -261,7 +261,7 @@ The [course/](course/) directory contains a 10-module curriculum:
 
 ## Source Repositories Analyzed
 
-18 repositories totaling 700K+ GitHub stars:
+19 repositories totaling 700K+ GitHub stars:
 
 | Repo | Stars | Key Contribution |
 |------|-------|-----------------|
@@ -282,6 +282,7 @@ The [course/](course/) directory contains a 10-module curriculum:
 | [anthropic-plugins](https://github.com/anthropics/claude-plugins-official) | 3K | Official Anthropic plugin examples |
 | [gstack](https://github.com/garrytan/gstack) | 2K | Template engine, 40+ skills, multi-host |
 | [autoresearch](https://github.com/karpathy/autoresearch) | 1K | Markdown-as-program paradigm |
+| [openclaude](https://github.com/Gitlawb/openclaude) | 7K | Claude Code fork with provider shim -- proves skills are model-agnostic |
 | [voltagent-awesome-skills](https://github.com/VoltAgent/awesome-agent-skills) | 1K | Curated skill link catalog |
 
 ---

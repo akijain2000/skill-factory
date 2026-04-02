@@ -26,6 +26,7 @@ Last updated: 2026-04-02
 | A2A | github.com/a2aproject/A2A | ~23K | 2026-04-02 | Agent2Agent protocol -- multi-agent interoperability |
 | awesome-claude-skills | github.com/ComposioHQ/awesome-claude-skills | ~50K | 2026-04-02 | Curated Claude Skills and workflow resources |
 | openai-codex | github.com/openai/codex | ~72K | 2026-04-02 | Terminal coding agent from OpenAI (Rust CLI architecture) |
+| openclaude | github.com/Gitlawb/openclaude | ~7K | 2026-04-02 | Claude Code fork with OpenAI-compatible shim -- any LLM via provider abstraction |
 
 ## Discovery Log
 
@@ -34,3 +35,4 @@ Last updated: 2026-04-02
 - First discovery run: scanned Top100 + 6 language-specific rankings
 - Added 10 new repos (superpowers, everything-claude-code, mcp-servers, mattpocock-skills, system-prompts, fabric, goose, A2A, awesome-claude-skills, openai-codex)
 - Skipped: openclaw (broad assistant, low skill-authoring signal), dify/langflow/n8n (workflow tools, less about skill format), cline/OpenHands (coding agents but no novel skill patterns)
+- Added openclaude (Claude Code source fork with OpenAI shim -- reveals Claude Code tool translation internals)
