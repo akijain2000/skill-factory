@@ -196,6 +196,18 @@ function validate(skillDir: string): Issue[] {
     issues.push({ severity: "warning", message: "No test/evaluation section found. SKILL_SPEC recommends >=3 test scenarios (activation, workflow, edge case)." });
   }
 
+  // Example check (SKILL_SPEC recommends concrete examples)
+  const hasExamples = /#{1,3}\s*(example|sample|demo|output format)/i.test(body) || /```/.test(body);
+  if (!hasExamples) {
+    issues.push({ severity: "warning", message: "No examples or code blocks found. SKILL_SPEC recommends concrete input/output examples." });
+  }
+
+  // Gotchas check (SKILL_SPEC recommends gotchas for environment-specific facts)
+  const hasGotchas = /#{1,3}\s*(gotcha|caveat|warning|pitfall|known issue)/i.test(body);
+  if (!hasGotchas) {
+    issues.push({ severity: "info", message: "No gotchas/caveats section found. Consider adding environment-specific gotchas." });
+  }
+
   return issues;
 }
 
