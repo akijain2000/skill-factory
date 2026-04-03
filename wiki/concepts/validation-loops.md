@@ -28,10 +28,43 @@ The curated `spreadsheet` skill instructs: recalculate formulas before delivery,
 
 "Implement the feature and ensure it works." No validator, no retry, no command—so the agent may skip tests or assume success. agentskills.io contrasts this with vague procedures like "handle errors appropriately" instead of concrete validate-fix cycles. Source: `raw/docs/agentskills-io-best-practices.md`.
 
+## Three-dimension testing
+
+AgentPatterns.ai formalizes skill testing across three dimensions:
+
+1. **Triggering**: does the skill load on relevant queries and stay silent on unrelated ones? Test with 3-5 prompts that should trigger and 3-5 that should not.
+2. **Functional**: does it produce correct outputs consistently across 3-5 runs? The same input should produce the same quality of output.
+3. **Performance**: compare tool calls, messages, and tokens **with** vs **without** the skill. An effective skill should reduce all three. If it increases them, the skill is adding overhead without value.
+
+Iterate on a single challenging task until the agent succeeds, then extract the winning approach into the skill. Source: `raw/docs/agentpatterns-skill-authoring.md`.
+
+## Measuring effectiveness at scale
+
+Track invocation frequency with a `PreToolUse` hook that logs skill name and timestamp. Use the log to identify:
+- **Under-triggering skills** (description needs work)
+- **Over-triggering skills** (description too broad)
+- **Popular skills** (expand these, invest in quality)
+
+Source: `raw/docs/trq212-skills-abstraction.md`.
+
+## Troubleshooting table
+
+| Symptom | Common Cause | Fix |
+|---------|--------------|-----|
+| Skill never triggers | Description too vague or missing triggers | Add specific phrases users would say |
+| Triggers on unrelated queries | Description too broad | Add negative triggers; narrow scope |
+| Loads but instructions ignored | Instructions too verbose or buried | Put critical instructions first; use numbered lists |
+| Slow or degraded responses | Skill content too large | Keep under 5000 words; use progressive disclosure |
+| Inconsistent results | Ambiguous instructions | Replace vague language with explicit checks |
+
+Source: `raw/docs/agentpatterns-skill-authoring.md`.
+
 ## Sources
 
 - `raw/docs/anthropic-best-practices.md`
 - `raw/docs/agentskills-io-best-practices.md`
+- `raw/docs/agentpatterns-skill-authoring.md` (three-dimension testing, troubleshooting table)
+- `raw/docs/trq212-skills-abstraction.md` (PreToolUse hooks for effectiveness measurement)
 - `raw/repos/openai-skills/skills/.curated/spreadsheet/SKILL.md`
 - `raw/repos/openai-skills/skills/.curated/winui-app/SKILL.md`
 - `raw/repos/everything-claude-code/` (skill stocktake, `skill-comply` / compliance measurement patterns)

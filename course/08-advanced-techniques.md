@@ -101,6 +101,31 @@ Match instruction specificity to task fragility:
 
 Narrow bridge with cliffs = exact instructions. Open field = general direction.
 
+## Built-in variables and config pattern (Claude Code)
+
+Claude Code provides variables for portable file references within skills:
+
+- **`${CLAUDE_SKILL_DIR}`** -- directory of the current skill file. Reference sibling assets without hardcoding paths.
+- **`${CLAUDE_PLUGIN_DATA}`** -- stable data directory that survives skill upgrades. Use for persistent state.
+
+The **Setup Config Pattern** stores per-project configuration in `${CLAUDE_PLUGIN_DATA}/config.json`. On first run, if the config is absent, the skill prompts the user via `AskUserQuestion` and saves the answers for future sessions. This avoids hard-coding values like AWS profiles, project keys, or default assignees.
+
+## Tool design evolution: what Anthropic learned
+
+Anthropic iterated through three major tool design changes while building Claude Code, each teaching a lesson for skill authors:
+
+1. **AskUserQuestion**: tried overloading an existing tool, then output format hacking, before landing on a dedicated tool. Lesson: prefer clear, single-purpose steps over multi-purpose instructions.
+2. **TodoWrite to Task Tool**: simple todo tracking became constraining as models improved. Replaced with Tasks that support dependencies and multi-agent coordination. Lesson: don't over-specify steps that newer models handle natively.
+3. **RAG to Grep to Progressive Disclosure**: search evolved from giving context to the agent, to letting the agent find context itself. Lesson: skills that reference sub-files only when needed mirror how the agent itself works.
+
+For the full story, see [wiki/research/tool-design-evolution.md](../wiki/research/tool-design-evolution.md).
+
+## The "delta from baseline" rule
+
+Write skill instructions as a **delta from baseline model behavior**: only the team conventions, domain-specific rules, and edge cases that the model would otherwise get wrong. Instructions Claude would follow correctly anyway waste tokens and dilute the rules that matter.
+
+Ask yourself for each instruction: "Would the agent get this right without the skill?" If yes, cut it. Source: Thariq (@trq212), Anthropic.
+
 ---
 
 ## Try It: Advanced pattern exercises

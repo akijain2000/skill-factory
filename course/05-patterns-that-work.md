@@ -111,6 +111,22 @@ Predictable structure makes skills scannable:
 [exact format, word limits, forbidden behaviors]
 ```
 
+## 9. Five implementation patterns (from Anthropic)
+
+Anthropic's internal skill library identifies five recurring structural patterns. Each has a distinct workflow shape:
+
+| Pattern | Use when | Key structure |
+|---------|----------|---------------|
+| Sequential Workflow | Multi-step process in fixed order | Step -> tool call -> expected output; include rollback |
+| Multi-MCP Coordination | Workflow spans multiple services | Organize by phase; validate between phases |
+| Iterative Refinement | Output improves with iteration | Draft -> quality check -> loop with exit condition |
+| Context-Aware Tool Selection | Same outcome, different tools by context | Decision tree: inspect context -> select tool |
+| Domain-Specific Intelligence | Specialized knowledge beyond tools | Pre-check (domain rules) -> execute -> document |
+
+Choosing the right pattern prevents structural mistakes: a sequential workflow without rollback, an iterative loop without an exit condition, or a multi-service workflow that doesn't validate between phases.
+
+For detailed examples and implementation guidance, see [wiki/concepts/implementation-patterns.md](../wiki/concepts/implementation-patterns.md). Source: AgentPatterns.ai, Anthropic.
+
 ---
 
 ## Try It: Pattern Matching

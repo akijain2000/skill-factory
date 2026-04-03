@@ -303,6 +303,19 @@ Watch for:
 
 ---
 
+## Recommended starter pair: /preflight and /gotcha
+
+If you're not sure what skill to build first, Anthropic's own team recommends starting with two:
+
+1. **`/preflight`** -- pre-commit gates that stop you committing broken code. Run linter, type checker, and tests before every commit.
+2. **`/gotcha`** -- captures mistakes in real-time. When the agent makes a mistake, type `/gotcha Claude forgot --profile flightmap` and it auto-files the gotcha to the right skill.
+
+Preflight catches errors. Gotcha ensures the same error never happens twice. Build everything else from there.
+
+**Key insight**: don't try to write a perfect skill on day one. Anthropic's best skills started as a few lines and one gotcha, then got better over time as people kept adding to them. Source: `raw/docs/applied-anthropic-playbook.md`.
+
+---
+
 ## Shipping checklist (all tracks)
 
 Before considering your skill done:

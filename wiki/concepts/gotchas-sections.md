@@ -24,10 +24,23 @@ agentskills.io calls gotchas **highest-value content**: they are cheap in tokens
 
 "Be careful with deployment." No sandbox note, no timeout, no preview-vs-prod rule—so the agent may hammer production or fail silently on network policy. Contrast with explicit gotchas above. Generic pitfall: empty "Common Pitfalls" headings with no solutions (SkillCheck mistake #4). Source: `raw/docs/skill-validation-7-mistakes.md`.
 
+## The /gotcha skill pattern: real-time gotcha capture
+
+One practitioner built a `/gotcha` skill that automates gotcha maintenance. When Claude makes a mistake, the user types:
+
+```
+/gotcha Claude forgot --profile flightmap
+```
+
+The skill figures out which skill the mistake belongs to, opens that file, and adds the gotcha to the right section. This solves the core problem: **nobody goes back and updates their skills after writing them**. The /gotcha skill makes gotcha maintenance happen in real-time, in the flow of work.
+
+This is the most practical feedback loop for skill improvement: each mistake becomes a permanent correction with zero extra effort. Source: `raw/docs/applied-anthropic-playbook.md`.
+
 ## Sources
 
 - `raw/docs/agentskills-io-best-practices.md`
 - `raw/docs/anthropic-best-practices.md`
+- `raw/docs/applied-anthropic-playbook.md` (/gotcha skill pattern)
 - `raw/repos/openai-skills/skills/.curated/vercel-deploy/SKILL.md`
 - `raw/repos/openai-skills/skills/.curated/winui-app/SKILL.md`
 - `raw/docs/skill-validation-7-mistakes.md`

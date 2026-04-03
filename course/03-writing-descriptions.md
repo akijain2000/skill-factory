@@ -76,6 +76,22 @@ description: Extracts text from PDF files. Use when working with PDFs.
 description: I help you extract text from PDF files.
 ```
 
+## Negative triggers (preventing over-triggering)
+
+When a skill fires on unrelated tasks, add explicit exclusions:
+
+```yaml
+description: Advanced data analysis for CSV files. Use for statistical
+  modelling, regression, clustering. Do NOT use for simple data
+  exploration (use data-viz skill instead).
+```
+
+This is especially important when multiple skills cover adjacent domains. Source: AgentPatterns.ai, Anthropic internal practice.
+
+## Debugging descriptions
+
+Quick test: ask your agent **"When would you use the [skill name] skill?"** It will quote the description back verbatim. If it can't articulate when to use the skill, or if it describes too many situations, your description needs work. Source: AgentPatterns.ai.
+
 ---
 
 ## Try It: Description Writing Challenges

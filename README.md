@@ -57,7 +57,8 @@ This project codifies what works and what doesn't, drawn from analyzing 4000+ re
 
 ```
 skill-factory/
-├── course/                      # 10-module skill authoring course
+├── SKILL.md                     # Entry point: A/B/C concierge router
+├── course/                      # 11-module skill authoring course
 │   ├── README.md                # Course overview and map
 │   ├── 01-what-are-skills.md    # Foundation: what skills are, how agents use them
 │   ├── 02-skillmd-format.md     # Spec mastery: frontmatter, body, references
@@ -138,57 +139,44 @@ skill-factory/
 
 ## Quick Start
 
-### 1. Use the course (no setup needed)
+**Tell your AI agent to read `SKILL.md` in this repo.** It will ask what you want to do:
 
-Start with [course/README.md](course/README.md). Read the 10 modules in order. Each builds on the previous one.
+- **A) Review and improve an existing skill** -- guided brainstorm review (YC office-hours style) or quick validator report
+- **B) Brainstorm and create a new skill** -- interactive 7-phase Skill Maker with forcing questions
+- **C) Learn about skill authoring** -- 11-module course, zero to hero
 
-### 2. Use the Skill Maker for guided creation
-
-Tell your AI agent:
-
-```
-Read skill-maker/SKILL.md and help me create a skill for [your idea].
-```
-
-The Skill Maker asks 5 diagnostic questions, challenges your scope, designs the skill section by section, writes it, validates it, and suggests test prompts. Like pair programming for skill authoring.
-
-### 3. Use the meta-skill for wiki-backed authoring
-
-For a faster, less interactive flow:
+Or jump directly:
 
 ```
-Read authoring/SKILL.md and help me create a skill for [your idea].
+# Review a skill
+Read SKILL.md and help me review my skill at path/to/my-skill/
+
+# Create a skill
+Read skill-maker/SKILL.md and help me create a skill for [your idea]
+
+# Take the course
+Read course/README.md
 ```
 
-The meta-skill queries the wiki, applies best practices, and drafts a validated SKILL.md.
+### Additional tools
 
-### 4. Validate a skill
+**Validate a skill:**
 
 ```bash
-# Using Bun
 bun run scripts/validate-skill.ts path/to/your-skill/
-
-# Using Node (tsx)
-npx tsx scripts/validate-skill.ts path/to/your-skill/
 ```
 
-The validator checks: name format, description quality (WHAT verb + WHEN trigger), body length, empty sections, AI slop words, path format, and nested references.
-
-### 5. Compile the wiki (if you add new sources)
+**Compile the wiki** (after adding new sources):
 
 ```
 Read scripts/compile-wiki.md and compile the wiki.
 ```
 
-This scans `raw/repos/` and `raw/docs/`, then writes/updates concept articles, research articles, curated examples, and regenerates INDEX.md and GLOSSARY.md.
-
-### 6. Run a health check
+**Run a health check:**
 
 ```
 Read scripts/health-check.md and run a health check.
 ```
-
-Finds broken links, stale sources, terminology inconsistencies, and content gaps.
 
 ---
 
@@ -308,13 +296,38 @@ Patterns we identified that aren't documented elsewhere:
 
 1. **CSO (Claude Search Optimization)** -- Never summarize your skill's workflow in the description. The agent reads the summary and skips the body. Source: superpowers (131K stars).
 
-2. **Instinct Model** -- A unit smaller than a skill: one trigger, one action, confidence-weighted, evidence-backed. Instincts evolve into full skills when they accumulate enough evidence. Source: everything-claude-code.
+2. **Nine skill categories** -- Anthropic cataloged hundreds of internal skills into 9 types: Library & API Reference, Product Verification, Data Fetching, Business Process, Code Scaffolding, Code Quality, CI/CD, Runbooks, Infrastructure Ops. The best skills fit cleanly into one. Source: Thariq (@trq212), Anthropic.
 
-3. **Rationalization Tables** -- Agents talk themselves out of following instructions. Counter this with explicit tables of "excuses vs reality." Source: superpowers.
+3. **Delta from baseline** -- Only include what the agent doesn't already know. Instructions it would follow correctly anyway waste tokens and dilute the rules that matter. Source: Thariq (@trq212), Anthropic.
 
-4. **Micro-skills** -- Some skills are 10 lines. The agent already knows HOW to do things -- it just needs permission and direction. Source: mattpocock/skills.
+4. **Five implementation patterns** -- Sequential Workflow, Multi-MCP Coordination, Iterative Refinement, Context-Aware Tool Selection, Domain-Specific Intelligence. Each has a distinct shape; choose the one matching your task type. Source: AgentPatterns.ai.
 
-5. **Compliance Measurement** -- Don't hope your skill works, measure it. Generate behavioral specs, run scenarios, capture tool traces, classify adherence. Source: everything-claude-code.
+5. **The /gotcha skill** -- Real-time mistake capture: type `/gotcha Claude forgot --profile flightmap` and it auto-files the gotcha to the right skill. Solves the #1 problem: nobody goes back to update their skills. Source: applied Anthropic playbook.
+
+6. **Instinct Model** -- A unit smaller than a skill: one trigger, one action, confidence-weighted, evidence-backed. Instincts evolve into full skills when they accumulate enough evidence. Source: everything-claude-code.
+
+7. **Rationalization Tables** -- Agents talk themselves out of following instructions. Counter this with explicit tables of "excuses vs reality." Source: superpowers.
+
+8. **Micro-skills** -- Some skills are 10 lines. The agent already knows HOW to do things -- it just needs permission and direction. Source: mattpocock/skills.
+
+9. **Compliance Measurement** -- Don't hope your skill works, measure it. Generate behavioral specs, run scenarios, capture tool traces, classify adherence. Source: everything-claude-code.
+
+10. **Negative triggers** -- Prevent over-triggering by adding `Do NOT use for...` to descriptions. Source: AgentPatterns.ai.
+
+---
+
+### Reference Articles Analyzed
+
+In addition to repos, 12 reference documents are saved in `raw/docs/`:
+
+| Article | Author | Key Contribution |
+|---------|--------|-----------------|
+| Skills Are the Abstraction | Thariq (@trq212), Anthropic | 9 skill categories, built-in variables, config pattern, composition |
+| Building an Agent Is Art Not Science | Thariq (@trq212), Anthropic | AskUserQuestion evolution, TodoWrite->Task, search evolution |
+| Your Agent Should Use a File System | Thariq (@trq212), Anthropic | File system as state representation for agents |
+| Bash Is All You Need | Thariq (@trq212), Anthropic | Non-coding agents need bash for grounded verification |
+| Applied Anthropic Playbook | billkhiz (dev.to) | /gotcha pattern, /preflight sub-files, non-code skills |
+| Skill Authoring Patterns | AgentPatterns.ai | 5 implementation patterns, negative triggers, testing methodology |
 
 ---
 

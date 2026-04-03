@@ -21,6 +21,25 @@ The context window is shared with history, system prompts, and other skills. Stu
 
 `winui-app` keeps a numbered "Required Flow" in SKILL.md, then mandates: "Read `references/_sections.md`, then load only the reference files that match the task," with a table mapping requests to files. Source: `raw/repos/openai-skills/skills/.curated/winui-app/SKILL.md`.
 
+## Real-world pattern: /preflight with context-aware sub-files
+
+A practical progressive disclosure pattern from the applied Anthropic playbook: a `/preflight` skill split into context-aware sub-files:
+
+```
+preflight/
+  SKILL.md: the main orchestrator (reads sub-files as needed)
+  checks/
+    security.md: detailed security checklist + project-specific notes
+    frontend.md: accessibility, performance, design consistency
+    backend.md: API safety, Lambda gotchas, Python patterns
+```
+
+Claude reads the main file and then only pulls in the relevant checks file based on project type. Working on a React app? It reads `frontend.md`. Working on a Lambda backend? It reads `backend.md`. The rest stays out of context. Source: `raw/docs/applied-anthropic-playbook.md`.
+
+## Anthropic's own use: Claude Code Guide Agent
+
+Anthropic faced this exact problem internally. They needed Claude to know about its own documentation, but adding it all to the system prompt would cause context rot. Instead of adding a new tool, they built a Guide subagent that Claude calls when asked about itself. The subagent has instructions on how to search docs well and what to return -- adding capability without adding context or a new tool. Source: `raw/docs/trq212-art-not-science.md`.
+
 ## Bad example
 
 A single SKILL.md with thousands of lines of API docs, checklists, and examplesâ€”all loaded on every activation. This violates the spec's activation budget and duplicates what belongs in `references/`. The antigravity anatomy guide explicitly warns against "5000 words of dense technical jargon" in one blob; fix by splitting skills or using progressive disclosure. Source: `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`.
@@ -34,3 +53,5 @@ A single SKILL.md with thousands of lines of API docs, checklists, and examplesâ
 - `raw/repos/openai-skills/skills/.curated/winui-app/SKILL.md`
 - `raw/repos/openai-skills/skills/.system/skill-creator/SKILL.md`
 - `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`
+- `raw/docs/applied-anthropic-playbook.md` (/preflight sub-files pattern)
+- `raw/docs/trq212-art-not-science.md` (Claude Code Guide Agent)

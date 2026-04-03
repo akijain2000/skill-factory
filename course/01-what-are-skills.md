@@ -52,6 +52,50 @@ This is called **progressive disclosure**. Your skill shares the context window 
 | Codex CLI | `.agents/skills/` or `~/.codex/skills/` |
 | Gemini CLI | `.agents/skills/` |
 
+## Skills are folders, not files
+
+A common misconception: skills are "just markdown files." In reality, **a skill is a folder** that can contain scripts, config files, reference data, templates -- anything the agent might need. The SKILL.md is the entry point, but the folder structure is what makes skills powerful.
+
+Example of a real AWS debugging skill:
+
+```
+aws-debug/
+  SKILL.md          # main instructions
+  config.json       # which AWS profile to use per project
+  references/
+    services.md     # maps projects to Lambda functions, log groups, common errors
+```
+
+Claude sees the SKILL.md when you say "check the logs." But it only opens `references/services.md` when it needs to look up a specific log group. Source: Anthropic internal practice.
+
+## Anthropic's nine skill categories
+
+After cataloging hundreds of skills in active use, Anthropic identified nine recurring types:
+
+| # | Category | What it covers | Example |
+|---|----------|---------------|---------|
+| 1 | Library & API Reference | How to correctly use a library, CLI, or SDK | Internal billing lib edge cases |
+| 2 | Product Verification | Test or verify that code is working | Playwright-based QA checks |
+| 3 | Data Fetching & Analysis | Query data sources and summarize results | Metrics dashboard queries |
+| 4 | Business Process | Automate recurring cross-team workflows | Incident triage, onboarding |
+| 5 | Code Scaffolding | Generate consistent boilerplate | Service stubs, PR templates |
+| 6 | Code Quality & Review | Apply team conventions during review | Style enforcement, security checks |
+| 7 | CI/CD & Deployment | Drive pipeline steps and releases | Build triggering, rollback |
+| 8 | Runbooks | Encode on-call procedures as executable steps | Database failover, cache flush |
+| 9 | Infrastructure Ops | Manage cloud resources and config | Secret rotation, scaling |
+
+The best skills fit cleanly into one category. If yours straddles two or more, consider splitting it. Source: [Thariq (@trq212), Anthropic](https://x.com/trq212/status/2033949937936085378).
+
+## Skills beyond code
+
+Skills are not limited to software engineering. Any domain with repeatable processes or specialized knowledge works. Real-world examples include:
+
+- **Bookkeeping verification**: categorizing bank transactions into accounting codes and checking for duplicates, miscategorizations, and missing entries
+- **Document compliance**: validating contracts against policy rules
+- **Research analysis**: structured literature review with citation extraction
+
+If your work has a quality checklist, you can turn it into a skill. Source: `raw/docs/applied-anthropic-playbook.md`.
+
 ## The ecosystem today
 
 The SKILL.md format is an open standard from [agentskills.io](https://agentskills.io/specification), supported by 27+ agents. Separate from skills, there are also:

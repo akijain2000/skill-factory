@@ -19,6 +19,26 @@ Validation of real-world skills shows missing **WHEN** triggers and missing **WH
 5. Trim bloat: replace "This skill should be used when" with "Use when".
 6. If proactive use is intended, say so ("Proactively suggest when…") like gstack skills do.
 
+## Recommended structure
+
+AgentPatterns.ai formalizes the structure as: **[What it does] + [When to use it] + [Key capabilities]**. This three-part formula ensures the description covers all three discovery needs in one scan.
+
+## Negative triggers (preventing over-triggering)
+
+When a skill fires on unrelated tasks, add explicit negative triggers:
+
+```yaml
+description: Advanced data analysis for CSV files. Use for statistical
+  modelling, regression, clustering. Do NOT use for simple data
+  exploration (use data-viz skill instead).
+```
+
+This is especially important when multiple skills cover adjacent domains. Source: AgentPatterns.ai, Anthropic internal practice.
+
+## Debugging descriptions
+
+Ask the agent: **"When would you use the [skill name] skill?"** It quotes the description back verbatim, revealing what's missing or misleading. If the agent can't articulate when to use the skill, the description needs work. Source: AgentPatterns.ai.
+
 ## Good example
 
 The gstack `ship` skill frontmatter states the workflow (detect base branch, tests, VERSION, CHANGELOG, PR) and then: `Use when asked to "ship", "deploy", "push to main", "create a PR", "merge and push", or "get it deployed".` It adds proactive guidance in the same block. Source: `raw/repos/gstack/ship/SKILL.md`.
@@ -40,6 +60,7 @@ This aligns with the framing that **“description is the only thing your agent 
 - `raw/docs/skill-validation-7-mistakes.md`
 - `raw/docs/anthropic-best-practices.md`
 - `raw/docs/agentskills-io-spec.md`
+- `raw/docs/agentpatterns-skill-authoring.md` (negative triggers, debugging, [What]+[When]+[Capabilities] structure)
 - `raw/repos/gstack/ship/SKILL.md`
 - `raw/repos/openai-skills/skills/.curated/vercel-deploy/SKILL.md`
 - `raw/repos/superpowers/skills/` (CSO finding; compare description vs body across skills)

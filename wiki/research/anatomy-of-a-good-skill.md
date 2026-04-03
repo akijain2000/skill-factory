@@ -16,6 +16,7 @@ Strong skills treat the YAML `description` as the **only** reliable hook at disc
 
 ## 2. Body: one job, staged depth
 
+- [ ] **Delta from baseline**: only include instructions the agent wouldn't follow correctly on its own. Team conventions, domain-specific rules, and edge cases earn their tokens; generic knowledge the model already has does not. Source: Thariq (@trq212), Anthropic.
 - [ ] **Single coherent mission**—if two missions compete, split skills (agentskills.io “coherent units”).  
 - [ ] **Under ~500 lines** in `SKILL.md`; spill to `references/` with explicit load instructions.  
 - [ ] **Progressive disclosure**: tell the agent *when* to open which file (“Read X if API returns non-200”).  
@@ -79,6 +80,14 @@ Strong skills treat the YAML `description` as the **only** reliable hook at disc
 - [ ] `assets/` for schemas, icons, static templates.  
 - [ ] Each asset **referenced** from SKILL.md with a clear trigger.
 
+## 11. Skill composition
+
+- [ ] Reference other skills by their exact `name` field, not by filename.
+- [ ] Handle absent dependencies gracefully ("If the `code-review` skill is not installed, perform a manual checklist review").
+- [ ] There is no native dependency management — the skill itself must check and fallback.
+
+Source: `raw/docs/trq212-skills-abstraction.md`.
+
 ---
 
 ### Quick self-score
@@ -97,3 +106,5 @@ Rate your skill 0–2 on each block (Activation, Body, Procedure, I/O, Environme
 - `skill-factory/raw/repos/openai-skills/skills/.curated/pdf/SKILL.md`  
 - `skill-factory/raw/repos/antigravity-awesome-skills/plugins/antigravity-bundle-essentials/skills/systematic-debugging/SKILL.md`  
 - `skill-factory/raw/repos/autoresearch/program.md` (output/logging discipline)
+- `skill-factory/raw/docs/trq212-skills-abstraction.md` (delta from baseline, skill composition)
+- `skill-factory/raw/docs/agentpatterns-skill-authoring.md` (implementation patterns, troubleshooting)

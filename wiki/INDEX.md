@@ -21,6 +21,8 @@ Last compiled: 2026-04-02
 - [Skill Discovery](concepts/skill-discovery.md) -- Host surfacing, meta-skill bootstraps, and description-first routing.
 - [Template Patterns](concepts/template-patterns.md) -- Fixed output shapes, Fabric headings, tokens, explicit output contracts.
 - [Token Budget](concepts/token-budget.md) -- Shared context; instincts and micro-skills as right-sizing examples.
+- [Skill Categories](concepts/skill-categories.md) -- Anthropic's nine skill types: Library, Verification, Data, Business, Scaffolding, Quality, CI/CD, Runbooks, Infra.
+- [Implementation Patterns](concepts/implementation-patterns.md) -- Five recurring workflow patterns: Sequential, Multi-MCP, Iterative, Context-Aware, Domain-Specific.
 - [Validation Loops](concepts/validation-loops.md) -- Task validate-fix loops plus library-scale stocktake and compliance measurement.
 
 ## Research (ecosystem analysis)
@@ -33,6 +35,7 @@ Last compiled: 2026-04-02
 - [Landscape](research/landscape.md) -- Seventeen repos: formats, scale, MCP/A2A context, strengths, trade-offs.
 - [OpenAI Skills Analysis](research/openai-skills-analysis.md) -- Patterns from openai/skills system and curated layers.
 - [Spec Reference](research/spec-reference.md) -- agentskills.io distilled: layout, frontmatter, constraints as lint target.
+- [Tool Design Evolution](research/tool-design-evolution.md) -- How Anthropic iterated on AskUserQuestion, TodoWrite, search, and progressive disclosure.
 
 ## Examples
 
