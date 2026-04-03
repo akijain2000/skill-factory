@@ -1,6 +1,6 @@
 ---
 name: skill-factory
-description: Navigate the Skill Factory knowledge base. Use when asked to create a skill, review a skill, learn about skills, or improve a SKILL.md file.
+description: Navigate the Skill Factory knowledge base. Use when asked to create a skill, review a skill, learn about skills, improve a SKILL.md file, or extract skills from a large prompt.
 ---
 
 # Skill Factory
@@ -18,6 +18,8 @@ Ask the user:
 > B) **Brainstorm and create a new skill** -- "I have an idea (or no idea yet) and want to build a skill"
 >
 > C) **Learn about skill authoring** -- "I want to take the course or browse the knowledge base"
+>
+> D) **Extract skills from a big prompt** -- "I have a long system prompt or instruction set and want to break it into skills"
 
 Wait for the user's answer before proceeding.
 
@@ -147,6 +149,21 @@ Then: Read `skill-maker/SKILL.md` and follow its phases.
 
 ---
 
+## Route D: Extract from Prompt
+
+If the user chose D:
+
+1. Read `prompt-decomposer/SKILL.md` and follow its 6-phase flow
+2. The Prompt Decomposer will chunk the prompt, evaluate each section for skill-worthiness, present candidates, and route approved ones to the Skill Maker or authoring workflow
+
+Tell the user:
+
+> "Paste your prompt or give me the file path. I'll break it down and show you what could become standalone skills."
+
+Then: Read `prompt-decomposer/SKILL.md` and follow its phases.
+
+---
+
 ## Route C: Learn
 
 If the user chose C:
@@ -172,7 +189,9 @@ If the user wants to browse the knowledge base instead of taking the course:
 
 ## Fallback behaviors
 
-- If the user skips the A/B/C question and directly asks to review a skill, go to Route A
+- If the user skips the menu and directly asks to review a skill, go to Route A
 - If the user directly asks to create or brainstorm a skill, go to Route B
 - If the user asks about skill authoring concepts, point to the wiki and relevant course modules
 - If the user provides a SKILL.md file without context, ask: "Would you like me to review this skill, or are you using it as a starting point for a new one?"
+- If the user pastes a large block of text (>50 lines) without context, ask: "This looks like a big prompt. Would you like me to analyze it for skill candidates (Route D), or is this a draft skill to review (Route A)?"
+- If the user asks to "decompose", "break apart", or "extract skills from" a prompt, go to Route D
