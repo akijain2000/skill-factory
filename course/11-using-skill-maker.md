@@ -164,10 +164,25 @@ Congratulations -- you've completed the full course. You can now:
 - Apply advanced patterns (validation loops, rationalization tables, instincts)
 - Ship skills across multiple hosts and models
 - Use the Skill Maker for guided creation
+- Decompose large prompts into modular skills
 - Maintain a living skill library
+
+## Also try: the Prompt Decomposer
+
+If you have an existing large system prompt or instruction set, the Prompt Decomposer can break it into standalone skills:
+
+```
+Read prompt-decomposer/SKILL.md and analyze this prompt for skill candidates
+```
+
+It chunks your prompt into logical sections, evaluates each one for skill-worthiness (distinct trigger? repeatable task? delta from baseline?), presents candidates in a scored table, and routes approved ones into the Skill Maker for creation. It also flags content that belongs as project rules rather than skills.
+
+This is the inverse of the Skill Maker: instead of building one skill from scratch, you start with a big blob and extract multiple skills from it.
 
 ## Further reading
 
-- [skill-maker/SKILL.md](../skill-maker/SKILL.md) -- the full Skill Maker skill
+- [skill-maker/SKILL.md](../skill-maker/SKILL.md) -- the full Skill Maker skill (interactive creation)
+- [prompt-decomposer/SKILL.md](../prompt-decomposer/SKILL.md) -- extract skills from large prompts
 - [authoring/SKILL.md](../authoring/SKILL.md) -- the meta-skill for wiki-backed authoring
 - [SKILL_SPEC.md](../SKILL_SPEC.md) -- the quality standard
+- [wiki/concepts/meta-skills.md](../wiki/concepts/meta-skills.md) -- the meta-skills concept (how skills govern other skills)

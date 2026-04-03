@@ -8,19 +8,19 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
                 ┌─────────────────────────────────────────────┐
                 │            RAW SOURCES (19 repos)           │
                 │  gstack, superpowers, fabric, codex, ...    │
-                │  + 6 reference docs (specs, best practices) │
+                │  + 12 reference docs (specs, best practices)│
                 └────────────────────┬────────────────────────┘
                                      │
                           compile-wiki.md (LLM)
                                      │
                                      ▼
                 ┌─────────────────────────────────────────────┐
-                │         COMPILED WIKI (30+ articles)        │
-                │  18 concepts · 8 research · 11 examples     │
+                │         COMPILED WIKI (40+ articles)        │
+                │  20 concepts · 9 research · 11 examples     │
                 │  INDEX.md · GLOSSARY.md · query logs        │
                 └────────────────────┬────────────────────────┘
                                      │
-                          authoring/SKILL.md (meta-skill)
+                    authoring/SKILL.md + skill-maker + prompt-decomposer
                                      │
                                      ▼
                 ┌─────────────────────────────────────────────┐
@@ -38,18 +38,19 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
 
 ## What this is
 
-This repo is three things:
+This repo is five things:
 
-1. **A knowledge base** -- 30+ wiki articles distilled from 19 top AI agent repos (700K+ stars combined), covering every pattern, anti-pattern, and technique for writing skills
+1. **A knowledge base** -- 40+ wiki articles distilled from 19 top AI agent repos (700K+ stars combined), covering every pattern, anti-pattern, and technique for writing skills
 2. **An 11-module course** -- Zero-to-hero curriculum with hands-on labs, sample problems, and before/after examples
 3. **A Skill Maker** -- A gstack-style interactive `skill-maker/SKILL.md` that asks forcing questions, challenges assumptions, and guides you through creating validated skills
-4. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
+4. **A Prompt Decomposer** -- A `prompt-decomposer/SKILL.md` that takes a large prompt, system instructions, or runbook and identifies sections that could become standalone skills, then helps you build them
+5. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
 
 ## Why this exists
 
 The SKILL.md format is an open standard supported by 27+ AI coding agents (Claude Code, Cursor, Codex CLI, Gemini CLI, and more). But writing a good skill is harder than it looks. Most skills fail at the description (the agent never activates them), are too long (they waste the context window), or miss critical patterns (no validation loops, no output templates, no gotchas).
 
-This project codifies what works and what doesn't, drawn from analyzing 4000+ real skills across the ecosystem.
+This project codifies what works and what doesn't, drawn from analyzing 4000+ real skills across the ecosystem. It also helps you decompose existing large prompts into modular, reusable skills.
 
 ---
 
@@ -57,7 +58,7 @@ This project codifies what works and what doesn't, drawn from analyzing 4000+ re
 
 ```
 skill-factory/
-├── SKILL.md                     # Entry point: A/B/C concierge router
+├── SKILL.md                     # Entry point: A/B/C/D concierge router
 ├── course/                      # 11-module skill authoring course
 │   ├── README.md                # Course overview and map
 │   ├── 01-what-are-skills.md    # Foundation: what skills are, how agents use them
@@ -69,12 +70,13 @@ skill-factory/
 │   ├── 07-your-first-skill.md   # Hands-on lab: build a real skill
 │   ├── 08-advanced-techniques.md # Meta-skills, composition, instincts
 │   ├── 09-multi-host.md         # Ship everywhere: Cursor, Claude, Codex, Gemini
-│   └── 10-maintaining-library.md # Living systems: feedback loops, stocktakes
+│   ├── 10-maintaining-library.md # Living systems: feedback loops, stocktakes
+│   └── 11-using-skill-maker.md  # Capstone: guided creation with the Skill Maker
 │
 ├── wiki/                        # LLM-compiled knowledge base
 │   ├── INDEX.md                 # Master table of contents (start here)
 │   ├── GLOSSARY.md              # Key terms with cross-references
-│   ├── concepts/                # 18 core skill-authoring concept articles
+│   ├── concepts/                # 20 core skill-authoring concept articles
 │   │   ├── anti-rationalization.md
 │   │   ├── checklist-workflows.md
 │   │   ├── composition-patterns.md
@@ -84,16 +86,18 @@ skill-factory/
 │   │   ├── feedback-loops.md
 │   │   ├── gotchas-sections.md
 │   │   ├── host-compatibility.md
+│   │   ├── implementation-patterns.md
 │   │   ├── instinct-model.md
 │   │   ├── meta-skills.md
 │   │   ├── naming-conventions.md
 │   │   ├── plan-validate-execute.md
 │   │   ├── progressive-disclosure.md
+│   │   ├── skill-categories.md
 │   │   ├── skill-discovery.md
 │   │   ├── template-patterns.md
 │   │   ├── token-budget.md
 │   │   └── validation-loops.md
-│   ├── research/                # 8 ecosystem analysis and deep-dive articles
+│   ├── research/                # 9 ecosystem analysis and deep-dive articles
 │   │   ├── anatomy-of-a-good-skill.md
 │   │   ├── anti-patterns.md
 │   │   ├── cursorrules-vs-skills.md
@@ -101,11 +105,15 @@ skill-factory/
 │   │   ├── host-differences.md
 │   │   ├── landscape.md
 │   │   ├── openai-skills-analysis.md
-│   │   └── spec-reference.md
+│   │   ├── spec-reference.md
+│   │   └── tool-design-evolution.md
 │   ├── examples/
 │   │   ├── good/                # 7 exemplary skills with annotations
 │   │   └── bad/                 # 4 anti-pattern skills with analysis
 │   └── queries/                 # Filed Q&A and update logs
+│
+├── prompt-decomposer/           # Prompt-to-skills extractor
+│   └── SKILL.md                 # Analyze big prompts, suggest skill candidates
 │
 ├── skill-maker/                 # Interactive skill creator
 │   └── SKILL.md                 # gstack-style guided creation with 7 phases
@@ -116,13 +124,19 @@ skill-factory/
 ├── raw/                         # Source material (repos gitignored)
 │   ├── repos/                   # 19 cloned repositories (local only)
 │   │   └── SOURCES.md           # Manifest with URLs, stars, relevance
-│   └── docs/                    # 6 reference documents saved as markdown
-│       ├── anthropic-best-practices.md
-│       ├── agentskills-io-spec.md
+│   └── docs/                    # 12 reference documents saved as markdown
+│       ├── agentpatterns-skill-authoring.md
 │       ├── agentskills-io-best-practices.md
+│       ├── agentskills-io-spec.md
+│       ├── anthropic-best-practices.md
+│       ├── applied-anthropic-playbook.md
+│       ├── mdskills-ai-spec.md
 │       ├── openai-agents-md-spec.md
 │       ├── skill-validation-7-mistakes.md
-│       └── mdskills-ai-spec.md
+│       ├── trq212-art-not-science.md
+│       ├── trq212-bash-all-you-need.md
+│       ├── trq212-file-system-state.md
+│       └── trq212-skills-abstraction.md
 │
 ├── scripts/                     # Automation
 │   ├── compile-wiki.md          # LLM instructions: compile raw/ into wiki/
@@ -144,6 +158,7 @@ skill-factory/
 - **A) Review and improve an existing skill** -- guided brainstorm review (YC office-hours style) or quick validator report
 - **B) Brainstorm and create a new skill** -- interactive 7-phase Skill Maker with forcing questions
 - **C) Learn about skill authoring** -- 11-module course, zero to hero
+- **D) Extract skills from a big prompt** -- paste a large system prompt or instruction set and break it into modular skills
 
 Or jump directly:
 
@@ -153,6 +168,9 @@ Read SKILL.md and help me review my skill at path/to/my-skill/
 
 # Create a skill
 Read skill-maker/SKILL.md and help me create a skill for [your idea]
+
+# Break a big prompt into skills
+Read prompt-decomposer/SKILL.md and analyze this prompt for skill candidates
 
 # Take the course
 Read course/README.md
@@ -206,7 +224,7 @@ Source manifest: [raw/repos/SOURCES.md](raw/repos/SOURCES.md)
 
 ## What the Wiki Covers
 
-### Core Concepts (18 articles)
+### Core Concepts (20 articles)
 
 | Pattern | What you learn |
 |---------|---------------|
@@ -217,23 +235,31 @@ Source manifest: [raw/repos/SOURCES.md](raw/repos/SOURCES.md)
 | Template Patterns | Output format contracts, Fabric-style headings, template tokens |
 | Anti-Rationalization | Preventing agents from skipping your instructions |
 | Instinct Model | Sub-skill YAML units that evolve into full skills |
-| Meta-Skills | Skills that govern other skills: stocktake, distillation, compliance |
+| Meta-Skills | Skills that govern other skills: stocktake, distillation, compliance, decomposition |
 | Composition Patterns | Runtime stacking, subagent choreography, template tokens |
 | Plan-Validate-Execute | Safe patterns for destructive or batch operations |
 | Host Compatibility | Shipping skills across Claude, Cursor, Codex, Gemini |
 | Degrees of Freedom | Matching instruction tightness to task fragility |
-| And 6 more... | Naming, checklists, gotchas, error handling, feedback, discovery |
+| Skill Categories | Anthropic's nine skill types: Library, Verification, Data, Business, and more |
+| Implementation Patterns | Five recurring workflow patterns: Sequential, Multi-MCP, Iterative, Context-Aware, Domain-Specific |
+| Checklist Workflows | Ordered, checkable steps for multi-phase agent work |
+| Gotchas Sections | Environment-specific facts that break defaults -- highest value per token |
+| Error Handling in Scripts | Bundled scripts that validate inputs and surface clear errors |
+| Feedback Loops | Refining skills using real runs, traces, and evaluation baselines |
+| Naming Conventions | Folder and name field rules, hyphens, reserved tokens to avoid |
+| Skill Discovery | Host surfacing, meta-skill bootstraps, description-first routing |
 
-### Research (8 articles)
+### Research (9 articles)
 
 - Anatomy of a good skill -- structural checklist
 - Anti-patterns catalog -- 14+ mistakes with fixes
 - gstack deep dive -- template engine, gen-skill-docs, preamble tiers
 - Host differences -- where skills load across 5+ agents
-- Landscape analysis -- 18 repos compared
+- Landscape analysis -- 19 repos compared
 - OpenAI skills analysis -- curated layers, validation scripts
 - Spec reference -- agentskills.io distilled
 - .cursorrules vs SKILL.md -- always-on vs on-demand
+- Tool design evolution -- how Anthropic iterated on AskUserQuestion, TodoWrite, search
 
 ### Curated Examples
 
@@ -258,7 +284,7 @@ The [course/](course/) directory contains an 11-module curriculum with hands-on 
 | 8 | Advanced Techniques | 40 min | Instinct writing lab + rationalization table exercise + degrees of freedom |
 | 9 | Multi-Host Compatibility | 30 min | Portability audit + OpenClaude model-agnostic insight |
 | 10 | Maintaining a Library | 30 min | Full maintenance loop: inventory, validate, extract shared rules |
-| 11 | Using the Skill Maker | 30 min | Capstone: guided skill creation with the interactive Skill Maker |
+| 11 | Using the Skill Maker | 30 min | Capstone: guided creation with the Skill Maker + Prompt Decomposer |
 
 ---
 
@@ -328,6 +354,12 @@ In addition to repos, 12 reference documents are saved in `raw/docs/`:
 | Bash Is All You Need | Thariq (@trq212), Anthropic | Non-coding agents need bash for grounded verification |
 | Applied Anthropic Playbook | billkhiz (dev.to) | /gotcha pattern, /preflight sub-files, non-code skills |
 | Skill Authoring Patterns | AgentPatterns.ai | 5 implementation patterns, negative triggers, testing methodology |
+| agentskills.io Spec | agentskills.io | Open Agent Skills specification baseline for portable skill folders |
+| agentskills.io Best Practices | agentskills.io | Recommended patterns for spec-compliant skill authoring |
+| Anthropic Best Practices | Anthropic | Official best practices for Claude-based agent skill design |
+| OpenAI agents.md Spec | OpenAI | Codex CLI agent configuration and skill loading specification |
+| mdskills.ai Spec | mdskills.ai | Alternative markdown skills specification and tooling |
+| 7 Skill Validation Mistakes | Various | Common validation failures and how to avoid them |
 
 ---
 
@@ -338,7 +370,7 @@ This project implements the LLM Knowledge Base pattern described by [Andrej Karp
 1. **Raw data ingest** -- Clone repos, save articles, capture specs into `raw/`
 2. **LLM compilation** -- An LLM reads raw sources and writes structured wiki articles into `wiki/`
 3. **Auto-maintained indexes** -- INDEX.md and GLOSSARY.md are regenerated after every compilation
-4. **Meta-skill queries** -- `authoring/SKILL.md` queries the compiled wiki to assist in creating new skills
+4. **Skill creation tools** -- Three wiki-backed workflows: `authoring/SKILL.md` (review and improve), `skill-maker/SKILL.md` (interactive creation), and `prompt-decomposer/SKILL.md` (extract skills from large prompts)
 5. **Feedback loops** -- Health checks, monthly updates, and query logs feed back into the wiki
 6. **Incremental enhancement** -- Each compilation pass improves existing articles and adds new ones
 

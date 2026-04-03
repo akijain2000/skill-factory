@@ -86,6 +86,8 @@
 
 **program.md** -- autoresearch-style single Markdown “agent contract” outside SKILL.md discovery. See [Landscape](research/landscape.md).
 
+**Prompt decomposer** -- Meta-skill that analyzes a large prompt or instruction set, identifies sections extractable as standalone skills, and routes approved candidates to the Skill Maker. See [Meta-Skills](concepts/meta-skills.md).
+
 ## Q
 
 **quick_validate.py** -- OpenAI skill-creator script that fails fast with specific SKILL.md and frontmatter errors. See [Error Handling in Scripts](concepts/error-handling-in-scripts.md), [Host Compatibility](concepts/host-compatibility.md).

@@ -2,7 +2,7 @@
 
 ## What it is
 
-**Meta-skills** are skills **about skills**: they inventory, judge, deduplicate, promote, or **measure** the behavior of the library itself. Examples from recent corpora include **skill stocktake** (deterministic inventory plus chunked subagent evaluation with Keep/Improve/Retire/Merge verdicts), **rules distillation** (promoting text that appears in two or more skills into shared rules via shell inventory + LLM judgment), **compliance measurement** (e.g. `skill-comply`: generated behavioral specs, scenarios at multiple prompt strictness levels, tool traces, LLM-scored compliance), and Fabric’s **create_pattern** meta-pattern that rewrites arbitrary prompts into the project’s standard pattern shape.
+**Meta-skills** are skills **about skills**: they inventory, judge, deduplicate, promote, **decompose**, or **measure** the behavior of the library itself. Examples from recent corpora include **skill stocktake** (deterministic inventory plus chunked subagent evaluation with Keep/Improve/Retire/Merge verdicts), **rules distillation** (promoting text that appears in two or more skills into shared rules via shell inventory + LLM judgment), **compliance measurement** (e.g. `skill-comply`: generated behavioral specs, scenarios at multiple prompt strictness levels, tool traces, LLM-scored compliance), and Fabric’s **create_pattern** meta-pattern that rewrites arbitrary prompts into the project’s standard pattern shape, and **prompt decomposition** (analyzing a large prompt or instruction set, chunking it into logical sections, evaluating each for skill-worthiness, and routing approved candidates into a creation workflow like the Skill Maker).
 
 ## Why it matters
 
@@ -16,6 +16,8 @@ At scale, prose edits alone do not improve reliability—**governance must be op
 4. **Promote cross-cutting rules:** When two skills encode the same principle, distill once and link.
 5. **Close the loop:** Stocktake and compliance feed edits; re-run measurement after changes.
 
+6. **Decompose prompts:** Accept a large prompt, chunk it, evaluate each chunk for skill-worthiness, and route candidates into the creation pipeline.
+
 ## Good example
 
 ECC combines stocktake, rules distillation, and compliance tooling with hook-driven memory—meta operations are first-class in the repo layout. Fabric’s `create_pattern` shows meta-patterns for **format**, not only task content. Sources: `raw/repos/everything-claude-code/`, `raw/repos/fabric/data/patterns/`.
@@ -24,8 +26,11 @@ ECC combines stocktake, rules distillation, and compliance tooling with hook-dri
 
 A single “audit everything” prompt with no chunking or machine-readable output—collapses under large trees and produces unmergeable opinions.
 
+The Skill Factory itself includes three meta-skills: `authoring/SKILL.md` (wiki-backed review and improvement), `skill-maker/SKILL.md` (interactive guided creation), and `prompt-decomposer/SKILL.md` (extract skills from large prompts). The prompt decomposer demonstrates the decomposition pattern: chunk, evaluate, present candidates with scored verdicts, then route into a creation workflow.
+
 ## Sources
 
 - `raw/repos/everything-claude-code/README.md`
 - `raw/repos/fabric/README.md`, `raw/repos/fabric/data/patterns/`
 - `wiki/concepts/validation-loops.md` (advanced validation patterns)
+- `prompt-decomposer/SKILL.md` (prompt decomposition meta-skill)
