@@ -190,6 +190,12 @@ function validate(skillDir: string): Issue[] {
     }
   }
 
+  // Test scenarios check (SKILL_SPEC requires >=3 real test scenarios)
+  const hasTestSection = /#{1,3}\s*(test|evaluation|scenarios|verify)/i.test(body);
+  if (!hasTestSection) {
+    issues.push({ severity: "warning", message: "No test/evaluation section found. SKILL_SPEC recommends >=3 test scenarios (activation, workflow, edge case)." });
+  }
+
   return issues;
 }
 
