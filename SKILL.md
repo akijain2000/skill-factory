@@ -149,21 +149,6 @@ Then: Read `skill-maker/SKILL.md` and follow its phases.
 
 ---
 
-## Route D: Extract from Prompt
-
-If the user chose D:
-
-1. Read `prompt-decomposer/SKILL.md` and follow its 6-phase flow
-2. The Prompt Decomposer will chunk the prompt, evaluate each section for skill-worthiness, present candidates, and route approved ones to the Skill Maker or authoring workflow
-
-Tell the user:
-
-> "Paste your prompt or give me the file path. I'll break it down and show you what could become standalone skills."
-
-Then: Read `prompt-decomposer/SKILL.md` and follow its phases.
-
----
-
 ## Route C: Learn
 
 If the user chose C:
@@ -183,7 +168,22 @@ If the user chose C:
 
 If the user wants to browse the knowledge base instead of taking the course:
 
-> "The wiki has 30+ articles organized by topic. Start with `wiki/INDEX.md` to see everything available."
+> "The wiki has 40+ articles organized by topic. Start with `wiki/INDEX.md` to see everything available."
+
+---
+
+## Route D: Extract from Prompt
+
+If the user chose D:
+
+1. Read `prompt-decomposer/SKILL.md` and follow its 6-phase flow
+2. The Prompt Decomposer will chunk the prompt, evaluate each section for skill-worthiness, present candidates, and route approved ones to the Skill Maker or authoring workflow
+
+Tell the user:
+
+> "Paste your prompt or give me the file path. I'll break it down and show you what could become standalone skills."
+
+Then: Read `prompt-decomposer/SKILL.md` and follow its phases.
 
 ---
 

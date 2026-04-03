@@ -58,24 +58,16 @@ Wait for confirmation before evaluating.
 
 ### Phase 3: Evaluate
 
-Load the wiki knowledge needed for evaluation:
+Load the wiki knowledge needed for evaluation. All paths below are relative to the skill-factory root directory.
 
-```
-cat wiki/INDEX.md
-```
-
-Then read:
+Read the file `wiki/INDEX.md`, then read:
 - `wiki/research/anatomy-of-a-good-skill.md`
 - `wiki/concepts/skill-discovery.md`
 - `wiki/concepts/token-budget.md`
 - `wiki/research/cursorrules-vs-skills.md`
 - `wiki/research/anti-patterns.md`
 
-Also read the quality spec:
-
-```
-cat SKILL_SPEC.md
-```
+Also read the quality spec: `SKILL_SPEC.md`.
 
 Score each chunk against five criteria:
 

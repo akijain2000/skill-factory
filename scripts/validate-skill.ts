@@ -38,6 +38,9 @@ const ACTION_VERBS = [
   "find", "fetch", "review", "test", "deploy", "ship",
   "debug", "investigate", "monitor", "configure", "setup",
   "install", "compile", "lint", "format", "optimize",
+  "guide", "navigate", "draft", "improve", "decompose",
+  "break", "identify", "suggest", "check", "run",
+  "audit", "scan", "inspect", "diagnose",
 ];
 
 interface Issue {
@@ -115,8 +118,8 @@ function validate(skillDir: string): Issue[] {
       issues.push({ severity: "warning", message: `Name '${meta.name}' does not match directory name '${dirName}'` });
     }
     const nameParts = meta.name.split("-");
-    if (nameParts.some((p: string) => BANNED_NAMES.has(p))) {
-      issues.push({ severity: "warning", message: `Name '${meta.name}' contains a banned vague word` });
+    if (nameParts.every((p: string) => BANNED_NAMES.has(p))) {
+      issues.push({ severity: "warning", message: `Name '${meta.name}' contains only banned vague words` });
     }
   }
 

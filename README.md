@@ -2,7 +2,7 @@
 
 **An LLM knowledge base and course for authoring production-quality AI agent skills.**
 
-Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 19 repositories and 6 reference documents, LLM-compiled into a structured wiki of 30+ articles, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files.
+Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 19 repositories and 12 reference documents, LLM-compiled into a structured wiki of 40+ articles, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files.
 
 ```
                 ┌─────────────────────────────────────────────┐

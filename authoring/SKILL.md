@@ -28,11 +28,9 @@ If no input provided, ask: "What should this skill do? Describe in 1-2 sentences
 
 ### Step 2: Load the wiki index
 
-Read the wiki index to understand what knowledge is available:
+Read the wiki index to understand what knowledge is available. All paths below are relative to the skill-factory root directory.
 
-```
-cat wiki/INDEX.md
-```
+Read the file `wiki/INDEX.md`.
 
 This is the master table of contents with one-line summaries. Use it to pick which articles to read next.
 
@@ -68,11 +66,7 @@ Based on the task, read the most relevant wiki articles. Do NOT read all of them
 
 ### Step 4: Gap analysis
 
-Compare the draft against the quality spec:
-
-```
-cat SKILL_SPEC.md
-```
+Compare the draft against the quality spec. Read the file `SKILL_SPEC.md`.
 
 Check each of these (in order of importance):
 
@@ -113,21 +107,15 @@ If it fails, fix the issues and re-run until it passes.
 
 ### Step 7: Quality examples
 
-If helpful, read exemplary skills for inspiration:
-
-```
-ls wiki/examples/good/
-```
-
-Read the one most similar to the skill being authored.
+If helpful, read exemplary skills for inspiration. List the files in `wiki/examples/good/` and read the one most similar to the skill being authored.
 
 ### Step 8: File insights back
 
-If this session produced useful observations about skill authoring (a new anti-pattern, a useful pattern, a host-specific gotcha), file it:
+If this session produced useful observations about skill authoring (a new anti-pattern, a useful pattern, a host-specific gotcha), create a new file at `wiki/queries/observation-YYYYMMDD-TOPIC.md` with this structure:
 
-```
-echo "# Observation: [TITLE]
-Date: $(date +%Y-%m-%d)
+```markdown
+# Observation: [TITLE]
+Date: [today's date]
 Context: [what skill was being authored]
 
 ## Finding
@@ -135,7 +123,6 @@ Context: [what skill was being authored]
 
 ## Recommendation
 [how to apply this in future skills]
-" > wiki/queries/observation-$(date +%Y%m%d)-TOPIC.md
 ```
 
 ### Step 9: Output
