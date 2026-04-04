@@ -1,6 +1,6 @@
 # Skill Quality Specification
 
-This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus best practices extracted from analyzing 7 top skill repos and Anthropic's official documentation.
+This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus best practices extracted from analyzing 19 skill repositories (700K+ stars combined) and Anthropic's official documentation.
 
 ## Frontmatter (Required)
 
@@ -104,5 +104,10 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 - [ ] No banned vague words in name
 - [ ] No banned AI slop words in body
 - [ ] File references max one level deep
-- [ ] Examples included
+- [ ] Examples or code blocks included
+- [ ] Gotchas/caveats section present (environment-specific facts)
 - [ ] At least 3 test scenarios documented or run
+
+## Supplementary Quality Assessment
+
+For skills paired with agents, the **CLASSic framework** (Cost, Latency, Accuracy, Stability, Security) can evaluate operational readiness of the skill-agent combination. A skill may pass all structural checks but pair poorly with an agent that has no cost awareness. See the [Agent Factory wiki](../agent-factory/wiki/research/classic-framework.md) for details.

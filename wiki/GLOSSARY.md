@@ -4,6 +4,8 @@
 
 **Activation** -- Phase when the full SKILL.md body loads after a task matches discovery metadata. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
+**AdaRubric** -- A task-adaptive evaluation framework (arXiv:2603.21362, 2026) that generates domain-specific rubrics for scoring LLM agent trajectories; applicable to evaluating skill-agent combinations where fixed rubrics miss domain-specific quality dimensions. See [Agent Factory wiki](../../agent-factory/wiki/research/adarubric-evaluation.md).
+
 **agents/openai.yaml** -- Codex UI companion file with display name, short description, default prompt. See [Host Differences](research/host-differences.md), [OpenAI Skills Analysis](research/openai-skills-analysis.md).
 
 **agentskills.io** -- Open Agent Skills specification baseline for portable skill folders. See [Spec Reference](research/spec-reference.md).
@@ -17,6 +19,8 @@
 ## C
 
 **Checklist workflow** -- Ordered numbered or checkbox steps the agent follows through multi-phase work. See [Checklist Workflows](concepts/checklist-workflows.md).
+
+**CLASSic Framework** -- A five-dimensional operational evaluation framework (Zylos Research, 2026) measuring agent production-readiness across Cost, Latency, Accuracy, Stability, and Security; useful for evaluating skill-agent combinations beyond structural quality. See [Agent Factory wiki](../../agent-factory/wiki/research/classic-framework.md).
 
 **Coherent units** -- One clear mission per skill; split competing goals into separate skills. See [Skill Discovery](concepts/skill-discovery.md), [Anatomy of a Good Skill](research/anatomy-of-a-good-skill.md).
 

@@ -184,6 +184,8 @@ Read course/README.md
 bun run scripts/validate-skill.ts path/to/your-skill/
 ```
 
+The validator runs 15 checks covering frontmatter (name format, description, trigger clauses), body structure (line count, empty sections, contradictions), content quality (action verbs, examples, gotchas, test scenarios), and style (AI slop words, path formats).
+
 **Compile the wiki** (after adding new sources):
 
 ```
@@ -375,6 +377,18 @@ This project implements the LLM Knowledge Base pattern described by [Andrej Karp
 6. **Incremental enhancement** -- Each compilation pass improves existing articles and adds new ones
 
 The wiki is the LLM's compiled knowledge -- not a static document, but a living system that gets smarter with every update cycle.
+
+---
+
+## Companion Projects
+
+### Agent Factory
+
+**[Agent Factory](../agent-factory/)** is Skill Factory's sibling project. Skills are markdown files loaded by agents at runtime. Agents are the autonomous systems that read and execute them. Agent Factory teaches you to build the agent; Skill Factory teaches you to write the skills it reads.
+
+### Factory Showcase
+
+**[Factory Showcase](https://github.com/akijain2000/factory-showcase)** is a testing companion with 20 agents and 20 skills created using both factories, evaluated through a 5-cycle Karpathy autoresearch loop. Contains grading reports, worked examples, and improvement findings that fed back into both factories' validators and documentation.
 
 ---
 
