@@ -88,8 +88,8 @@ If your skill is growing too long, move details to `references/REFERENCE.md` and
 Keep one level deep from SKILL.md. No nesting.
 
 ```markdown
-Good:  See [the reference](references/REFERENCE.md) for details.
-Bad:   See [nested ref](references/advanced/deep/GUIDE.md).
+Good:  See `references/REFERENCE.md` for details.
+Bad:   See `references/advanced/deep/GUIDE.md`.
 ```
 
 ---

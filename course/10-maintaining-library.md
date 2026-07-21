@@ -25,11 +25,13 @@ Observe Claude B's traces, not just outputs. Where did it deviate? Where did it 
 
 Monthly, audit your skill library:
 
-1. **Inventory**: List all skills with line counts and last-modified dates
-2. **Evaluate each**: Keep / Improve / Retire / Merge
-3. **Retire stale skills**: If you haven't used it in 3 months, archive it
-4. **Merge overlapping skills**: If two skills do similar things, combine them
-5. **Update descriptions**: Keywords drift as your workflow changes
+1. **Inventory**: List every discovered skill path, owner, line count, last-modified date, and sibling/router relationship
+2. **Classify evidence**: Structural PASS, eval defined, executed behavioral PASS, and operational proof are separate columns
+3. **Risk-rank migration**: Prioritize high-use, high-risk, overlapping, and oversized skills; do not auto-generate shallow evals just to improve coverage counts
+4. **Evaluate each**: Keep / Improve / Retire / Merge
+5. **Evaluate retirement candidates**: Run the suite without each capability skill and retire only when the baseline reliably meets its frozen thresholds
+6. **Merge or route overlaps**: Merge true duplicates; use explicit sibling routing when workflows need independent activation and evals
+7. **Update descriptions**: Keywords and sibling boundaries drift as workflows change
 
 ## Health checks
 
@@ -51,6 +53,23 @@ Read scripts/update-sources.md and run the monthly update.
 
 This pulls fresh rankings, finds new AI coding repos, clones them, and recompiles affected wiki articles.
 
+The important distinction: **source updates are not finished when repos are cloned**. They are finished when the useful pattern has been distilled into `wiki/concepts/`, `wiki/research/`, `wiki/examples/`, or `wiki/queries/`.
+
+The source cache is disposable. Durable claims require the human-readable source
+manifest, resolved repository revision lock, and content hashes for every sampled
+artifact that changed an authoring decision. Neither source locking nor static
+validation proves behavior.
+
+At 100+ repos, clone narrowly and synthesize aggressively:
+
+1. Use sparse/partial clones for large repos.
+2. Include host folders and instruction files, not just root README files.
+3. Count visible `SKILL.md`, `AGENTS.md`, and `CLAUDE.md` files so the scan has measurable coverage.
+4. Read a small set of high-signal files deeply.
+5. Write down what changed your authoring behavior.
+
+If the answer to step 5 is "nothing," the source update is collection, not learning.
+
 ## Rules distillation
 
 When you notice the same principle in 3+ skills, extract it into a shared rule. This keeps individual skills shorter and ensures consistency.
@@ -61,6 +80,13 @@ Track changes that matter:
 - Description rewrites (affects activation)
 - Workflow changes (affects behavior)
 - New gotchas (accumulated knowledge)
+- Eval cases and accepted thresholds (affect regression and retirement decisions)
+- Complete skill-directory, suite, adapter, evaluator, model, and CLI fingerprints
+
+Keep failed, interrupted, contaminated, and superseded eval results when they
+explain a decision, but label them diagnostic-only. Accepted reports must be
+comparable and privacy-safe. Never commit raw protected prompts, model outputs,
+tool traces, bearer URLs, credentials, or disposable auth homes.
 
 ## The end goal
 
@@ -90,13 +116,16 @@ find ~/.claude/skills ~/.cursor/skills .agents/skills .cursor/skills -name "SKIL
 done | sort
 ```
 
-For each skill, decide: **Keep**, **Improve**, **Retire**, or **Merge**.
+For each skill, record its route/owner and four independent evidence states,
+then decide: **Keep**, **Improve**, **Retire**, or **Merge**.
 
 Rules of thumb:
-- Haven't used it in 3 months? **Retire**
+- Haven't used it in 3 months? **Evaluate for retirement**; lack of use alone is not proof
 - Two skills that do similar things? **Merge**
 - Description missing WHEN trigger? **Improve**
 - Body over 500 lines? **Improve** (split)
+- Baseline matches a capability skill across isolated repeated trials? **Retire**, but keep the eval suite
+- A large skill contains distinct activation boundaries? **Split into explicit siblings**, then add cross-sibling negatives
 
 ### Lab 10B: Run the validator on everything (5 min)
 
@@ -133,7 +162,7 @@ Then in each skill that needs this rule:
 
 ```markdown
 ## After making changes
-Follow the testing rule: read [rules/always-test.md](../rules/always-test.md)
+Follow the testing rule: read `rules/always-test.md`.
 ```
 
 ### Lab 10D: The full loop (20 min)
@@ -153,6 +182,88 @@ After the skill-maker guides you through creation:
 
 This is the loop you'll run for the rest of your skill authoring career.
 
+### Lab 10E: Run a mini repo-discovery pass (20 min)
+
+Use this lab before writing an important new skill or when you suspect the wiki is missing a pattern.
+
+1. Pick one target skill idea, such as "browser QA", "PR review", "incident debugging", or "customer onboarding".
+2. Start from the top GitHub repos for that language or domain, then add GitHub search or an awesome list if needed. Score 5-10 candidates. Favor repos that contain actual `SKILL.md`, prompt folders, validators, hooks, or installer scripts.
+3. Score each candidate with the source-update rubric:
+
+| Score | Meaning |
+|-------|---------|
+| 5 | Directly about SKILL.md, agent skills, or skill authoring |
+| 4 | AI coding tool, coding assistant, or agent framework |
+| 3 | LLM framework, prompt engineering, or developer automation |
+| 2 | General devtool, editor plugin, or template collection |
+| 1 | Tangential AI mention only |
+
+4. Keep candidates scoring 3+. For each keeper, read the README plus 2-3 concrete artifacts.
+5. Write one output:
+   - a concept update if you found a reusable pattern
+   - a research update if you learned something about the ecosystem
+   - a good/bad example if one artifact is worth annotating
+   - a gap report in `wiki/queries/` if the wiki is missing the pattern
+
+Expected output:
+
+```markdown
+## Mini discovery result
+- Target skill idea:
+- Repos searched:
+- Kept:
+- Skipped:
+- Pattern found:
+- Wiki file updated or gap filed:
+```
+
+Checkpoint: you can explain why each kept source changes how you would write the skill. If a source does not change any decision, cite it lightly or skip it.
+
+### Lab 10F: Run a 100-repo sparse expansion (45 min)
+
+Use this when the ecosystem has moved and a mini pass is too small.
+
+1. Generate at least 100 candidates from a current ranking CSV or search export.
+2. Exclude repos already listed in `raw/repos/SOURCES.md`.
+3. Sparse clone the selected repos with patterns for:
+   - `README*`
+   - `**/SKILL.md`
+   - `**/AGENTS.md`
+   - `**/CLAUDE.md`
+   - `.claude/**`, `.codex/**`, `.agents/**`, `.gemini/**`, `.opencode/**`, `.cline/**`, `.cursor/**`
+   - `skills/**`, `agents/**`, `commands/**`, `plugins/**`, `docs/**`
+4. Count coverage:
+
+```bash
+python3 - <<'PY'
+from pathlib import Path
+base = Path("raw/repos")
+repos = [p for p in base.iterdir() if p.is_dir() and p.name != "github-ranking"]
+print("repos", len(repos))
+print("SKILL.md", sum(1 for r in repos for _ in r.rglob("SKILL.md")))
+print("AGENTS.md", sum(1 for r in repos for _ in r.rglob("AGENTS.md")))
+print("CLAUDE.md", sum(1 for r in repos for _ in r.rglob("CLAUDE.md")))
+PY
+```
+
+5. Update four artifacts before calling the update done:
+   - `raw/repos/SOURCES.md`
+   - `wiki/queries/monthly-update-YYYY-MM.md`
+   - at least one `wiki/research/` or `wiki/concepts/` article
+   - at least one course module or example if the learning affects how people practice
+
+Expected output:
+
+```markdown
+## 100-repo expansion result
+- Candidates reviewed:
+- Repos cloned:
+- Coverage counts:
+- Top 5 new patterns:
+- Wiki/course files changed:
+- Validation commands:
+```
+
 ---
 
 ## Checkpoint
@@ -160,18 +271,25 @@ This is the loop you'll run for the rest of your skill authoring career.
 Before moving on to the capstone:
 - You've inventoried your skill library
 - You've run the validator on all your skills
+- You've separated structural, eval-definition, executed-behavior, and operational proof
 - You've identified at least one shared rule to extract
+- You've run a mini repo-discovery pass or can explain when to run one
+- You can run a 100-repo sparse expansion without mistaking cloning for synthesis
+- You can identify retirement candidates without deleting their regression evals
 - You understand the monthly maintenance rhythm
 
 ## What's next
 
-Module 11 teaches you to use the interactive Skill Maker -- a gstack-style guided workflow that asks the right questions, challenges your assumptions, and produces validated skills.
+Module 11 teaches you to use the interactive Skill Maker. Module 12 then proves whether the resulting skill improves behavior over the no-skill baseline.
 
 ## Further reading
 
 - [wiki/concepts/feedback-loops.md](../wiki/concepts/feedback-loops.md)
 - [wiki/concepts/meta-skills.md](../wiki/concepts/meta-skills.md)
 - [wiki/research/anatomy-of-a-good-skill.md](../wiki/research/anatomy-of-a-good-skill.md)
+- [wiki/research/repo-discovery-loop.md](../wiki/research/repo-discovery-loop.md)
+- [wiki/research/skill-evolution-2026-05.md](../wiki/research/skill-evolution-2026-05.md)
+- [wiki/examples/good/repo-discovery-loop.md](../wiki/examples/good/repo-discovery-loop.md)
 - [SKILL_SPEC.md](../SKILL_SPEC.md) -- the full quality standard
 
 Next: [Module 11: Using the Skill Maker](11-using-skill-maker.md)

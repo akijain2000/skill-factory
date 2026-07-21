@@ -16,6 +16,8 @@ agentskills.io says scripts in `scripts/` should be **self-contained** with help
 4. Document **sandbox/network** needs next to commands that require them (see vercel-deploy).
 5. Prefer **small tested scripts** over repeating fragile one-liners across tasks (agentskills.io bundling pattern).
 6. No **magic constants** without comment or named variables (Anthropic).
+7. For long evals, checkpoint one normalized record at a time, sync before continuing, validate fingerprints on resume, and write the final report atomically.
+8. Treat temp workspaces, output captures, and copied auth homes as disposable cache. Remove them in `finally`; tests must prove zero leftovers. Audit the exact temp prefix after interruption because killed processes skip cleanup handlers.
 
 ## Good example
 
@@ -25,9 +27,13 @@ agentskills.io says scripts in `scripts/` should be **self-contained** with help
 
 `deploy.sh` that runs `curl` with no timeout, ignores exit codes, and echoes "Something went wrong"—forcing the model to redo networking blindly. Contrasts with vercel-deploy's timeout guidance and explicit fallback path. Sources: `raw/docs/anthropic-best-practices.md`, `raw/repos/openai-skills/skills/.curated/vercel-deploy/SKILL.md`.
 
+For evaluation infrastructure, keeping all records in memory until the final
+write is equally unsafe: one late timeout can erase expensive completed work.
+
 ## Sources
 
 - `raw/docs/anthropic-best-practices.md`
 - `raw/docs/agentskills-io-spec.md`
 - `raw/repos/openai-skills/skills/.system/skill-creator/scripts/quick_validate.py`
 - `raw/repos/openai-skills/skills/.curated/vercel-deploy/SKILL.md`
+- `wiki/queries/observation-20260721-eval-checkpointing.md`

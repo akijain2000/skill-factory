@@ -1,6 +1,6 @@
 ---
 name: skill-factory
-description: Navigate the Skill Factory knowledge base. Use when asked to create a skill, review a skill, learn about skills, improve a SKILL.md file, or extract skills from a large prompt.
+description: Navigate the Skill Factory knowledge base. Use when asked to create, review, evaluate, improve, retire, or learn about skills, or extract skills from a large prompt.
 ---
 
 # Skill Factory
@@ -20,6 +20,8 @@ Ask the user:
 > C) **Learn about skill authoring** -- "I want to take the course or browse the knowledge base"
 >
 > D) **Extract skills from a big prompt** -- "I have a long system prompt or instruction set and want to break it into skills"
+>
+> E) **Evaluate a skill** -- "I want to test triggering, compare against the no-skill baseline, or decide whether to retire a skill"
 
 Wait for the user's answer before proceeding.
 
@@ -127,7 +129,7 @@ Then: `Read authoring/SKILL.md and review <user's skill path>.`
 If the user chose B:
 
 1. Read `skill-maker/SKILL.md` and follow its 7-phase flow
-2. The Skill Maker will ask diagnostic questions, challenge scope, design the skill section by section, write it, validate it, and suggest test prompts
+2. The Skill Maker will ask diagnostic questions, challenge scope, design the skill section by section, write it, run static validation, and define the behavioral eval gate
 
 If the user says "I don't have an idea yet," start with broader brainstorming:
 
@@ -153,14 +155,15 @@ Then: Read `skill-maker/SKILL.md` and follow its phases.
 
 If the user chose C:
 
-> "The Skill Factory course has 11 modules that take you from zero to hero in skill authoring. Total time: about 5-6 hours.
+> "The Skill Factory course has 12 modules that take you from zero to hero in skill authoring and behavioral evaluation. Total time: about 7-8 hours.
 >
 > **Quick orientation:**
 > - Modules 1-4: Foundations (what skills are, the format, descriptions, token economics)
-> - Modules 5-6: Patterns and anti-patterns from 19 top repos
+> - Modules 5-6: Patterns and anti-patterns from the current top-repo corpus
 > - Module 7: Build your first skill (3 guided tracks: beginner, intermediate, advanced)
 > - Modules 8-10: Advanced techniques, multi-host compatibility, library maintenance
 > - Module 11: Capstone -- build a skill with the interactive Skill Maker
+> - Module 12: Evaluate routing, outcomes, reliability, ablation, and retirement
 >
 > Start with Module 1: read `course/01-what-are-skills.md`.
 >
@@ -168,7 +171,7 @@ If the user chose C:
 
 If the user wants to browse the knowledge base instead of taking the course:
 
-> "The wiki has 40+ articles organized by topic. Start with `wiki/INDEX.md` to see everything available."
+> "The wiki has 55 Markdown files organized by topic. Start with `wiki/INDEX.md` to see everything available."
 
 ---
 
@@ -187,6 +190,26 @@ Then: Read `prompt-decomposer/SKILL.md` and follow its phases.
 
 ---
 
+## Route E: Evaluate
+
+If the user chose E:
+
+1. Read `wiki/concepts/skill-evaluations.md`.
+2. Read `wiki/concepts/evidence-lifecycle.md` and `evals/README.md` for data placement, adapter, and suite contracts.
+3. Classify the target as capability or preference, and model-triggered or user-invoked.
+4. Build or review 10-20 cases with positive routing, adjacent negative controls, functional outcomes, and known failures.
+5. Freeze thresholds, evaluator/suite/skill/adapter fingerprints, model, and host/CLI identity before execution.
+6. Run isolated repeated trials with zero or one target skill, minimal environment, and no unrelated host shelf/plugins/tools.
+7. Persist privacy-safe per-run checkpoints and write the aggregate report atomically; keep raw trajectories and credentials out of durable evidence.
+8. Report routing accuracy, skill and baseline outcome pass rates, delta, reliability, runtime identity, and cost evidence where available.
+9. Keep FAIL and diagnostic artifacts with explicit scoring boundaries. Never weaken a threshold after reading the result.
+
+Tell the user:
+
+> "Give me the skill path and the agent/model harness it runs on. I'll separate static validation from behavioral evidence and test whether the skill actually improves outcomes."
+
+---
+
 ## Fallback behaviors
 
 - If the user skips the menu and directly asks to review a skill, go to Route A
@@ -195,3 +218,13 @@ Then: Read `prompt-decomposer/SKILL.md` and follow its phases.
 - If the user provides a SKILL.md file without context, ask: "Would you like me to review this skill, or are you using it as a starting point for a new one?"
 - If the user pastes a large block of text (>50 lines) without context, ask: "This looks like a big prompt. Would you like me to analyze it for skill candidates (Route D), or is this a draft skill to review (Route A)?"
 - If the user asks to "decompose", "break apart", or "extract skills from" a prompt, go to Route D
+- If the user asks for evals, ablation, trigger tests, regression evidence, skill data placement, or skill retirement, go to Route E
+
+## Gotchas
+
+- Paths in this skill are relative to the Skill Factory root; resolve that root
+  before running scripts from another working directory.
+- A source lock or static validator result is not behavioral evidence. Use Route E
+  before making routing, outcome-improvement, reliability, or retirement claims.
+- An optional companion `agent-factory` repository may be absent; Skill Factory
+  authoring and evaluation routes must still work independently.

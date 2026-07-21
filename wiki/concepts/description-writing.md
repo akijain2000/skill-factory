@@ -35,6 +35,11 @@ description: Advanced data analysis for CSV files. Use for statistical
 
 This is especially important when multiple skills cover adjacent domains. Source: AgentPatterns.ai, Anthropic internal practice.
 
+Write negative controls from **sibling ownership boundaries**, not random
+unrelated prompts. A Leads router should stay silent for Market-ingest and UI
+spacing requests; a Market router should stay silent for Leads history. Run
+each boundary repeatedly—a description can over-trigger only some of the time.
+
 ## Debugging descriptions
 
 Ask the agent: **"When would you use the [skill name] skill?"** It quotes the description back verbatim, revealing what's missing or misleading. If the agent can't articulate when to use the skill, the description needs work. Source: AgentPatterns.ai.
@@ -65,3 +70,4 @@ This aligns with the framing that **“description is the only thing your agent 
 - `raw/repos/openai-skills/skills/.curated/vercel-deploy/SKILL.md`
 - `raw/repos/superpowers/skills/` (CSO finding; compare description vs body across skills)
 - `raw/repos/mattpocock-skills/` (author framing: description as primary discovery surface)
+- `wiki/queries/private-router-eval-case-study-2026-07-21.md` (repeated adjacent-routing failures)

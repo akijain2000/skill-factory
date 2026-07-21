@@ -51,6 +51,17 @@ What this means for skill authors: your SKILL.md instructions don't just work ac
 
 This validates the investment in writing good skills: a well-crafted SKILL.md is a durable asset that survives model upgrades, host migrations, and provider changes.
 
+Portability does not make eval results interchangeable. Behavioral evidence is
+bound to a runtime identity: model/version, host CLI and flags, available tools,
+environment policy, adapter content, complete skill-directory content, and eval
+suite. Compare skill and baseline arms only when those identities match apart
+from installing the target skill.
+
+For routing evals, a clean workspace is not enough. Use a disposable host home,
+disable unrelated project/global skill shelves and plugins, expose zero target
+skills to the baseline and exactly one to the skill arm, pass a minimal
+environment allowlist, and remove temporary auth material afterward.
+
 ## Adjacent protocols
 
 - **MCP (Model Context Protocol)**: How agents connect to external tools. Not a skill format, but skills can reference MCP tools. 83K+ stars on the reference implementation.
@@ -122,6 +133,8 @@ Before moving on, you should be able to:
 - Install a skill on 2+ different agents
 - Add host-specific config without breaking the portable SKILL.md
 - Explain why skills are model-agnostic (not just host-agnostic)
+- Explain why cross-host portability does not make eval reports comparable
+- Build a zero-skill/one-skill disposable eval host
 
 ## Further reading
 

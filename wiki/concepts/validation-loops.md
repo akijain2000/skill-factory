@@ -4,6 +4,8 @@
 
 A **validation loop** is an explicit instruction pattern: **do work → validate → fix → repeat** until checks pass. It treats quality as iterative, not one-shot, and pairs naturally with tests, linters, builds, or human-visible artifacts (screenshots, rendered output).
 
+This is different from a **skill evaluation**. A validation loop checks one task execution. A skill eval compares repeated isolated behavior with and without the skill across a case set.
+
 ## Why it matters
 
 Anthropic and agentskills.io both cite feedback loops as a high-leverage pattern: without them, agents often declare success after a single attempt. Loops align with how fragile tasks actually fail (wrong assumptions, environment gaps) and reduce shipped defects.
@@ -18,7 +20,18 @@ Anthropic and agentskills.io both cite feedback loops as a high-leverage pattern
 
 ### Library-scale validation (meta)
 
-For **entire skill libraries**, reuse the ECC-style split: **deterministic inventory** (scripts listing skills, hashes, duplicates) plus **batched model judgment** (e.g. ~20 skills per pass) with fixed verdicts—**skill stocktake** (Keep / Improve / Retire / Merge). For **behavioral** assurance, **compliance measurement** (e.g. `skill-comply`): auto-generate behavioral specs from skills, run scenarios at several **prompt strictness** levels, capture **tool traces**, and **LLM-classify** adherence—measurement instead of hope. These extend the same validate→fix→re-run mindset from single tasks to corpus health.
+For **entire skill libraries**, reuse the ECC-style split: **deterministic inventory** (scripts listing skills, hashes, duplicates) plus fixed stocktake verdicts (Keep / Improve / Retire / Merge). The inventory should retain one record per skill, exact validator identity, line count, warnings, and whether an eval definition is actually versioned. Behavioral assurance requires case suites, no-skill baselines, repeated isolated trials, and deterministic graders where possible. Batched model judgment can help triage, but it is not a substitute for executing the supported agent and harness.
+
+Do not flatten these shelf states into one green count:
+
+1. structural validator PASS
+2. versioned eval definition present
+3. executed behavioral PASS under a frozen runtime
+4. domain-specific operational/production proof
+
+Audit the whole shelf, then prioritize behavioral work by frequency, side
+effects, privacy, identity, provider delivery, and failure cost. Auto-generating
+empty or shallow eval files only hides the gap.
 
 ## Good example
 
@@ -32,8 +45,8 @@ The curated `spreadsheet` skill instructs: recalculate formulas before delivery,
 
 AgentPatterns.ai formalizes skill testing across three dimensions:
 
-1. **Triggering**: does the skill load on relevant queries and stay silent on unrelated ones? Test with 3-5 prompts that should trigger and 3-5 that should not.
-2. **Functional**: does it produce correct outputs consistently across 3-5 runs? The same input should produce the same quality of output.
+1. **Triggering**: does the skill load on relevant queries and stay silent on adjacent unrelated ones? Start with about five prompts that should trigger and five that should not.
+2. **Functional**: does it produce correct outcomes consistently across 3-6 isolated runs?
 3. **Performance**: compare tool calls, messages, and tokens **with** vs **without** the skill. An effective skill should reduce all three. If it increases them, the skill is adding overhead without value.
 
 Iterate on a single challenging task until the agent succeeds, then extract the winning approach into the skill. Source: `raw/docs/agentpatterns-skill-authoring.md`.
@@ -65,6 +78,8 @@ Source: `raw/docs/agentpatterns-skill-authoring.md`.
 - `raw/docs/agentskills-io-best-practices.md`
 - `raw/docs/agentpatterns-skill-authoring.md` (three-dimension testing, troubleshooting table)
 - `raw/docs/trq212-skills-abstraction.md` (PreToolUse hooks for effectiveness measurement)
+- `raw/docs/dont-ship-skills-without-evals.md` (skill evaluation protocol and lifecycle)
 - `raw/repos/openai-skills/skills/.curated/spreadsheet/SKILL.md`
 - `raw/repos/openai-skills/skills/.curated/winui-app/SKILL.md`
 - `raw/repos/everything-claude-code/` (skill stocktake, `skill-comply` / compliance measurement patterns)
+- `wiki/concepts/evidence-lifecycle.md`

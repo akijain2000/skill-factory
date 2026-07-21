@@ -15,6 +15,15 @@ Monolithic prompts fight maintenance and discovery. Separating **what to do** (n
 3. **Script then judge:** Emit inventories and diffs with deterministic tools; only then ask the model for batch verdicts.
 4. **Tokenize parameters:** Use explicit placeholders in templates; document required vs optional slots.
 5. **Keep discovery thin:** Ensure stacked content does not duplicate workflow summaries into YAML descriptions (see CSO in `description-writing.md`).
+6. **Route siblings explicitly:** Agent Skills has no native dependency loader. A broad router should name focused sibling skills and require one-hop reads; do not imply that a `subskills/` folder loads automatically.
+7. **Test cross-skill negatives:** Every router needs adjacent prompts owned by its siblings. A useful body can still be harmful when discovery activates it for the wrong domain.
+
+## Router plus sibling map
+
+Keep the cross-cutting invariant in a compact router. Move long history into a
+provenance-marked reference archive, then add a one-hop routing table from task
+signals to existing independent skills. The map is composition metadata, not a
+copy of each sibling's workflow.
 
 ## Good example
 
@@ -22,7 +31,7 @@ Fabric’s pattern folders and CLI composition; superpowers’ subagent-driven d
 
 ## Bad example
 
-Copy-pasting the same 80-line scaffold into fifteen skills with manual find-replace—drifts immediately and breaks token budgets.
+Copy-pasting the same 80-line scaffold into fifteen skills with manual find-replace—drifts immediately and breaks token budgets. A second failure is naming "subskills" without explicit reads, then assuming the host loaded them.
 
 ## Sources
 
@@ -30,3 +39,4 @@ Copy-pasting the same 80-line scaffold into fifteen skills with manual find-repl
 - `raw/repos/superpowers/skills/subagent-driven-development/SKILL.md` (orchestration reference)
 - `raw/repos/everything-claude-code/README.md`
 - `wiki/concepts/template-patterns.md`
+- `wiki/queries/private-router-eval-case-study-2026-07-21.md`

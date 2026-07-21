@@ -1,6 +1,6 @@
 # Module 5: Patterns That Work
 
-Battle-tested patterns from analyzing 19 repos and 4000+ skills.
+Battle-tested patterns from the current top-repo skill corpus.
 
 ## 1. Validation loops
 

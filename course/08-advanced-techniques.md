@@ -1,6 +1,6 @@
 # Module 8: Advanced Techniques
 
-Patterns from the top 1% of skills across 19 repos.
+Patterns from the strongest skills and agent repos in the current source corpus.
 
 ## Meta-skills: skills that govern skills
 
@@ -17,6 +17,15 @@ When a principle appears in 2+ skills, promote it to a shared rule. Script scans
 Don't hope your skill works -- measure it. Generate behavioral specs from your SKILL.md, run scenarios at different strictness levels, capture tool traces, and LLM-classify whether the agent actually followed the instructions.
 
 ## Composition patterns
+
+### Router plus sibling skills
+
+Large capability families should use a thin router and explicit sibling skills
+when the siblings have independently useful triggers, workflows, or eval suites.
+There is no portable automatic "sub-skill" loader. The router must name each
+sibling, state when to load it, define the fallback when none match, and include
+cross-sibling negative routing cases. Keep shared reference material separate
+from executable siblings so discovery boundaries stay testable.
 
 ### Subagent choreography (superpowers)
 
@@ -126,6 +135,58 @@ Write skill instructions as a **delta from baseline model behavior**: only the t
 
 Ask yourself for each instruction: "Would the agent get this right without the skill?" If yes, cut it. Source: Thariq (@trq212), Anthropic.
 
+## 2026 pattern: skills, agents, memory, MCP
+
+The 100-repo expansion changed the mental model. A modern skill library is not just a folder of Markdown files. It is usually a small runtime system:
+
+| Layer | Belongs here | Do not put here |
+|-------|--------------|-----------------|
+| Skill | Stable procedure, decision tree, gotchas, validation contract | Mutable project facts |
+| Memory | User/project/local facts that evolve over time | Long workflow instructions |
+| MCP | Tool capability and external-system access | Policy or process that belongs in prose |
+| Subagent | Execution context, role, tool subset, max turns, preloaded skills | Shared authoring knowledge that many agents need |
+| Command | User-facing shortcut or dispatcher | Canonical workflow logic |
+| Hook | Safety checks, observation, logging, policy gates | Multi-step reasoning |
+
+Use this split when a workflow starts to feel "big." For example, a browser QA capability might use:
+
+- A `browser-qa` skill for the verification workflow and artifact requirements.
+- A browser MCP at project or subagent scope.
+- A QA subagent preloaded with the skill and limited to browser/test tools.
+- Memory for the app's test accounts and known flaky routes.
+- A command such as `/qa` as a convenience wrapper.
+
+The source pattern appears across ECC, GSD, Claude Code best-practice repos, Symphony, Caveman, and Context7. The practical lesson is simple: write skills as reusable procedure, then wire them into the right runtime surface.
+
+## Evidence is another layer
+
+Do not put every observation into `SKILL.md`. Route it by purpose:
+
+| Data | Durable home |
+|---|---|
+| Current reusable procedure | `SKILL.md` |
+| Supporting domain detail | one-hop `references/` |
+| Superseded context worth retaining | provenance-hashed archive |
+| Natural prompts and graders | eval suite |
+| In-progress normalized run records | privacy-safe checkpoint |
+| Aggregate behavioral claims | fingerprinted report |
+| Raw prompts, traces, secrets, auth homes | temporary storage; redact or delete |
+
+See [Skill Evidence Lifecycle](../wiki/concepts/evidence-lifecycle.md).
+
+## Goal-backward verification
+
+Newer orchestration repos push verification into planning. Before implementation, derive `must_haves` from the goal:
+
+```markdown
+## Must-haves
+- [ ] User-visible behavior works in the target environment
+- [ ] The exact failing case is covered by a test or manual proof
+- [ ] The final report includes command output, screenshot, PR link, or artifact path
+```
+
+Then hand those must-haves to the executor or verification subagent. This prevents the common failure where the agent finishes the code and only then invents weak proof.
+
 ---
 
 ## Try It: Advanced pattern exercises
@@ -207,6 +268,25 @@ For each scenario, decide: high, medium, or low freedom?
 
 Now apply this to a skill you're writing: for each workflow step, label it high/medium/low and adjust the instruction specificity accordingly.
 
+### Lab 8D: Place the workflow in the right layer (15 min)
+
+Pick one advanced workflow: browser QA, PR review, incident debugging, customer onboarding, or repo research. Fill this table:
+
+| Layer | What goes there for your workflow |
+|-------|-----------------------------------|
+| Skill | |
+| Memory | |
+| MCP | |
+| Subagent | |
+| Command | |
+| Hook | |
+
+Then write one sentence explaining why the core procedure belongs in `SKILL.md` instead of a command or memory note.
+
+### Lab 8E: Write goal-backward must-haves (10 min)
+
+For the same workflow, write three `must_haves` before describing any steps. Each must-have should be testable by a command, screenshot, artifact, issue link, PR check, or explicit user-visible behavior.
+
 ---
 
 ## Checkpoint
@@ -215,6 +295,10 @@ Before moving on, you should be able to:
 - Write an instinct in YAML with all required fields
 - Add a rationalization table to prevent agent shortcutting
 - Choose the right degree of freedom for each workflow step
+- Split a workflow across skill, memory, MCP, subagent, command, and hook layers
+- Design a router with explicit sibling ownership and negative routing cases
+- Place current instructions, references, archives, checkpoints, and reports correctly
+- Derive goal-backward must-haves before implementation starts
 - Explain when instincts should be promoted to full skills
 
 ## Further reading
@@ -223,5 +307,6 @@ Before moving on, you should be able to:
 - [wiki/concepts/composition-patterns.md](../wiki/concepts/composition-patterns.md)
 - [wiki/concepts/instinct-model.md](../wiki/concepts/instinct-model.md)
 - [wiki/concepts/anti-rationalization.md](../wiki/concepts/anti-rationalization.md)
+- [wiki/research/skill-evolution-2026-05.md](../wiki/research/skill-evolution-2026-05.md)
 
 Next: [Module 9: Multi-Host Compatibility](09-multi-host.md)

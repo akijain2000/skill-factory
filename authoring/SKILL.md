@@ -1,6 +1,6 @@
 ---
 name: authoring
-description: Draft, review, and improve SKILL.md files using a compiled knowledge base of best practices and anti-patterns. Use when writing a new skill, reviewing an existing one, or debugging why a skill does not trigger.
+description: Draft, review, evaluate, and improve SKILL.md files using a compiled knowledge base of best practices and anti-patterns. Use when writing a new skill, reviewing an existing one, measuring skill behavior, or debugging why a skill does not trigger.
 ---
 
 # Skill Authoring
@@ -14,6 +14,8 @@ A meta-skill that queries the Skill Factory wiki to help you write better SKILL.
 - Improving a skill's description (most common failure point)
 - Adapting a skill for a different host (Cursor, Codex, Claude Code)
 - Debugging why a skill doesn't trigger
+- Proving whether a skill improves outcomes over the no-skill baseline
+- Deciding whether a capability skill can be retired
 
 ## Workflow
 
@@ -64,6 +66,11 @@ Based on the task, read the most relevant wiki articles. Do NOT read all of them
 - `wiki/concepts/plan-validate-execute.md`
 - `wiki/concepts/template-patterns.md`
 
+**Always read before calling a skill behaviorally validated:**
+- `wiki/concepts/skill-evaluations.md`
+- `wiki/concepts/evidence-lifecycle.md`
+- `evals/README.md`
+
 ### Step 4: Gap analysis
 
 Compare the draft against the quality spec. Read the file `SKILL_SPEC.md`.
@@ -78,6 +85,9 @@ Check each of these (in order of importance):
 6. **Examples** -- Does it include concrete input/output examples?
 7. **Consistency** -- Consistent terminology throughout?
 8. **Output format** -- If the skill produces output, is the format specified?
+9. **Routing evidence** -- Are there natural positive and adjacent negative prompts?
+10. **Outcome evidence** -- Does an isolated, repeated skill-versus-baseline eval show a useful delta?
+11. **No-ops** -- Can generic directives be deleted without reducing eval performance?
 
 ### Step 5: Draft or rewrite
 
@@ -109,7 +119,27 @@ If it fails, fix the issues and re-run until it passes.
 
 If helpful, read exemplary skills for inspiration. List the files in `wiki/examples/good/` and read the one most similar to the skill being authored.
 
-### Step 8: File insights back
+### Step 8: Behavioral evaluation
+
+Do not equate Step 6's static validator with behavioral proof.
+
+1. Classify the skill as capability or preference, and model-triggered or user-invoked.
+2. Create 10-20 cases with positive triggers, adjacent negative controls, functional outcomes, and known failures.
+3. Prefer deterministic checks and privacy-safe real traces.
+4. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
+5. Run the same model and harness with zero or one target skill in clean, host-isolated workspaces for 3-6 trials.
+6. Checkpoint normalized records, exclude raw trajectories/credentials, and clean disposable temp/auth state.
+7. Report trigger accuracy, skill and baseline outcome pass rates, delta, reliability, and exact evidence identity.
+8. Keep failed or diagnostic evidence without weakening gates or mixing incompatible runs.
+9. If a real isolated adapter is unavailable, label behavioral evaluation blocked; do not call the skill validated.
+
+Use `evals/README.md` and run:
+
+```bash
+bun run scripts/evaluate-skill.ts evals/<suite>.json
+```
+
+### Step 9: File insights back
 
 If this session produced useful observations about skill authoring (a new anti-pattern, a useful pattern, a host-specific gotcha), create a new file at `wiki/queries/observation-YYYYMMDD-TOPIC.md` with this structure:
 
@@ -125,12 +155,14 @@ Context: [what skill was being authored]
 [how to apply this in future skills]
 ```
 
-### Step 9: Output
+### Step 10: Output
 
 Deliver:
-1. The final SKILL.md (complete, ready to use)
+1. The final SKILL.md (complete and structurally validated)
 2. A summary of changes made (if reviewing)
 3. Validation results (should be passing)
+4. Behavioral eval results, or an explicit blocked/not-run label
+5. Durable paths for the skill, references, eval definition, checkpoint/report, and any diagnostic evidence
 
 ## Key principles (from the wiki)
 
@@ -139,5 +171,18 @@ Deliver:
 - **Defaults over menus.** Pick one tool/approach, mention alternatives as escape hatch.
 - **Procedures over declarations.** Teach approach, not specific answers.
 - **Test against real tasks.** A skill that doesn't improve on the baseline isn't needed.
+- **Evaluate outcomes, not paths.** Preserve valid agent freedom while checking the final state and safety constraints.
+- **Retire with evidence.** Remove a capability skill when the repeated no-skill baseline catches up, but keep its eval suite.
+- **Evidence has distinct homes.** Active procedure, historical context, eval definitions, checkpoints, reports, and production proof are not interchangeable.
+- **Failed evals are data.** Retain them, fix named cases, and rerun under a new fingerprint without moving the gate.
 - **Progressive disclosure.** Keep SKILL.md under 500 lines. Split details into reference files.
 - **Gotchas are gold.** Environment-specific facts that defy assumptions are the highest-value content.
+
+## Gotchas
+
+- Run repository-relative commands from the Skill Factory root; an authoring
+  target may live elsewhere, but the wiki, validator, and eval harness live here.
+- Do not edit immutable `raw/` captures to make a conclusion read better. Update
+  the canonical wiki or skill and preserve the source receipt.
+- Host credentials may make a live eval possible without making its output safe
+  to commit. Persist normalized evidence only and clean disposable auth state.

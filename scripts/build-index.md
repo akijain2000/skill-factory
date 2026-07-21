@@ -23,6 +23,8 @@ For each file, extract:
 3. **Category** — from YAML frontmatter `category:` field, or inferred from directory
 4. **Tags** — from YAML frontmatter `tags:` field
 5. **Outbound links** — all `[text](path.md)` references to other wiki articles
+6. **Evidence state** — if the article makes a skill-quality claim, whether it is
+   structural, eval-definition, executed behavioral, or operational evidence
 
 ### Step 2: Rebuild INDEX.md
 
@@ -96,3 +98,7 @@ Words counted: ~NNK
 - Every article should have at least one inbound link (except INDEX.md and GLOSSARY.md)
 - Summaries should be 1-2 sentences, not truncated mid-word
 - Category names should be consistent (check for near-duplicates like "tools" vs "tool-design")
+- Fenced template placeholders are classified, not treated as broken links
+- Every query/case study that changes canonical guidance links back to that
+  guidance, and the canonical page links to the evidence when useful
+- Counts in README.md, INDEX.md, and the generated report agree

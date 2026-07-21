@@ -69,7 +69,7 @@ Read the file `wiki/INDEX.md`, then read:
 
 Also read the quality spec: `SKILL_SPEC.md`.
 
-Score each chunk against five criteria:
+Score each chunk against six criteria:
 
 | Criterion | Question |
 |-----------|----------|
@@ -78,8 +78,9 @@ Score each chunk against five criteria:
 | **Delta from baseline** | Would an agent get this wrong without explicit instructions? |
 | **Self-contained** | Can it run without the rest of the prompt? |
 | **Focused scope** | Is it one task, not three bundled together? |
+| **Sibling boundary** | Which adjacent skill owns nearby prompts, and what must this candidate not trigger for? |
 
-A chunk that passes 4-5 criteria is a **good candidate**. 2-3 is **marginal**. 0-1 is **not a skill**.
+A chunk that passes 5-6 criteria is a **good candidate**. 3-4 is **marginal**. 0-2 is **not a skill**.
 
 ### Phase 4: Present candidates
 
@@ -97,6 +98,8 @@ After the table, flag special categories:
 
 **Merge candidates**: "Sections 4 and 7 both cover database operations. These should be one skill, not two."
 
+**Sibling candidates**: "Sections 2 and 5 are independently useful but adjacent. Keep separate skills and add explicit cross-routing negatives; do not assume automatic subskill loading."
+
 **Gotchas, not skills**: "Section 3 has useful facts about your API quirks, but it's not a workflow. Consider adding these as a gotchas section to an existing skill."
 
 **Rules, not skills**: "Section 1 sets coding style and tone. This belongs in `.cursorrules` or `AGENTS.md` as an always-on rule, not an on-demand skill."
@@ -106,6 +109,32 @@ Present a recommendation:
 > "I recommend building **N skills** from this prompt: [list]. Want to proceed with all of them, pick specific ones, or adjust?"
 
 Wait for the user's selection.
+
+### Concrete decomposition example
+
+Input sections:
+
+```text
+## Release
+Build the package, publish it, and verify the registry version.
+
+## Incident response
+Collect logs, classify severity, and open the incident timeline.
+
+## Tone
+Use short sentences and a friendly voice.
+```
+
+Expected classification:
+
+```text
+release-package     GOOD CANDIDATE  independent trigger and verifiable workflow
+incident-response   GOOD CANDIDATE  separate trigger, tools, and outcome
+tone                NOT A SKILL     always-on writing preference; move to AGENTS.md
+```
+
+The two candidates are siblings only if a parent operations router genuinely
+needs to select between them. Otherwise install them as independent skills.
 
 ### Phase 5: Build selected skills
 
@@ -130,6 +159,8 @@ Ask the user's preferred pace:
 2. Pass the extracted chunk as a plain-English description
 3. Follow the authoring workflow (wiki lookup, gap analysis, draft, validate)
 4. Collect all drafts, then present them together for review
+5. Add a one-hop sibling routing map when candidates share a broad parent domain
+6. Keep structural validation, eval-definition presence, and executed behavioral results as separate statuses
 
 After building, ask: "Ready to move to the next candidate, or want to revise this one?"
 
@@ -143,6 +174,7 @@ After all selected skills are built, evaluate what remains:
 > - **Flagged as rules**: [list -- suggest adding to `.cursorrules` or `AGENTS.md`]
 > - **Dropped**: [list -- general knowledge the agent already knows]
 > - **Kept as-is**: [list -- sections that don't fit anywhere else]
+> - **Evidence status**: [per skill: structural result, eval definition, executed/not-run behavioral result]
 
 If rule-worthy content was identified, offer to write it:
 
@@ -164,7 +196,7 @@ Grouping heuristics:
 
 Not every section of a prompt is a skill. Reject chunks that are:
 - **General knowledge**: "Use descriptive variable names" -- the agent already knows this
-- **Personality directives**: "Be concise and friendly" -- this is a rule, not a skill
+- **Personality directives**: "Use a concise, friendly tone" -- this is a rule, not a skill
 - **One-shot facts**: "Our API key is in .env" -- this is a gotcha for an existing skill
 - **Vague aspirations**: "Write good code" -- no actionable workflow
 
@@ -178,3 +210,16 @@ Some prompt sections only make sense together. Before presenting candidates, che
 - Would chunk A break if chunk B were removed?
 
 If dependencies exist, flag them: "Sections 2 and 5 have a dependency -- section 5 assumes the output of section 2. Consider keeping them as one skill or documenting the dependency."
+
+Agent Skills has no native automatic subskill dependency loader. If independent
+siblings remain, every router must name the selected skill explicitly, include a
+fallback when it is absent, and test adjacent negative routing.
+
+## Gotchas
+
+- Heading boundaries are hints, not proof of independent activation. Sequential
+  sections with shared state usually belong in one skill.
+- Useful facts and team preferences must be retained in references, rules, or
+  memory instead of discarded merely because they are not skills.
+- A sibling map is executable routing documentation, not a directory hierarchy;
+  test both sibling ownership and the fallback path.

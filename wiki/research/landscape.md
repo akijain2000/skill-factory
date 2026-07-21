@@ -1,6 +1,6 @@
 # State of the Agent Skill Ecosystem
 
-The “skill” layer for coding agents sits between the base model and project-specific rules: packaged procedures, bundled scripts, and domain playbooks that hosts discover and load on demand. This article compares **eighteen** high-signal repositories in the local Skill Factory corpus—by format, scale, host compatibility, and engineering trade-offs—not to crown a winner but to show where each system optimizes. (The first seven entries were the original batch; eleven more were added in April 2026.)
+The “skill” layer for coding agents sits between the base model and project-specific rules: packaged procedures, bundled scripts, and domain playbooks that hosts discover and load on demand. This article compares the high-signal repositories in the local Skill Factory corpus—by format, scale, host compatibility, and engineering trade-offs—not to crown a winner but to show where each system optimizes. The corpus now tracks **147 repos** including `github-ranking`, SkillsBench, and Gemini Skills; a 100-repo sparse expansion on 2026-05-25 showed that skills increasingly live inside product repos, host folders, subagent configs, MCP configs, and command/hook systems rather than only dedicated skill packs.
 
 ## gstack (`garrytan/gstack`)
 
@@ -230,6 +230,14 @@ The “skill” layer for coding agents sits between the base model and project-
 
 **Cross-repo synthesis (2026-04):** **superpowers** contributed test-backed **Claude Search Optimization (CSO)** lessons—YAML descriptions that summarize workflows can cause models to **skip SKILL.md bodies**—plus **rationalization tables** and other guardrails in skills such as **verification-before-completion**. **everything-claude-code** pairs a very large bundled skill surface with **meta-governance** (instincts, stocktake, rules distillation, compliance measurement, hook-driven session memory) so libraries are maintained, not only grown. **Fabric** remains the reference for **composable** prompts: routers like **suggest_pattern**, meta-patterns like **create_pattern**, and runtime **stacking** of strategy + context + pattern. **mattpocock/skills** demonstrates **micro-skills** (e.g. **grill-me**): a few lines of body can still encode a sharp behavioral loop when discovery text is precise.
 
+**Authoring implication (2026-05):** The landscape itself should be treated as a **skill-improvement instrument**, not just an inventory. Before building important skills, run the repo discovery loop from `scripts/update-sources.md`: search high-signal repos, score relevance, clone only useful sources, and extract repeated patterns into concepts/examples. This turns outside repositories into evidence for decisions such as micro-skill vs. reference-heavy skill, prose-only vs. bundled scripts, and single skill vs. split library.
+
+**May 2026 source batch:** The top-GitHub scan added ten repos with direct skill-authoring signal. **Anthropic skills** is now the direct first-party skills corpus: 18 `SKILL.md` files, a template, document skills, and a spec pointer, distinct from the heavier Claude plugin repo. **Gemini CLI**, **OpenCode**, **Cline**, and **Browser Use** show that coding-agent repos increasingly ship host-native skill folders inside the product repo itself (`.gemini/skills`, `.opencode/skills`, `.agents/skills`, `.cline/skills`, `skills/`). **Addy Osmani's agent-skills** contributes a validator-backed anatomy pattern: standard sections such as Overview, When to Use, Common Rationalizations, Red Flags, and Verification are enforced by `scripts/validate-skills.js`. **Graphify** demonstrates a durable artifact skill: create `graphify-out/`, then future sessions should query the graph before broad file reads. **Open Design** shows skill composition at design-system scale, with atoms, examples, GenUI question forms, and hundreds of reusable `SKILL.md` units. **GitHub MCP Server** remains a tool-side complement rather than a skill pack, while **awesome-claude-code-subagents** maps the adjacent subagent catalog layer.
+
+**Expanded 100+ scan:** A second May 2026 pass reviewed 120 additional candidates from the full ranking CSV and cloned 16 more high-signal sources. The strongest additions cluster around three patterns: **behavior libraries** (`karpathy-skills`, `caveman`, `ai-research-skills`), **domain skill packs** (`frontend-slides`, `huashu-design`, `guizang-ppt-skill`, `career-ops`, `claude-code-game-studios`), and **agent orchestration/context tools** (`deer-flow`, `claude-mem`, `googleworkspace-cli`, `learn-claude-code`, `vibe-kanban`, `codexbar`). This reinforced the split between skills as reusable procedures, agents as orchestration runtimes, and MCP/tooling as capability surfaces.
+
+**100-repo sparse expansion:** A third May 2026 pass selected and sparse-cloned 100 more repos from 377 available keyword-matching candidates. The batch exposed 1,645 additional `SKILL.md` files plus 165 `AGENTS.md` and 73 `CLAUDE.md` files. The strongest new lesson is that the skill ecosystem has become a runtime stack: ECC and GSD treat skills as one layer beside agents, commands, hooks, MCP config, validators, memory, and continuous learning; Claude Code best-practice repos show subagents preloading skills with scoped memory and MCP servers; Symphony moves orchestration from "manage agents" to "manage work units"; Caveman makes token economy a tool-layer problem via MCP description compression. See [Skill Evolution 2026-05](skill-evolution-2026-05.md) for the full synthesis.
+
 ## Sources
 
 - `skill-factory/raw/repos/gstack/README.md`, `ARCHITECTURE.md`, `setup`, `scripts/gen-skill-docs.ts`  
@@ -250,6 +258,23 @@ The “skill” layer for coding agents sits between the base model and project-
 - `skill-factory/raw/repos/awesome-claude-skills/README.md`  
 - `skill-factory/raw/repos/openai-codex/README.md`  
 - `skill-factory/raw/repos/openclaude/README.md`, `src/services/api/openaiShim.ts`  
+- `skill-factory/raw/repos/anthropic-skills/README.md`, `template/SKILL.md`, `spec/agent-skills-spec.md`
+- `skill-factory/raw/repos/gemini-cli/README.md`, `.gemini/skills/`, `packages/core/src/skills/builtin/skill-creator/SKILL.md`
+- `skill-factory/raw/repos/opencode/README.md`, `.opencode/skills/`
+- `skill-factory/raw/repos/cline/README.md`, `.agents/skills/`, `.cline/skills/`
+- `skill-factory/raw/repos/browser-use/README.md`, `skills/`
+- `skill-factory/raw/repos/agent-skills/README.md`, `docs/skill-anatomy.md`, `scripts/validate-skills.js`
+- `skill-factory/raw/repos/graphify/README.md`, `graphify/skill-codex.md`
+- `skill-factory/raw/repos/open-design/README.md`, `plugins/_official/atoms/discovery-question-form/SKILL.md`
+- `skill-factory/raw/repos/github-mcp-server/README.md`
+- `skill-factory/raw/repos/awesome-claude-code-subagents/README.md`
+- `skill-factory/raw/repos/karpathy-skills/README.md`
+- `skill-factory/raw/repos/deer-flow/README.md`
+- `skill-factory/raw/repos/caveman/README.md`
+- `skill-factory/raw/repos/googleworkspace-cli/README.md`
+- `skill-factory/raw/repos/ai-research-skills/README.md`
+- `skill-factory/raw/repos/claude-mem/README.md`
 - `skill-factory/raw/docs/agentskills-io-spec.md`, `agentskills-io-best-practices.md`  
 - GitHub REST API `stargazers_count` for repos listed above (queried 2026-04-02)  
 - Local counts: `find … -name 'SKILL.md' | wc -l`, `find … -name '.cursorrules' | wc -l`
+- `skill-factory/scripts/update-sources.md`, `scripts/discovery-keywords.txt`, `raw/repos/SOURCES.md`

@@ -16,6 +16,15 @@ A skill that assumes only Claude's hooks will confuse Codex users; missing `agen
 4. Do not conflate **AGENTS.md** (always-on project context, merged root→cwd) with **SKILL.md** (on-demand capability)—OpenAI guide stresses this distinction.
 5. Use **forward slashes** in paths (Anthropic anti-pattern: Windows-only paths).
 6. Test on **more than one model tier** when possible (Haiku/Sonnet/Opus guidance from Anthropic).
+7. Treat every model/CLI pair as a distinct eval runtime. Record the exact identity; do not average or compare incompatible harnesses as if only the skill changed.
+8. Isolate behavioral trials from the host's ambient skill shelf. Use a clean project, zero or one installed target skill, a minimal environment allowlist, disabled unrelated plugins/tools, and contamination detection.
+
+## Eval-host isolation is stricter than portability
+
+A skill may be portable across hosts while its evaluation is invalid on one of
+them. Host flags that claim to ignore configuration may still load global or
+project skills. Probe the actual trace/context budget, fail if unrelated skills
+appear, and keep contaminated checkpoints diagnostic-only.
 
 ## MCP and A2A (adjacent to SKILL hosts)
 
@@ -35,6 +44,10 @@ The **mdskills.ai** spec lists the same progressive disclosure model across Clau
 
 Hard-coding "Run this in Claude Code only" without fallbacks, or relying on undocumented frontmatter that **quick_validate.py** rejects (unexpected keys). Ship skills that assume `~/.claude/` paths without noting other hosts. Source for validation constraints: `raw/repos/openai-skills/skills/.system/skill-creator/scripts/quick_validate.py`, `raw/docs/openai-agents-md-spec.md`.
 
+For evals, another bad example is running the baseline under the user's full
+global shelf while the skill arm receives a different context budget. That is
+host contamination, not ablation.
+
 ## Sources
 
 - `raw/docs/mdskills-ai-spec.md`
@@ -48,3 +61,4 @@ Hard-coding "Run this in Claude Code only" without fallbacks, or relying on undo
 - `raw/repos/openai-codex/README.md`
 - `raw/repos/goose/README.md`
 - `raw/repos/openclaude/README.md`, `src/services/api/openaiShim.ts`
+- `wiki/queries/private-router-eval-case-study-2026-07-21.md`

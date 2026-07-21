@@ -9,6 +9,10 @@ agentic
 mcp
 prompt
 workflow
+eval
+evaluation
+benchmark
+grader
 
 # AI coding tools
 cursor

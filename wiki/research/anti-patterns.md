@@ -109,6 +109,27 @@ This article consolidates documented mistakes from Skill Factory reference docs 
 - **Symptom:** Thousands of descriptions compete at discovery.  
 - **Fix:** Use bundles/installers with **narrow defaults**; prefer role-based packs.
 
+### 21. Imaginary automatic subskills
+- **Symptom:** A router names focused skills but the host never loads them.
+- **Example:** “Use the child skills below” with no explicit read/invocation step.
+- **Fix:** Use a one-hop sibling routing map, select by exact skill name, and handle absent siblings.
+
+### 22. Structural PASS presented as behavioral health
+- **Symptom:** A whole shelf is called validated because every file lints.
+- **Fix:** Report structural validity, eval-definition presence, executed behavioral PASS, and operational proof as separate counts.
+
+### 23. Contaminated ablation
+- **Symptom:** The baseline or skill arm receives unrelated global/project skills, plugins, memory, or different tool context.
+- **Fix:** Empty project, zero/one target skill, minimal environment, pinned model/runtime, disabled unrelated features, contamination failure.
+
+### 24. Threshold or harness laundering
+- **Symptom:** A gate changes after results arrive, or scores from different models/adapters are compared as a skill regression.
+- **Fix:** Freeze thresholds and evaluator/suite/skill/adapter fingerprints before execution; reject incompatible comparisons.
+
+### 25. Raw trajectory and temp-auth retention
+- **Symptom:** Checkpoints contain prompts/output/traces or interrupted adapters leave copied auth homes.
+- **Fix:** Persist normalized checks/metrics only, atomically aggregate, clean temp roots, and audit exact prefixes after interruption.
+
 ---
 
 ## Prioritized remediation pass
@@ -118,6 +139,8 @@ This article consolidates documented mistakes from Skill Factory reference docs 
 3. Split **long reference** material; add **TOC**.  
 4. **Delete** empty sections; **resolve** contradictions.  
 5. Add **dependency checks** for any shell snippet.
+6. Add natural positive and sibling-negative routing cases before widening the description.
+7. Freeze the eval identity and data-retention boundary before running live trials.
 
 ## Measuring anti-pattern debt
 
@@ -128,6 +151,8 @@ Lightweight metrics you can automate in CI:
 - **Reference depth** — fail if `references/` files link to other `references/` files.  
 - **Forbidden tokens** in `name:` (reserved words list from SkillCheck).  
 - **Windows path regex** — catch `^[A-Za-z]:\\` in examples.
+- **Eval-definition presence** — report separately from structural PASS and executed reports.
+- **Evidence identity** — require runtime metadata and evaluator/suite/skill/adapter fingerprints.
 
 These do not guarantee quality, but they eliminate the **most expensive** classes of activation failures.
 
@@ -141,3 +166,5 @@ These do not guarantee quality, but they eliminate the **most expensive** classe
 - `skill-factory/raw/repos/openai-skills/skills/.curated/gh-address-comments/SKILL.md`  
 - `skill-factory/raw/repos/awesome-cursorrules/rules/python-fastapi-cursorrules-prompt-file/.cursorrules` (unstructured pseudo-code in rules)  
 - `skill-factory/raw/repos/antigravity-awesome-skills/plugins/antigravity-bundle-essentials/skills/systematic-debugging/SKILL.md` (metadata pattern)
+- `skill-factory/wiki/concepts/evidence-lifecycle.md`
+- `skill-factory/wiki/queries/private-router-eval-case-study-2026-07-21.md`

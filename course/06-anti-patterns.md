@@ -1,6 +1,6 @@
 # Module 6: Anti-Patterns
 
-From validating 4000+ skills across 19 repos. Avoid these.
+From validating and reviewing skills across the top-repo corpus. Avoid these.
 
 ## 1. Missing WHEN trigger in description
 

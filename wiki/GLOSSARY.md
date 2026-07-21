@@ -2,9 +2,11 @@
 
 ## A
 
+**Ablation (skill)** -- Controlled comparison of the same task, model, harness, fixtures, and limits with the skill enabled and absent. See [Skill Evaluations](concepts/skill-evaluations.md).
+
 **Activation** -- Phase when the full SKILL.md body loads after a task matches discovery metadata. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
-**AdaRubric** -- A task-adaptive evaluation framework (arXiv:2603.21362, 2026) that generates domain-specific rubrics for scoring LLM agent trajectories; applicable to evaluating skill-agent combinations where fixed rubrics miss domain-specific quality dimensions. See [Agent Factory wiki](../../agent-factory/wiki/research/adarubric-evaluation.md).
+**AdaRubric** -- A task-adaptive evaluation framework (arXiv:2603.21362, 2026) that generates domain-specific rubrics for scoring LLM agent trajectories; applicable to evaluating skill-agent combinations where fixed rubrics miss domain-specific quality dimensions. See [Agent Factory wiki](https://github.com/akijain2000/agent-factory/blob/main/wiki/research/adarubric-evaluation.md).
 
 **agents/openai.yaml** -- Codex UI companion file with display name, short description, default prompt. See [Host Differences](research/host-differences.md), [OpenAI Skills Analysis](research/openai-skills-analysis.md).
 
@@ -16,11 +18,19 @@
 
 **assets/** -- Optional skill folder for static templates, schemas, or files copied into deliverables. See [Spec Reference](research/spec-reference.md), [Template Patterns](concepts/template-patterns.md).
 
+## B
+
+**Behavioral PASS** -- A frozen, repeated skill-versus-baseline run met its declared routing, outcome, delta, and reliability gates. It does not imply production/provider proof. See [Skill Evaluations](concepts/skill-evaluations.md), [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
+
 ## C
+
+**Capability skill** -- Skill that supplies knowledge or procedure the base model cannot perform consistently; a candidate for evidence-based retirement when the baseline catches up. See [Skill Evaluations](concepts/skill-evaluations.md).
 
 **Checklist workflow** -- Ordered numbered or checkbox steps the agent follows through multi-phase work. See [Checklist Workflows](concepts/checklist-workflows.md).
 
-**CLASSic Framework** -- A five-dimensional operational evaluation framework (Zylos Research, 2026) measuring agent production-readiness across Cost, Latency, Accuracy, Stability, and Security; useful for evaluating skill-agent combinations beyond structural quality. See [Agent Factory wiki](../../agent-factory/wiki/research/classic-framework.md).
+**Checkpoint (eval)** -- Append-only normalized per-run state used to resume an interrupted suite under unchanged fingerprints. It is not a raw model trajectory. See [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
+
+**CLASSic Framework** -- A five-dimensional operational evaluation framework (Zylos Research, 2026) measuring agent production-readiness across Cost, Latency, Accuracy, Stability, and Security; useful for evaluating skill-agent combinations beyond structural quality. See [Agent Factory wiki](https://github.com/akijain2000/agent-factory/blob/main/wiki/research/classic-framework.md).
 
 **Coherent units** -- One clear mission per skill; split competing goals into separate skills. See [Skill Discovery](concepts/skill-discovery.md), [Anatomy of a Good Skill](research/anatomy-of-a-good-skill.md).
 
@@ -40,7 +50,13 @@
 
 **Discovery (phase)** -- Loads only skill `name` and `description` before full body load. See [Progressive Disclosure](concepts/progressive-disclosure.md), [Skill Discovery](concepts/skill-discovery.md).
 
+**Diagnostic evidence** -- Interrupted, contaminated, or superseded run data retained to explain a failure but explicitly excluded from accepted aggregate scoring. See [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
+
 ## E
+
+**Evidence fingerprint** -- Compatible hashes for evaluator, suite, complete skill directory, and adapter command/content, paired with model and host runtime identity. Resume and regression comparison fail closed on mismatch. See [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
+
+**Evidence lifecycle** -- Placement contract separating raw research, active instructions, historical references, eval definitions, checkpoints, reports, and operational proof. See [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
 
 **Execution (phase)** -- Loads `references/`, `scripts/`, and `assets/` only when instructions say to. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
@@ -72,6 +88,10 @@
 
 **Meta-skill** -- Skill that teaches authoring or validation (e.g. skill-creator) as executable guidance. See [OpenAI Skills Analysis](research/openai-skills-analysis.md).
 
+**MCP scope** -- Where a tool server is made available: user, project, or subagent. Newer agent systems use scope to avoid giving every workflow every tool. See [Skill Evolution 2026-05](research/skill-evolution-2026-05.md), [Host Compatibility](concepts/host-compatibility.md).
+
+**Memory** -- Dynamic user, project, or local facts that evolve over time; a sibling to skills rather than a replacement. Stable procedure belongs in SKILL.md, changing facts belong in memory. See [Skill Evolution 2026-05](research/skill-evolution-2026-05.md), [Feedback Loops](concepts/feedback-loops.md).
+
 ## N
 
 **Naming (skill)** -- Lowercase letters, digits, hyphens; 1–64 chars; must match parent directory name. See [Naming Conventions](concepts/naming-conventions.md), [Spec Reference](research/spec-reference.md).
@@ -85,6 +105,8 @@
 **Plan-validate-execute** -- Emit a plan, validate against truth or policy, then execute destructive or batch steps. See [Plan, Validate, Execute](concepts/plan-validate-execute.md).
 
 **Preamble-tier** -- gstack frontmatter (1–4) controlling how much shared preamble is injected. See [gstack Deep Dive](research/gstack-deep-dive.md), [Landscape](research/landscape.md).
+
+**Preference skill** -- Skill that protects organization-specific policy, style, or workflow rather than a temporary model capability gap. See [Skill Evaluations](concepts/skill-evaluations.md).
 
 **Progressive disclosure** -- Three-phase model: discovery metadata, activation body, execution-time assets. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
@@ -104,6 +126,8 @@
 
 **Routing index** -- Table mapping request types to which reference files to open. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
+**Repo discovery loop** -- Authoring-time workflow that searches rankings and curated repos, scores high-signal sources, clones approved repos into `raw/repos/`, and distills reusable patterns into the wiki before writing or revising skills. See [Skill Discovery](concepts/skill-discovery.md), [Repo Discovery Loop](research/repo-discovery-loop.md).
+
 ## S
 
 **Sandbox escalation** -- Raised permissions for specific commands (e.g. network deploy) where hosts support it. See [OpenAI Skills Analysis](research/openai-skills-analysis.md), [Gotchas Sections](concepts/gotchas-sections.md).
@@ -111,6 +135,16 @@
 **scripts/** -- Optional folder for bundled, self-contained helpers with clear errors and exit codes. See [Error Handling in Scripts](concepts/error-handling-in-scripts.md), [Spec Reference](research/spec-reference.md).
 
 **SKILL.md** -- Required markdown instruction file with YAML frontmatter in each skill directory. See [Spec Reference](research/spec-reference.md).
+
+**Skill-agent composition** -- Pattern where a subagent preloads one or more skills plus a scoped tool set, memory, turn limit, and execution prompt. Use when a workflow needs a clean context or role-specific executor. See [Composition Patterns](concepts/composition-patterns.md), [Skill Evolution 2026-05](research/skill-evolution-2026-05.md).
+
+**Skill evaluation** -- Repeated, isolated measurement of routing and outcomes with and without a skill. Static SKILL.md lint is not behavioral evaluation. See [Skill Evaluations](concepts/skill-evaluations.md).
+
+**Sibling skill** -- Independent focused skill explicitly selected by a router. Agent Skills has no native automatic subskill dependency loading. See [Composition Patterns](concepts/composition-patterns.md), [Skill Evidence Lifecycle](concepts/evidence-lifecycle.md).
+
+**Source lock** -- Durable record of a repository revision and exact sampled artifact hashes used for authoring decisions. It is provenance, not behavioral proof. See [Source provenance lock observation](queries/observation-20260721-source-provenance-lock.md).
+
+**Structural validation** -- Static checks for skill shape, metadata, size, links, and anti-patterns. Structural PASS does not imply an eval definition exists, ran, or passed. See [Validation Loops](concepts/validation-loops.md), [Skill Evaluations](concepts/skill-evaluations.md).
 
 **SKILL.md.tmpl** -- gstack template source merged with placeholders before generation. See [gstack Deep Dive](research/gstack-deep-dive.md).
 

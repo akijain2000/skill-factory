@@ -1,6 +1,6 @@
 # Skill Quality Specification
 
-This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus best practices extracted from analyzing 19 skill repositories (700K+ stars combined) and Anthropic's official documentation.
+This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus patterns extracted from 147 tracked repositories, 13 reference documents, and behavioral skill-evaluation research.
 
 ## Frontmatter (Required)
 
@@ -45,14 +45,22 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 
 ### Content rules
 - Only include what the agent doesn't already know
+- Remove no-op instructions whose deletion does not change measured behavior (for example, generic requests for "high-quality" or "readable" work)
 - No explaining basic concepts (what is a PDF, how HTTP works)
 - Use consistent terminology throughout (pick one term, stick with it)
 - No time-sensitive information (use "old patterns" sections if needed)
 - Provide defaults, not menus (one recommended tool/approach, alternatives as escape hatch)
 - Favor procedures over declarations (teach approach, not specific answers)
 - Concrete examples over abstract descriptions
+- Use directives for required behavior, not passive recommendations the agent must interpret
 - No empty sections after headings
 - No contradictory instructions
+
+### Degrees of freedom
+- Put fully deterministic procedures in scripts and let the skill state when and why to run them
+- Use exact instructions for fragile safety or policy gates
+- Use goals and constraints when multiple execution paths can produce a valid outcome
+- Evaluate final outcomes rather than requiring one exact agent trajectory
 
 ### Patterns to include (when applicable)
 - Gotchas section for environment-specific facts
@@ -80,10 +88,28 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 
 ## Evaluation
 
-- At least 3 test scenarios before shipping
-- Test with real tasks, not synthetic
-- Test against the agent's behavior without the skill (baseline)
-- If the skill doesn't improve on the baseline, it may not be needed
+Static validation and behavioral evaluation are separate gates. A skill is not behaviorally validated because this document's structural checks pass.
+
+- Start with 10-20 cases: positive routing, adjacent negative routing, functional outcomes, and edge cases
+- Use privacy-safe real tasks and production failures when available; synthetic cases may fill explicit coverage gaps
+- Run every functional case with the skill and without it using the same model, harness, prompt, fixtures, tools, and limits
+- Isolate every run in a clean workspace with zero or one target skill, a minimal environment, and no unrelated host shelf/plugins/tools; repeat each condition 3-6 times
+- Prefer deterministic checks (tests, compilation, files, regex, domain scripts); use a structured LLM judge only when necessary
+- Track trigger accuracy, skill outcome pass rate, baseline outcome pass rate, outcome delta, and cost/latency when relevant
+- Test each supported model-harness pair separately
+- Freeze evaluator, suite, complete skill-directory, and adapter fingerprints plus model/CLI identity; fail resume/comparison closed on mismatch
+- Checkpoint normalized records after every trial and write final reports atomically
+- Exclude raw output, traces, protected prompts, credentials, bearer URLs, and ambient environment values from committed evidence
+- Gate changes on non-regression and add sanitized real failures as regression cases
+- Keep failed, interrupted, contaminated, and superseded evidence with explicit accepted-vs-diagnostic boundaries; never tune thresholds after reading results
+- Retire a capability skill when the no-skill baseline reliably reaches the accepted thresholds; keep the eval suite after retirement
+- Protect preference skills against workflow or policy drift even when the base model is capable
+
+Run the included harness through an adapter for the target host:
+
+```bash
+bun run scripts/evaluate-skill.ts evals/<suite>.json
+```
 
 ## Validation Checklist
 
@@ -106,7 +132,14 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 - [ ] File references max one level deep
 - [ ] Examples or code blocks included
 - [ ] Gotchas/caveats section present (environment-specific facts)
-- [ ] At least 3 test scenarios documented or run
+- [ ] Behavioral eval suite contains positive and negative routing cases
+- [ ] Skill-versus-baseline ablation ran in isolated repeated trials
+- [ ] Outcome and reliability thresholds pass for supported model-harness pairs
+- [ ] Eval evidence is labeled separately from static validator results
+- [ ] Eval definition presence is labeled separately from an executed behavioral PASS
+- [ ] Runtime metadata and all four fingerprints are retained for comparison
+- [ ] Checkpoints/reports contain normalized evidence only and disposable auth/workspaces are cleaned
+- [ ] Operational/production proof is not inferred from behavioral PASS
 
 ## Supplementary Quality Assessment
 

@@ -16,6 +16,8 @@ The context window is shared with history, system prompts, and other skills. Stu
 4. For large reference sets, add a **routing index** (table or `_sections.md`) like winui-app's "Read first" map.
 5. Put **templates and long examples** in `assets/` or `references/`, not inline, per skill-creator guidance.
 6. For files over ~100 lines, add a **table of contents** at the top (Anthropic).
+7. Separate **active procedure from historical proof**. Preserve extracted playbooks in a reference archive with source revision, original hash, archive hash, and extraction boundary. Dated PASS/deployment claims are receipts to recheck, not live instructions.
+8. For related capabilities, use an explicit one-hop sibling-skill routing map. References load content; they do not create automatic skill dependencies.
 
 ## Good example
 
@@ -44,6 +46,10 @@ Anthropic faced this exact problem internally. They needed Claude to know about 
 
 A single SKILL.md with thousands of lines of API docs, checklists, and examplesâ€”all loaded on every activation. This violates the spec's activation budget and duplicates what belongs in `references/`. The antigravity anatomy guide explicitly warns against "5000 words of dense technical jargon" in one blob; fix by splitting skills or using progressive disclosure. Source: `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`.
 
+Another bad split deletes dated history to make the router small, or leaves the
+history inline so old status reads as current truth. Compact without data loss:
+archive, hash, annotate the boundary, and load only for a named investigation.
+
 ## Sources
 
 - `raw/docs/agentskills-io-spec.md`
@@ -55,3 +61,4 @@ A single SKILL.md with thousands of lines of API docs, checklists, and examplesâ
 - `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`
 - `raw/docs/applied-anthropic-playbook.md` (/preflight sub-files pattern)
 - `raw/docs/trq212-art-not-science.md` (Claude Code Guide Agent)
+- `wiki/concepts/evidence-lifecycle.md`

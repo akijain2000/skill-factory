@@ -48,9 +48,15 @@ If approaching 500 lines, split:
 - Tell the agent WHEN to load each file
 
 ```markdown
-For API error codes, read [references/error-codes.md](references/error-codes.md).
+For API error codes, read `references/error-codes.md`.
 Only load this if the API returns a non-200 status.
 ```
+
+References are not a dumping ground. Keep the current operating contract in
+`SKILL.md`; put stable supporting detail in one-hop `references/` files. Move
+superseded procedures or long decision history into a provenance-hashed archive
+and link it only when historical context is required. This preserves knowledge
+without forcing every old instruction into the activation context.
 
 ### The instinct layer (even smaller than skills)
 
@@ -175,7 +181,7 @@ After (SKILL.md):
 ## Error handling
 
 If the API returns a non-200 status, read
-[references/error-codes.md](references/error-codes.md) for the fix.
+`references/error-codes.md` for the fix.
 ```
 
 After (references/error-codes.md):
@@ -231,6 +237,7 @@ Total: 14 lines. The agent knows how to reason -- this just structures when and 
 Before moving on, you should be able to:
 - Identify which sections of a skill the agent already knows (and cut them)
 - Split a reference-heavy skill into SKILL.md + references/ with conditional loads
+- Separate current instructions, supporting references, and historical archives
 - Write a micro-skill under 20 lines for a behavior the agent already understands
 - Explain the three-phase loading model and why each phase exists
 

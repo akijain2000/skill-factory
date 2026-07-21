@@ -243,7 +243,7 @@ Systematic security review of the codebase against OWASP Top 10.
 
 ### Phase 2: Audit
 4. For each entry point, check against OWASP categories
-   (load [references/owasp-checks.md](references/owasp-checks.md))
+   (load `references/owasp-checks.md`)
 5. For each finding, record: file, line, category, severity, evidence
 
 ### Phase 3: Report
@@ -318,7 +318,7 @@ Preflight catches errors. Gotcha ensures the same error never happens twice. Bui
 
 ## Shipping checklist (all tracks)
 
-Before considering your skill done:
+Before considering your skill structurally ready:
 
 - [ ] Name matches directory name
 - [ ] Description has WHAT verb + WHEN trigger
@@ -330,11 +330,24 @@ Before considering your skill done:
 - [ ] Output format specified
 - [ ] At least one gotcha documented
 - [ ] Validator passes with 0 errors
-- [ ] Tested against a real task without mentioning the skill by name
+- [ ] Eval definition contains natural positive and adjacent negative cases
+
+Then keep the proof states separate:
+
+- [ ] **Structural PASS:** format, links, and file shape pass validation
+- [ ] **Eval defined:** cases, graders, thresholds, and baseline arm exist
+- [ ] **Behavioral PASS:** repeated isolated skill-versus-baseline trials pass frozen gates
+- [ ] **Operational proof:** the target host/environment was exercised when the claim requires it
+
+One successful real task is diagnostic evidence, not a behavioral PASS. A
+behavioral run must identify the model, CLI/harness, complete skill directory,
+adapter, suite, grader, and trial count; it must also prove that the baseline
+host did not discover the target skill from another shelf.
 
 ## Further reading
 
 - [wiki/research/anatomy-of-a-good-skill.md](../wiki/research/anatomy-of-a-good-skill.md)
+- [wiki/concepts/evidence-lifecycle.md](../wiki/concepts/evidence-lifecycle.md)
 - [wiki/examples/good/](../wiki/examples/good/) -- exemplary skills to study
 
 Next: [Module 8: Advanced Techniques](08-advanced-techniques.md)

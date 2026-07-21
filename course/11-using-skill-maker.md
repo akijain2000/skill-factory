@@ -1,6 +1,6 @@
 # Module 11: Using the Skill Maker (Capstone)
 
-The Skill Maker is a gstack-style interactive workflow that guides you through creating a production-quality skill. It asks forcing questions, challenges your assumptions, and produces a validated SKILL.md backed by the wiki knowledge base.
+The Skill Maker is a gstack-style interactive workflow that guides you through creating a production-quality skill. It asks forcing questions, challenges your assumptions, produces a structurally validated `SKILL.md`, and defines the behavioral evaluation gate used in Module 12.
 
 ## How to start
 
@@ -26,7 +26,7 @@ The Skill Maker asks what you want to build. Give a rough description -- it does
 
 Example prompt: "I want a skill that reviews our API endpoints for breaking changes before we release a new version."
 
-### Phase 2: Diagnose (up to 5 questions)
+### Phase 2: Diagnose (up to 6 questions)
 
 Five forcing questions that sharpen the idea:
 - **Who uses this?** (just you, your team, or open source?)
@@ -34,6 +34,7 @@ Five forcing questions that sharpen the idea:
 - **What goes wrong today?** (what the agent gets wrong without the skill)
 - **What does success look like?** (the output)
 - **What gotchas exist?** (environment-specific traps)
+- **What type and invocation is this?** (capability or preference; model-triggered or user-invoked)
 
 The Skill Maker will push back on vague answers. "Helps with API stuff" will get reframed to "What kind of API work? Endpoint design? Error handling? Breaking change detection?"
 
@@ -65,9 +66,9 @@ The Skill Maker generates the complete SKILL.md, loading relevant wiki articles 
 
 It runs the automated validator and fixes any issues.
 
-### Phase 7: Test plan
+### Phase 7: Evaluate
 
-It suggests 3 test prompts: an activation test, a workflow test, and an edge case test.
+It creates 10-20 positive-routing, negative-routing, functional, and edge cases, then runs isolated repeated skill-versus-baseline trials when a real host adapter is available. If the adapter or model is unavailable, it labels behavioral evaluation not run rather than treating proposed prompts as proof.
 
 ## Sample session transcript
 
@@ -131,10 +132,7 @@ RECOMMENDATION: B -- covers the review use case without scope creep into auto-fi
 
 **Skill Maker**: *[Phase 6: Runs validator, shows 0 errors]*
 
-**Skill Maker**: Here are 3 prompts to test:
-1. "Review this PR" (activation test -- should trigger the skill)
-2. "Check if the naming in these changes follows our conventions" (workflow test)
-3. "I renamed a hook from `useAuth` to `getAuth` -- is that okay?" (edge case -- should flag the missing `use` prefix)
+**Skill Maker**: *[Phase 7: Classifies this as a model-triggered preference skill, builds positive and adjacent negative routing cases, adds naming-rule outcome checks, and runs or explicitly blocks the skill-versus-baseline eval]*
 
 ---
 
@@ -143,7 +141,7 @@ RECOMMENDATION: B -- covers the review use case without scope creep into auto-fi
 1. **Be honest about vagueness.** "I'm not sure" is a valid answer -- the Skill Maker will help you figure it out.
 2. **Push back on the Skill Maker.** If its recommendation doesn't feel right, say so. It's opinionated but not always right.
 3. **Start small.** Pick the micro or standard option. You can always add complexity later.
-4. **Test immediately.** Don't polish the skill endlessly. Install it, try the test prompts, and iterate.
+4. **Evaluate immediately.** Don't polish the skill endlessly. Run natural positive and negative prompts against both conditions and iterate from failures.
 5. **Use the fallback.** If you already have a draft or just want it written fast, say "just write it" and the Skill Maker will skip diagnostics.
 
 ## Try It: Create a real skill with the Skill Maker
@@ -152,13 +150,14 @@ RECOMMENDATION: B -- covers the review use case without scope creep into auto-fi
 
 1. Think of a task you repeat with your AI agent at least once a week
 2. Start a session: `Read skill-maker/SKILL.md and help me create a skill for [your task]`
-3. Answer the 5 diagnostic questions honestly
+3. Answer the 6 diagnostic questions honestly
 4. Approve or revise the design
 5. Validate the output
-6. Install and test with the suggested prompts
-7. Iterate based on what you observe
+6. Build positive, negative, functional, and edge cases
+7. Run the skill and no-skill conditions through a real adapter, or label that evidence blocked
+8. Iterate based on routing, outcome, and reliability failures
 
-Congratulations -- you've completed the full course. You can now:
+You have completed the authoring capstone. Continue to Module 12 before calling the skill behaviorally evaluated. You can now:
 - Write skills from scratch using the spec
 - Detect and fix anti-patterns
 - Apply advanced patterns (validation loops, rationalization tables, instincts)
@@ -166,6 +165,8 @@ Congratulations -- you've completed the full course. You can now:
 - Use the Skill Maker for guided creation
 - Decompose large prompts into modular skills
 - Maintain a living skill library
+
+Next: [Module 12: Evaluating Skills](12-evaluating-skills.md)
 
 ## Also try: the Prompt Decomposer
 
@@ -186,3 +187,4 @@ This is the inverse of the Skill Maker: instead of building one skill from scrat
 - [authoring/SKILL.md](../authoring/SKILL.md) -- the meta-skill for wiki-backed authoring
 - [SKILL_SPEC.md](../SKILL_SPEC.md) -- the quality standard
 - [wiki/concepts/meta-skills.md](../wiki/concepts/meta-skills.md) -- the meta-skills concept (how skills govern other skills)
+- [course/12-evaluating-skills.md](12-evaluating-skills.md) -- behavioral routing, ablation, reliability, and retirement

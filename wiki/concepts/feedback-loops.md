@@ -10,12 +10,15 @@ agentskills.io warns that LLM-generated skills without domain runs become generi
 
 ## How to do it
 
-1. **Identify gaps** running tasks without the skill; write three concrete scenarios as mini-evaluations (Anthropic).
+1. **Identify gaps** running tasks without the skill; start with 10-20 cases covering positive routing, adjacent negative controls, functional outcomes, and known failures.
 2. Add the **smallest** instruction that fixes the gap; re-run the same scenarios.
 3. Read **execution traces**, not just final answers—look for retries, wrong tools, ignored sections.
 4. Capture new **gotchas** from failures back into SKILL.md the same day.
-5. For multi-model hosts, test a **fast** and a **strong** model (Anthropic Haiku vs Opus guidance).
-6. Version or changelog meaningful behavior changes so teams know what improved.
+5. Run skill-enabled and no-skill conditions in fresh workspaces for 3-6 trials per case.
+6. For multi-model hosts, test each materially supported model-harness pair rather than assuming portability.
+7. Version or changelog meaningful behavior changes and accepted thresholds so teams know what improved.
+8. Freeze thresholds before running. Keep a FAIL and its named cases; do not tune the gate after reading the score.
+9. Separate accepted reports from interrupted, contaminated, or superseded diagnostics. Preserve both, but never combine their records.
 
 ## Good example
 
@@ -33,7 +36,7 @@ The skill identifies which skill the mistake belongs to, opens that file, and ap
 
 ## "Don't try to write a perfect skill on day one"
 
-Anthropic's own team reports that their best skills started as a few lines and one gotcha, then got better over time as people kept adding to them. This aligns with the iterative philosophy: ship a minimal skill, use it, capture gotchas, refine triggers, expand as needed. Perfection is the enemy of shipping.
+Anthropic's own team reports that their best skills started as a few lines and one gotcha, then got better over time as people kept adding to them. Begin with the smallest skill that can change a measured failure, capture gotchas, refine triggers, and expand only when the eval suite justifies it. Minimal does not mean unevaluated.
 
 **Recommended starter pair**: `/preflight` (stops you committing broken code) and `/gotcha` (captures mistakes so they don't happen twice). Build everything else from there. Source: `raw/docs/applied-anthropic-playbook.md`.
 
@@ -41,9 +44,15 @@ Anthropic's own team reports that their best skills started as a few lines and o
 
 One-shot prompt: "Generate a skill for our API," pasted into SKILL.md without running a single import or error case—produces "handle errors appropriately" prose. Source critique: `raw/docs/agentskills-io-best-practices.md`.
 
+A subtler bad loop repeatedly edits graders or thresholds until a report turns
+green. That optimizes the measurement after seeing the answer and destroys the
+regression baseline.
+
 ## Sources
 
 - `raw/docs/anthropic-best-practices.md`
 - `raw/docs/agentskills-io-best-practices.md`
 - `raw/docs/applied-anthropic-playbook.md` (/gotcha pattern, iterative improvement, starter pair)
+- `raw/docs/dont-ship-skills-without-evals.md` (ablation, isolation, repeated trials, retirement)
 - `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md` (Pro Tips: test with an AI, iterate)
+- `wiki/concepts/evidence-lifecycle.md`

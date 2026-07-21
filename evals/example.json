@@ -1,0 +1,76 @@
+{
+  "name": "skill-factory-eval-example",
+  "rootDir": "..",
+  "skillPath": ".",
+  "trials": 3,
+  "runner": {
+    "command": [
+      "bun",
+      "run",
+      "{root}/scripts/fixtures/fake-eval-adapter.ts"
+    ],
+    "timeoutMs": 10000
+  },
+  "thresholds": {
+    "minTriggerAccuracy": 1,
+    "minSkillOutcomePassRate": 1,
+    "minSkillOverallPassRate": 1,
+    "minOutcomeDelta": 0.5
+  },
+  "cases": [
+    {
+      "id": "release_docs",
+      "prompt": "Prepare these documentation changes for release and prove the links are valid.",
+      "shouldTrigger": true,
+      "files": {
+        "guide.md": "# Guide\n\nSee [reference](reference.md).\n",
+        "reference.md": "# Reference\n"
+      },
+      "checks": [
+        {
+          "id": "reports_link_check",
+          "type": "contains",
+          "target": "output",
+          "value": "links checked"
+        },
+        {
+          "id": "writes_release_report",
+          "type": "file_contains",
+          "path": "release-report.txt",
+          "value": "PASS"
+        },
+        {
+          "id": "adapter_release_gate",
+          "type": "adapter",
+          "name": "release_ready"
+        }
+      ]
+    },
+    {
+      "id": "review_skill",
+      "prompt": "Review this SKILL.md and tell me whether its behavioral eval evidence is sufficient.",
+      "shouldTrigger": true,
+      "checks": [
+        {
+          "id": "requires_ablation",
+          "type": "regex",
+          "target": "output",
+          "pattern": "with(?:out)? the skill|baseline|ablation",
+          "flags": "i"
+        }
+      ]
+    },
+    {
+      "id": "unrelated_csv",
+      "prompt": "Plot revenue by month from sales.csv.",
+      "shouldTrigger": false,
+      "checks": []
+    },
+    {
+      "id": "unrelated_translation",
+      "prompt": "Translate this sentence into Norwegian: The keys are on the table.",
+      "shouldTrigger": false,
+      "checks": []
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "artifacts": [
+    {
+      "sourceId": "openai-skills",
+      "path": "skills/.system/skill-creator/SKILL.md",
+      "purpose": "OpenAI skill authoring and evaluation workflow"
+    },
+    {
+      "sourceId": "anthropic-skills",
+      "path": "skills/skill-creator/SKILL.md",
+      "purpose": "Anthropic skill creation, benchmarking, and iteration workflow"
+    },
+    {
+      "sourceId": "anthropic-skills",
+      "path": "skills/skill-creator/references/schemas.md",
+      "purpose": "Anthropic eval, grading, timing, and benchmark artifact schemas"
+    },
+    {
+      "sourceId": "mattpocock-skills",
+      "path": "skills/productivity/writing-great-skills/SKILL.md",
+      "purpose": "Current writing-great-skills structure and routing guidance"
+    },
+    {
+      "sourceId": "skillsbench",
+      "path": "README.md",
+      "purpose": "Skill-versus-baseline benchmark design and public evidence boundary"
+    },
+    {
+      "sourceId": "gemini-skills",
+      "path": "README.md",
+      "purpose": "Gemini skill packaging claims and public eval-artifact boundary"
+    }
+  ]
+}

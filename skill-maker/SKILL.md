@@ -5,7 +5,7 @@ description: Guide interactive creation of production-quality SKILL.md files thr
 
 # Skill Maker
 
-An interactive, opinionated skill creation workflow. Asks forcing questions, challenges assumptions, reframes vague ideas, and produces validated SKILL.md files backed by the Skill Factory knowledge base.
+An interactive, opinionated skill creation workflow. Asks forcing questions, challenges assumptions, reframes vague ideas, and produces structurally validated skills with an explicit behavioral evaluation gate.
 
 <HARD-GATE>
 Do NOT write any SKILL.md content until Phase 4 (DESIGN) is complete and the user has approved the design. Phases 1-3 are diagnostic only.
@@ -96,6 +96,14 @@ This shapes the output format template.
 
 These become the gotchas section -- the highest-value content per token.
 
+### Q6: What kind of skill and invocation is this?
+
+> "Is this a capability the model currently lacks, or a durable team preference? Will the model discover it from the prompt, or will a user invoke it explicitly?"
+
+Record both classifications:
+- Capability or preference determines the retirement policy.
+- Model-triggered or user-invoked determines how much routing coverage is required.
+
 ## Phase 3: REFRAME
 
 After diagnosis, challenge the design before writing anything:
@@ -109,6 +117,8 @@ If it's multiple skills, propose a split and ask which one to build first.
 ### Necessity check
 
 > "Would the agent get this right 80%+ of the time without a skill? If so, we should only add the 20% the agent gets wrong -- gotchas and specific workflow steps, not general knowledge."
+
+Turn the claimed baseline gap into at least one measurable eval case before writing.
 
 ### Size estimate
 
@@ -147,6 +157,8 @@ Draft the numbered workflow steps. For each step, label the degree of freedom:
 - **Open**: agent decides how
 
 Present and ask: "Are these the right steps in the right order? Anything missing?"
+
+If every step is exact and unconditional, propose a script instead. Keep the skill for activation, goals, constraints, and exception handling.
 
 ### 4.3: Output format
 
@@ -195,22 +207,39 @@ If warnings exist:
 2. Explain whether it matters for this skill
 3. Fix if appropriate
 
-## Phase 7: TEST PLAN
+## Phase 7: EVALUATE
 
-Suggest 3 test prompts the user can try to verify the skill works:
+Static validation is complete after Phase 6. Behavioral validation is not.
 
-1. **Activation test**: A natural-language prompt that should trigger the skill (without mentioning it by name)
-2. **Workflow test**: A prompt that exercises the full workflow
-3. **Edge case test**: A prompt that tests a gotcha or boundary condition
+1. Read `wiki/concepts/skill-evaluations.md`, `wiki/concepts/evidence-lifecycle.md`, and `evals/README.md`.
+2. Create 10-20 cases:
+   - about five natural prompts that should trigger without naming the skill
+   - about five adjacent prompts that should not trigger
+   - functional outcomes and edge cases with deterministic checks
+3. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
+4. Run the same model and harness with zero or one target skill in a host-isolated fresh workspace for every trial.
+5. Run 3-6 trials per case and checkpoint each normalized record.
+6. Report routing accuracy, skill outcome pass rate, baseline outcome pass rate, outcome delta, runtime identity, and any cost/latency evidence.
+7. Keep raw trajectories and credentials out of reports; clean disposable workspace/auth state.
+8. Fix named failures, add them as regression cases, and rerun under a new fingerprint without weakening gates.
 
-Example:
+Use the included harness through a host adapter:
 
-> "Try these prompts with the skill installed:
-> 1. 'Review this PR for security issues' (should activate the skill)
-> 2. 'Do a thorough code review of the changes in this branch' (should follow the full workflow)
-> 3. 'Check this PR -- there's an SQL query built with string concatenation' (should catch the specific issue)"
+```bash
+bun run scripts/evaluate-skill.ts evals/<suite>.json
+```
 
-Ask: "Want to test now, or is the skill ready to ship?"
+Do not ask whether the skill is "ready to ship" after proposing prompts. Either run the evals or label behavioral evaluation **not run / blocked** with the missing adapter, credentials, model access, or test data.
+
+---
+
+## Gotchas
+
+- Run the validator and harness from the Skill Factory root even when the new
+  skill is written to another shelf.
+- Do not treat a generated eval file as proof that its cases have executed.
+- If the host exposes other copies of the target skill, discard the run as
+  contaminated and rebuild zero-skill/one-skill isolation.
 
 ---
 

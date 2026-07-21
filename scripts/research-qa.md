@@ -14,6 +14,10 @@ Identify:
 - **Topic keywords** (e.g., "circuit breaker", "memory strategy", "HITL gates")
 - **Question type**: factual ("what is X?"), comparative ("X vs Y?"), how-to ("how to implement X?"), or analytical ("why does X improve scores?")
 - **Scope**: single concept, cross-cutting pattern, or ecosystem comparison
+- **Claim level**: source/structural fact, eval definition, executed behavioral
+  result, or operational proof
+- **Data destination**: ephemeral answer, reusable query, canonical concept,
+  active skill instruction, supporting reference, or provenance archive
 
 ### Step 2: Search the wiki
 
@@ -45,6 +49,10 @@ Write a structured answer following this template:
 
 [High / Medium / Low] — based on coverage in wiki sources
 
+## Evidence boundary
+
+[Structural / eval defined / behavioral / operational, plus accepted or diagnostic]
+
 ## Gaps
 
 [Note any aspects of the question not covered by the wiki]
@@ -57,6 +65,8 @@ If the question reveals a gap or the answer is reusable:
 1. Save to `wiki/queries/YYYY-MM-query-slug.md` with the answer
 2. If the question reveals a wiki gap, note it for the next `compile-wiki.md` run
 3. If the question suggests a new article topic, add to `scripts/health-check.md` suggestions
+4. If it changes reusable agent behavior, update the owning skill and add an eval
+   case; do not leave the only copy in the Q&A
 
 ## Quality checks
 
@@ -64,3 +74,6 @@ If the question reveals a gap or the answer is reusable:
 - If the wiki does not cover the topic, say so explicitly rather than hallucinating
 - Cross-check with GLOSSARY.md for consistent terminology
 - Flag contradictions between wiki articles if found
+- Never upgrade static inspection into behavioral proof or a successful provider/
+  deployment action into end-user delivery proof
+- Never commit raw protected prompts, traces, credentials, or bearer URLs with a Q&A

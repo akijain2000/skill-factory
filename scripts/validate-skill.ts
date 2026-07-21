@@ -27,6 +27,14 @@ const AI_SLOP_WORDS = [
   "interplay", "facilitate", "leverage",
 ];
 
+const POSSIBLE_NO_OPS = [
+  /write (?:clear|clean|readable|high[- ]quality) (?:code|content)/i,
+  /follow (?:all )?best practices/i,
+  /be (?:careful|thorough|helpful|concise)/i,
+  /produce (?:a )?high[- ]quality (?:result|output|work)/i,
+  /make (?:the )?(?:code|output) (?:easy to read|maintainable)/i,
+];
+
 const TRIGGER_PHRASES = [
   "use when", "trigger", "activate when", "use for",
   "applies to", "invoke when", "run when",
@@ -180,6 +188,16 @@ function validate(skillDir: string): Issue[] {
     issues.push({ severity: "info", message: `Body contains AI slop words: ${slopFound.join(", ")}` });
   }
 
+  const possibleNoOps = POSSIBLE_NO_OPS
+    .filter((pattern) => pattern.test(body))
+    .map((pattern) => pattern.source);
+  if (possibleNoOps.length > 0) {
+    issues.push({
+      severity: "info",
+      message: `Possible no-op directives found (${possibleNoOps.length}). Remove or replace them with observable behavior, then confirm by ablation.`,
+    });
+  }
+
   // Nested file references (depth > 1)
   const refPattern = /\[.*?\]\(((?:references|scripts|assets)\/.*?)\)/g;
   let refMatch;
@@ -190,10 +208,11 @@ function validate(skillDir: string): Issue[] {
     }
   }
 
-  // Test scenarios check (SKILL_SPEC requires >=3 real test scenarios)
-  const hasTestSection = /#{1,3}\s*(test|evaluation|scenarios|verify)/i.test(body);
-  if (!hasTestSection) {
-    issues.push({ severity: "warning", message: "No test/evaluation section found. SKILL_SPEC recommends >=3 test scenarios (activation, workflow, edge case)." });
+  // Behavioral eval evidence check. Static presence is not proof that the suite ran.
+  const hasTestSection = /#{1,3}\s+.*\b(test|evaluate|evaluation|scenarios|verify)\b/i.test(body);
+  const hasEvalDirectory = existsSync(join(skillDir, "evals"));
+  if (!hasTestSection && !hasEvalDirectory) {
+    issues.push({ severity: "warning", message: "No behavioral eval evidence found. Add positive/negative routing cases and repeated skill-vs-baseline outcome checks." });
   }
 
   // Example check (SKILL_SPEC recommends concrete examples)

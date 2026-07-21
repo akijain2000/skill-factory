@@ -58,7 +58,9 @@ Strong skills treat the YAML `description` as the **only** reliable hook at disc
 
 - [ ] **Validation loop** embedded: generate → verify → fix → repeat (agentskills.io).  
 - [ ] **Troubleshooting** section or “if this, then that” for common failures.  
-- [ ] **Evaluations**: at least three real scenarios suggested in Anthropic checklist—authors should sketch before shipping.
+- [ ] **Evaluations**: 10–20 natural positive, sibling-negative, functional, and known-failure cases where behavioral proof matters.
+- [ ] **Ablation**: isolated repeated skill/no-skill arms under the same model/harness.
+- [ ] **Frozen gates**: thresholds declared before execution; failures retained instead of tuned away.
 
 ## 8. Metadata hygiene
 
@@ -85,14 +87,23 @@ Strong skills treat the YAML `description` as the **only** reliable hook at disc
 - [ ] Reference other skills by their exact `name` field, not by filename.
 - [ ] Handle absent dependencies gracefully ("If the `code-review` skill is not installed, perform a manual checklist review").
 - [ ] There is no native dependency management — the skill itself must check and fallback.
+- [ ] Broad routers use explicit one-hop sibling maps and cross-skill negative evals.
 
 Source: `raw/docs/trq212-skills-abstraction.md`.
+
+## 12. Evidence lifecycle
+
+- [ ] External sources have repository revisions and exact sampled-artifact hashes.
+- [ ] Active instructions stay in `SKILL.md`; dated history is quarantined in provenance-marked references.
+- [ ] Eval definitions, normalized checkpoints, aggregate reports, and operational proof are separate artifacts.
+- [ ] Behavioral reports record runtime metadata plus evaluator, suite, skill-directory, and adapter fingerprints.
+- [ ] Raw trajectories, credentials, and disposable workspaces are excluded from committed evidence and cleaned.
 
 ---
 
 ### Quick self-score
 
-Rate your skill 0–2 on each block (Activation, Body, Procedure, I/O, Environment, Safety, Loops, Metadata, Style, Assets). **16+** usually correlates with “always loads the right chunk”; **12–15** is salvageable with tighter description + examples; **below 12** is likely to misfire or waste tokens.
+Rate the ten authoring blocks 0–2 (Activation through Assets), then treat Composition and Evidence Lifecycle as release gates rather than bonus points. **16+** on authoring is promising; it is not behavioral PASS until the frozen eval gates execute successfully.
 
 ## Sources
 
@@ -108,3 +119,5 @@ Rate your skill 0–2 on each block (Activation, Body, Procedure, I/O, Environme
 - `skill-factory/raw/repos/autoresearch/program.md` (output/logging discipline)
 - `skill-factory/raw/docs/trq212-skills-abstraction.md` (delta from baseline, skill composition)
 - `skill-factory/raw/docs/agentpatterns-skill-authoring.md` (implementation patterns, troubleshooting)
+- `skill-factory/wiki/concepts/evidence-lifecycle.md` (artifact placement, fingerprints, privacy)
+- `skill-factory/wiki/queries/private-router-eval-case-study-2026-07-21.md` (anonymized routing-vs-outcome evidence)

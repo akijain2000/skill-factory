@@ -13,6 +13,10 @@ These instructions tell an LLM how to compile `raw/` into `wiki/`. Read this fil
 
 Read every .md file in `raw/docs/`. These are the authoritative references: official specs, best practices, anti-pattern articles. Extract key concepts, rules, and patterns.
 
+Treat `raw/` as immutable evidence. Do not "clean up" or rewrite a capture while
+compiling. Put interpretation in the canonical wiki and preserve a link back to
+the exact source or its locked sampled-artifact receipt.
+
 ### Step 2: Scan raw/repos/
 
 For each repo in `raw/repos/`, do the following:
@@ -22,7 +26,11 @@ For each repo in `raw/repos/`, do the following:
 3. Find and read 5-10 representative SKILL.md files:
    - Prioritize skills with different characteristics (short vs long, simple vs complex, different domains)
    - Note: line count, frontmatter fields used, description quality, structure, use of progressive disclosure, references to other files
-4. Note the repo's strengths, weaknesses, and notable patterns
+4. Search for eval cases, trigger tests, graders, adapters, trace schemas, and CI workflows paired with the sampled skills
+   - Distinguish structural lint from executed behavioral evidence
+   - Note whether cases include positive and negative routing
+   - Note skill-enabled and no-skill conditions, isolation, trial count, model, harness, and grader
+5. Note the repo's strengths, weaknesses, and notable patterns
 
 **Repo-specific guidance:**
 
@@ -77,6 +85,9 @@ For each core concept below, write an article in `wiki/concepts/`. Each article 
 12. `error-handling-in-scripts.md` - Solve, don't punt. Handle errors explicitly in bundled scripts.
 13. `naming-conventions.md` - Gerund form, domain-action pattern, words to avoid
 14. `degrees-of-freedom.md` - Matching instruction specificity to task fragility
+15. `skill-evaluations.md` - Routing tests, outcome graders, isolated repeated trials, skill-vs-baseline ablation, regression, and retirement
+16. `evidence-lifecycle.md` - Data placement, source locks, archive provenance,
+    eval fingerprints, checkpoints, privacy, and accepted/diagnostic boundaries
 
 ### Step 4: Write research articles
 
@@ -130,11 +141,20 @@ Write `wiki/GLOSSARY.md` with key terms:
 - Concept articles: 200-400 words. Research articles: 800-1500 words.
 - Use consistent terminology throughout (pick one term, stick to it)
 - Include real code/config examples from the repos, not made-up ones
+- Never call a skill behaviorally validated from static lint alone; state the evidence condition and grader
+- Keep Structural PASS, eval defined, Behavioral PASS, and operational proof separate
+- Treat a clean workspace as only one part of isolation; control the host home,
+  other skill shelves/plugins/memory/tools, environment, model, and CLI
+- Keep current instructions, supporting references, provenance archives, eval
+  definitions, checkpoints, reports, and operational receipts in their proper layers
 
 ## Incremental Compilation
 
 After the initial compile, the wiki grows incrementally:
 - New files in `raw/` trigger a targeted recompile of affected articles
+- New skill-eval research updates `skill-evaluations.md`, relevant course material, and the source-evidence labels in landscape/examples
 - Run `scripts/health-check.md` to find gaps and suggest new articles
 - Q&A outputs filed into `wiki/queries/` can be promoted to articles
+- Failed or contaminated evals can be retained as diagnostic case studies but
+  cannot replace the accepted comparable report
 - Re-run this script to regenerate INDEX.md and GLOSSARY.md after changes
