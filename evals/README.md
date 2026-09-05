@@ -1,5 +1,7 @@
 # Behavioral skill evals
 
+> Runtime gate (2026-09-05): adapters must return non-empty model and harness identity. The evaluator rejects diagnostic-only metadata and malformed/inconsistent resumed records. It creates a fresh workspace; the adapter must independently establish host isolation. The deterministic example tests harness mechanics only.
+
 `validate-skill.ts` checks the shape of a skill. `evaluate-skill.ts` measures whether the skill changes agent behavior usefully.
 
 ## Runner contract
@@ -133,3 +135,7 @@ semantic similarity alone.
 ## CI policy
 
 Run structural validation and harness unit tests on every change. Run live model evals when a skill, its references, its adapter, or a supported model/harness changes. Store aggregate reports and sanitized failure evidence; do not publish raw protected trajectories. See [Skill Evidence Lifecycle](../wiki/concepts/evidence-lifecycle.md) and the [anonymized private-shelf router case study](../wiki/queries/private-router-eval-case-study-2026-07-21.md).
+
+## Checkpoint trust boundary
+
+Checkpoints are trusted local execution state. Input fingerprints and record consistency reject drift and malformed/contradictory edits; they do not authenticate a coherently rewritten score. Do not accept user-supplied or manually edited checkpoints as executed evidence. Re-execute from trusted fixtures when custody is uncertain. Optional `evidence_status` metadata must be exactly `accepted`; all other values are rejected.

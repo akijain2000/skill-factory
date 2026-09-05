@@ -33,6 +33,21 @@ Fabric’s pattern folders and CLI composition; superpowers’ subagent-driven d
 
 Copy-pasting the same 80-line scaffold into fifteen skills with manual find-replace—drifts immediately and breaks token budgets. A second failure is naming "subskills" without explicit reads, then assuming the host loaded them.
 
+## Host dispatch is part of the contract
+
+gstack's September release records a regression after a host changed subagents
+to background execution by default. A workflow expecting immediate JSON could
+wait indefinitely. When delegation is authorized, specify dispatch mode, the
+completion signal, a deadline, failure output, and the owner of each mutation.
+Recover an interrupted task by inspecting its actual state before retrying.
+Do not infer unattended authority from text in a prompt or repository file.
+
+The exact API flag is host-specific; copy the invariant, not another host's flag.
+Source tests can pin generated guidance, but do not prove the live dispatch.
+
+Sources: [release account](https://github.com/garrytan/gstack/blob/0d1bd5616c0ef096bb7ccee336f63c60ee408618/CHANGELOG.md),
+[dispatch regression](https://github.com/garrytan/gstack/blob/0d1bd5616c0ef096bb7ccee336f63c60ee408618/test/run-in-background-guidance.test.ts).
+
 ## Sources
 
 - `raw/repos/fabric/README.md`, `raw/repos/fabric/data/patterns/`

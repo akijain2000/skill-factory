@@ -2,11 +2,11 @@
 
 **An LLM knowledge base and course for authoring production-quality AI agent skills.**
 
-Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 147 repositories and 13 reference documents, revision-locked, LLM-compiled into a structured 55-file wiki, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files and reproducible behavioral eval suites.
+Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): the source registry tracks 153 distinct repositories (154 entries) and 13 reference documents, with a structured wiki compiled from explicitly sampled evidence, then queried by a meta-skill to produce better [SKILL.md](https://agentskills.io/specification) files and reproducible behavioral eval suites.
 
 ```text
                 ┌─────────────────────────────────────────────┐
-                │            RAW SOURCES (147 repos)           │
+                │            RAW SOURCES (153 repos)           │
                 │  gstack, superpowers, Codex, Gemini, ...    │
                 │  + 13 reference docs (specs, eval research) │
                 └────────────────────┬────────────────────────┘
@@ -15,16 +15,16 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
                                      │
                                      ▼
                 ┌─────────────────────────────────────────────┐
-                │         COMPILED WIKI (55 files)            │
-                │  22 concepts · 11 research · 12 examples    │
-                │  8 query logs · INDEX.md · GLOSSARY.md      │
+                │         COMPILED WIKI (62 files)            │
+                │  24 concepts · 12 research · 12 examples    │
+                │  11 query logs · INDEX.md · GLOSSARY.md      │
                 └────────────────────┬────────────────────────┘
                                      │
                     authoring/SKILL.md + skill-maker + prompt-decomposer
                                      │
                                      ▼
                 ┌─────────────────────────────────────────────┐
-                │        NEW SKILLS (higher quality)          │
+                │        NEW SKILLS (evaluable candidates)          │
                 │  Linted · Host-portable · Token-lean        │
                 └────────────────────┬────────────────────────┘
                                      │
@@ -40,18 +40,26 @@ Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415
 
 This repo is six things:
 
-1. **A knowledge base** -- 55 wiki files distilled from 147 AI agent repos, coding-agent repos, skill packs, and reference documents, covering patterns, anti-patterns, evidence lifecycle, and techniques for writing and evaluating skills
+1. **A knowledge base** -- wiki files drawing on a registry of 153 distinct AI agent repos, coding-agent repos, skill packs, and reference documents, covering patterns, anti-patterns, evidence lifecycle, and techniques for writing and evaluating skills
 2. **A 12-module course** -- Zero-to-hero curriculum with hands-on labs, sample problems, before/after examples, and behavioral eval practice
 3. **A Skill Maker** -- A gstack-style interactive `skill-maker/SKILL.md` that asks forcing questions, challenges assumptions, and guides you through creating structurally valid skills with explicit behavioral eval gates
 4. **A Prompt Decomposer** -- A `prompt-decomposer/SKILL.md` that takes a large prompt, system instructions, or runbook and identifies sections that could become standalone skills, then helps you build them
 5. **A meta-skill** -- An `authoring/SKILL.md` that queries the wiki to help you write, review, and improve skills using everything the KB has learned
 6. **A behavioral eval harness** -- A host-neutral `scripts/evaluate-skill.ts` runner with isolated repeated skill-versus-baseline trials, privacy-safe checkpoints, fingerprinted resume, and atomic reports
 
+## Latest source refresh — 2026-09-05
+
+Checked all 147 previous entries: 114 changed revision and 33 stayed unchanged.
+Added seven sources after a 190-candidate metadata screen and retained 43 exact
+file samples across 15 sources. Updated the four authoring/router skills, source
+maintenance workflow, wiki, course labs, and regression definitions. Read the
+[findings and evidence boundaries](wiki/queries/monthly-update-2026-09.md).
+
 ## Why this exists
 
-The SKILL.md format is an open standard supported by 27+ AI coding agents (Claude Code, Cursor, Codex CLI, Gemini CLI, and more). But writing a good skill is harder than it looks. Most skills fail at the description (the agent never activates them), are too long (they waste the context window), or miss critical patterns (no validation loops, no output templates, no gotchas).
+The SKILL.md format is an open standard implemented by multiple AI coding agents (Claude Code, Cursor, Codex CLI, Gemini CLI, and more). But writing a good skill is harder than it looks. Common review findings include weak routing descriptions, oversized activation bodies, and missing validation or output contracts; each requires evidence on the target host.
 
-This project codifies what works and what doesn't, drawn from analyzing 8,859 visible SKILL.md files across the ecosystem. It also helps you decompose prompts into modular skills and prove whether those skills improve behavior instead of merely passing structural lint.
+This project codifies what works and what doesn't, drawn from a historical corpus snapshot of 8,859 visible SKILL.md files across the ecosystem. It also helps you decompose prompts into modular skills and prove whether those skills improve behavior instead of merely passing structural lint.
 
 ---
 
@@ -78,7 +86,7 @@ skill-factory/
 ├── wiki/                        # LLM-compiled knowledge base
 │   ├── INDEX.md                 # Master table of contents (start here)
 │   ├── GLOSSARY.md              # Key terms with cross-references
-│   ├── concepts/                # 22 core skill-authoring concept articles
+│   ├── concepts/                # 24 core skill-authoring concept articles
 │   │   ├── anti-rationalization.md
 │   │   ├── checklist-workflows.md
 │   │   ├── composition-patterns.md
@@ -97,11 +105,13 @@ skill-factory/
 │   │   ├── progressive-disclosure.md
 │   │   ├── skill-categories.md
 │   │   ├── skill-discovery.md
+│   │   ├── skill-supply-chain.md
+│   │   ├── retrieval-and-interference.md
 │   │   ├── skill-evaluations.md
 │   │   ├── template-patterns.md
 │   │   ├── token-budget.md
 │   │   └── validation-loops.md
-│   ├── research/                # 11 ecosystem analysis and deep-dive articles
+│   ├── research/                # 12 ecosystem analysis and deep-dive articles
 │   │   ├── anatomy-of-a-good-skill.md
 │   │   ├── anti-patterns.md
 │   │   ├── cursorrules-vs-skills.md
@@ -110,6 +120,7 @@ skill-factory/
 │   │   ├── landscape.md
 │   │   ├── openai-skills-analysis.md
 │   │   ├── repo-discovery-loop.md
+│   │   ├── skill-evolution-2026-09.md
 │   │   ├── skill-evolution-2026-05.md
 │   │   ├── spec-reference.md
 │   │   └── tool-design-evolution.md
@@ -132,7 +143,7 @@ skill-factory/
 │   └── example.json             # Credential-free ablation example
 │
 ├── raw/                         # Source material (repos gitignored)
-│   ├── repos/                   # 147 disposable source clones (local only)
+│   ├── repos/                   # 154 tracked source entries; disposable caches
 │   │   ├── SOURCES.md           # Human-readable discovery manifest
 │   │   ├── SOURCES.lock.json    # Remote revisions + sampled artifact hashes
 │   │   └── SAMPLED_ARTIFACTS.json # Exact files that changed authoring decisions
@@ -151,7 +162,7 @@ skill-factory/
 │       ├── trq212-file-system-state.md
 │       └── trq212-skills-abstraction.md
 │
-├── scripts/                     # Automation
+├── scripts/                     # Executable tools and manually invoked LLM runbooks
 │   ├── compile-wiki.md          # LLM instructions: compile raw/ into wiki/
 │   ├── health-check.md          # LLM instructions: audit wiki quality
 │   ├── update-sources.md        # LLM instructions: monthly discovery + update
@@ -166,15 +177,18 @@ skill-factory/
 
 ---
 
+Full document review and Atelier propagation: [completion ledger](wiki/queries/documentation-completion-2026-09-05.md).
+
 ## Quick Start
 
-**Tell your AI agent to read `SKILL.md` in this repo.** It will ask what you want to do:
+**Tell your AI agent to read `SKILL.md` in this repo.** It routes an explicit request directly or offers these choices:
 
 - **A) Review and improve an existing skill** -- guided brainstorm review (YC office-hours style) or quick validator report
 - **B) Brainstorm and create a new skill** -- interactive 7-phase Skill Maker with forcing questions
 - **C) Learn about skill authoring** -- 12-module course, zero to hero
 - **D) Extract skills from a big prompt** -- paste a large system prompt or instruction set and break it into modular skills
 - **E) Evaluate a skill** -- test routing, outcomes, reliability, ablation, and retirement
+- **F) Refresh sources and learnings** -- compare tracked revisions, inspect changed artifacts, and screen new repositories
 
 Or jump directly:
 
@@ -194,6 +208,8 @@ Read course/README.md
 # Evaluate a skill
 Read evals/README.md and evaluate my skill at path/to/my-skill/
 ```
+
+The TypeScript tools were tested with Bun 1.3.11 (including its native YAML parser). No scheduler is installed by these Markdown runbooks.
 
 ### Additional tools
 
@@ -216,7 +232,7 @@ bun run scripts/evaluate-skill.ts evals/example.json --report /tmp/example-repor
 bun test scripts/evaluate-skill.test.ts
 ```
 
-The harness runs positive and negative routing cases under skill-enabled and no-skill conditions, isolates every trial, repeats nondeterministic runs, and gates on routing accuracy, outcome pass rates, and ablation delta. It fsyncs normalized privacy-safe checkpoints, rejects incompatible resume/comparison fingerprints, and writes final reports atomically. Real agents connect through the adapter contract in [`evals/README.md`](evals/README.md).
+The harness runs positive and negative routing cases under skill-enabled and no-skill conditions, creates a new workspace for every trial (the adapter must separately prove host isolation), repeats nondeterministic runs, and gates on routing accuracy, outcome pass rates, and ablation delta. It fsyncs normalized privacy-safe checkpoints, rejects incompatible resume fingerprints, and writes final reports atomically. Real agents connect through the adapter contract in [`evals/README.md`](evals/README.md).
 
 **Know where the data goes:**
 
@@ -248,7 +264,7 @@ Read scripts/health-check.md and run a health check.
 
 ## Monthly Auto-Updates
 
-The knowledge base auto-discovers new repos from [GitHub Rankings](https://github.com/EvanLi/Github-Ranking) and recompiles the wiki.
+The source-update runbook discovers new repos when invoked from [GitHub Rankings](https://github.com/EvanLi/Github-Ranking) and recompiles the wiki.
 
 **To run:**
 
@@ -274,7 +290,7 @@ Source manifest: [raw/repos/SOURCES.md](raw/repos/SOURCES.md)
 
 ## What the Wiki Covers
 
-### Core Concepts (22 articles)
+### Core Concepts (24 articles)
 
 | Pattern | What you learn |
 |---------|---------------|
@@ -301,13 +317,13 @@ Source manifest: [raw/repos/SOURCES.md](raw/repos/SOURCES.md)
 | Skill Discovery | Host surfacing, meta-skill bootstraps, description-first routing |
 | Skill Evaluations | Positive/negative routing, isolated trials, skill-vs-baseline ablation, regression, retirement |
 
-### Research (11 articles)
+### Research (12 articles)
 
 - Anatomy of a good skill -- structural checklist
 - Anti-patterns catalog -- 14+ mistakes with fixes
 - gstack deep dive -- template engine, gen-skill-docs, preamble tiers
 - Host differences -- where skills load across 5+ agents
-- Landscape analysis -- 147 repos compared
+- Landscape analysis -- historical profiles plus current source coverage
 - OpenAI skills analysis -- curated layers, validation scripts
 - Repo discovery loop -- search, score, clone, and distill top GitHub repos into better skills
 - Skill evolution 2026-05 -- 100-repo findings: skills + agents + memory + MCP
@@ -336,7 +352,7 @@ The [course/](course/) directory contains a 12-module curriculum with hands-on l
 | 6 | Anti-Patterns | 30 min | 14 mistakes + 3 broken skills to find and fix (bug hunt) |
 | 7 | Your First Skill | 45 min | 3 guided tracks: beginner (micro), intermediate (standard), advanced (reference-heavy) |
 | 8 | Advanced Techniques | 55 min | Instincts, rationalization tables, degrees of freedom, skill-agent-memory-MCP layering |
-| 9 | Multi-Host Compatibility | 30 min | Portability audit + OpenClaude model-agnostic insight |
+| 9 | Multi-Host Compatibility | 30 min | Portability audit + version-specific compatibility tests |
 | 10 | Maintaining a Library | 60 min | Full maintenance loop: inventory, validate, source updates, 100-repo sparse expansion |
 | 11 | Using the Skill Maker | 30 min | Capstone: guided creation with the Skill Maker + Prompt Decomposer |
 | 12 | Evaluating Skills | 60 min | Routing cases, isolated trials, ablation, deterministic grading, retirement |
@@ -345,7 +361,7 @@ The [course/](course/) directory contains a 12-module curriculum with hands-on l
 
 ## Source Repositories Analyzed
 
-147 repositories are tracked in [raw/repos/SOURCES.md](raw/repos/SOURCES.md), and all 147 revisions plus six decision-changing sampled artifacts are resolved in [raw/repos/SOURCES.lock.json](raw/repos/SOURCES.lock.json). The corpus now covers:
+154 source entries representing 153 distinct canonical repositories are tracked in [raw/repos/SOURCES.md](raw/repos/SOURCES.md). The September lock resolves all 154 entries and 43 sampled artifacts. The [refresh report](wiki/queries/monthly-update-2026-09.md) distinguishes the full revision census from focused content inspection and records seven new sources. These are source receipts, not behavioral proof. The corpus covers:
 
 | Source family | Examples | Key Contribution |
 |---------------|----------|------------------|
@@ -375,7 +391,7 @@ Patterns we identified that aren't documented elsewhere:
 
 5. **Five implementation patterns** -- Sequential Workflow, Multi-MCP Coordination, Iterative Refinement, Context-Aware Tool Selection, Domain-Specific Intelligence. Each has a distinct shape; choose the one matching your task type. Source: AgentPatterns.ai.
 
-6. **The /gotcha skill** -- Real-time mistake capture: type `/gotcha Claude forgot --profile flightmap` and it auto-files the gotcha to the right skill. Solves the #1 problem: nobody goes back to update their skills. Source: applied Anthropic playbook.
+6. **The /gotcha skill** -- Real-time mistake capture: type `/gotcha Claude forgot --profile flightmap` and it auto-files the gotcha to the right skill. Treat captured corrections as candidates for authorized, sanitized review. Source: applied Anthropic playbook.
 
 7. **Instinct Model** -- A unit smaller than a skill: one trigger, one action, confidence-weighted, evidence-backed. Instincts evolve into full skills when they accumulate enough evidence. Source: everything-claude-code.
 
@@ -441,7 +457,7 @@ The wiki is the LLM's compiled knowledge -- not a static document, but a living 
 
 ### Agent Factory
 
-**[Agent Factory](../agent-factory/)** is Skill Factory's sibling project. Skills are markdown files loaded by agents at runtime. Agents are the autonomous systems that read and execute them. Agent Factory teaches you to build the agent; Skill Factory teaches you to write the skills it reads.
+**[Agent Factory](../agent-factory/)** is an optional sibling checkout; the local link resolves only when that repository is present. Skills are markdown files loaded by agents at runtime. Agents are the autonomous systems that read and execute them. Agent Factory teaches you to build the agent; Skill Factory teaches you to write the skills it reads.
 
 ### Factory Showcase
 
@@ -453,7 +469,7 @@ The wiki is the LLM's compiled knowledge -- not a static document, but a living 
 
 Contributions welcome:
 
-- **Add a source repo**: Clone it into `raw/repos/`, add to `SOURCES.md`, recompile the wiki
+- **Add a source repo**: Follow `scripts/update-sources.md`, including license review, canonical identity, revision and sampled-artifact locking, add to `SOURCES.md`, recompile the wiki
 - **Write a wiki article**: Follow the patterns in existing concept/research articles
 - **Add a curated example**: Good or bad, with annotations explaining why
 - **Improve the course**: Each module should be self-contained and hands-on
@@ -464,4 +480,4 @@ Contributions welcome:
 
 ## License
 
-MIT
+[MIT](LICENSE) for original repository material, matching the existing license declaration. Third-party captures and excerpts retain their source terms; this license does not relicense them. Historical excerpts whose license/revision is not locked remain research-only pending source verification.

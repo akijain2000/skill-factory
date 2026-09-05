@@ -1,5 +1,7 @@
 # Module 12: Evaluating Skills
 
+> Runtime gate (2026-09-05): adapters must return non-empty model and harness identity. The evaluator rejects diagnostic-only metadata and malformed/inconsistent resumed records. It creates a fresh workspace; the adapter must independently establish host isolation. The deterministic example tests harness mechanics only.
+
 A valid `SKILL.md` is a hypothesis. Behavioral evals tell you whether the skill activates correctly, improves outcomes, and still deserves its context cost.
 
 ## Four proof levels
@@ -217,6 +219,17 @@ Checkpoint: you can say whether the problem is routing, functional behavior, var
 ### Lab 12E: Remove a no-op (10 min)
 
 Delete one generic instruction such as "write high-quality code" and rerun the suite. If behavior does not degrade, keep it deleted. If it does, replace the phrase with an observable directive and check.
+
+## Lab 12F: Challenge the evidence boundary
+
+Use [the refresh case pack](../evals/authoring-refresh-cases.md). Reserve cases
+that the author never uses to select a description. Simulate unreadable
+activation telemetry: the negative-control result must remain unknown. Check
+that graders and answers are absent from the agent-visible skill snapshot.
+
+Then define a separate shelf experiment with a fixed distractor set. Explain why
+13 skills versus no skills estimates a package effect, and why retrieval Recall@k
+is not task success. State whether the experiment was defined or executed.
 
 ## Checkpoint
 

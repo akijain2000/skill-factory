@@ -1,10 +1,10 @@
 # Source Repositories
 
-Manifest of all repos cloned into `raw/repos/`. Updated by the monthly discovery script.
+Tracked source entries. Ignored clones or pinned file snapshots in `raw/repos/` are disposable caches; the lock and dated refresh dataset are durable receipts.
 
-Last updated: 2026-07-21
+Last updated: 2026-09-05
 
-## Cloned Repos
+## Tracked Sources
 
 | Repo | URL | Stars | Added | Relevance |
 |------|-----|-------|-------|-----------|
@@ -13,16 +13,16 @@ Last updated: 2026-07-21
 | openai-skills | github.com/openai/skills | ~5K | 2026-04-02 | OpenAI's curated skill examples for Codex CLI |
 | anthropic-plugins | github.com/anthropics/claude-plugins-official | ~3K | 2026-04-02 | Anthropic's official plugin/skill examples |
 | awesome-cursorrules | github.com/PatrickJS/awesome-cursorrules | ~8K | 2026-04-02 | Curated .cursorrules collection for Cursor IDE |
-| antigravity-awesome-skills | github.com/sickn33/antigravity-awesome-skills | ~4K | 2026-04-02 | 4000+ community skills with registry and validation |
+| antigravity-awesome-skills | github.com/sickn33/agentic-awesome-skills | ~4K | 2026-04-02 | 4000+ community skills with registry and validation |
 | voltagent-awesome-skills | github.com/VoltAgent/awesome-agent-skills | ~1K | 2026-04-02 | Curated link catalog of agent skills |
 | github-ranking | github.com/EvanLi/Github-Ranking | ~11K | 2026-04-02 | Daily-updated GitHub star/fork rankings by language |
 | superpowers | github.com/obra/superpowers | ~131K | 2026-04-02 | Agentic skills framework and software dev methodology |
-| everything-claude-code | github.com/affaan-m/everything-claude-code | ~132K | 2026-04-02 | Skills, harness, memory, security for Claude Code/Codex/Cursor |
+| everything-claude-code | github.com/affaan-m/ECC | ~132K | 2026-04-02 | Skills, harness, memory, security for Claude Code/Codex/Cursor |
 | mcp-servers | github.com/modelcontextprotocol/servers | ~83K | 2026-04-02 | Official MCP server collection -- core tool wiring for agents |
 | mattpocock-skills | github.com/mattpocock/skills | ~11K | 2026-04-02 | Personal skills from .claude -- real SKILL.md layout examples |
 | system-prompts | github.com/x1xhlol/system-prompts-and-models-of-ai-tools | ~134K | 2026-04-02 | System prompts and internals for Cursor, Claude, Codex tools |
-| fabric | github.com/danielmiessler/fabric | ~40K | 2026-04-02 | Modular AI prompts ("patterns") for repeatable workflows |
-| goose | github.com/block/goose | ~34K | 2026-04-02 | Extensible AI agent beyond suggestions (install, run, edit, test) |
+| fabric | github.com/danielmiessler/Fabric | ~40K | 2026-04-02 | Modular AI prompts ("patterns") for repeatable workflows |
+| goose | github.com/aaif-goose/goose | ~34K | 2026-04-02 | Extensible AI agent beyond suggestions (install, run, edit, test) |
 | A2A | github.com/a2aproject/A2A | ~23K | 2026-04-02 | Agent2Agent protocol -- multi-agent interoperability |
 | awesome-claude-skills | github.com/ComposioHQ/awesome-claude-skills | ~50K | 2026-04-02 | Curated Claude Skills and workflow resources |
 | openai-codex | github.com/openai/codex | ~72K | 2026-04-02 | Terminal coding agent from OpenAI (Rust CLI architecture) |
@@ -35,26 +35,26 @@ Last updated: 2026-07-21
 | cline | github.com/cline/cline | ~62K | 2026-05-25 | Open source coding agent with `.agents` / `.cline` skill examples and marketplace metadata |
 | browser-use | github.com/browser-use/browser-use | ~95K | 2026-05-25 | Browser automation agent with focused browser/cloud/open-source skills |
 | agent-skills | github.com/addyosmani/agent-skills | ~45K | 2026-05-25 | Production engineering skills with anatomy guide and CI validator |
-| graphify | github.com/safishamsi/graphify | ~53K | 2026-05-25 | Cross-host command skill for turning code/docs into persistent knowledge graphs |
+| graphify | github.com/Graphify-Labs/graphify | ~53K | 2026-05-25 | Cross-host command skill for turning code/docs into persistent knowledge graphs |
 | open-design | github.com/nexu-io/open-design | ~51K | 2026-05-25 | Local-first design agent system with hundreds of composable skills and GenUI atoms |
 | github-mcp-server | github.com/github/github-mcp-server | ~30K | 2026-05-25 | GitHub's official MCP server for repository, issue, PR, and workflow automation |
 | awesome-claude-code-subagents | github.com/VoltAgent/awesome-claude-code-subagents | ~20K | 2026-05-25 | Catalog of Claude Code subagents and plugin install pattern |
 | karpathy-skills | github.com/multica-ai/andrej-karpathy-skills | ~153K | 2026-05-25 | Karpathy-derived Claude Code behavior guide with skill-like global instruction patterns |
 | deer-flow | github.com/bytedance/deer-flow | ~69K | 2026-05-25 | Long-horizon SuperAgent harness with skills, subagents, memory, and sandbox workflow |
-| caveman | github.com/juliusbrussee/caveman | ~64K | 2026-05-25 | Claude Code skill focused on compressed agent communication and token reduction |
-| career-ops | github.com/santifer/career-ops | ~47K | 2026-05-25 | Claude Code job-search system with multiple skill modes and workflow automation |
+| caveman | github.com/JuliusBrussee/caveman | ~64K | 2026-05-25 | Claude Code skill focused on compressed agent communication and token reduction |
+| career-ops | github.com/career-ops-hq/career-ops | ~47K | 2026-05-25 | Claude Code job-search system with multiple skill modes and workflow automation |
 | googleworkspace-cli | github.com/googleworkspace/cli | ~27K | 2026-05-25 | Google Workspace CLI with AI agent skills and dynamic Google API discovery |
 | claude-code-game-studios | github.com/Donchitos/Claude-Code-Game-Studios | ~20K | 2026-05-25 | Game-studio agent hierarchy with dozens of workflow skills |
 | frontend-slides | github.com/zarazhangrui/frontend-slides | ~19K | 2026-05-25 | Claude frontend skill for HTML presentations and deck conversion |
 | huashu-design | github.com/alchaincyf/huashu-design | ~15K | 2026-05-25 | HTML-native Claude Code design skill for prototypes, posters, and UI/UX output |
 | guizang-ppt-skill | github.com/op7418/guizang-ppt-skill | ~12K | 2026-05-25 | AI-agent skill for polished HTML slide decks and visual presentation layouts |
-| ai-research-skills | github.com/orchestra-research/ai-research-skills | ~9K | 2026-05-25 | Large AI research and engineering skills library |
-| guda-skills | github.com/GudaStudio/skills | ~2K | 2026-05-25 | Agent Skills collection from GudaStudio |
+| ai-research-skills | github.com/Orchestra-Research/AI-Research-SKILLs | ~9K | 2026-05-25 | Large AI research and engineering skills library |
+| guda-skills | github.com/GuDaStudio/skills | ~2K | 2026-05-25 | Agent Skills collection from GudaStudio |
 | claude-mem | github.com/thedotmack/claude-mem | ~78K | 2026-05-25 | Persistent context layer for agent sessions across Claude Code, Codex, Gemini, and others |
 | learn-claude-code | github.com/shareAI-lab/learn-claude-code | ~62K | 2026-05-25 | Nano Claude Code-like agent harness and learning corpus |
 | cc-switch | github.com/farion1231/cc-switch | ~80K | 2026-05-25 | Cross-platform assistant launcher for Claude Code, Codex, OpenCode, Gemini CLI, and others |
 | vibe-kanban | github.com/BloopAI/vibe-kanban | ~26K | 2026-05-25 | Kanban-style orchestration for Claude Code, Codex, and coding agents |
-| codexbar | github.com/steipete/codexbar | ~13K | 2026-05-25 | macOS menu bar usage monitor for OpenAI Codex and Claude Code |
+| codexbar | github.com/steipete/CodexBar | ~13K | 2026-05-25 | macOS menu bar usage monitor for OpenAI Codex and Claude Code |
 | affaan-m-ecc | github.com/affaan-m/ECC | ~191K | 2026-05-25 | Sparse expansion score 5: direct skill/agent-skill signal; The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, C... |
 | chalarangelo-30-seconds-of-code | github.com/Chalarangelo/30-seconds-of-code | ~128K | 2026-05-25 | Sparse expansion score 5: direct skill/agent-skill signal; Coding articles to level up your development skills |
 | nextlevelbuilder-ui-ux-pro-max-skill | github.com/nextlevelbuilder/ui-ux-pro-max-skill | ~82K | 2026-05-25 | Sparse expansion score 5: direct skill/agent-skill signal; An AI SKILL that provide design intelligence for building professional UI/UX multiple platforms |
@@ -67,7 +67,7 @@ Last updated: 2026-07-21
 | ruvnet-ruflo | github.com/ruvnet/ruflo | ~55K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build... |
 | earendil-works-pi | github.com/earendil-works/pi | ~54K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods |
 | router-for-me-cliproxyapi | github.com/router-for-me/CLIProxyAPI | ~35K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; Wrap Gemini CLI, Antigravity, ChatGPT Codex, Claude Code, Grok Build as an OpenAI/Gemini/Claude/Codex compatible API service, allowing yo... |
-| hmbown-codewhale | github.com/Hmbown/CodeWhale | ~34K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; Coding agent for open source, open weight models |
+| hmbown-codewhale | github.com/Hmbown/Codewhale | ~34K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; Coding agent for open source, open weight models |
 | openai-symphony | github.com/openai/symphony | ~25K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; Symphony turns project work into isolated, autonomous implementation runs, allowing teams to manage work instead of supervising coding ag... |
 | manaflow-ai-cmux | github.com/manaflow-ai/cmux | ~19K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents |
 | jnmetacode-agency-agents-zh | github.com/jnMetaCode/agency-agents-zh | ~13K | 2026-05-25 | Sparse expansion score 4: coding-agent/tool host signal; 🎭 211 个即插即用的 AI 专家角色 — 支持 Hermes Agent/Claude Code/Cursor/Copilot 等 16 种工具，覆盖工程/设计/营销/金融等 18 个部门。含 46 个中国市场原创智能体（小红书/抖音/微信/飞书/钉钉等） |
@@ -116,7 +116,7 @@ Last updated: 2026-07-21
 | louisshark-chatgpt_system_prompt | github.com/LouisShark/chatgpt_system_prompt | ~11K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; A collection of GPT system prompts and various prompt injection/leaking knowledge. |
 | bia-pain-bache-bpb-worker-panel | github.com/bia-pain-bache/BPB-Worker-Panel | ~10K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; A GUI Panel providing Worker subscriptions for VLESS, Trojan and Warp configs alongside a private DoH server and chain proxies, offering... |
 | unopim-unopim | github.com/unopim/unopim | ~10K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; Unopim is a free and open-source Laravel-based Product Information Management (PIM) system that helps businesses manage and enrich produc... |
-| qualcomm-nexa-sdk | github.com/qualcomm/nexa-sdk | ~8K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; Run frontier LLMs and VLMs with day-0 model support across GPU, NPU, and CPU, with comprehensive runtime coverage for PC (Python/C++), mo... |
+| qualcomm-nexa-sdk | github.com/qualcomm/GenieX | ~8K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; Run frontier LLMs and VLMs with day-0 model support across GPU, NPU, and CPU, with comprehensive runtime coverage for PC (Python/C++), mo... |
 | thinkingjimmy-learning-prompt | github.com/thinkingjimmy/Learning-Prompt | ~5K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; Free prompt engineering online course. ChatGPT and Midjourney tutorials are now included! |
 | jandedobbeleer-oh-my-posh2 | github.com/JanDeDobbeleer/oh-my-posh2 | ~5K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; A prompt theming engine for Powershell |
 | olivierverdier-zsh-git-prompt | github.com/olivierverdier/zsh-git-prompt | ~2K | 2026-05-25 | Sparse expansion score 3: agent/framework/tooling signal; Informative git prompt for zsh |
@@ -155,6 +155,13 @@ Last updated: 2026-07-21
 | rvc-boss-gpt-sovits | github.com/RVC-Boss/GPT-SoVITS | ~58K | 2026-05-25 | Sparse expansion score 2: keyword match but weak skill signal; 1 min voice data can also be used to train a good TTS model! (few shot voice cloning) |
 | h5bp-html5-boilerplate | github.com/h5bp/html5-boilerplate | ~57K | 2026-05-25 | Sparse expansion score 2: general devtool/config/template signal; A professional front-end template for building fast, robust, and adaptable web apps or sites. |
 | zylon-ai-private-gpt | github.com/zylon-ai/private-gpt | ~57K | 2026-05-25 | Sparse expansion score 2: keyword match but weak skill signal; Interact with your documents using the power of GPT, 100% privately, no data leaks |
+| agentskills-spec | github.com/agentskills/agentskills | 25048 | 2026-09-05 | Official format plus authoring and evaluation guidance |
+| vercel-skills-cli | github.com/vercel-labs/skills | 30438 | 2026-09-05 | Whole-skill update hashes and installation boundary regression tests |
+| nvidia-skillspector | github.com/NVIDIA/SkillSpector | 16218 | 2026-09-05 | Bundled execution-surface inspection and incomplete-scan gates |
+| skillcorpus | github.com/EverMind-AI/SkillCorpus | 543 | 2026-09-05 | Curated multi-source skill retrieval with ranking metrics and license gates |
+| comet | github.com/rpamis/comet | 2928 | 2026-09-05 | Named eval treatments, package snapshots, and explicit reliability estimators |
+| nvidia-skillevaluator | github.com/NVIDIA/SkillEvaluator | 404 | 2026-09-05 | Tiered evaluation, trusted negative-control evidence, and runtime isolation tests |
+| langchain-skills-benchmarks | github.com/langchain-ai/skills-benchmarks | 116 | 2026-09-05 | No-skill and multi-skill treatment definitions; packaging and interference experiments |
 
 ## Discovery Log
 
@@ -190,3 +197,11 @@ Last updated: 2026-07-21
 - Updated: current OpenAI, Anthropic, and Matt Pocock authoring artifacts were re-inspected alongside Philipp Schmid's talk and guide.
 - Locked: every manifest repository to its remote HEAD and every directly sampled artifact to a path and SHA-256 in `SOURCES.lock.json`.
 - Boundary: a resolved source revision or artifact hash is provenance evidence, not proof that a skill behaves better. Behavioral claims still require executed skill-versus-baseline trials.
+
+### 2026-09-05
+
+- Checked all 147 previous source entries: 114 changed revisions, 33 unchanged. Six repository-name redirects recorded.
+- Added seven sources: agentskills-spec, vercel-skills-cli, nvidia-skillspector, skillcorpus, comet, nvidia-skillevaluator, langchain-skills-benchmarks.
+- Total: 154 source entries, 153 unique canonical repositories. `everything-claude-code` and `affaan-m-ecc` intentionally retain historical IDs for the same ECC repository; do not count them as independent evidence.
+- Replaced the removed Matt Pocock sampled authoring path with `skills/productivity/writing-for-agents/SKILL.md`; previous path and hash remain in the dated dataset.
+- See [September update](../../wiki/queries/monthly-update-2026-09.md) and [machine-readable coverage](../datasets/source-refresh-2026-09-05.json) for search limits, decisions, old/new SHAs, and sampled evidence.

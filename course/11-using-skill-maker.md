@@ -1,5 +1,7 @@
 # Module 11: Using the Skill Maker (Capstone)
 
+> The transcript illustrates interactive design. For an explicit implementation request, the Skill Maker can use established requirements and proceed under existing authority; its fast path skips redundant design approvals.
+
 The Skill Maker is a gstack-style interactive workflow that guides you through creating a production-quality skill. It asks forcing questions, challenges your assumptions, produces a structurally validated `SKILL.md`, and defines the behavioral evaluation gate used in Module 12.
 
 ## How to start
@@ -28,7 +30,7 @@ Example prompt: "I want a skill that reviews our API endpoints for breaking chan
 
 ### Phase 2: Diagnose (up to 6 questions)
 
-Five forcing questions that sharpen the idea:
+Six forcing questions that sharpen the idea:
 - **Who uses this?** (just you, your team, or open source?)
 - **What exactly do they repeat?** (be specific)
 - **What goes wrong today?** (what the agent gets wrong without the skill)

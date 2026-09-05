@@ -6,7 +6,7 @@ Your skill shares the context window with the system prompt, conversation histor
 
 ## The three-phase model
 
-1. **Discovery** (~100 tokens): Only `name` + `description` loaded. All skills at startup.
+1. **Discovery** (~100 tokens): Only `name` + `description` loaded. Exact indexing/preload behavior is host-specific.
 2. **Activation** (< 5000 tokens target): Full SKILL.md body loaded when the task matches.
 3. **Execution** (as needed): Referenced files loaded on demand.
 
@@ -122,7 +122,7 @@ and ALTER TABLE. Migrations typically use DDL (Data Definition Language)
 commands like CREATE, ALTER, and DROP.
 
 ## Gotchas
-- Always run migrations in a transaction so failures can roll back
+- Use transactions when the migration runner and statements support them; inspect partially applied state before retrying
 - Check for `IF NOT EXISTS` to make migrations idempotent
 - The CI database may have a different schema version than local
 ```
@@ -151,7 +151,7 @@ Run pending migration files against the database and fix failures.
 4. Repeat until all migrations applied
 
 ## Gotchas
-- Always run migrations in a transaction so failures roll back
+- Use supported transaction boundaries and inspect partial state before retrying
 - Use `IF NOT EXISTS` for idempotency
 - CI database may have a different schema version than local
 ```

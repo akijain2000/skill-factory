@@ -31,8 +31,8 @@ async function collectMarkdown(dir: string): Promise<string[]> {
         files.push(full);
       }
     }
-  } catch {
-    // directory doesn't exist
+  } catch (error) {
+    throw new Error(`Cannot read Markdown directory ${dir}: ${error instanceof Error ? error.message : String(error)}`);
   }
   return files;
 }
@@ -52,6 +52,7 @@ async function checkLinks(dirs: string[]): Promise<BrokenLink[]> {
 
   for (const dir of dirs) {
     const files = await collectMarkdown(dir);
+    if (files.length === 0) throw new Error(`No Markdown files found in ${dir}`);
 
     for (const file of files) {
       const content = await readFile(file, "utf-8");
@@ -104,7 +105,7 @@ console.log(`\nChecking links in: ${dirs.join(", ")}\n`);
 const broken = await checkLinks(dirs);
 
 if (broken.length === 0) {
-  console.log("All internal links are valid.\n");
+  console.log("All checked inline Markdown link targets exist (anchors and reference-style links are not checked).\n");
   process.exit(0);
 }
 

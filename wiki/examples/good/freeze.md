@@ -1,5 +1,7 @@
 # Example: freeze
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: raw/repos/gstack/freeze/SKILL.md
 Rating: Good
 Why: Frontmatter combines a clear capability summary with repeated natural-language triggers, declares hooks and allowed tools, and the body stays focused: setup flow, absolute path handling, how enforcement works, and honest limitations (not a security boundary). This is a concise gstack skill without the long shared preamble found in `browse` or `checkpoint`.

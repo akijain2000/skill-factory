@@ -97,7 +97,7 @@ If a skill applies, you MUST use it. This is not optional.
 
 ```
 NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
-If you haven't run the command in this message, you cannot claim it passes.
+Reuse an existing result only when its exact inputs remain unchanged; rerun when new edits or uncertainty invalidate it.
 ```
 
 ## Degrees of freedom
@@ -247,7 +247,7 @@ Real example from superpowers' verification-before-completion:
 ```markdown
 | Thought | Reality |
 |---------|---------|
-| "I just ran it successfully" | Previous run ≠ current state. Run it again. |
+| "I just ran it successfully" | Check the inputs: reuse unchanged valid evidence; rerun after relevant changes. |
 | "The change is too small to break anything" | Small changes cause big bugs. Verify. |
 | "I can see from the code that it works" | Reading is not running. Run the test. |
 ```
@@ -256,7 +256,7 @@ Real example from superpowers' verification-before-completion:
 
 For each scenario, decide: high, medium, or low freedom?
 
-1. **Formatting code before commit** -- Answer: **Low**. Exact command: `npx prettier --write .` There's one right answer.
+1. **Formatting code before commit** -- Answer: **Low**. Exact command: the repository's formatter applied only to authorized changed files. Use its existing configuration.
 
 2. **Writing a README for a new project** -- Answer: **High**. "Write a clear, concise README covering setup, usage, and contributing." The agent knows what a good README looks like.
 

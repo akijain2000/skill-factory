@@ -1,6 +1,6 @@
 # Skill Factory Wiki Index
 
-Last compiled: 2026-07-21
+Last compiled: 2026-09-05
 
 ## Concepts (core patterns for skill authoring)
 
@@ -27,6 +27,9 @@ Last compiled: 2026-07-21
 - [Implementation Patterns](concepts/implementation-patterns.md) -- Five recurring workflow patterns: Sequential, Multi-MCP, Iterative, Context-Aware, Domain-Specific.
 - [Validation Loops](concepts/validation-loops.md) -- Task validate-fix loops plus library-scale stocktake and compliance measurement.
 
+- [Skill Supply Chain](concepts/skill-supply-chain.md) -- Source identity, licensing, whole-bundle inspection, package hashes, and incomplete-scan evidence.
+- [Retrieval and Interference](concepts/retrieval-and-interference.md) -- Ranking, activation, outcomes, and isolated versus shelf/package experiments.
+
 ## Research (ecosystem analysis)
 
 - [Anatomy of a Good Skill](research/anatomy-of-a-good-skill.md) -- Checklist of structural patterns strong skills share across corpora.
@@ -40,6 +43,8 @@ Last compiled: 2026-07-21
 - [Skill Evolution 2026-05](research/skill-evolution-2026-05.md) -- 100-repo expansion findings: skills now compose with agents, memory, MCP, hooks, commands, and verification.
 - [Spec Reference](research/spec-reference.md) -- agentskills.io distilled: layout, frontmatter, constraints as lint target.
 - [Tool Design Evolution](research/tool-design-evolution.md) -- How Anthropic iterated on AskUserQuestion, TodoWrite, search, and progressive disclosure.
+
+- [Skill Evolution 2026-09](research/skill-evolution-2026-09.md) -- Seven retained sources and concrete source, security, retrieval, dispatch, and evaluation lessons.
 
 ## Examples
 
@@ -68,6 +73,12 @@ Bad (anti-patterns):
 - [Repo discovery for better skills 2026-05-25](queries/repo-discovery-for-better-skills-2026-05-25.md) -- How GitHub/repo search becomes an authoring loop for improving SKILL.md quality.
 - [Gap report: repo discovery pattern 2026-05-25](queries/gap-report-repo-discovery-pattern-2026-05-25.md) -- Documents the missing pattern and the files added to close it.
 - [Eval checkpointing observation 2026-07-21](queries/observation-20260721-eval-checkpointing.md) -- Why long behavioral evals need privacy-safe per-run persistence, fingerprinted resume, and atomic reports.
+- [Operational skill drift observation 2026-07-23](queries/observation-20260723-operational-skill-drift.md) -- Why plausible stale runbooks are control-plane vulnerabilities and need source contradiction plus negative behavior cases.
 - [Source provenance lock observation 2026-07-21](queries/observation-20260721-source-provenance-lock.md) -- Separates disposable clones, repository revisions, sampled artifact hashes, and behavioral proof.
 - [Anonymized private-shelf router eval case study 2026-07-21](queries/private-router-eval-case-study-2026-07-21.md) -- Strong outcome deltas still failed routing; documents isolation, checkpointing, activation telemetry, and evidence placement without identifying the source project.
 - [Documentation refresh 2026-07-21](queries/documentation-refresh-2026-07-21.md) -- Complete 92-file Markdown review ledger, immutable raw boundary, new learnings, and validation contract.
+
+- [Monthly update 2026-09](queries/monthly-update-2026-09.md) -- All-source revision census, 190 candidate records, seven additions, 43 samples, and applied learnings.
+- [Health report 2026-09-05](queries/health-report-2026-09-05.md) -- Local structural/source-integrity checks, source lock integrity, index coverage, and explicit behavioral limits.
+
+- [Documentation completion 2026-09-05](queries/documentation-completion-2026-09-05.md) -- Full repository Markdown review, evidence-tool hardening, and Atelier propagation with explicit behavioral limits.

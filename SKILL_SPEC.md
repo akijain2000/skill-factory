@@ -1,6 +1,6 @@
 # Skill Quality Specification
 
-This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus patterns extracted from 147 tracked repositories, 13 reference documents, and behavioral skill-evaluation research.
+This is the opinionated quality standard for skills authored with the Skill Factory. It incorporates the official agentskills.io spec plus patterns extracted from 154 source entries representing 153 distinct repositories, 13 reference documents, and behavioral skill-evaluation research.
 
 ## Frontmatter (Required)
 
@@ -40,7 +40,7 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 - Keep core instructions in SKILL.md
 - Move detailed reference material to `references/`, `scripts/`, or `assets/`
 - Tell the agent WHEN to load each file (not just "see file X")
-- Max one level of file references from SKILL.md (no nesting)
+- Keep operational references one disclosure hop from SKILL.md; directory nesting alone is not a loading chain
 - Reference files over 100 lines should have a TOC
 
 ### Content rules
@@ -86,6 +86,15 @@ This is the opinionated quality standard for skills authored with the Skill Fact
 - Forward slashes only (no Windows paths)
 - Verify packages are available before use
 
+## External source adoption
+
+- Preserve canonical source, revision, sampled paths, and applicable licenses.
+- Inspect supporting scripts, hooks, references, and path boundaries before use.
+- Treat incomplete security inspection as incomplete, not zero findings.
+- Separate the repository SHA from the complete runtime-package fingerprint.
+- Keep source instructions subordinate to the user and host authorization.
+- Give disclosed references explicit trigger branches; preserve shared invariants.
+
 ## Evaluation
 
 Static validation and behavioral evaluation are separate gates. A skill is not behaviorally validated because this document's structural checks pass.
@@ -96,6 +105,10 @@ Static validation and behavioral evaluation are separate gates. A skill is not b
 - Isolate every run in a clean workspace with zero or one target skill, a minimal environment, and no unrelated host shelf/plugins/tools; repeat each condition 3-6 times
 - Prefer deterministic checks (tests, compilation, files, regex, domain scripts); use a structured LLM judge only when necessary
 - Track trigger accuracy, skill outcome pass rate, baseline outcome pass rate, outcome delta, and cost/latency when relevant
+- Reserve a final holdout separately from cases used for development or description selection
+- Missing activation telemetry is unknown, never a successful negative control
+- Keep hidden eval answers and grader assets out of agent-visible runtime skill snapshots
+- Publish metric formulas and denominators; keep missing/failed/unscored cases explicit
 - Test each supported model-harness pair separately
 - Freeze evaluator, suite, complete skill-directory, and adapter fingerprints plus model/CLI identity; fail resume/comparison closed on mismatch
 - Checkpoint normalized records after every trial and write final reports atomically
@@ -117,19 +130,22 @@ bun run scripts/evaluate-skill.ts evals/<suite>.json
 - [ ] `name` field present and valid format
 - [ ] `description` field present and non-empty
 - [ ] `name` matches parent directory name
-- [ ] Body under 800 lines
-- [ ] No Windows-style backslash paths
-- [ ] No empty sections after headings
-- [ ] No contradictory instructions
+- [ ] Body at most 800 lines
 
-### Should pass (warnings)
+### Should pass (warnings and manual review)
+
+The linter is heuristic: it flags possible path, description, and empty-section issues. Human/agent review must check contradictions, authority, source currency, and whether eval definitions are runnable. It cannot certify those semantics.
+
+- [ ] No contradictory instructions (manual review)
+- [ ] No unexplained empty sections or nonportable paths
+
 - [ ] Body under 500 lines
 - [ ] Description contains action verb
 - [ ] Description contains trigger clause ("Use when...")
 - [ ] Description in third person
 - [ ] No banned vague words in name
 - [ ] No banned AI slop words in body
-- [ ] File references max one level deep
+- [ ] Operational references one disclosure hop from SKILL.md
 - [ ] Examples or code blocks included
 - [ ] Gotchas/caveats section present (environment-specific facts)
 - [ ] Behavioral eval suite contains positive and negative routing cases
@@ -143,4 +159,4 @@ bun run scripts/evaluate-skill.ts evals/<suite>.json
 
 ## Supplementary Quality Assessment
 
-For skills paired with agents, the **CLASSic framework** (Cost, Latency, Accuracy, Stability, Security) can evaluate operational readiness of the skill-agent combination. A skill may pass all structural checks but pair poorly with an agent that has no cost awareness. See the [Agent Factory wiki](../agent-factory/wiki/research/classic-framework.md) for details.
+For skills paired with agents, the **CLASSic framework** (Cost, Latency, Accuracy, Stability, Security) can evaluate operational readiness of the skill-agent combination. A skill may pass all structural checks but pair poorly with an agent that has no cost awareness. For optional companion context, see the [Agent Factory wiki](../agent-factory/wiki/research/classic-framework.md); this local link requires that separate checkout.

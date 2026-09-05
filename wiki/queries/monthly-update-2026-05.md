@@ -1,5 +1,7 @@
 # Monthly Update - May 2026
 
+> Historical receipt: counts, paths, and decisions below belong to this dated run (some source descriptions are truncated discovery metadata). Current source authority is the [September refresh](monthly-update-2026-09.md), revision lock, and artifact ledger.
+
 ## Search Method
 
 Started from top GitHub repositories using `raw/repos/github-ranking/Top100/Top-100-stars.md`, then scanned TypeScript, Python, Rust, Go, Shell, and JavaScript rankings plus the May 25 full ranking CSV. Candidates were filtered with `scripts/discovery-keywords.txt` and scored with the 1-5 relevance rubric in `scripts/update-sources.md`.

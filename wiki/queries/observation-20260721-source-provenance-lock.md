@@ -32,8 +32,12 @@ resolved sampled artifact additionally proves the exact file content inspected.
 Neither proves that a skill triggers correctly or improves outcomes; those
 claims still require executed, repeated skill-versus-baseline evaluation.
 
-## Current resolution
+## Resolution at the end of this observation
 
 After the manifest refresh, the generated lock resolves 147 of 147 repository
 sources and 6 of 6 sampled artifacts. The earlier 145-repository count above is
 the historical audit finding, not the current corpus size.
+
+## Sources
+
+This first-party observation records the implementation state at its date. Current public mechanics are in [evaluation](../../scripts/evaluate-skill.ts) and [source locking](../../scripts/lock-sources.ts); later edits do not retroactively validate the historical run.

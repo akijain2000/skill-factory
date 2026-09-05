@@ -34,7 +34,7 @@ appear, and keep contaminated checkpoints diagnostic-only.
 
 **Terminal/agent products** such as **OpenAI Codex** (`openai/codex`, Rust CLI) and **goose** (`block/goose`, MCP-centric local agent) load project rules and skills per their own docs; still use the same **portable SKILL.md** baseline when you want overlap with Codex `.agents/skills/` or Claude paths.
 
-**Provider shims** such as **OpenClaude** (`Gitlawb/openclaude`) demonstrate that Claude Code's entire tool system (Bash, FileRead/Write/Edit, Glob, Grep, WebFetch, WebSearch, Agent, MCP, Tasks) can be driven by **any** LLM via an OpenAI-compatible API translation layer (`openaiShim.ts`, ~1100 lines). The shim translates Anthropic message blocks to OpenAI messages, Anthropic tool_use/tool_result to OpenAI function calls, and OpenAI SSE streaming back to Anthropic stream events. This means skills authored for Claude Code's tool surface are **functionally portable** to GPT-4o, DeepSeek, Gemini, Llama, and 200+ models -- the skill instructions don't change, only the underlying model quality varies.
+**Provider shims** such as OpenClaude illustrate protocol translation for OpenAI-compatible backends. Source inspection does not establish tool parity or behavioral compatibility across models. Test discovery, tools, permissions, and outcomes separately for each supported configuration.
 
 ## Good example
 

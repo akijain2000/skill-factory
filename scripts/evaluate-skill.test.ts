@@ -171,3 +171,49 @@ describe("evaluate-skill", () => {
     expect(resumed.stderr).toContain("checkpoint suiteSha256 mismatch");
   });
 });
+
+test("rejects missing runtime identity before accepting a report", async () => {
+  const dir = makeTestDir("skill-eval-identity-");
+  const suite = JSON.parse(readFileSync(exampleSuite, "utf8"));
+  suite.rootDir = repoRoot;
+  const adapter = join(dir, "adapter.ts");
+  writeFileSync(adapter, 'console.log(JSON.stringify({ triggered: false, output: "example" }));');
+  suite.runner.command = ["bun", adapter];
+  const path = join(dir, "suite.json");
+  writeFileSync(path, JSON.stringify(suite));
+  const result = await run([path]);
+  expect(result.exitCode).toBe(2);
+  expect(result.stderr).toContain("metadata is required");
+});
+
+test("rejects inconsistent checkpoint records", async () => {
+  const dir = makeTestDir("skill-eval-tamper-");
+  const gate = join(dir, "gate");
+  const suite = writeCheckpointSuite(dir, gate);
+  const report = join(dir, "report.json");
+  await run([suite, "--report", report]);
+  const checkpoint = report + ".runs.jsonl";
+  const lines = readFileSync(checkpoint, "utf8").trim().split("\n").map(JSON.parse);
+  lines[1].run.passed = !lines[1].run.passed;
+  writeFileSync(checkpoint, lines.map((line) => JSON.stringify(line)).join("\n") + "\n");
+  writeFileSync(gate, "ready");
+  const result = await run([suite, "--report", report, "--resume"]);
+  expect(result.exitCode).toBe(2);
+  expect(result.stderr).toContain("checkpoint result is inconsistent");
+});
+
+test("rejects every non-accepted evidence status", async () => {
+  const dir = makeTestDir("skill-eval-status-");
+  for (const value of ["contaminated", "unknown", "diagnostic ", "ACCEPTED"]) {
+    const suite = JSON.parse(readFileSync(exampleSuite, "utf8"));
+    suite.rootDir = repoRoot;
+    const adapter = join(dir, "adapter.ts");
+    writeFileSync(adapter, `console.log(JSON.stringify({ triggered: false, output: "example", metadata: { model: "fake", harness: "fake-v1", evidence_status: ${JSON.stringify(value)} } }));`);
+    suite.runner.command = ["bun", adapter];
+    const path = join(dir, "suite.json");
+    writeFileSync(path, JSON.stringify(suite));
+    const result = await run([path]);
+    expect(result.exitCode).toBe(2);
+    expect(result.stderr).toContain("non-accepted evidence_status");
+  }
+});

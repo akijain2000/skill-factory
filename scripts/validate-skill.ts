@@ -5,7 +5,7 @@
  * Usage: bun run scripts/validate-skill.ts <path-to-skill-directory>
  */
 
-import { readFileSync, existsSync, statSync } from "fs";
+import { readFileSync, existsSync, statSync, readdirSync } from "fs";
 import { basename, join, resolve } from "path";
 
 const BANNED_NAMES = new Set([
@@ -75,12 +75,14 @@ function parseFrontmatter(content: string): { meta: Record<string, string>; body
     return { meta: {}, body: content, bodyStartLine: 1 };
   }
 
-  const meta: Record<string, string> = {};
-  for (let i = 1; i < endIdx; i++) {
-    const match = lines[i]?.match(/^(\w[\w-]*):\s*(.+)$/);
-    if (match) {
-      meta[match[1]] = match[2].replace(/^["']|["']$/g, "");
+  let meta: Record<string, string> = {};
+  try {
+    const parsed = Bun.YAML.parse(lines.slice(1, endIdx).join("\n"));
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      meta = Object.fromEntries(Object.entries(parsed).filter(([, value]) => typeof value === "string")) as Record<string, string>;
     }
+  } catch {
+    // Invalid YAML fails the required-field checks below.
   }
 
   return {
@@ -123,7 +125,7 @@ function validate(skillDir: string): Issue[] {
       issues.push({ severity: "error", message: `Name '${meta.name}' exceeds 64 characters (${meta.name.length})` });
     }
     if (meta.name !== dirName) {
-      issues.push({ severity: "warning", message: `Name '${meta.name}' does not match directory name '${dirName}'` });
+      issues.push({ severity: "error", message: `Name '${meta.name}' does not match directory name '${dirName}'` });
     }
     const nameParts = meta.name.split("-");
     if (nameParts.every((p: string) => BANNED_NAMES.has(p))) {
@@ -170,14 +172,18 @@ function validate(skillDir: string): Issue[] {
     }
   }
 
-  // Empty sections
-  for (let i = 0; i < bodyLines.length - 1; i++) {
-    if (/^#{1,6}\s+.+/.test(bodyLines[i]) && /^#{1,6}\s+.+/.test(bodyLines[i + 1])) {
-      issues.push({
-        severity: "warning",
-        message: `Line ${bodyStartLine + i}: Empty section (heading immediately followed by another heading)`,
-        line: bodyStartLine + i,
-      });
+  // A parent heading with subsections is not empty. Ignore quoted code examples.
+  let fenced = false;
+  for (let i = 0; i < bodyLines.length; i++) {
+    if (/^\s*(```|~~~)/.test(bodyLines[i])) { fenced = !fenced; continue; }
+    if (fenced) continue;
+    const heading = bodyLines[i].match(/^(#{1,6})\s+.+/);
+    if (!heading) continue;
+    let next = i + 1;
+    while (next < bodyLines.length && !bodyLines[next].trim()) next++;
+    const nextHeading = bodyLines[next]?.match(/^(#{1,6})\s+.+/);
+    if (next === bodyLines.length || (nextHeading && nextHeading[1].length <= heading[1].length)) {
+      issues.push({ severity: "warning", message: `Line ${bodyStartLine + i}: Empty section`, line: bodyStartLine + i });
     }
   }
 
@@ -198,21 +204,15 @@ function validate(skillDir: string): Issue[] {
     });
   }
 
-  // Nested file references (depth > 1)
-  const refPattern = /\[.*?\]\(((?:references|scripts|assets)\/.*?)\)/g;
-  let refMatch;
-  while ((refMatch = refPattern.exec(body)) !== null) {
-    const refPath = refMatch[1];
-    if (refPath.split("/").length > 2) {
-      issues.push({ severity: "warning", message: `Deeply nested file reference: ${refPath} (keep one level deep)` });
-    }
-  }
-
-  // Behavioral eval evidence check. Static presence is not proof that the suite ran.
+  // Link depth is about disclosure hops, not the number of path components.
+  // Definition indicators are a discovery heuristic, never behavioral evidence.
   const hasTestSection = /#{1,3}\s+.*\b(test|evaluate|evaluation|scenarios|verify)\b/i.test(body);
-  const hasEvalDirectory = existsSync(join(skillDir, "evals"));
-  if (!hasTestSection && !hasEvalDirectory) {
-    issues.push({ severity: "warning", message: "No behavioral eval evidence found. Add positive/negative routing cases and repeated skill-vs-baseline outcome checks." });
+  const evalDir = join(skillDir, "evals");
+  const hasEvalDefinition = existsSync(evalDir) && statSync(evalDir).isDirectory()
+    && readdirSync(evalDir).some((name) => /\.(json|md|ya?ml)$/.test(name)
+      && statSync(join(evalDir, name)).isFile() && statSync(join(evalDir, name)).size > 0);
+  if (!hasTestSection && !hasEvalDefinition) {
+    issues.push({ severity: "warning", message: "No eval definition indicator found. Define positive/negative routing cases and skill-vs-baseline outcome checks; static presence does not prove execution." });
   }
 
   // Example check (SKILL_SPEC recommends concrete examples)

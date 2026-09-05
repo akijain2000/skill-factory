@@ -1,144 +1,76 @@
 # Module 9: Multi-Host Compatibility
 
-Ship your skill to every agent, not just one.
+The portable file format reduces packaging friction. It does not establish that
+every host discovers the skill or that every model follows it correctly.
 
-## The portable core
-
-The agentskills.io spec is the common ground. If your SKILL.md uses only these fields, it works everywhere:
+## Portable core
 
 ```yaml
 ---
 name: my-skill
-description: Does X. Use when Y.
+description: Review release evidence. Use when preparing a release review.
 ---
 ```
 
-## Host-specific locations
+The current pinned format supports optional license, compatibility, metadata and
+experimental allowed-tools fields. Vendor fields, hooks, tool permissions, plugin
+state, and UI companion files need host-specific validation. See the [source
+manifest](../raw/repos/SOURCES.md) and [host compatibility](../wiki/concepts/host-compatibility.md).
 
-| Host | Install Path | Project Path |
-|------|-------------|-------------|
-| Claude Code | `~/.claude/skills/my-skill/` | `.claude/skills/my-skill/` |
-| Cursor | `~/.cursor/skills/my-skill/` | `.cursor/skills/my-skill/` or `.agents/skills/my-skill/` |
-| Codex CLI | `~/.codex/skills/my-skill/` | `.agents/skills/my-skill/` |
-| Gemini CLI | N/A | `.agents/skills/my-skill/` |
+## Verify the target host
 
-## Extended fields (not portable)
+1. Identify the actual host/CLI version, model and available tools.
+2. Read that version's official installation/discovery documentation. Prefer
+   bundled official docs when present. Historical path tables in this course's
+   captured sources are examples, not a guarantee about the current runtime.
+3. Select the installed skill root from the host's catalog or configuration.
+   Atelier's project shelf is `.agents/skills/`. Avoid installing duplicate copies
+   into several global roots to work around uncertain discovery.
+4. Keep operational references relative to the skill root and document required
+   platform capabilities. Do not assume a host interprets another host's hooks.
+5. Probe discovery and run a representative task on each supported configuration.
+   Record observed differences rather than inferring parity from the shared format.
 
-Some hosts add fields beyond the spec:
+## Host companion example
 
-| Field | Host | Purpose |
-|-------|------|---------|
-| `allowed-tools` | Claude Code | Pre-approve tools |
-| `context: fork` | Claude Code | Run in isolated subagent |
-| `agent` | Claude Code | Subagent type specification |
-| `hooks` | Claude Code | Lifecycle event handlers |
-| `agents/openai.yaml` | Codex | Agent-specific config |
-
-If you use these, your skill won't work on other hosts without modification.
-
-## Portability strategy
-
-1. **Keep SKILL.md portable**: Use only `name` + `description` in frontmatter
-2. **Host-specific config**: Put in separate files (`agents/openai.yaml`, `.claude/settings.json`)
-3. **Tool references**: Use generic descriptions ("run the test suite") not specific tool names ("use Bash(npm:*)")
-4. **Don't hardcode paths**: Use relative paths from the skill root
-
-## Skills are model-agnostic too
-
-The OpenClaude project (7K+ stars) proved something important: Claude Code's entire tool system -- Bash, file operations, search, web fetch, agents, MCP -- can be driven by **any** LLM through a 1,100-line API translation shim. GPT-4o, DeepSeek, Gemini, Llama, Mistral, and 200+ models all execute the same tool chains.
-
-What this means for skill authors: your SKILL.md instructions don't just work across hosts (Cursor, Claude Code, Codex) -- they work across **models**. The skill stays the same; only the underlying LLM changes.
-
-This validates the investment in writing good skills: a well-crafted SKILL.md is a durable asset that survives model upgrades, host migrations, and provider changes.
-
-Portability does not make eval results interchangeable. Behavioral evidence is
-bound to a runtime identity: model/version, host CLI and flags, available tools,
-environment policy, adapter content, complete skill-directory content, and eval
-suite. Compare skill and baseline arms only when those identities match apart
-from installing the target skill.
-
-For routing evals, a clean workspace is not enough. Use a disposable host home,
-disable unrelated project/global skill shelves and plugins, expose zero target
-skills to the baseline and exactly one to the skill arm, pass a minimal
-environment allowlist, and remove temporary auth material afterward.
-
-## Adjacent protocols
-
-- **MCP (Model Context Protocol)**: How agents connect to external tools. Not a skill format, but skills can reference MCP tools. 83K+ stars on the reference implementation.
-- **A2A (Agent2Agent)**: Protocol for agents to talk to each other. Emerging standard for multi-agent workflows. 23K+ stars.
-- **AGENTS.md**: Loaded every prompt (project context), not on-demand like skills. Different purpose.
-
----
-
-## Try It: Port a skill across hosts
-
-### Lab 9A: Portability audit (10 min)
-
-Take the `commit-message-writer` skill from Module 7 (or any skill you've written). Run this portability checklist:
-
-| Check | Pass? |
-|-------|-------|
-| Only `name` + `description` in frontmatter | |
-| No host-specific fields (`allowed-tools`, `hooks`, `agent`) | |
-| No hardcoded absolute paths | |
-| Tool references use generic language ("run tests" not "use Bash(npm:*)") | |
-| No references to `~/.claude/` or `~/.cursor/` in the body | |
-| Works without any host-specific companion files | |
-
-If everything passes, your skill is portable.
-
-### Lab 9B: Install on two hosts (15 min)
-
-Take a passing skill and install it on two different agents:
-
-```bash
-# Host 1: Claude Code
-cp -r my-skill ~/.claude/skills/
-
-# Host 2: Cursor
-cp -r my-skill .agents/skills/
-```
-
-Test the same prompt on both agents. Compare:
-1. Did both agents activate the skill?
-2. Did both follow the same workflow?
-3. Were there any behavioral differences?
-
-Document differences as gotchas in your skill.
-
-### Lab 9C: Add host-specific config without breaking portability (10 min)
-
-If your skill needs Codex-specific UI metadata, add it as a companion file -- not in the SKILL.md frontmatter:
-
-```bash
-mkdir -p my-skill/agents
-```
-
-Create `my-skill/agents/openai.yaml`:
+The locally inspected Codex skill-creator companion uses an `interface` mapping:
 
 ```yaml
-display_name: My Skill
-short_description: Does X
-default_prompt: Run my skill on the current project
+interface:
+  display_name: "My Skill"
+  short_description: "Review release evidence"
 ```
 
-The SKILL.md stays portable. The companion file is ignored by other hosts.
+Put this in `agents/openai.yaml` only for a compatible host. Check its current
+schema before adding other fields. Other hosts may ignore companion metadata;
+that does not prove the operational behavior is portable.
 
----
+## Provider shims
+
+A translation shim can map messages and tool calls between provider protocols.
+Reading its source does not prove tool parity or successful skill execution across
+all advertised models. Test permissions, discovery, tools, and outcomes separately.
+
+## Evaluation lab
+
+Install the same operational package on two supported hosts and try natural
+positive and adjacent negative requests. Record exact model/CLI identities and
+whether the target file was actually loaded. A single run is diagnostic.
+
+For behavioral acceptance, freeze each model/host treatment and run repeated
+skill/no-skill trials with identical fixtures and limits. Use independent empty
+host state as well as workspaces; disable ambient skill shelves/plugins/memory
+and prove zero/one target exposure. Exclude answers and graders from runtime files.
+The included harness creates workspaces; its adapter owns these host guarantees.
+
+Reports from different models, hosts, suites or adapters are separate lineages.
+A format check cannot substitute for this runtime work.
 
 ## Checkpoint
 
-Before moving on, you should be able to:
-- Run a portability audit on any skill
-- Install a skill on 2+ different agents
-- Add host-specific config without breaking the portable SKILL.md
-- Explain why skills are model-agnostic (not just host-agnostic)
-- Explain why cross-host portability does not make eval reports comparable
-- Build a zero-skill/one-skill disposable eval host
+- Distinguish portable fields from host-specific behavior.
+- Verify an installation path rather than guessing from an old table.
+- Identify the evidence needed before claiming compatibility.
+- Keep static validation, discovery telemetry, outcomes and operational proof separate.
 
-## Further reading
-
-- [wiki/concepts/host-compatibility.md](../wiki/concepts/host-compatibility.md)
-- [wiki/research/host-differences.md](../wiki/research/host-differences.md)
-
-Next: [Module 10: Maintaining a Skill Library](10-maintaining-library.md)
+Previous: [Module 8](08-advanced-techniques.md). Next: [Module 10](10-maintaining-library.md).

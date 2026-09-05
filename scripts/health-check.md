@@ -17,15 +17,14 @@ Report:
 
 ## Step 2: Source integrity
 
-First run `bun run scripts/lock-sources.ts`. Report repository and sampled
-artifact resolution separately. A stale manifest hash, unresolved HEAD, or
+First inspect the existing lock without modifying it. Compare its manifest hash, source-row coverage, and sampled artifacts against the current files. If a network refresh is requested, preserve the old lock first and follow `update-sources.md`; `lock-sources.ts` overwrites its output. Report repository and sampled artifact resolution separately. A stale manifest hash, unresolved HEAD, or
 unresolved sampled artifact is a source-integrity failure. Do not infer retained
 source content from ignored `raw/repos/<repo>/` clones.
 
 For each article in `wiki/concepts/` and `wiki/research/`, check its `## Sources` section:
-- Every source path should point to a real file in `raw/`
+- Every maintained source link should resolve to a retained capture or a pinned remote artifact receipt; an absent disposable clone is not automatically a broken citation
 - Flag articles with no Sources section
-- Flag sources that have been updated since the article was last compiled (check git timestamps or file modification dates)
+- Compare the article's recorded revision and artifact hash with the dated lock/refresh receipt; report untracked claims explicitly. File modification times do not establish source freshness.
 
 ## Step 3: Cross-reference consistency
 
@@ -38,7 +37,7 @@ Scan all wiki articles for internal links. Verify:
 - Optional companion-repository links are labeled optional and checked only when
   that repository is present
 
-Verify that `raw/` Markdown captures have no working-tree diff. Source captures
+Verify that immutable `raw/docs/` Markdown captures have no working-tree diff. Maintained source manifests and dataset metadata are expected to change during a refresh. Source captures
 are evidence inputs, not canonical documents to silently rewrite.
 
 ## Step 4: Terminology consistency

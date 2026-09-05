@@ -1,8 +1,10 @@
 # Example: writing-plans
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: raw/repos/antigravity-awesome-skills/skills/writing-plans/SKILL.md
 Rating: Good
-Why: Clear audience assumption (skilled dev, zero repo context), concrete artifact path, bite-sized task granularity, and copy-paste templates for plan headers and TDD-style steps. It ends with an explicit execution handoff and optional sub-skills.
+Why: Clear audience assumption (skilled dev, zero repo context), concrete artifact path, bite-sized task granularity, and copy-paste templates for plan headers and TDD-style steps. It ends with an explicit execution handoff and source-specific execution handoffs.
 
 ---
 

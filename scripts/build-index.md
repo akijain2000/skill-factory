@@ -53,29 +53,18 @@ Regenerate `wiki/INDEX.md` with:
 
 Group articles by category. Within each category, sort alphabetically.
 
-### Step 3: Generate BACKLINKS.md
+### Step 3: Audit reverse links
 
-Create `wiki/BACKLINKS.md` — a reverse link index:
-
-```markdown
-# Backlinks
-
-Reverse link index: which articles link TO each article.
-
-## [article-name.md]
-
-Linked from:
-- [source-1.md](concepts/source-1.md)
-- [source-2.md](research/source-2.md)
-```
-
-Build by inverting the outbound links collected in Step 1. Articles with zero inbound links are orphans — flag them.
+Invert the outbound links collected in Step 1 and include orphan counts and
+paths in the dated health report. A separate `wiki/BACKLINKS.md` is optional;
+this repository does not currently maintain one. The index counts as an inbound
+link. Exclude fenced templates and label optional companion-repository links.
 
 ### Step 4: Update GLOSSARY cross-references
 
 For each glossary term in `wiki/GLOSSARY.md`:
 1. Find which articles mention that term
-2. Add "See also: [article](path)" links where missing
+2. Add `See also: [article](path)` links where missing
 3. Flag any terms defined in the glossary but not used in any article
 
 ### Step 5: Output summary

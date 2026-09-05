@@ -1,5 +1,7 @@
 # Glossary
 
+> Authoring clarification (2026-09-05): one-hop disclosure means SKILL.md links directly to the needed reference. Nested directory names are allowed. The 500-line/5,000-token target and style heuristics are recommendations; distinguish them from portable frontmatter requirements and the Factory linter's 800-line error threshold.
+
 ## A
 
 **Ablation (skill)** -- Controlled comparison of the same task, model, harness, fixtures, and limits with the skill enabled and absent. See [Skill Evaluations](concepts/skill-evaluations.md).
@@ -76,6 +78,8 @@
 
 ## H
 
+**Holdout (final)** -- Cases not used for drafting or selecting a skill; independent final acceptance evidence. A set used to select a winner is validation. See [Skill Evaluations](concepts/skill-evaluations.md).
+
 **Hooks** -- Claude Code frontmatter feature for lifecycle interception (e.g. safety). See [Host Differences](research/host-differences.md).
 
 ## I
@@ -120,15 +124,19 @@
 
 ## R
 
+**Retrieval relevance** -- How well selected skill candidates match a task; distinct from actual activation and task success. See [Retrieval and Interference](concepts/retrieval-and-interference.md).
+
 **references/** -- Optional folder for long docs loaded only when SKILL.md instructs. See [Spec Reference](research/spec-reference.md).
 
 **Reserved names** -- Tokens such as `claude`, `mcp`, `skill` to avoid in skill names per guidance. See [Naming Conventions](concepts/naming-conventions.md), [Anti-Patterns](research/anti-patterns.md).
 
 **Routing index** -- Table mapping request types to which reference files to open. See [Progressive Disclosure](concepts/progressive-disclosure.md).
 
-**Repo discovery loop** -- Authoring-time workflow that searches rankings and curated repos, scores high-signal sources, clones approved repos into `raw/repos/`, and distills reusable patterns into the wiki before writing or revising skills. See [Skill Discovery](concepts/skill-discovery.md), [Repo Discovery Loop](research/repo-discovery-loop.md).
+**Repo discovery loop** -- Authoring-time workflow that searches rankings and curated repos, scores high-signal sources, clones approved repos into `raw/repos/`, and distills reusable patterns into the wiki before writing or revising skills. See [Skill Discovery](concepts/skill-discovery.md), [Repo Discovery Loop](research/repo-discovery-loop.md). Repository presence alone is not evidence: retain revision/path/hash, license, and coverage receipts.
 
 ## S
+
+**Skill supply chain** -- Source, license, scripts, hooks, supporting assets, installer, and host authority that determine what a skill can do. See [Skill Supply Chain](concepts/skill-supply-chain.md).
 
 **Sandbox escalation** -- Raised permissions for specific commands (e.g. network deploy) where hosts support it. See [OpenAI Skills Analysis](research/openai-skills-analysis.md), [Gotchas Sections](concepts/gotchas-sections.md).
 

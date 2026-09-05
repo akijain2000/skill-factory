@@ -1,5 +1,7 @@
 # Monthly wiki update — April 2026
 
+> Historical receipt: counts, paths, and decisions below belong to this dated run (some source descriptions are truncated discovery metadata). Current source authority is the [September refresh](monthly-update-2026-09.md), revision lock, and artifact ledger.
+
 ## What was added
 
 - **Landscape:** Ten new repository profiles appended to [research/landscape.md](../research/landscape.md) (superpowers, everything-claude-code, mcp-servers, mattpocock-skills, system-prompts, fabric, goose, A2A, awesome-claude-skills, openai-codex), plus a second comparison table and an expanded analytical takeaway. The article now covers **seventeen** corpus repos (seven original + ten new).

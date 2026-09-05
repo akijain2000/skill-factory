@@ -1,5 +1,7 @@
 # Example: gh-fix-ci
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: raw/repos/openai-skills/skills/.curated/gh-fix-ci/SKILL.md
 Rating: Good
 Why: Trigger is precise (GitHub Actions PR checks). The workflow is a strict ordered checklist with scope boundaries (external CI = URL only), explicit prerequisites, script vs manual fallback, and a human gate ("implement only after explicit approval").

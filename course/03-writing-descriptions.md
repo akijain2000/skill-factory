@@ -1,10 +1,10 @@
 # Module 3: Writing Descriptions
 
-The description is the #1 failure point in skill authoring. Get this wrong and your skill never activates.
+The description is a common routing failure point. Test it with natural positive and adjacent negative requests.
 
 ## Why descriptions matter
 
-The description is **the only thing the agent sees** when deciding which skill to load. At startup, the agent reads all installed skill descriptions and picks the relevant one based on the user's request. Your description competes with every other installed skill for attention.
+Name and description are the primary portable discovery surface. Hosts differ in indexing, preloading, explicit invocation, and additional routing metadata. Test discovery with the actual supported model and host.
 
 ## The formula
 
@@ -45,7 +45,7 @@ When a description says "Reviews code with a two-stage process: first spec compl
 The fix: description says WHEN to use, never WHAT the workflow is.
 
 ```yaml
-# BAD -- summarizes workflow, agent will skip body
+# BAD -- summarizes workflow, agent may skip body
 description: Execute implementation plans by dispatching subagents with two-stage review between tasks, first checking spec compliance then code quality.
 
 # GOOD -- says when to use, forces agent to read the body
@@ -90,7 +90,7 @@ This is especially important when multiple skills cover adjacent domains. Source
 
 ## Debugging descriptions
 
-Quick test: ask your agent **"When would you use the [skill name] skill?"** It will quote the description back verbatim. If it can't articulate when to use the skill, or if it describes too many situations, your description needs work. Source: AgentPatterns.ai.
+Quick test: ask your agent **"When would you use the [skill name] skill?"** Its explanation is a diagnostic hint, not activation telemetry or proof it read the file. If it can't articulate when to use the skill, or if it describes too many situations, your description needs work. Source: AgentPatterns.ai.
 
 ---
 
@@ -182,7 +182,7 @@ description: Ship code by running tests, reviewing the diff for SQL safety and t
 
 Answers:
 - **A**: Clean. States WHAT (analyze + suggest) and WHEN. No workflow summary.
-- **B**: CSO violation. Describes the entire 4-step workflow. The agent will follow this summary and skip the body. Fix: "Investigate and fix bugs through systematic root cause analysis. Use when debugging issues, fixing bugs, or asked why something is broken."
+- **B**: CSO violation. Describes the entire 4-step workflow. The model may follow this summary without loading the body. Fix: "Investigate and fix bugs through systematic root cause analysis. Use when debugging issues, fixing bugs, or asked why something is broken."
 - **C**: Clean. States WHAT (convert) and WHEN. No workflow summary.
 - **D**: CSO violation. Lists 7 workflow steps. The agent has "enough" to work with and won't read the body. Fix: "Ship code changes with tests, review, and a pull request. Use when asked to ship, deploy, push to main, or create a PR."
 

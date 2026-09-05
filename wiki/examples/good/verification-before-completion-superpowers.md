@@ -1,5 +1,7 @@
 # Example: verification-before-completion (obra/superpowers)
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: `raw/repos/superpowers/skills/verification-before-completion/SKILL.md`  
 Rating: Good  
 Why: **Iron Law** (no completion claims without fresh verification), explicit **gate function** (identify proof command → run → read → verify → then claim), **evidence-before-assertions** culture, claim/evidence tables, and **rationalization prevention** rows. Body is the contract; note CSO tension if `description` over-summarizes workflow—upstream currently mixes WHEN with procedural hints; see `skill-factory/wiki/concepts/description-writing.md` (Claude Search Optimization section).

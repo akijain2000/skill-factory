@@ -1,5 +1,7 @@
 # `.cursorrules` vs `SKILL.md`: Formats, Loading, and When to Use Each
 
+> Evidence window: the analysis below describes the captured April 2026 source corpus. Counts, paths, host behavior, and costs are snapshot claims. Use the [September refresh](../queries/monthly-update-2026-09.md) and the target host's current documentation before operational adoption; source revision checks are not behavioral certification.
+
 Cursor (and similar editors) can ingest guidance from **legacy `.cursorrules` files**, **modern Rules**, and **Agent Skills (`SKILL.md`)**. This article contrasts the first and third using `awesome-cursorrules` samples and the agentskills.io-derived spec in Skill Factory docs.
 
 ## What `.cursorrules` is (awesome-cursorrules corpus)

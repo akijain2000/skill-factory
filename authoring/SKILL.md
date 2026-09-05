@@ -71,6 +71,18 @@ Based on the task, read the most relevant wiki articles. Do NOT read all of them
 - `wiki/concepts/evidence-lifecycle.md`
 - `evals/README.md`
 
+### Step 3a: Review adopted source boundaries
+
+When adapting external material, read `wiki/concepts/skill-supply-chain.md`.
+Pin the source revision and sampled paths, check the applicable license, and
+inspect scripts/hooks as well as prose. A repository HEAD change is a review
+trigger; a whole-package fingerprint detects changes outside SKILL.md.
+
+For a skill used in a large catalog, read
+`wiki/concepts/retrieval-and-interference.md`. Keep ranking, actual activation,
+and task outcomes separate. Do not add source setup instructions to the active
+host without authorization.
+
 ### Step 4: Gap analysis
 
 Compare the draft against the quality spec. Read the file `SKILL_SPEC.md`.
@@ -88,6 +100,8 @@ Check each of these (in order of importance):
 9. **Routing evidence** -- Are there natural positive and adjacent negative prompts?
 10. **Outcome evidence** -- Does an isolated, repeated skill-versus-baseline eval show a useful delta?
 11. **No-ops** -- Can generic directives be deleted without reducing eval performance?
+12. **Pointers** -- Does each disclosed reference name its distinct trigger branch? Keep shared invariants inline and branch-specific detail behind an explicit pointer.
+13. **Execution contract** -- If delegation is part of the authorized workflow, name foreground/background behavior, deadline, result schema, failure handling, and mutation owner for the actual host.
 
 ### Step 5: Draft or rewrite
 
@@ -126,10 +140,10 @@ Do not equate Step 6's static validator with behavioral proof.
 1. Classify the skill as capability or preference, and model-triggered or user-invoked.
 2. Create 10-20 cases with positive triggers, adjacent negative controls, functional outcomes, and known failures.
 3. Prefer deterministic checks and privacy-safe real traces.
-4. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
+4. Separate development and selection cases from an untouched final holdout. A set used to pick the best description is validation, even if upstream calls it test. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
 5. Run the same model and harness with zero or one target skill in clean, host-isolated workspaces for 3-6 trials.
 6. Checkpoint normalized records, exclude raw trajectories/credentials, and clean disposable temp/auth state.
-7. Report trigger accuracy, skill and baseline outcome pass rates, delta, reliability, and exact evidence identity.
+7. Report trigger accuracy, skill and baseline outcome pass rates, delta, reliability, and exact evidence identity. Missing activation telemetry is unknown, not a successful negative control. Exclude eval answers and grader assets from agent-visible skill packages.
 8. Keep failed or diagnostic evidence without weakening gates or mixing incompatible runs.
 9. If a real isolated adapter is unavailable, label behavioral evaluation blocked; do not call the skill validated.
 

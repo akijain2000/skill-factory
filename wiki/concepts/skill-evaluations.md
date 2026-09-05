@@ -110,6 +110,32 @@ reading the answer, and ships because static lint passes. This bypasses natural
 discovery, negative routing, baseline comparison, isolation, variance, and
 evidence identity.
 
+## Selection, telemetry, and visibility
+
+Separate development cases, validation used to select a description, and an
+untouched final holdout. Anthropic's `run_loop.py` selects the best iteration by
+`test_passed`; that named test set is operationally a selection set. The official
+authoring guide calls this train/validation. An additional final holdout is the
+Skill Factory recommendation for an independent acceptance claim.
+
+A missing or unreadable activation trace is unknown, not proof of non-invocation.
+Keep case failure, runtime failure, and unscored evidence explicit rather than
+reporting missing metrics as zero. Runtime skill snapshots must exclude hidden
+eval answers and grader assets, while preserving required operational files.
+
+For repeated success metrics, publish the estimator and denominator. Comet's
+documented `pass^k` uses an all-observed-runs-pass indicator; do not silently
+interpret it as a general probability estimate or compare it to another formula.
+See [retrieval and interference](retrieval-and-interference.md) before extending
+isolated ablation to a multi-skill shelf.
+
+Sources: [description loop](https://github.com/anthropics/skills/blob/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f/skills/skill-creator/scripts/run_loop.py),
+[official optimization guide](https://github.com/agentskills/agentskills/blob/69ef37e9424c0a7ea9dd2293b559e43ec8176379/docs/skill-creation/optimizing-descriptions.mdx),
+[trusted invocation tests](https://github.com/NVIDIA/SkillEvaluator/blob/73b27dad60d3927e202ea6099ce79bb25053fd2b/tests/test_harbor_negative_control_evidence.py),
+[isolation tests](https://github.com/NVIDIA/SkillEvaluator/blob/73b27dad60d3927e202ea6099ce79bb25053fd2b/tests/test_harbor_runtime_skill_isolation.py),
+[metric truth tests](https://github.com/NVIDIA/SkillEvaluator/blob/73b27dad60d3927e202ea6099ce79bb25053fd2b/tests/test_harbor_metrics_truth.py),
+[Comet metric definitions](https://github.com/rpamis/comet/blob/c1118e19d1fbce87706e4265ece17f50db21377e/eval/README.md).
+
 ## Sources
 
 - [Don't Ship Skills Without Evals](../../raw/docs/dont-ship-skills-without-evals.md)

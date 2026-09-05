@@ -1,5 +1,7 @@
 # Repo Discovery for Better Skills - 2026-05-25
 
+> Historical receipt: counts, paths, and decisions below belong to this dated run (some source descriptions are truncated discovery metadata). Current source authority is the [September refresh](monthly-update-2026-09.md), revision lock, and artifact ledger.
+
 ## Question
 
 How should Skill Factory capture the method of creating better skills by searching for high-signal repositories?

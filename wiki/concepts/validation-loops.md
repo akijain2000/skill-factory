@@ -67,7 +67,7 @@ Source: `raw/docs/trq212-skills-abstraction.md`.
 | Skill never triggers | Description too vague or missing triggers | Add specific phrases users would say |
 | Triggers on unrelated queries | Description too broad | Add negative triggers; narrow scope |
 | Loads but instructions ignored | Instructions too verbose or buried | Put critical instructions first; use numbered lists |
-| Slow or degraded responses | Skill content too large | Keep under 5000 words; use progressive disclosure |
+| Slow or degraded responses | Skill content too large | Keep under 5000 tokens; use progressive disclosure |
 | Inconsistent results | Ambiguous instructions | Replace vague language with explicit checks |
 
 Source: `raw/docs/agentpatterns-skill-authoring.md`.

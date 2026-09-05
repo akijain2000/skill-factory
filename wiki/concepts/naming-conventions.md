@@ -1,5 +1,7 @@
 # Naming Conventions
 
+> Authority: lowercase/hyphen grammar, length, and directory/name matching come from the portable format. Gerunds, domain-action naming, reserved-word avoidance, and third-person voice are authoring recommendations, not universal schema requirements.
+
 ## What it is
 
 Skill **folder names** and frontmatter `name:` must **match** and follow agentskills.io rules: lowercase letters, numbers, hyphens; 1–64 characters; no leading/trailing hyphen; no consecutive hyphens. **Gerund-form** names (`processing-pdfs`) are recommended by Anthropic for clarity of ongoing capability.

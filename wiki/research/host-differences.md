@@ -1,5 +1,7 @@
 # Host Differences: Where Skills, Rules, and Project Docs Land
 
+> Evidence window: the analysis below describes the captured April 2026 source corpus. Counts, paths, host behavior, and costs are snapshot claims. Use the [September refresh](../queries/monthly-update-2026-09.md) and the target host's current documentation before operational adoption; source revision checks are not behavioral certification.
+
 Agent hosts disagree on **where** instructions live, **how** they are merged, and **what limits** apply. This comparison ties the Skill Factory `raw/docs` specs to **gstack’s `setup` + `gen-skill-docs.ts` implementation**, because that repo is one of the few that **generates host-specific trees** from a single template source.
 
 ## Conceptual axis: always-on vs on-demand
@@ -20,7 +22,7 @@ The OpenAI **AGENTS.md** guide (`openai-agents-md-spec.md`) is explicit: project
 
 **gstack behavior:** `setup` symlinks each skill directory into the parent skills folder, optionally **prefixing** `gstack-` to avoid collisions (`link_claude_skill_dirs`, `SKILL_PREFIX` interactive prompt in `setup`). Generated **committed** `SKILL.md` files include Claude-native tool names (`Bash`, `Read`, …) and may declare `hooks:` in templates—later stripped or translated per host.
 
-**Analysis:** Claude is the **richest** host for skill metadata; authors can attach **safety hooks** directly. That expressiveness does not port 1:1—hence gstack’s advisory prose path for other hosts.
+**Analysis:** Claude is the **most extension-heavy in the captured schema** host for skill metadata; authors can attach **safety hooks** directly. That expressiveness does not port 1:1—hence gstack’s advisory prose path for other hosts.
 
 ## Cursor
 
@@ -45,7 +47,7 @@ The OpenAI **AGENTS.md** guide (`openai-agents-md-spec.md`) is explicit: project
 
 **Sidecar:** `setup` links `gstack` runtime assets into `.agents/skills/gstack/` (`bin`, `browse`, `review`, `qa`, `ETHOS.md`) so relative paths resolve.
 
-**Analysis:** Codex is **strictest** on description bytes and benefits from **parallel UI metadata**—skills without `openai.yaml` still work but miss polished picker integration.
+**Analysis:** Codex is **strict in the sampled gstack transform** on description bytes and benefits from **parallel UI metadata**—skills without `openai.yaml` still work but miss polished picker integration.
 
 ## Gemini CLI
 

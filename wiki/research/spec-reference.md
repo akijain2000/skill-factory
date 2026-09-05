@@ -1,5 +1,7 @@
 # SKILL.md Spec Reference (agentskills.io distilled)
 
+> Evidence window: the analysis below describes the captured April 2026 source corpus. Counts, paths, host behavior, and costs are snapshot claims. Use the [September refresh](../queries/monthly-update-2026-09.md) and the target host's current documentation before operational adoption; source revision checks are not behavioral certification.
+
 This note compresses the **Agent Skills** open specification as captured in Skill Factory’s `agentskills-io-spec.md` (mirrored from https://agentskills.io/specification, retrieved 2026-04-02). Use it as a **lint target**, not a substitute for reading host release notes.
 
 ## Directory layout

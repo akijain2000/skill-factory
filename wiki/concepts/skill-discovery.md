@@ -1,5 +1,7 @@
 # Skill Discovery
 
+> Authority: lowercase/hyphen grammar, length, and directory/name matching come from the portable format. Gerunds, domain-action naming, reserved-word avoidance, and third-person voice are authoring recommendations, not universal schema requirements.
+
 ## What it is
 
 **Skill discovery** is how an agent **finds** candidate skills at session start and **selects** one when a task matches. Typically phase one loads only **name + description** for many skills; phase two loads the winning SKILL.md body. Codex adds **explicit** invocation (user names the skill) and **implicit** (auto-select from description match).
@@ -25,7 +27,7 @@ Use repository search as a research loop before authoring or revising important 
 
 1. **Start from top GitHub repos.** Begin with overall GitHub star rankings, then language rankings, the latest full ranking CSV, and awesome lists. In this repo, `scripts/update-sources.md` scans `raw/repos/github-ranking/Top100/`, `raw/repos/github-ranking/Data/github-ranking-YYYY-MM-DD.csv`, and filters with `scripts/discovery-keywords.txt`.
 2. **Score for skill-authoring relevance.** Keep direct skill repos, coding agents, LLM frameworks, prompt libraries, and developer automation sources scoring 3+ on the 1-5 scale in `scripts/update-sources.md`.
-3. **Clone only high-signal sources.** Shallow clone approved repos into `raw/repos/`, using sparse checkout for large or 100+ repo passes. Include host folders and instruction files (`SKILL.md`, `AGENTS.md`, `CLAUDE.md`, `.claude`, `.codex`, `.agents`, `.gemini`, `.opencode`, `.cline`, `.cursor`) so skill-like patterns are not missed.
+3. **Cache reproducibly.** Keep clones/snapshots as disposable ignored data; record canonical source identity, revision, exact sampled paths and hashes, license status, and inspection coverage in the source manifests before adopting a procedure.
 4. **Sample behavior, not marketing copy.** Read README plus concrete SKILL.md files, prompt patterns, installer code, validators, hooks, and examples. The best lessons usually live in file layout, validation scripts, and repeated workflow structure.
 5. **Extract patterns into the wiki.** Update concept articles when a repo teaches a durable pattern, research articles when it changes the ecosystem map, and `wiki/examples/` when a skill is worth copying or critiquing.
 6. **Close the loop.** Regenerate index/glossary entries, log the update under `wiki/queries/`, and run link or health checks before treating the knowledge base as current.

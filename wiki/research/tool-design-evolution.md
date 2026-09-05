@@ -77,3 +77,7 @@ This applies directly to skill design:
 - [Feedback Loops](../concepts/feedback-loops.md) -- iterating on skills from real usage
 - [Skill Discovery](../concepts/skill-discovery.md) -- how agents find and load skills
 - [Validation Loops](../concepts/validation-loops.md) -- the verify-fix loop in practice
+
+## Sources
+
+This synthesis uses the attributed source paths above; those paths describe captured evidence, not instructions to execute. See the [source manifest](../../raw/repos/SOURCES.md) for lineage.

@@ -1,5 +1,7 @@
 # Example: grill-me (mattpocock/skills)
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: `raw/repos/mattpocock-skills/grill-me/SKILL.md`  
 Rating: Good (minimum viable skill)  
 Why: Entire body is a **short behavioral loop**: relentless interview, one question at a time, resolve the design tree, recommend an answer per question, prefer codebase exploration over guessing. Proves skills do not need length—only a sharp **description** (WHEN) plus a few non-negotiable procedural lines.

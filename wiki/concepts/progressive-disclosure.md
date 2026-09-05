@@ -1,5 +1,7 @@
 # Progressive Disclosure
 
+> Authoring clarification (2026-09-05): one-hop disclosure means SKILL.md links directly to the needed reference. Nested directory names are allowed. The 500-line/5,000-token target and style heuristics are recommendations; distinguish them from portable frontmatter requirements and the Factory linter's 800-line error threshold.
+
 ## What it is
 
 Progressive disclosure is a **three-phase loading model** for skills: (1) **Discovery**—only `name` and `description` (~100 tokens); (2) **Activation**—full SKILL.md body when the task matches (keep under ~500 lines / ~5000 tokens recommended); (3) **Execution**—`references/`, `scripts/`, and `assets/` loaded only when needed.
@@ -44,11 +46,22 @@ Anthropic faced this exact problem internally. They needed Claude to know about 
 
 ## Bad example
 
-A single SKILL.md with thousands of lines of API docs, checklists, and examples—all loaded on every activation. This violates the spec's activation budget and duplicates what belongs in `references/`. The antigravity anatomy guide explicitly warns against "5000 words of dense technical jargon" in one blob; fix by splitting skills or using progressive disclosure. Source: `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`.
+A single SKILL.md with thousands of lines of API docs, checklists, and examples—all loaded on every activation. This exceeds the recommended activation budget and duplicates what belongs in `references/`. The antigravity anatomy guide explicitly warns against "5000 words of dense technical jargon" in one blob; fix by splitting skills or using progressive disclosure. Source: `raw/repos/antigravity-awesome-skills/docs/contributors/skill-anatomy.md`.
 
 Another bad split deletes dated history to make the router small, or leaves the
 history inline so old status reads as current truth. Compact without data loss:
 archive, hash, annotate the boundary, and load only for a named investigation.
+
+## Branch-specific pointers
+
+Matt Pocock's current `writing-for-agents` distinguishes context load from the
+human cost of remembering which document to use. Keep invariants needed by every
+branch inline; disclose detail used by only some branches. Each pointer should
+state the target and its distinct triggering branch. Repair weak pointers before
+copying entire references inline. Test whether the required file was actually
+read, not merely whether a link exists.
+
+Source: [current authoring skill](https://github.com/mattpocock/skills/blob/3cca18b368ae95cdbdebbff572ccafa662551015/skills/productivity/writing-for-agents/SKILL.md).
 
 ## Sources
 

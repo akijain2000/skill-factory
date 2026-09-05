@@ -1,6 +1,8 @@
 # Anatomy of a Good Skill: What the Top Decile Share
 
-“Top 10%” is not a GitHub star metric—it is behavioral. Across gstack, OpenAI’s curated catalog, Anthropic’s plugin skills, and high-signal entries in large aggregators (e.g. Antigravity’s `systematic-debugging`), the skills that reliably activate, execute, and **exit cleanly** converge on a small set of structural properties. This checklist synthesizes those patterns for Skill Factory authors.
+> Evidence boundary: these are source-derived authoring heuristics. Static review does not prove an outcome improvement; apply the [evaluation contract](../concepts/skill-evaluations.md) before making that claim.
+
+“Top 10%” is not a GitHub star metric—it is behavioral. Across gstack, OpenAI’s curated catalog, Anthropic’s plugin skills, and high-signal entries in large aggregators (e.g. Antigravity’s `systematic-debugging`), the skills that are intended to activate, execute, and **exit cleanly** converge on a small set of structural properties. This checklist synthesizes those patterns for Skill Factory authors.
 
 ## 1. Activation: description as a routing function
 

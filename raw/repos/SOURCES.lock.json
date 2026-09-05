@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-21T13:47:10.265Z",
-  "manifestSha256": "0aeef2800f4c4af05857c8d31f32a66bcaafe67eb5d8ee157a24accef1f5b642",
+  "generatedAt": "2026-09-05T12:22:53.451414+00:00",
+  "manifestSha256": "8ad87fca04dec9a44d1c93392e5a8d8093c68e301e39546f8317e11b5154758f",
   "evidenceBoundary": "A resolved HEAD proves the remote revision. A resolved sampled artifact additionally proves the exact path and content hash inspected at that revision; it does not prove behavioral claims.",
   "sources": [
     {
@@ -11,9 +11,31 @@
       "added": "2026-04-02",
       "relevance": "Skill framework with template engine, 40+ skills, multi-host support",
       "remote": "https://github.com/garrytan/gstack.git",
-      "headSha": "a3259400a366593e0c909dd9ac3e59752efd2488",
+      "headSha": "0d1bd5616c0ef096bb7ccee336f63c60ee408618",
       "status": "resolved",
-      "sampledArtifacts": []
+      "sampledArtifacts": [
+        {
+          "sourceId": "gstack",
+          "path": "CHANGELOG.md",
+          "purpose": "Host dispatch default regression and synchronous dispatch guard",
+          "contentSha256": "36f45d58c2fc3af95dac2c0f1f1cb6b805d62a663fa1431131e06302193fadcc",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "gstack",
+          "path": "test/run-in-background-guidance.test.ts",
+          "purpose": "Host dispatch default regression and synchronous dispatch guard",
+          "contentSha256": "4f8a588e906c45ffa1de4d31f18af8641a1369c53e8250caf28ad65fcef9ed87",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "gstack",
+          "path": "scripts/resolvers/constants.ts",
+          "purpose": "Host dispatch default regression and synchronous dispatch guard",
+          "contentSha256": "9c9ec0c0c9010ad4d799046473651f3480fe7e078b0de340e3ff25a21740b776",
+          "status": "resolved"
+        }
+      ]
     },
     {
       "id": "autoresearch",
@@ -39,7 +61,7 @@
         {
           "sourceId": "openai-skills",
           "path": "skills/.system/skill-creator/SKILL.md",
-          "purpose": "OpenAI skill authoring and evaluation workflow",
+          "purpose": "Current sampled authoring or evaluation source comparison",
           "contentSha256": "a17383bfb1448637ac1f757ad891ddb9676fa30b0eff620200f0e1cbc0cc0d50",
           "status": "resolved"
         }
@@ -52,7 +74,7 @@
       "added": "2026-04-02",
       "relevance": "Anthropic's official plugin/skill examples",
       "remote": "https://github.com/anthropics/claude-plugins-official.git",
-      "headSha": "9ddfad2e999789e0220cacaf359b64dd873e7d72",
+      "headSha": "85cce0381e7860082641b59d961a2b8c368b8b79",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -69,12 +91,12 @@
     },
     {
       "id": "antigravity-awesome-skills",
-      "url": "github.com/sickn33/antigravity-awesome-skills",
+      "url": "github.com/sickn33/agentic-awesome-skills",
       "stars": "~4K",
       "added": "2026-04-02",
       "relevance": "4000+ community skills with registry and validation",
-      "remote": "https://github.com/sickn33/antigravity-awesome-skills.git",
-      "headSha": "5833e0fa1e5f47873b39b3727b9c66640cbeade2",
+      "remote": "https://github.com/sickn33/agentic-awesome-skills.git",
+      "headSha": "2f68a82f608169ad9b74bb0adbc611aa215a1b89",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -85,7 +107,7 @@
       "added": "2026-04-02",
       "relevance": "Curated link catalog of agent skills",
       "remote": "https://github.com/VoltAgent/awesome-agent-skills.git",
-      "headSha": "c97eda5e3406670f3285c6bf9eb7639a7ecc03cc",
+      "headSha": "0248292eaf3106290f97d67acd1a35b10b8f7950",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -96,9 +118,17 @@
       "added": "2026-04-02",
       "relevance": "Daily-updated GitHub star/fork rankings by language",
       "remote": "https://github.com/EvanLi/Github-Ranking.git",
-      "headSha": "b7bdc34f9ac6487f273fb97899363d141fcaacc1",
+      "headSha": "6d7a483293a68958f8d6acf6759d3fdb3d1ed574",
       "status": "resolved",
-      "sampledArtifacts": []
+      "sampledArtifacts": [
+        {
+          "sourceId": "github-ranking",
+          "path": "Top100/Top-100-stars.md",
+          "purpose": "Dated overall top-100 discovery snapshot",
+          "contentSha256": "40e8d251d3d700aaf7881561401c805fda5dc725205d86b7c3ef51c5660db0ab",
+          "status": "resolved"
+        }
+      ]
     },
     {
       "id": "superpowers",
@@ -107,18 +137,40 @@
       "added": "2026-04-02",
       "relevance": "Agentic skills framework and software dev methodology",
       "remote": "https://github.com/obra/superpowers.git",
-      "headSha": "d884ae04edebef577e82ff7c4e143debd0bbec99",
+      "headSha": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
       "status": "resolved",
-      "sampledArtifacts": []
+      "sampledArtifacts": [
+        {
+          "sourceId": "superpowers",
+          "path": "RELEASE-NOTES.md",
+          "purpose": "Host support evolution and authoring/discovery boundaries",
+          "contentSha256": "7c69947152d72dde3b24e2f251afdc82b1d5f8e3a4c9dde21f65e3229f281d11",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "superpowers",
+          "path": "skills/writing-skills/SKILL.md",
+          "purpose": "Host support evolution and authoring/discovery boundaries",
+          "contentSha256": "d34db5c8aed6a4e0440132bd0613aace70a693ec7819d5637ad77481d8e10d1b",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "superpowers",
+          "path": "skills/using-superpowers/SKILL.md",
+          "purpose": "Host support evolution and authoring/discovery boundaries",
+          "contentSha256": "30f2ab78e20ddc27ee7158ae8d4a2abe161c360981c7cc3548070913142d3dc3",
+          "status": "resolved"
+        }
+      ]
     },
     {
       "id": "everything-claude-code",
-      "url": "github.com/affaan-m/everything-claude-code",
+      "url": "github.com/affaan-m/ECC",
       "stars": "~132K",
       "added": "2026-04-02",
       "relevance": "Skills, harness, memory, security for Claude Code/Codex/Cursor",
-      "remote": "https://github.com/affaan-m/everything-claude-code.git",
-      "headSha": "5deee34c93395045b985e3baf91550e5f1ab7204",
+      "remote": "https://github.com/affaan-m/ECC.git",
+      "headSha": "e04ea0b9cc8248686edf5ac751cadff550e162b8",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -129,7 +181,7 @@
       "added": "2026-04-02",
       "relevance": "Official MCP server collection -- core tool wiring for agents",
       "remote": "https://github.com/modelcontextprotocol/servers.git",
-      "headSha": "d31124c982401739917fd817c2a59db344529c16",
+      "headSha": "d73f99efbfd40c3aa1b61e88728b3d49fb52608f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -140,14 +192,28 @@
       "added": "2026-04-02",
       "relevance": "Personal skills from .claude -- real SKILL.md layout examples",
       "remote": "https://github.com/mattpocock/skills.git",
-      "headSha": "ed37663cc5fbef691ddfecd080dff42f7e7e350d",
+      "headSha": "3cca18b368ae95cdbdebbff572ccafa662551015",
       "status": "resolved",
       "sampledArtifacts": [
         {
           "sourceId": "mattpocock-skills",
-          "path": "skills/productivity/writing-great-skills/SKILL.md",
-          "purpose": "Current writing-great-skills structure and routing guidance",
-          "contentSha256": "4d6ccbc3760b1bd4107c495a79872286ea69494003f3b0a719fc95b147457061",
+          "path": "README.md",
+          "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path",
+          "contentSha256": "4079d981bc2ac0a52aaf2c76d1c1476f4297937a8ff3a2e2322b6b730dc2d4f6",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "mattpocock-skills",
+          "path": "skills/productivity/writing-for-agents/SKILL.md",
+          "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path",
+          "contentSha256": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "mattpocock-skills",
+          "path": "skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+          "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path",
+          "contentSha256": "c768e6307c7c10728c401c213f2c4ba71c542127eeb7ad2956aabd15a0fa0059",
           "status": "resolved"
         }
       ]
@@ -159,29 +225,29 @@
       "added": "2026-04-02",
       "relevance": "System prompts and internals for Cursor, Claude, Codex tools",
       "remote": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools.git",
-      "headSha": "2054f580b1203da061e8e3df3c6449de2ad7c322",
+      "headSha": "1e4203a7d88873c1b37ab2d1c07074fea498c274",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "fabric",
-      "url": "github.com/danielmiessler/fabric",
+      "url": "github.com/danielmiessler/Fabric",
       "stars": "~40K",
       "added": "2026-04-02",
       "relevance": "Modular AI prompts (\"patterns\") for repeatable workflows",
-      "remote": "https://github.com/danielmiessler/fabric.git",
-      "headSha": "34e02fdca29b1e82afbd48219e1701b83532ca32",
+      "remote": "https://github.com/danielmiessler/Fabric.git",
+      "headSha": "6b0914d1bb0dbf54facec1743838c7312e945634",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "goose",
-      "url": "github.com/block/goose",
+      "url": "github.com/aaif-goose/goose",
       "stars": "~34K",
       "added": "2026-04-02",
       "relevance": "Extensible AI agent beyond suggestions (install, run, edit, test)",
-      "remote": "https://github.com/block/goose.git",
-      "headSha": "d14ef5f867de651a47222a05d39714fd2733bf57",
+      "remote": "https://github.com/aaif-goose/goose.git",
+      "headSha": "5e90925962f05acf8e255032de44d16c4a7768a2",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -192,7 +258,7 @@
       "added": "2026-04-02",
       "relevance": "Agent2Agent protocol -- multi-agent interoperability",
       "remote": "https://github.com/a2aproject/A2A.git",
-      "headSha": "af112d9491c1fd4b2a568ac65755af4a62790490",
+      "headSha": "98853be376c88df25e1704771cd3ea9ef8823a96",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -203,7 +269,7 @@
       "added": "2026-04-02",
       "relevance": "Curated Claude Skills and workflow resources",
       "remote": "https://github.com/ComposioHQ/awesome-claude-skills.git",
-      "headSha": "92568c1edaff1bde5371154f036d959346c145a8",
+      "headSha": "be2a406907dbc61b73e6827ded415c96139d13a2",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -214,7 +280,7 @@
       "added": "2026-04-02",
       "relevance": "Terminal coding agent from OpenAI (Rust CLI architecture)",
       "remote": "https://github.com/openai/codex.git",
-      "headSha": "2d5c25920271743de70e73ac077423dbf04aff6f",
+      "headSha": "2bd71f96d41809b95ea881429a1b68eb48d089b6",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -225,7 +291,7 @@
       "added": "2026-04-02",
       "relevance": "Claude Code fork with OpenAI-compatible shim -- any LLM via provider abstraction",
       "remote": "https://github.com/Gitlawb/openclaude.git",
-      "headSha": "0a9bc187a469d492c20fe41d18f75ce693fe2898",
+      "headSha": "0ea8eefbd0d48735ddb9e6b8c9e7ee6957dc9b98",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -236,21 +302,28 @@
       "added": "2026-05-25",
       "relevance": "Anthropic's direct Agent Skills examples, spec pointer, template, document skills",
       "remote": "https://github.com/anthropics/skills.git",
-      "headSha": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "headSha": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
       "status": "resolved",
       "sampledArtifacts": [
         {
           "sourceId": "anthropic-skills",
           "path": "skills/skill-creator/SKILL.md",
-          "purpose": "Anthropic skill creation, benchmarking, and iteration workflow",
+          "purpose": "Current sampled authoring or evaluation source comparison",
           "contentSha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf",
           "status": "resolved"
         },
         {
           "sourceId": "anthropic-skills",
           "path": "skills/skill-creator/references/schemas.md",
-          "purpose": "Anthropic eval, grading, timing, and benchmark artifact schemas",
+          "purpose": "Current sampled authoring or evaluation source comparison",
           "contentSha256": "8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "anthropic-skills",
+          "path": "skills/skill-creator/scripts/run_loop.py",
+          "purpose": "Current sampled authoring or evaluation source comparison",
+          "contentSha256": "7bd6f674203168520517eec94c55f493c0d154339b061b4d7c0f0dad187d0f21",
           "status": "resolved"
         }
       ]
@@ -262,7 +335,7 @@
       "added": "2026-05-25",
       "relevance": "Gemini CLI terminal agent with built-in `.gemini/skills`, evals, and extension examples",
       "remote": "https://github.com/google-gemini/gemini-cli.git",
-      "headSha": "acae7124bdd849e554eaa5e090199a0cf08cd782",
+      "headSha": "85aca163f6c73ac6ce380b5447359146b8adcae4",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -273,13 +346,13 @@
       "added": "2026-07-21",
       "relevance": "Public benchmark with no-skill, curated-skill, and self-generated-skill conditions",
       "remote": "https://github.com/benchflow-ai/skillsbench.git",
-      "headSha": "5720102e3d6b0d3471b9715995ff96144d9eefb7",
+      "headSha": "9a1f4dd5f7659f75707435da3ce854b6e48321d1",
       "status": "resolved",
       "sampledArtifacts": [
         {
           "sourceId": "skillsbench",
           "path": "README.md",
-          "purpose": "Skill-versus-baseline benchmark design and public evidence boundary",
+          "purpose": "Current sampled authoring or evaluation source comparison",
           "contentSha256": "da52e1ecd8c992e9125ec46b6237bd14d4c4b6a5ca7be896e2a06c97be1d79eb",
           "status": "resolved"
         }
@@ -292,14 +365,14 @@
       "added": "2026-07-21",
       "relevance": "Gemini skill packages and published benchmark claims; inspected for public eval artifacts",
       "remote": "https://github.com/google-gemini/gemini-skills.git",
-      "headSha": "cfac39e7636294b751a1d09bdde55eba6727de00",
+      "headSha": "e2e931ffd78c503f2a9ad848152e561c8f4e1ea8",
       "status": "resolved",
       "sampledArtifacts": [
         {
           "sourceId": "gemini-skills",
           "path": "README.md",
-          "purpose": "Gemini skill packaging claims and public eval-artifact boundary",
-          "contentSha256": "7ab03d5857e672fc85eb00c3ec79d24c0bf0d8cf45db5a125f39663074a54305",
+          "purpose": "Current sampled authoring or evaluation source comparison",
+          "contentSha256": "435e1c052d2dc1a6060221ccb2cc0c21d135d343a1ec3d1b4b264daadd1a7004",
           "status": "resolved"
         }
       ]
@@ -311,7 +384,7 @@
       "added": "2026-05-25",
       "relevance": "Open source coding agent with `.opencode/skills` and test fixtures for skill loading",
       "remote": "https://github.com/anomalyco/opencode.git",
-      "headSha": "cb562b2c6289c2eee707078f9ab644cbe1d3d8a9",
+      "headSha": "e2894562f8ba943d72172d10b727c24d5f650c16",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -322,7 +395,7 @@
       "added": "2026-05-25",
       "relevance": "Open source coding agent with `.agents` / `.cline` skill examples and marketplace metadata",
       "remote": "https://github.com/cline/cline.git",
-      "headSha": "c92d4e7553a5660eaef8472778add9880419ebd7",
+      "headSha": "dac3b35ba485dbab3b5a73aca239b0d07ce071cf",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -333,7 +406,7 @@
       "added": "2026-05-25",
       "relevance": "Browser automation agent with focused browser/cloud/open-source skills",
       "remote": "https://github.com/browser-use/browser-use.git",
-      "headSha": "2be09b6c5eb702a9287684b42b27e7042a1aba29",
+      "headSha": "d5453ae80e11d61c94986d3506d37a829b473c42",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -344,18 +417,18 @@
       "added": "2026-05-25",
       "relevance": "Production engineering skills with anatomy guide and CI validator",
       "remote": "https://github.com/addyosmani/agent-skills.git",
-      "headSha": "2fbfa004a0192529bc997d103fc12f19a3804aab",
+      "headSha": "84ee50673804b95c287d1e4eb4f1c1dad7c5188a",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "graphify",
-      "url": "github.com/safishamsi/graphify",
+      "url": "github.com/Graphify-Labs/graphify",
       "stars": "~53K",
       "added": "2026-05-25",
       "relevance": "Cross-host command skill for turning code/docs into persistent knowledge graphs",
-      "remote": "https://github.com/safishamsi/graphify.git",
-      "headSha": "abff1b1ca4052fcf9d955c5f6a034088723f4536",
+      "remote": "https://github.com/Graphify-Labs/graphify.git",
+      "headSha": "937e59a5476fcb2665d6c4f4b7c0d0a4142011b6",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -366,7 +439,7 @@
       "added": "2026-05-25",
       "relevance": "Local-first design agent system with hundreds of composable skills and GenUI atoms",
       "remote": "https://github.com/nexu-io/open-design.git",
-      "headSha": "2d1f25ac6019be836a4384905965951ed11a40e6",
+      "headSha": "50e305dff2b64d9dc0220e5dfa5d8c98ba4364e3",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -377,7 +450,7 @@
       "added": "2026-05-25",
       "relevance": "GitHub's official MCP server for repository, issue, PR, and workflow automation",
       "remote": "https://github.com/github/github-mcp-server.git",
-      "headSha": "9d130049e9074772c2afbbd5e904725d240443ad",
+      "headSha": "9205304fedf10540c33ae41fcf6352fa97dcc9be",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -388,7 +461,7 @@
       "added": "2026-05-25",
       "relevance": "Catalog of Claude Code subagents and plugin install pattern",
       "remote": "https://github.com/VoltAgent/awesome-claude-code-subagents.git",
-      "headSha": "947b44ca0c58d606b084e9cb1a2389335b49278b",
+      "headSha": "beb9a0f0d74a222f5e24aeb390e6d7c3005d9e27",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -410,29 +483,29 @@
       "added": "2026-05-25",
       "relevance": "Long-horizon SuperAgent harness with skills, subagents, memory, and sandbox workflow",
       "remote": "https://github.com/bytedance/deer-flow.git",
-      "headSha": "2bb22643ada840f4369e80ec0f1a3db6a5aed4b6",
+      "headSha": "27b2b6768032010efb65d77e15d058e5d0882a25",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "caveman",
-      "url": "github.com/juliusbrussee/caveman",
+      "url": "github.com/JuliusBrussee/caveman",
       "stars": "~64K",
       "added": "2026-05-25",
       "relevance": "Claude Code skill focused on compressed agent communication and token reduction",
-      "remote": "https://github.com/juliusbrussee/caveman.git",
-      "headSha": "0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0",
+      "remote": "https://github.com/JuliusBrussee/caveman.git",
+      "headSha": "5184b3d11ac6a1acb7d44b9bfaa31698157cff97",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "career-ops",
-      "url": "github.com/santifer/career-ops",
+      "url": "github.com/career-ops-hq/career-ops",
       "stars": "~47K",
       "added": "2026-05-25",
       "relevance": "Claude Code job-search system with multiple skill modes and workflow automation",
-      "remote": "https://github.com/santifer/career-ops.git",
-      "headSha": "7b0aa39ef4800b1efb6eb1138ff1187813006be5",
+      "remote": "https://github.com/career-ops-hq/career-ops.git",
+      "headSha": "a61c9762600b2a08396be6cd40a5a8ef2ea278eb",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -476,7 +549,7 @@
       "added": "2026-05-25",
       "relevance": "HTML-native Claude Code design skill for prototypes, posters, and UI/UX output",
       "remote": "https://github.com/alchaincyf/huashu-design.git",
-      "headSha": "c9b06710b057a45fe6165e52aa8690f55182ea13",
+      "headSha": "a790f704d85f277cc93d2081b0840d00036969bb",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -487,28 +560,28 @@
       "added": "2026-05-25",
       "relevance": "AI-agent skill for polished HTML slide decks and visual presentation layouts",
       "remote": "https://github.com/op7418/guizang-ppt-skill.git",
-      "headSha": "82fe5ae129e8c2a12e1155fcabed6703342749d6",
+      "headSha": "c91369c449d34755d320a8b81d0734000d99d1ab",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "ai-research-skills",
-      "url": "github.com/orchestra-research/ai-research-skills",
+      "url": "github.com/Orchestra-Research/AI-Research-SKILLs",
       "stars": "~9K",
       "added": "2026-05-25",
       "relevance": "Large AI research and engineering skills library",
-      "remote": "https://github.com/orchestra-research/ai-research-skills.git",
+      "remote": "https://github.com/Orchestra-Research/AI-Research-SKILLs.git",
       "headSha": "773a52944ba4747a18bd4ae9ade53fff041adcbc",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "guda-skills",
-      "url": "github.com/GudaStudio/skills",
+      "url": "github.com/GuDaStudio/skills",
       "stars": "~2K",
       "added": "2026-05-25",
       "relevance": "Agent Skills collection from GudaStudio",
-      "remote": "https://github.com/GudaStudio/skills.git",
+      "remote": "https://github.com/GuDaStudio/skills.git",
       "headSha": "d0e8b1d4bed2f1aaf77185aece1f17b78933feb2",
       "status": "resolved",
       "sampledArtifacts": []
@@ -520,7 +593,7 @@
       "added": "2026-05-25",
       "relevance": "Persistent context layer for agent sessions across Claude Code, Codex, Gemini, and others",
       "remote": "https://github.com/thedotmack/claude-mem.git",
-      "headSha": "f5633c1f84181673896c038cbe285131c6d669a3",
+      "headSha": "b6e05382e2be35e29f22335f04a6890a4c0ba976",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -531,7 +604,7 @@
       "added": "2026-05-25",
       "relevance": "Nano Claude Code-like agent harness and learning corpus",
       "remote": "https://github.com/shareAI-lab/learn-claude-code.git",
-      "headSha": "a9cafe953aa714f9cb1171f217d96bd2734bbcc7",
+      "headSha": "0dcafa2ae053a1ddd6a72f265431104b08a5aa13",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -542,7 +615,7 @@
       "added": "2026-05-25",
       "relevance": "Cross-platform assistant launcher for Claude Code, Codex, OpenCode, Gemini CLI, and others",
       "remote": "https://github.com/farion1231/cc-switch.git",
-      "headSha": "2bfca548016dfb95e43f438eca6d21e7739bc75e",
+      "headSha": "db41d701879592b8eca938cbe5c5ac28dd732b9f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -559,12 +632,12 @@
     },
     {
       "id": "codexbar",
-      "url": "github.com/steipete/codexbar",
+      "url": "github.com/steipete/CodexBar",
       "stars": "~13K",
       "added": "2026-05-25",
       "relevance": "macOS menu bar usage monitor for OpenAI Codex and Claude Code",
-      "remote": "https://github.com/steipete/codexbar.git",
-      "headSha": "cc8da27cec92029a6435bfee4a703a719290234e",
+      "remote": "https://github.com/steipete/CodexBar.git",
+      "headSha": "4d27bb113e5e4899b1d481a1c989adc03c63bcdf",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -575,7 +648,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 5: direct skill/agent-skill signal; The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, C...",
       "remote": "https://github.com/affaan-m/ECC.git",
-      "headSha": "5deee34c93395045b985e3baf91550e5f1ab7204",
+      "headSha": "e04ea0b9cc8248686edf5ac751cadff550e162b8",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -586,7 +659,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 5: direct skill/agent-skill signal; Coding articles to level up your development skills",
       "remote": "https://github.com/Chalarangelo/30-seconds-of-code.git",
-      "headSha": "f27b87678c44b3146a9ede9f2b70cf0c9d8508c0",
+      "headSha": "f1b2d5a65c32432a877de94a749be40a396ebed2",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -597,7 +670,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 5: direct skill/agent-skill signal; An AI SKILL that provide design intelligence for building professional UI/UX multiple platforms",
       "remote": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
-      "headSha": "5c0946f66120079258e1efc8e436d78ec793877c",
+      "headSha": "f3ac195224eac1eb0dfe1a3059c2a6add78ffbe3",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -608,7 +681,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 5: direct skill/agent-skill signal; AI 低代码平台，「低代码 + 零代码」双模式驱动：低代码一键生成前后端代码，零代码 5 分钟搭建系统，AI Skills 一句话画流程、设计表单、生成整套系统。内置 AI聊天、知识库、流程编排、MCP插件等，兼容主流大模型。引领「AI 生成 → 在线配置 → 代码生成 →...",
       "remote": "https://github.com/jeecgboot/JeecgBoot.git",
-      "headSha": "df83f4de76811ea73bf5b37a8fe00cbb59988a1b",
+      "headSha": "74364054449efd5852e46d0c10325a1d38c1006a",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -619,7 +692,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 5: direct skill/agent-skill signal; SkillTree is a micro-learning gamification platform supporting the rapid integration of a gamified tool training approach into new and ex...",
       "remote": "https://github.com/NationalSecurityAgency/skills-service.git",
-      "headSha": "68ce4fbb0735728f9e5454abca5751a6ec72776b",
+      "headSha": "deb07e10935cecc946246e2f8bc05a3b45758468",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -630,7 +703,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; The repo is finally unlocked. enjoy the party! The fastest repo in history to surpass 100K stars ⭐. Join Discord: https://discord.gg/5TUQ...",
       "remote": "https://github.com/ultraworkers/claw-code.git",
-      "headSha": "4ea31c1bc91c4e9bcbd67d51c550c01e127e6d0d",
+      "headSha": "08106b0c3771ef5b4a5aa176acccd460e88b7325",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -641,7 +714,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing rout...",
       "remote": "https://github.com/anthropics/claude-code.git",
-      "headSha": "4d07874235b765871f39227c823f91aa989934ea",
+      "headSha": "d7dbd9a09f59775726ed14bbea8fc9dfdff62f7b",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -663,7 +736,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; omo; the best agent harness - previously oh-my-opencode",
       "remote": "https://github.com/code-yeongyu/oh-my-openagent.git",
-      "headSha": "703b67c40cdf681c7a0f24b118d87ef98bd08d6e",
+      "headSha": "93a5e883059256177ba4ec599d2e3ea765eef772",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -674,7 +747,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build...",
       "remote": "https://github.com/ruvnet/ruflo.git",
-      "headSha": "26c35b59b40a0a95b286ccf5ac675a15edcc995f",
+      "headSha": "db4991967c45c6f72133dff0bb80b0a492960fc1",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -685,7 +758,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods",
       "remote": "https://github.com/earendil-works/pi.git",
-      "headSha": "3dcb411e8969d293556b6540696357eca22e044e",
+      "headSha": "da840b6216578c2a571d0374ac6a2091a83f9d91",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -696,18 +769,18 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; Wrap Gemini CLI, Antigravity, ChatGPT Codex, Claude Code, Grok Build as an OpenAI/Gemini/Claude/Codex compatible API service, allowing yo...",
       "remote": "https://github.com/router-for-me/CLIProxyAPI.git",
-      "headSha": "db82d65d1cc3be6dc9662ee2b9a3810ac948d377",
+      "headSha": "5208aec703b5ce7e3445f6e9d91cc13b3e78003a",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "hmbown-codewhale",
-      "url": "github.com/Hmbown/CodeWhale",
+      "url": "github.com/Hmbown/Codewhale",
       "stars": "~34K",
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; Coding agent for open source, open weight models",
-      "remote": "https://github.com/Hmbown/CodeWhale.git",
-      "headSha": "6cd2953956fd69406aa126f3f58e631332d90abe",
+      "remote": "https://github.com/Hmbown/Codewhale.git",
+      "headSha": "062e65d1ef566eea8d60a4aae76e0cb47830ba79",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -718,7 +791,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; Symphony turns project work into isolated, autonomous implementation runs, allowing teams to manage work instead of supervising coding ag...",
       "remote": "https://github.com/openai/symphony.git",
-      "headSha": "1f3219bb1ea5f69a1305dc594e79b0db57c113c5",
+      "headSha": "8001b52e3062495a16e520e4ceaf8f9de868c4d0",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -729,7 +802,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents",
       "remote": "https://github.com/manaflow-ai/cmux.git",
-      "headSha": "1de332747f57cb246b80e425ed5d6478ccdf345d",
+      "headSha": "7d5d308450eac2991e748c6387d8718704be891a",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -740,7 +813,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 4: coding-agent/tool host signal; 🎭 211 个即插即用的 AI 专家角色 — 支持 Hermes Agent/Claude Code/Cursor/Copilot 等 16 种工具，覆盖工程/设计/营销/金融等 18 个部门。含 46 个中国市场原创智能体（小红书/抖音/微信/飞书/钉钉等）",
       "remote": "https://github.com/jnMetaCode/agency-agents-zh.git",
-      "headSha": "cf086f76a225f7b287db0953940f76df6df8d1e3",
+      "headSha": "972452cdedef8d04fed4a8dd1dc10623e33ed412",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -751,7 +824,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ in...",
       "remote": "https://github.com/n8n-io/n8n.git",
-      "headSha": "edbed4fc01eef9ffac43a0c7901ec678d48f6bb4",
+      "headSha": "33eb5c196e0ce3a2c71525929a4ef861cb94b168",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -762,7 +835,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organi...",
       "remote": "https://github.com/f/prompts.chat.git",
-      "headSha": "8b001e695c7e31adfb56b2326f05ebd7829b9647",
+      "headSha": "17ee1fd8ac86a450cffc4f6dd7c3c2fd8436f696",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -773,7 +846,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Production-ready platform for agentic workflow development.",
       "remote": "https://github.com/langgenius/dify.git",
-      "headSha": "45ac70132c94853fa7d2ab93e90b6fbde969453a",
+      "headSha": "3c55dcc3d1872ee7c595b7c24382ef70e3fa05fe",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -784,7 +857,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; LLM inference in C/C++",
       "remote": "https://github.com/ggml-org/llama.cpp.git",
-      "headSha": "76f46ad29d61fd8c1401e8221842934bf62a6064",
+      "headSha": "6a1a922d269908a29cbd4b49c27e6a8e7fd10fae",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -795,7 +868,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; 100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
       "remote": "https://github.com/Shubhamsaboo/awesome-llm-apps.git",
-      "headSha": "0526b20cbfc48a384b02019d0c816a5ea1738f1e",
+      "headSha": "24c85b099d160fbfc6ca4496464727bce78f9d6b",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -806,7 +879,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to creat...",
       "remote": "https://github.com/infiniflow/ragflow.git",
-      "headSha": "9f080a4f45ee000636fdb6e41dee1879592e7d22",
+      "headSha": "0c28d59ea1d362d9b6aa7481eed48c7fd9a95f0b",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -817,7 +890,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; A high-throughput and memory-efficient inference and serving engine for LLMs",
       "remote": "https://github.com/vllm-project/vllm.git",
-      "headSha": "c67650f04bc9241073130a7f8f245ce470bb69ac",
+      "headSha": "7fbd44cbe0a90b9c8fd3a94a0f0401ac4b1bc719",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -828,7 +901,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; TradingAgents: Multi-Agents LLM Financial Trading Framework",
       "remote": "https://github.com/TauricResearch/TradingAgents.git",
-      "headSha": "a33fd4c0f134485a43553a2c23a63cb14adbd88f",
+      "headSha": "9dee508c44662702281a8dbaad1f7b42179b5ba7",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -839,7 +912,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/...",
       "remote": "https://github.com/PaddlePaddle/PaddleOCR.git",
-      "headSha": "211989f046cc1878460f9e65574690c00a127a1a",
+      "headSha": "2661c7c0ef5c613e8f93c6e93b2e052399f0f854",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -861,7 +934,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)",
       "remote": "https://github.com/hiyouga/LlamaFactory.git",
-      "headSha": "ef2d8f9da66ef13378dc8068dabc99cfe89a9736",
+      "headSha": "dced5f8804bfbf7109ef7c14401db6bd5cce7e53",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -894,7 +967,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN",
       "remote": "https://github.com/unclecode/crawl4ai.git",
-      "headSha": "7e801521428ee12509994d39151006f64055ebe3",
+      "headSha": "862f6bccb9c063f49b9d42701baa0eea17a4993f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -905,7 +978,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.",
       "remote": "https://github.com/opendatalab/MinerU.git",
-      "headSha": "79d6d8d79fb8f3ddba5cc34c07a16f0ec36f56c7",
+      "headSha": "4fe4bde114a23ee5dd637eae99b767f4669bf58c",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -916,7 +989,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Python ETL framework for stream processing, real-time analytics, LLM pipelines, and RAG.",
       "remote": "https://github.com/pathwaycom/pathway.git",
-      "headSha": "dbaeb67988220a1d1baefaee75d1c2abb79c6399",
+      "headSha": "b433e8632c88f48848aacdfd91191d8b60d34bc5",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -927,7 +1000,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.",
       "remote": "https://github.com/Mintplex-Labs/anything-llm.git",
-      "headSha": "28fbff47f8d3dd57f7228f81355406e78065cbd5",
+      "headSha": "eb7df1e81c284236e1759ec7897904dc22a6704d",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -938,7 +1011,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Warp is an agentic development environment, born out of the terminal.",
       "remote": "https://github.com/warpdotdev/warp.git",
-      "headSha": "c353a2a4121521058bb73e8417c3a1b357c2e860",
+      "headSha": "a48ff8014824d3d04568f15b7da666ea6562c36b",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -960,7 +1033,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; ⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +...",
       "remote": "https://github.com/sansan0/TrendRadar.git",
-      "headSha": "8ee26026ba6c11dec41a95fb3895a7162876caa1",
+      "headSha": "b6ceb76ad3f8f4b34bc39e8ac73cd3e969f97217",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -971,7 +1044,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; 利用AI大模型，一键生成高清短视频 Generate short videos with one click using AI LLM.",
       "remote": "https://github.com/harry0703/MoneyPrinterTurbo.git",
-      "headSha": "d5f31da9a2eb63c96addd66e17e5b8042ed010d4",
+      "headSha": "9f0b28f8e87db76feee2d49ad3d98a31b43a9532",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -982,7 +1055,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; ☄🌌️  The minimal, blazing-fast, and infinitely customizable prompt for any shell!",
       "remote": "https://github.com/starship/starship.git",
-      "headSha": "a6a49a35db03a615a97546996b4bf1bbfab6a89f",
+      "headSha": "5e9ee97059bd68c94188f6cd816308c4af6922bf",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -993,7 +1066,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Context7 Platform -- Up-to-date code documentation for LLMs and AI code editors",
       "remote": "https://github.com/upstash/context7.git",
-      "headSha": "23843e9ce62908896cf2dcd32cc5c03c05047416",
+      "headSha": "6836bb4720a44fbce87f71548576c3145892d75f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1004,7 +1077,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; from vibe coding to agentic engineering - practice makes claude perfect",
       "remote": "https://github.com/shanraisshan/claude-code-best-practice.git",
-      "headSha": "154e72475b5f85dd4b457ea36f38aaabac211718",
+      "headSha": "ca68cbf9fe891f9d2ebb46edcb729212ae07bb6e",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1015,7 +1088,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies",
       "remote": "https://github.com/rtk-ai/rtk.git",
-      "headSha": "66e09cbefe02bf82b159a44278250e45e506810b",
+      "headSha": "e53ec1cf180d801f33121855dce37b393ede258c",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1026,7 +1099,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
       "remote": "https://github.com/mudler/LocalAI.git",
-      "headSha": "4ce67ccb841e6a5b32212b06abce34d393cf66f1",
+      "headSha": "b217148bbc229abe6dc079ce78d250e168e818e3",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1037,7 +1110,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs",
       "remote": "https://github.com/CherryHQ/cherry-studio.git",
-      "headSha": "ab7b418abe8e28ce6706f307b9a1112225ebdd24",
+      "headSha": "8e0ab3471b79c9879b204c47afb00d9c4b256f16",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1048,7 +1121,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; TiDB is built for agentic workloads that grow unpredictably, with ACID guarantees and native support for transactions, analytics, and vec...",
       "remote": "https://github.com/pingcap/tidb.git",
-      "headSha": "f1be26c3f1c6c4865c6eac890dd11108451bff61",
+      "headSha": "f2c346fe4f368ff855e17c1f62e28a89ba7f9723",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1059,7 +1132,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; LLM驱动的 A/H/美股智能分析：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets.",
       "remote": "https://github.com/ZhuLinsen/daily_stock_analysis.git",
-      "headSha": "d13721e8174c487763a1ca3b63fff611f8356026",
+      "headSha": "e866cfa48d72807c70d2fb48f0ffae85fde3acf2",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1070,7 +1143,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; A unified AI model hub for aggregation & distribution. It supports cross-converting various LLMs into OpenAI-compatible, Claude-compatibl...",
       "remote": "https://github.com/QuantumNous/new-api.git",
-      "headSha": "1721144221ec5c94dd87891a7ae1bee228e7bb63",
+      "headSha": "eb99ab1b40343c3317bb47981cccdbb2b159a5fa",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1092,7 +1165,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Conductor is an event driven agentic workflow engine providing durable and highly resilient execution engine for applications and AI Agents",
       "remote": "https://github.com/conductor-oss/conductor.git",
-      "headSha": "1f4c17a62a0a90b2c20a88917aac6d66df11fed3",
+      "headSha": "98cfed776b697c651eba2d925d1a55ba7dce7cd0",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1103,7 +1176,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Integrate cutting-edge LLM technology quickly and easily into your apps",
       "remote": "https://github.com/microsoft/semantic-kernel.git",
-      "headSha": "e15ae168f6d8d67ee95bd6e89d9b67ff9dfc1a4a",
+      "headSha": "f8c5ba7aec210c986086a997fc4eef65190666eb",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1114,7 +1187,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; An MCP-based chatbot / 一个基于MCP的聊天机器人",
       "remote": "https://github.com/78/xiaozhi-esp32.git",
-      "headSha": "5f6c09b8938ad08c6a16c0b1f526638207e58ed6",
+      "headSha": "c7241272f2d5fd140c77542f3cf12d09e717fc2f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1125,7 +1198,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Hundreds of models & providers. One command to find what runs on your hardware.",
       "remote": "https://github.com/AlexsJones/llmfit.git",
-      "headSha": "8aee7cefb95a24c9b5179eb9ad5a07e72b1c2141",
+      "headSha": "d19380bac5d82c5cd3080ff1afef6d1dc20615bf",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1136,7 +1209,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Distribute and run LLMs with a single file.",
       "remote": "https://github.com/mozilla-ai/llamafile.git",
-      "headSha": "3693f691e9d3955b6da9734689f3c98ed5f28725",
+      "headSha": "435512658cadf5acb45f1a1f60894ed61a53261a",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1158,7 +1231,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; 🚀✨ Minimalistic, powerful and extremely customizable Zsh prompt",
       "remote": "https://github.com/spaceship-prompt/spaceship-prompt.git",
-      "headSha": "fd0d6653a134fe28f498eae1784fbb46d27f20f3",
+      "headSha": "109989cf3fcd6696b38445d9303e8a22fb3dbb22",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1213,7 +1286,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; A collection of GPT system prompts and various prompt injection/leaking knowledge.",
       "remote": "https://github.com/LouisShark/chatgpt_system_prompt.git",
-      "headSha": "7ca1161ff54d87bde5bd41f9560c642c704a3355",
+      "headSha": "fa54a3ecc377c8d5c2037fa7412791d5d7bae6b9",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1235,18 +1308,18 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Unopim is a free and open-source Laravel-based Product Information Management (PIM) system that helps businesses manage and enrich produc...",
       "remote": "https://github.com/unopim/unopim.git",
-      "headSha": "15f0ab79461e9d10f8803d21d5b50e433e7a01f0",
+      "headSha": "0e0c6d3358c0d19d3423cfc59abbb88480cef1a6",
       "status": "resolved",
       "sampledArtifacts": []
     },
     {
       "id": "qualcomm-nexa-sdk",
-      "url": "github.com/qualcomm/nexa-sdk",
+      "url": "github.com/qualcomm/GenieX",
       "stars": "~8K",
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; Run frontier LLMs and VLMs with day-0 model support across GPU, NPU, and CPU, with comprehensive runtime coverage for PC (Python/C++), mo...",
-      "remote": "https://github.com/qualcomm/nexa-sdk.git",
-      "headSha": "58c1af88424dd4fd4e6da2d54270a7310e1b08b9",
+      "remote": "https://github.com/qualcomm/GenieX.git",
+      "headSha": "d38369a19af007bc164986b4415d9f8952a97301",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1290,7 +1363,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; 🤖 Autonomous agent framework for Elixir. Built for distributed, autonomous behavior and dynamic workflows.",
       "remote": "https://github.com/agentjido/jido.git",
-      "headSha": "17fbce2b1c53a46093be92dc59561e2a18b8f775",
+      "headSha": "99aa07cc90a494bf3e69332bcb6c8c0086884381",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1301,7 +1374,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 3: agent/framework/tooling signal; A free/open source client and automation tool for Ragnarok Online",
       "remote": "https://github.com/OpenKore/openkore.git",
-      "headSha": "8c5a2a96c0cfe879255feaf75fdac6d0fe700c45",
+      "headSha": "51de1ddfc4449ae5217f6886de702f87ca934030",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1323,7 +1396,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; 🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugin...",
       "remote": "https://github.com/ohmyzsh/ohmyzsh.git",
-      "headSha": "98fe9b81a62ed75baf25cf23aa41e338a83bec6d",
+      "headSha": "421d95782d369f266b8087a0eae11eac2f6a6041",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1334,7 +1407,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; Visual Studio Code",
       "remote": "https://github.com/microsoft/vscode.git",
-      "headSha": "d1bc5c31380c4d74d2b9ec233ec679308f819931",
+      "headSha": "fc0a9e94576224c89cc08d390b38ab760a261f1f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1345,7 +1418,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus o...",
       "remote": "https://github.com/Significant-Gravitas/AutoGPT.git",
-      "headSha": "f244390da74f4087ad94f34de3b938639b31d6c3",
+      "headSha": "98381ab27f733468bfe1f9c4f4942b4b416d9a8b",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1356,7 +1429,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; A collection of useful .gitignore templates",
       "remote": "https://github.com/github/gitignore.git",
-      "headSha": "dcc0fc7bc2b5ba480cf117ad1be31bafceeaff46",
+      "headSha": "361f1e6afa729dc58ec33bf0849772a03ddf6822",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1367,7 +1440,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
       "remote": "https://github.com/ollama/ollama.git",
-      "headSha": "e2c2edcc27637fbabe9ce6bb2d2d6db8e676f99e",
+      "headSha": "83ed7d9965b1ee07e0f0b29fd46e47c31f0fcab8",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1378,7 +1451,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; The agent that grows with you",
       "remote": "https://github.com/NousResearch/hermes-agent.git",
-      "headSha": "d3b0e614294e3f1d4f8c99da377a77981d0a5609",
+      "headSha": "52cf39c908eed3a545ece5a180425b1f34b96829",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1389,7 +1462,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models...",
       "remote": "https://github.com/huggingface/transformers.git",
-      "headSha": "bedde8f2b2db8a08c337125e569afebca5aa0330",
+      "headSha": "f62dc9bf2c90353b442a56e74391fbb8c689b55e",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1400,7 +1473,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
       "remote": "https://github.com/langflow-ai/langflow.git",
-      "headSha": "54281f7cef4f57de25ab0c0a69f6402f6236fbbc",
+      "headSha": "e3abffc1b8da1e38cc2f21a9cf1b23b4a21c15d5",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1411,7 +1484,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
       "remote": "https://github.com/open-webui/open-webui.git",
-      "headSha": "ecd48e2f718220a6400ecf49eafd4867a38feb10",
+      "headSha": "0a7c15832fb30b1903753e83f81dc7d27e5b0944",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1422,7 +1495,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; The agent engineering platform.",
       "remote": "https://github.com/langchain-ai/langchain.git",
-      "headSha": "e0ebd18ff327f53742ef04ac33e0c334999440ba",
+      "headSha": "8215039dea978372bd3fd95b88663a11b0159043",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1433,7 +1506,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; 🔥 Search, scrape, and clean the web for AI agents.",
       "remote": "https://github.com/firecrawl/firecrawl.git",
-      "headSha": "ece430987522c929ca45aa2e49495c237552988b",
+      "headSha": "329377c7665074b2a89e36717eff26dc99ffacad",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1444,7 +1517,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Ea...",
       "remote": "https://github.com/msitarzewski/agency-agents.git",
-      "headSha": "459dce837db3bdfdc4763d3fefd1fd854e73c8f1",
+      "headSha": "af128a92888fd7d7c389b6cb37f1820be1b3cd9d",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1455,7 +1528,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Robust Speech Recognition via Large-Scale Weak Supervision",
       "remote": "https://github.com/openai/whisper.git",
-      "headSha": "04f449b8a437f1bbd3dba5c9f826aca972e7709a",
+      "headSha": "86098128c0b4f24f0e2aa2994de830614b474227",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1466,7 +1539,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Vim-fork focused on extensibility and usability",
       "remote": "https://github.com/neovim/neovim.git",
-      "headSha": "6d5b774362e9d9b586280c723060813ed7ca8757",
+      "headSha": "739a44753d72df08eff91123734714f559c60510",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1477,7 +1550,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API.",
       "remote": "https://github.com/microsoft/playwright.git",
-      "headSha": "bc97a1306ceb2c4517b1e6de4a00efb64a94d99c",
+      "headSha": "46cd5008d12d4e1297793d921e6cc3b595e388da",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1488,7 +1561,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; ✨ Light and Fast AI Assistant. Support: Web / iOS / MacOS / Android /  Linux / Windows",
       "remote": "https://github.com/ChatGPTNextWeb/NextChat.git",
-      "headSha": "706a18b95b714ab29b2a4842d3b9ff4f887935d5",
+      "headSha": "defdcdb55d850cd12c4c657eb83729fd66e215c0",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1499,7 +1572,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; :house_with_garden: Open source home automation that puts local control and privacy first.",
       "remote": "https://github.com/home-assistant/core.git",
-      "headSha": "d0e872fe3243e11434411a436388ad495b6f92a3",
+      "headSha": "93ecba49bd35ee65d12596d3d7f28863a63dd8fe",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1521,7 +1594,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; 🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire A...",
       "remote": "https://github.com/lobehub/lobehub.git",
-      "headSha": "f8fc85f3612000d5ff52815cc99810c78b9b33f2",
+      "headSha": "f20ea9602b6eb06bead0653c6a1b80d8c2a8c1a0",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1532,7 +1605,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: general devtool/config/template signal; Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy and maintain. Automate eve...",
       "remote": "https://github.com/ansible/ansible.git",
-      "headSha": "7d7b8d905bbad9a67986f83049cfdcc05d22d5e9",
+      "headSha": "3827d66bfbdc568f58cce57b113131598c46cd5a",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1554,7 +1627,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; The open-source app everyone uses to manage agents at work",
       "remote": "https://github.com/paperclipai/paperclip.git",
-      "headSha": "59eee4829cae581d9dd462712c34d91942f07a8c",
+      "headSha": "8430bd897f01dd4b91e0970efffb71b97e5a2685",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1576,7 +1649,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; The official gpt4free repository / various collection of powerful language models / opus 4.6 gpt 5.3 kimi 2.5 deepseek v3.2 gemini 3",
       "remote": "https://github.com/xtekky/gpt4free.git",
-      "headSha": "48d845749f5b4c0148a9188f33ae498f1f41c21d",
+      "headSha": "548f00c8840867d2411a04f6364f3c0eb2a95ae4",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1587,7 +1660,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Unsloth Studio is a web UI for training and running open models like Gemma 4, Qwen3.6, DeepSeek, gpt-oss locally.",
       "remote": "https://github.com/unslothai/unsloth.git",
-      "headSha": "35f887d7956bfc0d0fb35dba9c8ce0623d7d2243",
+      "headSha": "ecb20837374c52db082bab179bb90f815d68322f",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1598,7 +1671,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
       "remote": "https://github.com/666ghj/MiroFish.git",
-      "headSha": "4ebb2ed6e9d33e12b6c06e59789ca6a14cd74661",
+      "headSha": "39d849138ef254f6c737ab4c4705e5545dbe31d4",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1642,7 +1715,7 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; 1 min voice data can also be used to train a good TTS model! (few shot voice cloning)",
       "remote": "https://github.com/RVC-Boss/GPT-SoVITS.git",
-      "headSha": "be6a4f1e9d8a22d41b7d42c22df9d7ef36f225d2",
+      "headSha": "48b1a0169a28582a8984402f82cf438d3bfa6aca",
       "status": "resolved",
       "sampledArtifacts": []
     },
@@ -1664,9 +1737,282 @@
       "added": "2026-05-25",
       "relevance": "Sparse expansion score 2: keyword match but weak skill signal; Interact with your documents using the power of GPT, 100% privately, no data leaks",
       "remote": "https://github.com/zylon-ai/private-gpt.git",
-      "headSha": "20e3f6fbc8c0cbc8148ff972c2587a88f35acff6",
+      "headSha": "065814007608a95a6160102c370f6ea52ba290d6",
       "status": "resolved",
       "sampledArtifacts": []
+    },
+    {
+      "id": "agentskills-spec",
+      "url": "github.com/agentskills/agentskills",
+      "stars": "25048",
+      "added": "2026-09-05",
+      "relevance": "Official format plus authoring and evaluation guidance",
+      "remote": "https://github.com/agentskills/agentskills.git",
+      "headSha": "69ef37e9424c0a7ea9dd2293b559e43ec8176379",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "agentskills-spec",
+          "path": "README.md",
+          "purpose": "Official format plus authoring and evaluation guidance",
+          "contentSha256": "7ff4a9a612ab21189aa793fd43223bd854280a122ac12ce29f5bea84d5930a1d",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "agentskills-spec",
+          "path": "docs/specification.mdx",
+          "purpose": "Official format plus authoring and evaluation guidance",
+          "contentSha256": "b9079c0c10b7930e8c6a20ff2bc10cda2a3343c55185120e3f1116a1a529b220",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "agentskills-spec",
+          "path": "docs/skill-creation/evaluating-skills.mdx",
+          "purpose": "Official format plus authoring and evaluation guidance",
+          "contentSha256": "20e53ee9085966bb25345fc4c431bcf24f1f1b410b687605dc870c76f8579a49",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "agentskills-spec",
+          "path": "docs/skill-creation/optimizing-descriptions.mdx",
+          "purpose": "Official format plus authoring and evaluation guidance",
+          "contentSha256": "5d6f72364f819399d07887843519d3ac037131778a5776584e5e6118d479a492",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "vercel-skills-cli",
+      "url": "github.com/vercel-labs/skills",
+      "stars": "30438",
+      "added": "2026-09-05",
+      "relevance": "Whole-skill update hashes and installation boundary regression tests",
+      "remote": "https://github.com/vercel-labs/skills.git",
+      "headSha": "435076e78988e1e6ec40d00b0b1d76bdbbc5419a",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "vercel-skills-cli",
+          "path": "README.md",
+          "purpose": "Whole-skill update hashes and installation boundary regression tests",
+          "contentSha256": "0009a0d2fe1ebe225aafede3e719a0acf8b4bd2249bc4c94f95fc935b0c0d5b0",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "vercel-skills-cli",
+          "path": "src/skill-lock.ts",
+          "purpose": "Whole-skill update hashes and installation boundary regression tests",
+          "contentSha256": "fcf628f8af6c637c4348bdaeeb2833f1705ee2ccd1772935e2ae350340cc635d",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "vercel-skills-cli",
+          "path": "tests/root-level-lock-hash.test.ts",
+          "purpose": "Whole-skill update hashes and installation boundary regression tests",
+          "contentSha256": "b94a0c39e870fa1253845c4b54c69de50564d26910dd97b8c135821c1093609b",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "vercel-skills-cli",
+          "path": "tests/subpath-traversal.test.ts",
+          "purpose": "Whole-skill update hashes and installation boundary regression tests",
+          "contentSha256": "022355d40837bbc1e5634b5341f3f3a45daee9561c30df067c05fac87475f8c0",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "nvidia-skillspector",
+      "url": "github.com/NVIDIA/SkillSpector",
+      "stars": "16218",
+      "added": "2026-09-05",
+      "relevance": "Bundled execution-surface inspection and incomplete-scan gates",
+      "remote": "https://github.com/NVIDIA/SkillSpector.git",
+      "headSha": "7805bb94843d91cb9937f57264ca52642164499b",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "nvidia-skillspector",
+          "path": "README.md",
+          "purpose": "Bundled execution-surface inspection and incomplete-scan gates",
+          "contentSha256": "eb8fc1a27539e10d2470b72e930a25c24d73e485b326d1e818826b13d7ae5530",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillspector",
+          "path": "docs/ANALYSIS_RESOURCE_BOUNDS.md",
+          "purpose": "Bundled execution-surface inspection and incomplete-scan gates",
+          "contentSha256": "9489c833cf5237b3e4a66bdc914614def7c5e29d21a7ef65aea1e37e7c1f56c3",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillspector",
+          "path": "tests/test_bundled_execution_surface_acceptance.py",
+          "purpose": "Bundled execution-surface inspection and incomplete-scan gates",
+          "contentSha256": "47512eac6fb213a39bac7ee0f8488fa918075fec7fc03eb6ca5ad97d47f16678",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillspector",
+          "path": "tests/test_inspection_ledger.py",
+          "purpose": "Bundled execution-surface inspection and incomplete-scan gates",
+          "contentSha256": "a8f02d5b42e8fdad2cb5a44be352bd1ba8381d0649b7121e642a75f087498a23",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "skillcorpus",
+      "url": "github.com/EverMind-AI/SkillCorpus",
+      "stars": "543",
+      "added": "2026-09-05",
+      "relevance": "Curated multi-source skill retrieval with ranking metrics and license gates",
+      "remote": "https://github.com/EverMind-AI/SkillCorpus.git",
+      "headSha": "2e8b8e5bca969a953f66ab14d2e91d8ad3d5a63b",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "skillcorpus",
+          "path": "README.md",
+          "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates",
+          "contentSha256": "edcef58e92221cc62291fea8532244c8b17c89911c37ac33c7e39e96445b7ce0",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "skillcorpus",
+          "path": "docs/plugin-multi-source-retrieval-design.md",
+          "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates",
+          "contentSha256": "829f4de032281af8ad0793c3db1587ec1833cd98fa115ba305b4c93e220a956b",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "skillcorpus",
+          "path": "docs/licence-and-governance.md",
+          "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates",
+          "contentSha256": "746c92ff613f0bf3e651a78cd24f11d3d47980032bf43946c9adadedb45b3945",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "skillcorpus",
+          "path": "skillcorpus/match/metrics.py",
+          "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates",
+          "contentSha256": "54e7c107a8b227959fa11d4dd8c9c4a8eef6ae8761f02e94cca7059cc23730b3",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "skillcorpus",
+          "path": "skillcorpus/match/README.md",
+          "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates",
+          "contentSha256": "295f6d875fa9c73d3f87bc5c1e816457d25c0fb54e5306823ef196c29706a01c",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "comet",
+      "url": "github.com/rpamis/comet",
+      "stars": "2928",
+      "added": "2026-09-05",
+      "relevance": "Named eval treatments, package snapshots, and explicit reliability estimators",
+      "remote": "https://github.com/rpamis/comet.git",
+      "headSha": "c1118e19d1fbce87706e4265ece17f50db21377e",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "comet",
+          "path": "README.md",
+          "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators",
+          "contentSha256": "c0b18032d2935d930058fe5ae9bc4486d1590a190b9153da20005c08d1491815",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "comet",
+          "path": "eval/README.md",
+          "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators",
+          "contentSha256": "0cbd60b245abbcb95cd285a334bc00aa331095e8bcb26ee9c087633210be5368",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "comet",
+          "path": "domains/skill/snapshot.ts",
+          "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators",
+          "contentSha256": "a9964a3d420448cd958a619504fdda40880f16bd15cb51a949e0c4f3d779a7b7",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "nvidia-skillevaluator",
+      "url": "github.com/NVIDIA/SkillEvaluator",
+      "stars": "404",
+      "added": "2026-09-05",
+      "relevance": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests",
+      "remote": "https://github.com/NVIDIA/SkillEvaluator.git",
+      "headSha": "73b27dad60d3927e202ea6099ce79bb25053fd2b",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "nvidia-skillevaluator",
+          "path": "README.md",
+          "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests",
+          "contentSha256": "0cdc8377bec877267e774b56f134aacc79a6be304d813aa3cb34da1f34d3af8b",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillevaluator",
+          "path": "tests/test_harbor_negative_control_evidence.py",
+          "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests",
+          "contentSha256": "0e849d5f03522c8258f398e3a33f679085828239fb8990bcca0f8ec130fa767a",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillevaluator",
+          "path": "tests/test_harbor_runtime_skill_isolation.py",
+          "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests",
+          "contentSha256": "4831fc423ed6c16051edb25e58ebc54c96ca745fb75f68fd271f842f1be789d6",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "nvidia-skillevaluator",
+          "path": "tests/test_harbor_metrics_truth.py",
+          "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests",
+          "contentSha256": "e5f4e718a0428577f554870ad9a8d96428b8bbc3e0be3bfd605eb9784cc3b843",
+          "status": "resolved"
+        }
+      ]
+    },
+    {
+      "id": "langchain-skills-benchmarks",
+      "url": "github.com/langchain-ai/skills-benchmarks",
+      "stars": "116",
+      "added": "2026-09-05",
+      "relevance": "No-skill and multi-skill treatment definitions; packaging and interference experiments",
+      "remote": "https://github.com/langchain-ai/skills-benchmarks.git",
+      "headSha": "9195f8c296f7076152cf5c698d6abd4f84853eb9",
+      "status": "resolved",
+      "sampledArtifacts": [
+        {
+          "sourceId": "langchain-skills-benchmarks",
+          "path": "README.md",
+          "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments",
+          "contentSha256": "4ad6efb9fce049ddbee59db8a50f985935c5fdafb2750be98ad00597e5953132",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "langchain-skills-benchmarks",
+          "path": "treatments/common/control.yaml",
+          "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments",
+          "contentSha256": "a9180449f26ed7b270906f61c9208b7fa232ba8873f9e5a37ddf7ed899886951",
+          "status": "resolved"
+        },
+        {
+          "sourceId": "langchain-skills-benchmarks",
+          "path": "treatments/common/main_skills.yaml",
+          "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments",
+          "contentSha256": "c88d963bebf0e17810bdbb8e4dc6c45fab6c609f274faa67aa446087d5c86319",
+          "status": "resolved"
+        }
+      ]
     }
   ]
 }

@@ -102,7 +102,7 @@ The SKILL.md format is an open standard from [agentskills.io](https://agentskill
 
 - **AGENTS.md** -- project-level context loaded every prompt (not on demand)
 - **CLAUDE.md** -- Claude-specific project rules
-- **.cursorrules** -- Cursor-specific rules (being replaced by skills)
+- **.cursorrules** -- Cursor-specific rules (a separate rules mechanism from skills)
 
 Skills are the future because they're portable, on-demand, and composable.
 

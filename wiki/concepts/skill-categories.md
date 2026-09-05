@@ -67,3 +67,7 @@ Skills are not limited to software engineering. Any domain with repeatable proce
 - [Implementation Patterns](implementation-patterns.md) -- which patterns fit each category
 - [Anatomy of a Good Skill](../research/anatomy-of-a-good-skill.md) -- structural checklist
 - [Token Budget](token-budget.md) -- right-sizing for each category
+
+## Sources
+
+This synthesis uses the attributed source paths above; those paths describe captured evidence, not instructions to execute. See the [source manifest](../../raw/repos/SOURCES.md) for lineage.

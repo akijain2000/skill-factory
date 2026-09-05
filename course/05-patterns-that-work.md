@@ -24,9 +24,9 @@ For destructive or batch operations: create a plan first, validate it, then exec
 ```markdown
 ## Workflow
 1. Generate a migration plan as JSON
-2. Show the plan to the user for approval
-3. Validate: no data loss, reversible, tested on staging
-4. Execute only after approval
+2. Validate targets, data effects, reversibility, and the appropriate dry-run/staging evidence
+3. Present the concrete validated plan; obtain any missing authorization
+4. Execute within the authorized scope, then verify the result
 ```
 
 ## 3. Gotchas sections
@@ -180,7 +180,7 @@ Write the gotchas:
 ```markdown
 ## Gotchas
 - Code 4201 means silent rate limit: wait 120s and retry (API returns 200 with this error code in the body, not a 429)
-- Code 5500 means temporary maintenance: retry after 5 minutes, do not alert the user
+- Code 5500 means temporary maintenance: retry within the declared bound; report a terminal failure or blocked completion
 - All timestamps in responses are Unix milliseconds, not seconds
 ```
 

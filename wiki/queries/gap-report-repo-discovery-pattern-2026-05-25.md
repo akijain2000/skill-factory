@@ -1,5 +1,7 @@
 # Gap Report - Repo Discovery Pattern - 2026-05-25
 
+> Historical receipt: counts, paths, and decisions below belong to this dated run (some source descriptions are truncated discovery metadata). Current source authority is the [September refresh](monthly-update-2026-09.md), revision lock, and artifact ledger.
+
 ## Gap
 
 Skill Factory had the source-update mechanism in `scripts/update-sources.md`, but the wiki did not yet teach repo discovery as a reusable **skill-authoring pattern**. The method existed operationally, but it was not fully represented as course material, a research article, or a curated example.

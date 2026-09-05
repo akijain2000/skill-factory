@@ -4,32 +4,217 @@
     {
       "sourceId": "openai-skills",
       "path": "skills/.system/skill-creator/SKILL.md",
-      "purpose": "OpenAI skill authoring and evaluation workflow"
+      "purpose": "Current sampled authoring or evaluation source comparison"
     },
     {
       "sourceId": "anthropic-skills",
       "path": "skills/skill-creator/SKILL.md",
-      "purpose": "Anthropic skill creation, benchmarking, and iteration workflow"
+      "purpose": "Current sampled authoring or evaluation source comparison"
     },
     {
       "sourceId": "anthropic-skills",
       "path": "skills/skill-creator/references/schemas.md",
-      "purpose": "Anthropic eval, grading, timing, and benchmark artifact schemas"
+      "purpose": "Current sampled authoring or evaluation source comparison"
+    },
+    {
+      "sourceId": "anthropic-skills",
+      "path": "skills/skill-creator/scripts/run_loop.py",
+      "purpose": "Current sampled authoring or evaluation source comparison"
     },
     {
       "sourceId": "mattpocock-skills",
-      "path": "skills/productivity/writing-great-skills/SKILL.md",
-      "purpose": "Current writing-great-skills structure and routing guidance"
+      "path": "README.md",
+      "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path"
+    },
+    {
+      "sourceId": "mattpocock-skills",
+      "path": "skills/productivity/writing-for-agents/SKILL.md",
+      "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path"
+    },
+    {
+      "sourceId": "mattpocock-skills",
+      "path": "skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+      "purpose": "Current authoring pointers and skill mechanics; replaces removed historical path"
     },
     {
       "sourceId": "skillsbench",
       "path": "README.md",
-      "purpose": "Skill-versus-baseline benchmark design and public evidence boundary"
+      "purpose": "Current sampled authoring or evaluation source comparison"
     },
     {
       "sourceId": "gemini-skills",
       "path": "README.md",
-      "purpose": "Gemini skill packaging claims and public eval-artifact boundary"
+      "purpose": "Current sampled authoring or evaluation source comparison"
+    },
+    {
+      "sourceId": "github-ranking",
+      "path": "Top100/Top-100-stars.md",
+      "purpose": "Dated overall top-100 discovery snapshot"
+    },
+    {
+      "sourceId": "gstack",
+      "path": "CHANGELOG.md",
+      "purpose": "Host dispatch default regression and synchronous dispatch guard"
+    },
+    {
+      "sourceId": "gstack",
+      "path": "test/run-in-background-guidance.test.ts",
+      "purpose": "Host dispatch default regression and synchronous dispatch guard"
+    },
+    {
+      "sourceId": "gstack",
+      "path": "scripts/resolvers/constants.ts",
+      "purpose": "Host dispatch default regression and synchronous dispatch guard"
+    },
+    {
+      "sourceId": "superpowers",
+      "path": "RELEASE-NOTES.md",
+      "purpose": "Host support evolution and authoring/discovery boundaries"
+    },
+    {
+      "sourceId": "superpowers",
+      "path": "skills/writing-skills/SKILL.md",
+      "purpose": "Host support evolution and authoring/discovery boundaries"
+    },
+    {
+      "sourceId": "superpowers",
+      "path": "skills/using-superpowers/SKILL.md",
+      "purpose": "Host support evolution and authoring/discovery boundaries"
+    },
+    {
+      "sourceId": "agentskills-spec",
+      "path": "README.md",
+      "purpose": "Official format plus authoring and evaluation guidance"
+    },
+    {
+      "sourceId": "agentskills-spec",
+      "path": "docs/specification.mdx",
+      "purpose": "Official format plus authoring and evaluation guidance"
+    },
+    {
+      "sourceId": "agentskills-spec",
+      "path": "docs/skill-creation/evaluating-skills.mdx",
+      "purpose": "Official format plus authoring and evaluation guidance"
+    },
+    {
+      "sourceId": "agentskills-spec",
+      "path": "docs/skill-creation/optimizing-descriptions.mdx",
+      "purpose": "Official format plus authoring and evaluation guidance"
+    },
+    {
+      "sourceId": "vercel-skills-cli",
+      "path": "README.md",
+      "purpose": "Whole-skill update hashes and installation boundary regression tests"
+    },
+    {
+      "sourceId": "vercel-skills-cli",
+      "path": "src/skill-lock.ts",
+      "purpose": "Whole-skill update hashes and installation boundary regression tests"
+    },
+    {
+      "sourceId": "vercel-skills-cli",
+      "path": "tests/root-level-lock-hash.test.ts",
+      "purpose": "Whole-skill update hashes and installation boundary regression tests"
+    },
+    {
+      "sourceId": "vercel-skills-cli",
+      "path": "tests/subpath-traversal.test.ts",
+      "purpose": "Whole-skill update hashes and installation boundary regression tests"
+    },
+    {
+      "sourceId": "nvidia-skillspector",
+      "path": "README.md",
+      "purpose": "Bundled execution-surface inspection and incomplete-scan gates"
+    },
+    {
+      "sourceId": "nvidia-skillspector",
+      "path": "docs/ANALYSIS_RESOURCE_BOUNDS.md",
+      "purpose": "Bundled execution-surface inspection and incomplete-scan gates"
+    },
+    {
+      "sourceId": "nvidia-skillspector",
+      "path": "tests/test_bundled_execution_surface_acceptance.py",
+      "purpose": "Bundled execution-surface inspection and incomplete-scan gates"
+    },
+    {
+      "sourceId": "nvidia-skillspector",
+      "path": "tests/test_inspection_ledger.py",
+      "purpose": "Bundled execution-surface inspection and incomplete-scan gates"
+    },
+    {
+      "sourceId": "skillcorpus",
+      "path": "README.md",
+      "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates"
+    },
+    {
+      "sourceId": "skillcorpus",
+      "path": "docs/plugin-multi-source-retrieval-design.md",
+      "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates"
+    },
+    {
+      "sourceId": "skillcorpus",
+      "path": "docs/licence-and-governance.md",
+      "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates"
+    },
+    {
+      "sourceId": "skillcorpus",
+      "path": "skillcorpus/match/metrics.py",
+      "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates"
+    },
+    {
+      "sourceId": "skillcorpus",
+      "path": "skillcorpus/match/README.md",
+      "purpose": "Curated multi-source skill retrieval with ranking metrics and license gates"
+    },
+    {
+      "sourceId": "comet",
+      "path": "README.md",
+      "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators"
+    },
+    {
+      "sourceId": "comet",
+      "path": "eval/README.md",
+      "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators"
+    },
+    {
+      "sourceId": "comet",
+      "path": "domains/skill/snapshot.ts",
+      "purpose": "Named eval treatments, package snapshots, and explicit reliability estimators"
+    },
+    {
+      "sourceId": "nvidia-skillevaluator",
+      "path": "README.md",
+      "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests"
+    },
+    {
+      "sourceId": "nvidia-skillevaluator",
+      "path": "tests/test_harbor_negative_control_evidence.py",
+      "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests"
+    },
+    {
+      "sourceId": "nvidia-skillevaluator",
+      "path": "tests/test_harbor_runtime_skill_isolation.py",
+      "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests"
+    },
+    {
+      "sourceId": "nvidia-skillevaluator",
+      "path": "tests/test_harbor_metrics_truth.py",
+      "purpose": "Tiered evaluation, trusted negative-control evidence, and runtime isolation tests"
+    },
+    {
+      "sourceId": "langchain-skills-benchmarks",
+      "path": "README.md",
+      "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments"
+    },
+    {
+      "sourceId": "langchain-skills-benchmarks",
+      "path": "treatments/common/control.yaml",
+      "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments"
+    },
+    {
+      "sourceId": "langchain-skills-benchmarks",
+      "path": "treatments/common/main_skills.yaml",
+      "purpose": "No-skill and multi-skill treatment definitions; packaging and interference experiments"
     }
   ]
 }

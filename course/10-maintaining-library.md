@@ -1,5 +1,7 @@
 # Module 10: Maintaining a Skill Library
 
+> Capture boundary: a correction is a candidate signal, not automatic authority to write memory or distribute private data. Sanitize it, check recurrence and ownership, and use the user-authorized destination. Shared rules require a host-supported project rule or a packaged direct reference; cross-package relative paths are not portable.
+
 Skills are living documents. A skill library that never changes is a dead library.
 
 ## The feedback loop
@@ -45,7 +47,8 @@ This finds: broken links, stale sources, terminology inconsistencies, content qu
 
 ## Monthly source updates
 
-The knowledge base auto-discovers new skill repos from GitHub rankings:
+The source-update runbook guides discovery from GitHub rankings and targeted
+repository searches:
 
 ```
 Read scripts/update-sources.md and run the monthly update.
@@ -70,6 +73,18 @@ At 100+ repos, clone narrowly and synthesize aggressively:
 
 If the answer to step 5 is "nothing," the source update is collection, not learning.
 
+## Lab: Compare a source refresh
+
+1. Preserve the old lock and current dirty-file list.
+2. Check every tracked HEAD, then compare selected package files at frozen SHAs.
+3. Identify one changed repository whose sampled skill stayed unchanged.
+4. Resolve one removed path from current source files; keep its old receipt.
+5. Inspect a candidate's scripts/hooks and license before adopting its procedure.
+6. Write the learning into its owning skill and add an eval definition.
+7. Report revision-only review, artifact inspection, static checks, and executed
+   behavior separately. Use the [September update](../wiki/queries/monthly-update-2026-09.md)
+   as a worked example; do not claim all 154 entries were deeply reviewed.
+
 ## Rules distillation
 
 When you notice the same principle in 3+ skills, extract it into a shared rule. This keeps individual skills shorter and ensures consistency.
@@ -90,14 +105,14 @@ tool traces, bearer URLs, credentials, or disposable auth homes.
 
 ## The end goal
 
-A mature skill library is self-maintaining:
-- Instincts capture corrections automatically
+A mature skill library is supported by a repeatable maintenance process:
+- Corrections become candidate signals for authorized, sanitized review
 - Stocktakes prune dead weight
 - Health checks find gaps
 - Source updates bring in new patterns
 - The meta-skill uses all of this to author better skills each time
 
-You build the system once. It gets smarter with every session.
+You build the system once. It improves when reviewed evidence changes the owning procedure and passes relevant checks.
 
 ---
 

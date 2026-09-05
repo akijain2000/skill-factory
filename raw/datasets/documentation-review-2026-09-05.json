@@ -1,0 +1,731 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-05",
+  "scope": "Repository-owned Markdown; ignored raw repository snapshots excluded",
+  "intakeMarkdownCount": 102,
+  "finalMarkdownCount": 103,
+  "rawDocsUnchanged": true,
+  "documents": [
+    {
+      "path": "README.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "7db587ebb4acbcdaaa6f0f3372fee1b5d2c99cec6e45e69663e33035abe37961",
+      "afterSha256": "eb6b07489c026315f7b2f5c07d00e5e56d6ba3baabc81f8096790f7c397276ca"
+    },
+    {
+      "path": "SKILL.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "1d8f4755588f8b7778d907b1c8f6ec16520ab33c184b4f2c89d7f0927c436dd7",
+      "afterSha256": "1d8f4755588f8b7778d907b1c8f6ec16520ab33c184b4f2c89d7f0927c436dd7"
+    },
+    {
+      "path": "SKILL_SPEC.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "11eb0932a545a60ed5847fc8f1aa64ca6092cd341aa90c9b7cf49841823f091e",
+      "afterSha256": "6c099e43df35449f6098e94fc73e6239e3f4f7c825558b5514530533dbe775cf"
+    },
+    {
+      "path": "authoring/SKILL.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "bed3edb1aaa4d840dde05514b608e2270fb7c42e59fe47de9f1266df47b535e0",
+      "afterSha256": "bed3edb1aaa4d840dde05514b608e2270fb7c42e59fe47de9f1266df47b535e0"
+    },
+    {
+      "path": "course/01-what-are-skills.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "393683f1918cde895f2d46965b4f04836044d18388eb99d18c5ca1258c376d1d",
+      "afterSha256": "b48b70bb2a4e878599749baae8dc59072ff2f7d30aac5527b9b02f63dd8b0d3a"
+    },
+    {
+      "path": "course/02-skillmd-format.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "178f7068c5e6125afea7ba24e8da04c5ac8c6c5e2958dea8fd837266a164e417",
+      "afterSha256": "413d006638896b7e71832b92383444d793caf623429622041ff72fd54f4c0a95"
+    },
+    {
+      "path": "course/03-writing-descriptions.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "745a4e98fe8bcd8b9bbb5d6e5678419be28ebbd7fe809c69199d8d1c59201b08",
+      "afterSha256": "2b701cb8ed65aa3e3054e2b4bea0c7c3eafb4c50df5a27f62ede4d1ef3f389a3"
+    },
+    {
+      "path": "course/04-progressive-disclosure.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "705a45c37b4686f6e865795b907efd2499067b5218d4ba73feb29816f6f2db16",
+      "afterSha256": "0e0706d25e770811eb7367014cb93560cca94525de81daa8ced1311a3e008e59"
+    },
+    {
+      "path": "course/05-patterns-that-work.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "0fddf7d9b0f3687ecbb637a3079df7dd6af2a8699ac37b2f619c96e52e36cc60",
+      "afterSha256": "55c5fd94f6cb1f65e00ad123a60083d7156f12404f83e2cc58d303ccaf23dcd6"
+    },
+    {
+      "path": "course/06-anti-patterns.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "a45f04c7f47f5219baea5e0742ce4a435de72bd517d4230aaa1011e2fdc77633",
+      "afterSha256": "dd6f60fb5ca7b6b4a8208e483fd7ee0e7423025cf23aaa2d6c74b561ada4bddb"
+    },
+    {
+      "path": "course/07-your-first-skill.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "f39a36280f8c554d0ff921de481876e6bb4f2405ea177b26ed3b58e8fa912a32",
+      "afterSha256": "81be613daaf48975286e88b87c66065514b608f9f7ab5173d4f2d8b74c986023"
+    },
+    {
+      "path": "course/08-advanced-techniques.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "04c883d7bb0613df3cba65cd7ccdbf0f06264cc6149c33151a31d801d7f23d76",
+      "afterSha256": "85d5da38fd67af0283b75f25022419719ac05487fb935faa86fb253ae1587a22"
+    },
+    {
+      "path": "course/09-multi-host.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "e16afbf2dc376620f2a168460bb588bee06a17cfe2efd3150d75eeeaaed8f228",
+      "afterSha256": "9fdd15953ef95838e63dfb93132ebe27ace6897952a8ce9da673ffde88f7edc6"
+    },
+    {
+      "path": "course/10-maintaining-library.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "a3818d592690722b3484157e0638228cfd670c190f39d8e4619bcbf959f55106",
+      "afterSha256": "1a4eb263264910d279cdac37e450ef098be371f4661c010cc9cd5ec8e57bf686"
+    },
+    {
+      "path": "course/11-using-skill-maker.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "67b5c2de36d827514ce790a20eb5db8bae4ff30d94192e357f953a21542a8239",
+      "afterSha256": "7ee0a409ee0caea1597a7f78df3eb0696ca226013a873d9efe73671dfa13191b"
+    },
+    {
+      "path": "course/12-evaluating-skills.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "5120f388022d6bb0e9939701a4c4083ee71aaf8b85da04aa0e7e2d5c1ecd23f2",
+      "afterSha256": "1fdb2af534b67b0280b4df55a38b0168985460044153e18e75d210d0108034e2"
+    },
+    {
+      "path": "course/README.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "0d26f9c61cf1ba3310eb91488f22be857704e407ad063997f54ab106df4ad747",
+      "afterSha256": "6538b72352ec6deba89a707d32ad765e8dcd80edd3a276fa9791d0aeb3d5066f"
+    },
+    {
+      "path": "evals/README.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "66e58888caf98ece002e73158fc91ec7c02adeae3ace5895774d86d0b85048a9",
+      "afterSha256": "eab94d035f3d8b1aa71c7c138b7ee3ff9de5d666500af6d9298c4416eebf6647"
+    },
+    {
+      "path": "evals/authoring-refresh-cases.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "25c6ee80182a44c7e9feabc6723e88dc4908d0a8046e3b293d12df8e54c016d3",
+      "afterSha256": "25c6ee80182a44c7e9feabc6723e88dc4908d0a8046e3b293d12df8e54c016d3"
+    },
+    {
+      "path": "prompt-decomposer/SKILL.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "bcd3611319b232dfac37dad7d7ed041cde29bb521f2fdfe2efbb8304c0ab0d95",
+      "afterSha256": "bcd3611319b232dfac37dad7d7ed041cde29bb521f2fdfe2efbb8304c0ab0d95"
+    },
+    {
+      "path": "raw/datasets/SOURCES.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "cf109bdf55379ae55a7a452300492fb9484e2bb190742e5ed9afc39b1d1f887c",
+      "afterSha256": "5645b3a31c645f50a598a9c85b0fdddc5e55f93b55c082141444d5957aa503d6"
+    },
+    {
+      "path": "raw/docs/agentpatterns-skill-authoring.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "5f3c72c939b62ed04d6c9d3c7d9651aa2cc189ac7930ac6568122c227b7fd603",
+      "afterSha256": "5f3c72c939b62ed04d6c9d3c7d9651aa2cc189ac7930ac6568122c227b7fd603"
+    },
+    {
+      "path": "raw/docs/agentskills-io-best-practices.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "d42bb90b98f968170ccb9ce2b6f6331b1791a0de47b7a57d1d7d8ae4297231b1",
+      "afterSha256": "d42bb90b98f968170ccb9ce2b6f6331b1791a0de47b7a57d1d7d8ae4297231b1"
+    },
+    {
+      "path": "raw/docs/agentskills-io-spec.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "e1451b860ce408cb3730afa45a26445b028220a38e799743149134d56809fa43",
+      "afterSha256": "e1451b860ce408cb3730afa45a26445b028220a38e799743149134d56809fa43"
+    },
+    {
+      "path": "raw/docs/anthropic-best-practices.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "f7505968be990d0590a3962cdab1e42a1b767fc393338a945634038349c49892",
+      "afterSha256": "f7505968be990d0590a3962cdab1e42a1b767fc393338a945634038349c49892"
+    },
+    {
+      "path": "raw/docs/applied-anthropic-playbook.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "7b6967374a583d230edcb80052837dd00943de22e24c32772f142fc7a970da00",
+      "afterSha256": "7b6967374a583d230edcb80052837dd00943de22e24c32772f142fc7a970da00"
+    },
+    {
+      "path": "raw/docs/dont-ship-skills-without-evals.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "1b613121b8e223bd8bed947145b2b7e25f4a81a5c9d9d44f6d6208aed707bcfa",
+      "afterSha256": "1b613121b8e223bd8bed947145b2b7e25f4a81a5c9d9d44f6d6208aed707bcfa"
+    },
+    {
+      "path": "raw/docs/mdskills-ai-spec.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "2c5f045583dd55be263950943866ddd749140cac4d345159de5c9611fd579813",
+      "afterSha256": "2c5f045583dd55be263950943866ddd749140cac4d345159de5c9611fd579813"
+    },
+    {
+      "path": "raw/docs/openai-agents-md-spec.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "5dc3c8bbbac6767b32a57536259c98a1b3d3ffa5bcfc2c9082554350bbc9e29f",
+      "afterSha256": "5dc3c8bbbac6767b32a57536259c98a1b3d3ffa5bcfc2c9082554350bbc9e29f"
+    },
+    {
+      "path": "raw/docs/skill-validation-7-mistakes.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "9a58cd76fd59deb65b43aa3eedf5cae0924b5231582bd91db2dfc6c85e943e9b",
+      "afterSha256": "9a58cd76fd59deb65b43aa3eedf5cae0924b5231582bd91db2dfc6c85e943e9b"
+    },
+    {
+      "path": "raw/docs/trq212-art-not-science.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "ec75a4061fac47b02282767432015c247dc801ef64dc145452d602a0f45ee7b9",
+      "afterSha256": "ec75a4061fac47b02282767432015c247dc801ef64dc145452d602a0f45ee7b9"
+    },
+    {
+      "path": "raw/docs/trq212-bash-all-you-need.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "3d1a1dd1613cda829cef73bf32831786ae201b5700b87bcb865c004d24b52587",
+      "afterSha256": "3d1a1dd1613cda829cef73bf32831786ae201b5700b87bcb865c004d24b52587"
+    },
+    {
+      "path": "raw/docs/trq212-file-system-state.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "095316fd3a5fda54c9dc49a6ffad6166d2a63bf9a8cce7318dd66ee6c2ae95eb",
+      "afterSha256": "095316fd3a5fda54c9dc49a6ffad6166d2a63bf9a8cce7318dd66ee6c2ae95eb"
+    },
+    {
+      "path": "raw/docs/trq212-skills-abstraction.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "preserved immutable raw capture",
+      "beforeSha256": "6a226b5c88a16b0a136565cf089fa9fe8726d568d56d045f3570e1586a14ab47",
+      "afterSha256": "6a226b5c88a16b0a136565cf089fa9fe8726d568d56d045f3570e1586a14ab47"
+    },
+    {
+      "path": "raw/repos/SOURCES.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "8ad87fca04dec9a44d1c93392e5a8d8093c68e301e39546f8317e11b5154758f",
+      "afterSha256": "8ad87fca04dec9a44d1c93392e5a8d8093c68e301e39546f8317e11b5154758f"
+    },
+    {
+      "path": "scripts/build-index.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "023e810b8d731535a23a3934e39ae9e0198bef672cf9c54136073c5b722bf5ff",
+      "afterSha256": "b13644518a1763a100b4e03e6c90845d1e0be53373361a8eb184f6fd7e1514a7"
+    },
+    {
+      "path": "scripts/compile-wiki.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "ea3700ea68bbead9de498c9d3ed04bd960c7e874558731bfa7630c1210443f3b",
+      "afterSha256": "ece3d4e9254c2400d389865da8b07f015a18a11cf49fe82f8016c483292f8b0c"
+    },
+    {
+      "path": "scripts/health-check.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "6fe3b7bb68038e0f890d9b0aae6d35e00cd04ead4302f4336686e6b40f60e3bd",
+      "afterSha256": "0ebf1a4c6ad149fcf153652bde3f484b013bca494aadf0376a46071242e8a416"
+    },
+    {
+      "path": "scripts/research-qa.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "deb7ce3cfc7ec0604a075159386588321caac673085a78f911fdb067366af1ef",
+      "afterSha256": "deb7ce3cfc7ec0604a075159386588321caac673085a78f911fdb067366af1ef"
+    },
+    {
+      "path": "scripts/update-sources.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "1596e138273b5559cbcbe9a677b10b19051cea5ba913780140551941be7b6e65",
+      "afterSha256": "1596e138273b5559cbcbe9a677b10b19051cea5ba913780140551941be7b6e65"
+    },
+    {
+      "path": "skill-maker/SKILL.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "12e44742cb4f87c9f60bebd097d2b7b6c8bec24fe9939e3ea3413710866e3626",
+      "afterSha256": "a08220d64abab5d3b7b991c1fe12e6248660a1e93da543011d899351b726ec86"
+    },
+    {
+      "path": "wiki/GLOSSARY.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "4ffffff59b1198a557b30a9f2c78b89fbe86e2c432878013d32dd54770fa6ee0",
+      "afterSha256": "97bab91584057d645c7d3fa1a1c45eff1ef4aaa6598bacb8075353441c0487d9"
+    },
+    {
+      "path": "wiki/INDEX.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "14bc32f2a344dc9b385a9e8761e48dbe2a98643e53c6b410ab7385d3e42db2a6",
+      "afterSha256": "0d98ab96b70597624004d22f002c2898464b514763b96be61821b53f208e1a18"
+    },
+    {
+      "path": "wiki/concepts/anti-rationalization.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "eaf57961d6d1675c65afa4f95a8f4718a82625b61a97aaa11edf7fa52cc83468",
+      "afterSha256": "eaf57961d6d1675c65afa4f95a8f4718a82625b61a97aaa11edf7fa52cc83468"
+    },
+    {
+      "path": "wiki/concepts/checklist-workflows.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "f1f93108460505b1225a10cef1d8d04cd81ae45d8f5df552f6a3b052a7df12be",
+      "afterSha256": "6173fa0a30f653f8af2cd4f11ee55c849cec1fdf92a5e8fe4ed22d6e48a068f7"
+    },
+    {
+      "path": "wiki/concepts/composition-patterns.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "93a41fa3156f1ef1e7b76b2b8fda1b935764c7051fb55dfe55c1a46b5eacba1a",
+      "afterSha256": "93a41fa3156f1ef1e7b76b2b8fda1b935764c7051fb55dfe55c1a46b5eacba1a"
+    },
+    {
+      "path": "wiki/concepts/degrees-of-freedom.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "d6f32630b178baccfffe106e4eb330d6bc974867f62801b5478a209533c7d841",
+      "afterSha256": "d6f32630b178baccfffe106e4eb330d6bc974867f62801b5478a209533c7d841"
+    },
+    {
+      "path": "wiki/concepts/description-writing.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "fe82666a4467dddbc60a912f785d7033fbdaaef79a0b0f6c264d59996e11d15b",
+      "afterSha256": "fe82666a4467dddbc60a912f785d7033fbdaaef79a0b0f6c264d59996e11d15b"
+    },
+    {
+      "path": "wiki/concepts/error-handling-in-scripts.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "084e64f119bdb198c2319349987d4dfe8d18f92f20bbd0383e0a5da6cee6cf0d",
+      "afterSha256": "084e64f119bdb198c2319349987d4dfe8d18f92f20bbd0383e0a5da6cee6cf0d"
+    },
+    {
+      "path": "wiki/concepts/evidence-lifecycle.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "a6b921581228c49deb717a98b19a5673fbc4cc70bcb14e840bc89b54d544d439",
+      "afterSha256": "a6b921581228c49deb717a98b19a5673fbc4cc70bcb14e840bc89b54d544d439"
+    },
+    {
+      "path": "wiki/concepts/feedback-loops.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "a57099b7cfb66e8c0a7d891196dc6f7a34f89ccad400c1c28ce9b5bb7339ceba",
+      "afterSha256": "a57099b7cfb66e8c0a7d891196dc6f7a34f89ccad400c1c28ce9b5bb7339ceba"
+    },
+    {
+      "path": "wiki/concepts/gotchas-sections.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "54dcab350898742b4a4aab1e89723c2e4d26ad6a686b1e48176c01693d5727c9",
+      "afterSha256": "4932856e8003383120e7adb2c8d88dcef5f7e3eaa4a40289aa5abe2a1e655db3"
+    },
+    {
+      "path": "wiki/concepts/host-compatibility.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "bd88678e03401825de332554436681df0d289a94c09110f151b05228b12328fb",
+      "afterSha256": "929d39e5e9f2b429bd96b8755dea31f75f8af61094e4c8951d5329939c069260"
+    },
+    {
+      "path": "wiki/concepts/implementation-patterns.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "09081f939aa9505de0797740f56a27dc518f68b51e713034bae7232f4d82981c",
+      "afterSha256": "331385668b087108b02ff39411bf8bdaeda941f4d939ed995a82e78eec9380a4"
+    },
+    {
+      "path": "wiki/concepts/instinct-model.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "b255529e31ea6be3ce2fb33875df615247abd9692b74570fab2155eafaeb5b12",
+      "afterSha256": "b255529e31ea6be3ce2fb33875df615247abd9692b74570fab2155eafaeb5b12"
+    },
+    {
+      "path": "wiki/concepts/meta-skills.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "9aeead632e48cbaac5b2afb1f79ce7da64b08cba71416f374659f1ddfa4208a2",
+      "afterSha256": "1803302dd657fb7487ba5239a504295865f091e9b2bbb9f340a8e0a13b56efbd"
+    },
+    {
+      "path": "wiki/concepts/naming-conventions.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "3aa371be1103e5598165bc74750c3017034af705313e865607b47691d2ded765",
+      "afterSha256": "63a534cec742d0ee574de75faee1598da555038d3aa4cefa30b3a4049da68c98"
+    },
+    {
+      "path": "wiki/concepts/plan-validate-execute.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "c59463b31a853f9398a9e5ff5880bd0376548f246b311f6fff5a5bb9977e15c3",
+      "afterSha256": "694c85b3e80a3211ea976314cb3be44d6dd902817417a96ea57bd9c8e961dfc2"
+    },
+    {
+      "path": "wiki/concepts/progressive-disclosure.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "37957a5193ffc0c3b3a5b9eae2a6007b0b7e0eb27bb7d1db31033d9c0ed820f6",
+      "afterSha256": "c7f2792d2fc2f070557408ff8ed9bcca66c8348b4c04bb7dbdd58b4006355c47"
+    },
+    {
+      "path": "wiki/concepts/retrieval-and-interference.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "306157168ce8230910e0964a73ad9f01299b96aac3559d5f0010c6d1cec74aea",
+      "afterSha256": "306157168ce8230910e0964a73ad9f01299b96aac3559d5f0010c6d1cec74aea"
+    },
+    {
+      "path": "wiki/concepts/skill-categories.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "987a007ccf276ad6870734b95d1a4609a8f092fd489d38c19672857d4c2bbe8c",
+      "afterSha256": "95c045abe889cf921afde1671b49734792ddc5ad129b90fdba85fdf200923730"
+    },
+    {
+      "path": "wiki/concepts/skill-discovery.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "c659c7c2017bca975d8f61123a8f05acda4312b37dbf04c0e300fdddbd790934",
+      "afterSha256": "df1a21bbca062bfb5f1307bd3f4e02310c32831daf4fe20b5a7a97984ba02609"
+    },
+    {
+      "path": "wiki/concepts/skill-evaluations.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "9442062060286fcd044d71b6d167f670a2ccb8be789fe6ecd5e143408287ec27",
+      "afterSha256": "9442062060286fcd044d71b6d167f670a2ccb8be789fe6ecd5e143408287ec27"
+    },
+    {
+      "path": "wiki/concepts/skill-supply-chain.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "fec2fa6262698473c7b80b332f8251cc2926424920f227f42c0679b017c32134",
+      "afterSha256": "fec2fa6262698473c7b80b332f8251cc2926424920f227f42c0679b017c32134"
+    },
+    {
+      "path": "wiki/concepts/template-patterns.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "7d7fc78988317aef34f99f031d863ce2dbfd2f1e3547a92033b8a9ee9e476b59",
+      "afterSha256": "7d7fc78988317aef34f99f031d863ce2dbfd2f1e3547a92033b8a9ee9e476b59"
+    },
+    {
+      "path": "wiki/concepts/token-budget.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "24837332f72d5ea6f1b086f1aa5f3594b9195069ceb8c9876d5a095a9bae8437",
+      "afterSha256": "24837332f72d5ea6f1b086f1aa5f3594b9195069ceb8c9876d5a095a9bae8437"
+    },
+    {
+      "path": "wiki/concepts/validation-loops.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "bd2561160406209d766ad87ece674a88b0c0e42558eef8ee415eca932958028f",
+      "afterSha256": "d9550a841d89e2dd3cd2f70096b29fb502210a334180546c32255be404dc5610"
+    },
+    {
+      "path": "wiki/examples/bad/task-intelligence.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "fb8ccc0af2e8cfcc491d853664c29acbd60d892adccc52387a1ebbd31e63cf13",
+      "afterSha256": "fb8ccc0af2e8cfcc491d853664c29acbd60d892adccc52387a1ebbd31e63cf13"
+    },
+    {
+      "path": "wiki/examples/bad/ui-skills.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "0ede88f69757ebe13eee8d7f5b2e0ebc3ec65ddb20d968cb94a2d8777831a6b8",
+      "afterSha256": "0ede88f69757ebe13eee8d7f5b2e0ebc3ec65ddb20d968cb94a2d8777831a6b8"
+    },
+    {
+      "path": "wiki/examples/bad/workflow-automation.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "d9efc16f9672fc05ec010554c73b91923770cb10c7814b0c4ed7184c4460696b",
+      "afterSha256": "d9efc16f9672fc05ec010554c73b91923770cb10c7814b0c4ed7184c4460696b"
+    },
+    {
+      "path": "wiki/examples/bad/yann-lecun.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "52ea2e10ef7fa39701e0ec1f83861ac64b4ec80520cb17479a1ac6f23a010b1c",
+      "afterSha256": "52ea2e10ef7fa39701e0ec1f83861ac64b4ec80520cb17479a1ac6f23a010b1c"
+    },
+    {
+      "path": "wiki/examples/good/freeze.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "b66c976d29d1a1b66dcd237435a2025cec31d8a0f0de44abc50b0eac52f71096",
+      "afterSha256": "3bef14a69c101e6e24e5f4c51930a466b2ef4e26fc341b223cc714560cc9e3a0"
+    },
+    {
+      "path": "wiki/examples/good/gh-fix-ci.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "68445a495e948a4fcf12c38dd78e68212ce1f3a46295086f7e0138cf809946c4",
+      "afterSha256": "53df4bc22c6a81c63b93e91fb39633c81d37a7d883ab1d4a74c04d5542067a81"
+    },
+    {
+      "path": "wiki/examples/good/grill-me-micro-skill.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "e86cc5a092bd5b3772dd487658921de2db2833352737d32876f17dd57af7dcb0",
+      "afterSha256": "afe2781e2bdcc373939ee082bf4a3b140527061197affc37f4509fcad686b89f"
+    },
+    {
+      "path": "wiki/examples/good/openai-docs.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "5ce577802c34e6bbaa6b0db9236994f24c28e4df7fa8a55097ef2a6fdf85773c",
+      "afterSha256": "0a19ce6920508411f50c5d2729fd0f90885bdd5a7b43e2a493673f2307c0ca21"
+    },
+    {
+      "path": "wiki/examples/good/repo-discovery-loop.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "a64ae1a2a88a8c79ec9bcae29b8a5ace11be5ff1906574b6c7637f4561d736a5",
+      "afterSha256": "e743cec88683ca06d0d029fe0bd3145bd9ae7ad3b22ac34317605d565ca18293"
+    },
+    {
+      "path": "wiki/examples/good/verification-before-completion-superpowers.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "9ee27e6ea10187928db7ac1b78d6a2156ebf6667f032110aeba282d03c8f340c",
+      "afterSha256": "1be495bd485efc36cc07e85810a507fef2de2c25bf7abbe1cd8cae8926dd61ef"
+    },
+    {
+      "path": "wiki/examples/good/verification-before-completion.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "a899749d55c0ee79daf063856544d1293c19475679fe5d983320b0058098dad3",
+      "afterSha256": "aaf1485b3692f465a9607809955ae99999660563dd300111d8e2b168758cd9a7"
+    },
+    {
+      "path": "wiki/examples/good/writing-plans.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "39c06e8c91ccf49d23bc72520241d087c4862a63ee7534901fc87c47bf95717f",
+      "afterSha256": "f570948278aee25e721096c24dab7cc08e0c8253a35872f575b3cf428efa6a6b"
+    },
+    {
+      "path": "wiki/queries/documentation-completion-2026-09-05.md",
+      "readCoverage": "authored and reviewed in completion pass",
+      "disposition": "new completion ledger",
+      "beforeSha256": null,
+      "afterSha256": "ab1dd7389882f3cd037be1f6f2f96c3de42f08d39403e2aa3e0a2a3b3e560abc"
+    },
+    {
+      "path": "wiki/queries/documentation-refresh-2026-07-21.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "63c2e25d898b9c3ea0450d6c9c7feac548e6e0bb8d0fad0069de877c9397d141",
+      "afterSha256": "cbcdba217ccbd0cee68d40b14ca38766e28f55aa3c47f6612f2915b6f122d99d"
+    },
+    {
+      "path": "wiki/queries/gap-report-repo-discovery-pattern-2026-05-25.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "5d8397ef62f74fcf91318f2d1d0b8dc6f34d4d329a2545002ff6a64f12cb2f49",
+      "afterSha256": "5cb7e9c5fb5bda0d5f89da97a38eb756d14fdf3ff13011a1144bf72f978a7438"
+    },
+    {
+      "path": "wiki/queries/health-report-2026-09-05.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "af3bb7378a953fcc45b5b11458b4b96176927e532a569887d6a9da02436cebe9",
+      "afterSha256": "fc572dfcd51d7b797af42460a2117bec4c10a0132da0bcead7a86b1de2d763b7"
+    },
+    {
+      "path": "wiki/queries/monthly-update-2026-04.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "6f78d86bc845428b9615f5c6d75bb36d217fabb8c12fd63d47e2881f862c8c7a",
+      "afterSha256": "9e0c014f0f9d452f61a412a7e92631a3fc9f7f48d76cfa460ce791524b875891"
+    },
+    {
+      "path": "wiki/queries/monthly-update-2026-05.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "b0ecd582047db9774a08d9f777fc9c8d6a9a602d3bbe5e446b9b013c67a9c359",
+      "afterSha256": "ec05629136dd3f140959013136bc9560661a645c6048988700c470e2491e23b1"
+    },
+    {
+      "path": "wiki/queries/monthly-update-2026-09.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "f77be7ebd4ac3c8befa92b76dabbdeb58ba360996424881a533c7486d981a4df",
+      "afterSha256": "f77be7ebd4ac3c8befa92b76dabbdeb58ba360996424881a533c7486d981a4df"
+    },
+    {
+      "path": "wiki/queries/observation-20260721-eval-checkpointing.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "0bcc7c7a88a8415ffcfe01d8eb5289ceb829281170edf0a010500766d945e766",
+      "afterSha256": "469355f54e3df83489890fc70d1e7f052ca30f927a3c52651f0144f9968c55ad"
+    },
+    {
+      "path": "wiki/queries/observation-20260721-source-provenance-lock.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "90f6da10025930b172ec50cdaf74f41e791642547d40b67aff9702d2eea321b1",
+      "afterSha256": "e635e40b9ed911de81f25495a4bc6b636a2e01a5862928bf22365c98928406e3"
+    },
+    {
+      "path": "wiki/queries/observation-20260723-operational-skill-drift.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "6fac721b0f6634dc2d7b7a1b6a125c4c28abb42ec884e566c4987d9f7f35beb2",
+      "afterSha256": "6fac721b0f6634dc2d7b7a1b6a125c4c28abb42ec884e566c4987d9f7f35beb2"
+    },
+    {
+      "path": "wiki/queries/private-router-eval-case-study-2026-07-21.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "1abaa143ce0da9b657186443903819cf43c3de73eae160637790248f2ea87faa",
+      "afterSha256": "1abaa143ce0da9b657186443903819cf43c3de73eae160637790248f2ea87faa"
+    },
+    {
+      "path": "wiki/queries/repo-discovery-for-better-skills-2026-05-25.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "67cf8a67aa20be79dd826bb65c5b998692d53823ce88bff8b1b711187fc6234d",
+      "afterSha256": "9627238b485a8db4be889a718f2e958088434ea2ab14030414eeaf80f6a11a2f"
+    },
+    {
+      "path": "wiki/research/anatomy-of-a-good-skill.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "d91c15b6ee26db5a711008a370a14042859a5d94036e4c8acf3ad8713d8c4415",
+      "afterSha256": "5e35ec05960988e0b4f651633784176ebeeb1ddddeac7b6d0c20a37d258d5bad"
+    },
+    {
+      "path": "wiki/research/anti-patterns.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "753939917e605226155fd1895fe842130a6d5dd1cface585fcdd75835c6638f5",
+      "afterSha256": "ff7b925cd861cc60f2c0e76d9331b69cd67bdd2ae2fc0064ec5b324a2f573234"
+    },
+    {
+      "path": "wiki/research/cursorrules-vs-skills.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "a57c7bbe2a51149c3ac014efb97ce8939d5c88626c24e58505775b80b430608a",
+      "afterSha256": "ac8179671545800014b7ac01f02dca6e391a92cd22067237a214d1ef489a776e"
+    },
+    {
+      "path": "wiki/research/gstack-deep-dive.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "9a18753f8f462aad1505aefd35bf042e656762df05a4f2b0f762becd0b4da506",
+      "afterSha256": "d32d937d0c29e677074c246eab3ba2c0c91c69271e00c1785f56500b26509253"
+    },
+    {
+      "path": "wiki/research/host-differences.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "3ac7939712e3020d02635622065e3e9280f9d2a742cd82cbbe5d01ab34802827",
+      "afterSha256": "75b12d9af3d42df4350a8807365ae296913c1f7dafb5fd3f19ff0c1320b1ea19"
+    },
+    {
+      "path": "wiki/research/landscape.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "f53c88dc325f731cb6cd812f30fcc7973509a57fbfec35a75b13bb6cb38fb905",
+      "afterSha256": "96472c14f7988d302395e17ca41368aabe74ce819a2e014db57075ed3f13722c"
+    },
+    {
+      "path": "wiki/research/openai-skills-analysis.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "8d0c9bec1c5f606ac9c07180ee739dcab69b49057e7fbec928a1124a20836442",
+      "afterSha256": "b46ae79a0f87feb86ad6653c24708b85b2311f7120db3a96b90e8f56db76b5a2"
+    },
+    {
+      "path": "wiki/research/repo-discovery-loop.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "cfa963e39bccdb4d814f527cdb971ab925dcfb4c6f31ee770e5ced190606d52a",
+      "afterSha256": "1b6ad9a75eef8ebc25aedacd4e3733b48ce63217604c75adb3f20b9320366719"
+    },
+    {
+      "path": "wiki/research/skill-evolution-2026-05.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "836c9d9620629179506683a94c84a0cb5f6b23cc10988089ae60cffdea7c667a",
+      "afterSha256": "0a5f7252e7c89107a3b58674c27d6d73aa3fc0b05ad12cb5586473ba721b96a8"
+    },
+    {
+      "path": "wiki/research/skill-evolution-2026-09.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "reviewed and retained",
+      "beforeSha256": "36c1ed3b54023e17f79b194f193c9533c1b7738bcc1c396538fc02c2aa69312c",
+      "afterSha256": "36c1ed3b54023e17f79b194f193c9533c1b7738bcc1c396538fc02c2aa69312c"
+    },
+    {
+      "path": "wiki/research/spec-reference.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "919f506a9b4e1083ebede4d42c346cd9ead36775943c7863d539bbbd56112d80",
+      "afterSha256": "d78b3e99432cbdb33e5e665be8c1ed9aeb83458bbfc70e34293981b3182461f7"
+    },
+    {
+      "path": "wiki/research/tool-design-evolution.md",
+      "readCoverage": "full content reviewed",
+      "disposition": "updated",
+      "beforeSha256": "101129de061f4475b924a00c5f41504f91a71783fd9348183fb90b46d669833c",
+      "afterSha256": "0daaf648a35bbfac976bb5654a777f7e01631bf23c287e018b6dd8c3f865d8c5"
+    }
+  ]
+}

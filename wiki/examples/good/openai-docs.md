@@ -1,5 +1,7 @@
 # Example: openai-docs
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: raw/repos/openai-skills/skills/.curated/openai-docs/SKILL.md
 Rating: Good
 Why: The YAML description opens with an explicit "Use when…" trigger and scopes tools, domains, and fallbacks in one sentence. The body is short, uses numbered workflows, a reference map (read only what you need), and quality rules that resolve conflicts (docs vs bundled references).

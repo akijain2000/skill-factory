@@ -1,5 +1,7 @@
 # OpenAI Skills Repository: Curated Patterns Worth Copying
 
+> Evidence window: the analysis below describes the captured April 2026 source corpus. Counts, paths, host behavior, and costs are snapshot claims. Use the [September refresh](../queries/monthly-update-2026-09.md) and the target host's current documentation before operational adoption; source revision checks are not behavioral certification.
+
 The `openai/skills` repo (https://github.com/openai/skills, ~16,033 stars on 2026-04-02) is a **reference implementation** for Codex-flavored Agent Skills: a thin **`.system`** layer shipped with the product, a **`.curated`** gallery for `$skill-installer`, and documentation that doubles as **pedagogy**. This analysis samples the **tree** and **five skills** to extract reusable authoring patterns.
 
 ## Repository structure (local snapshot)
@@ -9,7 +11,7 @@ Under `skills/` this workspace contains **45** `SKILL.md` files:
 - **`skills/.system/`** — foundational tools (`skill-installer`, `skill-creator`, `openai-docs`)  
 - **`skills/.curated/`** — deploy integrations (Vercel, Netlify, Cloudflare, Render), creative tooling (`imagegen`, `pdf`, `slides`), developer workflows (`gh-address-comments`, `gh-fix-ci`), design (`figma*` family), security reviews, etc.
 
-README positions **`.system`** as auto-installed in current Codex; curated/experimental paths are pulled via **`$skill-installer`**. (An `.experimental/` directory is referenced in README but not present in this shallow snapshot—authors should not assume it exists in every checkout.)
+README positions **`.system`** as auto-installed in the sampled README's Codex installation model; curated/experimental paths are pulled via **`$skill-installer`**. (An `.experimental/` directory is referenced in README but not present in this shallow snapshot—authors should not assume it exists in every checkout.)
 
 ## What OpenAI got right
 

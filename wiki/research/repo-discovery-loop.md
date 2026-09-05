@@ -1,12 +1,14 @@
 # Repo Discovery Loop: Searching Repos to Write Better Skills
 
+> Current process (2026-09-05): ignored clones are disposable caches. Every decision-changing artifact needs a revision/path/hash receipt in the [source lock](../../raw/repos/SOURCES.lock.json) and [sample manifest](../../raw/repos/SAMPLED_ARTIFACTS.json). Metadata screening, HEAD checks, sampled-file review, and whole-package inspection are distinct coverage levels.
+
 The fastest way to improve a skill library is not to ask an LLM for a generic "best practices" list. It is to start from the **top repositories on GitHub**, study the ones with real agent/skill signal, extract repeated patterns, and compile those patterns back into the local knowledge base. Skill Factory's repo discovery loop turns external repositories into evidence for better SKILL.md authoring.
 
 ## The loop
 
 1. **Start with top GitHub repos.** Use overall GitHub star rankings first, then language rankings and curated lists to find agent, skill, prompt, LLM, and developer-automation repos. Skill Factory encodes the search surface in `scripts/update-sources.md` and keyword filters in `scripts/discovery-keywords.txt`.
 2. **Score narrowly.** Keep sources that teach skill authoring. The local scoring rubric keeps repos scoring 3+ and prioritizes direct skill repos, AI coding tools, agent frameworks, prompt libraries, and developer automation.
-3. **Clone shallowly.** Bring approved repos into `raw/repos/` and record why each belongs in `raw/repos/SOURCES.md`.
+3. **Cache reproducibly.** Keep clones/snapshots as disposable ignored data; record canonical source identity, revision, exact sampled paths and hashes, license status, and inspection coverage in the source manifests before adopting a procedure.
 4. **Read artifacts, not claims.** Sample README files, actual SKILL.md files, prompt folders, validators, installers, hooks, bundled scripts, and examples.
 5. **Distill into durable pages.** Update concept articles for reusable patterns, research articles for ecosystem analysis, examples for concrete good/bad cases, and queries for dated decisions.
 6. **Validate the knowledge base.** Regenerate indexes, update glossary terms, run link checks, and log open gaps.
@@ -46,4 +48,4 @@ Run the full source update monthly, but use the loop opportunistically before im
 - `raw/repos/gstack/README.md`
 - `raw/repos/superpowers/README.md`
 - `raw/repos/fabric/README.md`
-- `raw/repos/mattpocock-skills/write-a-skill/SKILL.md`
+- [Current Matt Pocock authoring guidance](https://github.com/mattpocock/skills/blob/3cca18b368ae95cdbdebbff572ccafa662551015/skills/productivity/writing-for-agents/SKILL.md) (September replacement for the historical authoring path)

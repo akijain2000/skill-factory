@@ -64,14 +64,19 @@ export function normalizeRemote(url: string): string {
 export function parseManifest(markdown: string): SourceRow[] {
   const rows: SourceRow[] = [];
   const ids = new Set<string>();
+  let inSourceTable = false;
   for (const line of markdown.split("\n")) {
-    if (!line.startsWith("|")) continue;
+    if (!line.startsWith("|")) { inSourceTable = false; continue; }
     const cells = line.slice(1, -1).split("|").map((cell) => cell.trim());
-    if (cells.length !== 5 || !/^github\.com\//i.test(cells[1])) continue;
+    if (cells.join("|").toLowerCase() === "repo|url|stars|added|relevance") { inSourceTable = true; continue; }
+    if (!inSourceTable) continue;
+    if (cells.every((cell) => /^:?-+:?$/.test(cell))) continue;
+    assert(line.endsWith("|") && cells.length === 5, `invalid source table row: ${line}`);
     const [id, url, stars, added, relevance] = cells;
     assert(id.length > 0, "source row is missing an id");
     assert(!ids.has(id), `duplicate source id: ${id}`);
     assert(/^\d{4}-\d{2}-\d{2}$/.test(added), `source ${id} has invalid added date: ${added}`);
+    assert(!Number.isNaN(Date.parse(added)) && new Date(added).toISOString().slice(0, 10) === added, `source ${id} has invalid calendar date: ${added}`);
     normalizeRemote(url);
     ids.add(id);
     rows.push({ id, url, stars, added, relevance });

@@ -40,3 +40,7 @@ a changed suite fingerprint.
 Interrupted, contaminated, and superseded checkpoints remain useful diagnostic
 evidence, but only a complete fingerprint-compatible report can be accepted as
 the behavioral result.
+
+## Sources
+
+This first-party observation records the implementation state at its date. Current public mechanics are in [evaluation](../../scripts/evaluate-skill.ts) and [source locking](../../scripts/lock-sources.ts); later edits do not retroactively validate the historical run.

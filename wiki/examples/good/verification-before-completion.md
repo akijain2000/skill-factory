@@ -1,5 +1,7 @@
 # Example: verification-before-completion
 
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: raw/repos/antigravity-awesome-skills/skills/verification-before-completion/SKILL.md
 Rating: Good
 Why: Strong behavioral contract: a single "iron law," a gate function with ordered steps, tables mapping claims to required evidence, and anti-rationalization guidance. The description states when to apply the skill in broad but testable terms (any completion claim).
@@ -147,6 +149,3 @@ From 24 failure memories:
 Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.

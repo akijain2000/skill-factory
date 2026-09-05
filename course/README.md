@@ -51,6 +51,6 @@ After finishing the 12 modules, the Skill Factory offers four tools you can use 
 - **[Authoring Meta-Skill](../authoring/SKILL.md)** -- Wiki-backed review, gap analysis, and rewriting for existing skills
 - **[Behavioral Eval Harness](../evals/README.md)** -- Host-neutral isolated trials with skill-versus-baseline gates
 
-To access all of these through a single entry point, tell your agent to read the root [SKILL.md](../SKILL.md) and pick from Routes A through E.
+To access all of these through a single entry point, tell your agent to read the root [SKILL.md](../SKILL.md) and pick from Routes A through F.
 
 Start with [Module 1: What Are Skills?](01-what-are-skills.md)

@@ -1,5 +1,7 @@
 # Module 6: Anti-Patterns
 
+> Authoring clarification (2026-09-05): one-hop disclosure means SKILL.md links directly to the needed reference. Nested directory names are allowed. The 500-line/5,000-token target and style heuristics are recommendations; distinguish them from portable frontmatter requirements and the Factory linter's 800-line error threshold.
+
 From validating and reviewing skills across the top-repo corpus. Avoid these.
 
 ## 1. Missing WHEN trigger in description
@@ -31,9 +33,9 @@ Fix: Add content or remove the heading.
 
 ## 5. Summarizing workflow in description (CSO violation)
 
-The agent reads your summary and skips the body.
+A workflow summary can encourage a model to skip the body; test this risk on the target host.
 
-Fix: Description says WHEN only. Never summarize the procedure.
+Fix: State WHAT capability and WHEN it applies; keep the detailed procedure in the body.
 
 ## 6. Explaining what the agent already knows
 
@@ -65,13 +67,13 @@ Fix: Use direct, concrete language. "Check the file" not "Leverage the file syst
 
 Fix: Pick a default. "Use pnpm. Fall back to yarn if yarn.lock exists."
 
-## 11. Deeply nested file references
+## 11. Unannounced reference chains
 
 ```
 See references/advanced/api/v2/edge-cases/timeout-handling.md
 ```
 
-The agent may not follow chains. Keep references one level deep.
+The path above is one direct reference and is valid. The fragile case is a required SKILL.md → index.md → detail.md chain without explicit routing.
 
 ## 12. Scripts that punt errors to the agent
 
@@ -191,9 +193,9 @@ See references/security/owasp/top10/2024/injection/sql/prevention.md
 
 Issues to find (at least 5):
 
-1. **CSO violation** -- description summarizes the entire workflow (read, categorize, score, summarize, verdict). The agent will follow this summary and skip the body.
+1. **CSO violation** -- description summarizes the entire workflow (read, categorize, score, summarize, verdict). The model may follow this summary without loading the body.
 2. **Contradictory instructions** -- "Be concise" + "comprehensive details" in the same sentence.
-3. **Deeply nested reference** -- 7 levels deep. Should be `references/owasp-top10.md`.
+3. **Reference review** -- directory nesting is allowed; verify the file exists and the active skill links to the required content directly.
 4. **Workflow too vague** -- "Review for issues" doesn't specify what to look for.
 5. **No output format** -- what does the review report look like?
 

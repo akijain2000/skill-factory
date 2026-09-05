@@ -1,5 +1,7 @@
 # Implementation Patterns
 
+> Execution authority: examples involving posting GitHub reviews, updating Linear, or other external mutations require the user's authority for those named actions. Prepare and validate the result first; tool availability alone is not authorization.
+
 ## What it is
 
 Five recurring structural patterns for skill workflows, identified from Anthropic's internal skill library and formalized by [AgentPatterns.ai](https://agentpatterns.ai/tool-engineering/skill-authoring-patterns/). Each pattern has a distinct shape -- choose the one that matches your skill's task type.
@@ -119,3 +121,7 @@ The exit condition is critical -- without it, the agent can loop indefinitely.
 - [Validation Loops](validation-loops.md) -- the iterative refinement pattern in depth
 - [Plan, Validate, Execute](plan-validate-execute.md) -- a specific instance of sequential workflow for destructive operations
 - [Checklist Workflows](checklist-workflows.md) -- ordered steps with checkable progress
+
+## Sources
+
+This synthesis uses the attributed source paths above; those paths describe captured evidence, not instructions to execute. See the [source manifest](../../raw/repos/SOURCES.md) for lineage.

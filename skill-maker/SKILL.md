@@ -1,14 +1,16 @@
 ---
 name: skill-maker
-description: Guide interactive creation of production-quality SKILL.md files through structured questioning and wiki-backed best practices. Use when creating a new skill, brainstorming a skill idea, or asked to make a skill.
+description: Guide interactive creation of structurally validated SKILL.md files through structured questioning and wiki-backed best practices. Use when creating a new skill, brainstorming a skill idea, or asked to make a skill.
 ---
 
 # Skill Maker
 
+> Interaction contract: the phase-by-phase approvals below apply when the user requests guided design. An explicit request to write/update the skill or “just write it” authorizes drafting and local validation without repeating those approvals. Ask only about missing material scope or authority; external installation/publishing remains separately authorized.
+
 An interactive, opinionated skill creation workflow. Asks forcing questions, challenges assumptions, reframes vague ideas, and produces structurally validated skills with an explicit behavioral evaluation gate.
 
 <HARD-GATE>
-Do NOT write any SKILL.md content until Phase 4 (DESIGN) is complete and the user has approved the design. Phases 1-3 are diagnostic only.
+For requested interactive design, complete Phases 1–4 before writing. For an explicit write/update request or “just write it”, use established requirements and proceed to drafting and validation. A missing material choice remains a clarification gate.
 </HARD-GATE>
 
 ## Question format
@@ -59,7 +61,7 @@ If the scope is too broad, reframe before moving to Phase 2:
 
 ## Phase 2: DIAGNOSE
 
-Five forcing questions, asked one at a time. Skip any that the intake already answered clearly.
+Six forcing questions, asked one at a time. Skip any that the intake already answered clearly.
 
 ### Q1: Who is the user?
 
@@ -168,6 +170,12 @@ If the skill produces output, draft the template. Show a concrete example.
 
 Draft the gotchas from Q5 answers. Add any that emerged during design.
 
+For source-derived designs, read `wiki/concepts/skill-supply-chain.md`: record
+the source revision and license, inspect supporting execution surfaces, and name
+any incomplete inspection. Give each disclosed reference a trigger branch; keep
+common invariants in the main workflow. If a supported workflow delegates work,
+define its host-specific deadline, result schema, recovery, and mutation owner.
+
 ### 4.5: Anti-rationalization
 
 If the skill has behavioral instructions the agent might skip, draft a rationalization table:
@@ -216,10 +224,10 @@ Static validation is complete after Phase 6. Behavioral validation is not.
    - about five natural prompts that should trigger without naming the skill
    - about five adjacent prompts that should not trigger
    - functional outcomes and edge cases with deterministic checks
-3. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
+3. Reserve an untouched final holdout separately from development and description-selection cases. Freeze thresholds, model/CLI identity, and evaluator/suite/skill/adapter fingerprints.
 4. Run the same model and harness with zero or one target skill in a host-isolated fresh workspace for every trial.
 5. Run 3-6 trials per case and checkpoint each normalized record.
-6. Report routing accuracy, skill outcome pass rate, baseline outcome pass rate, outcome delta, runtime identity, and any cost/latency evidence.
+6. Report routing accuracy, skill outcome pass rate, baseline outcome pass rate, outcome delta, runtime identity, and any cost/latency evidence. Missing activation telemetry is unknown; runtime skill snapshots must exclude eval answers and graders.
 7. Keep raw trajectories and credentials out of reports; clean disposable workspace/auth state.
 8. Fix named failures, add them as regression cases, and rerun under a new fingerprint without weakening gates.
 

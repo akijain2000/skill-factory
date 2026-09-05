@@ -204,7 +204,7 @@ mkdir -p security-audit/references
 Create `security-audit/references/owasp-checks.md`:
 
 ```markdown
-# OWASP Top 10 Checks
+# Illustrative Security Checks (not a current OWASP Top 10 mapping)
 
 | Category | What to look for | Severity |
 |----------|-----------------|----------|
@@ -215,7 +215,7 @@ Create `security-audit/references/owasp-checks.md`:
 | Broken Access | Missing authorization checks, IDOR patterns | Critical |
 | Misconfig | Debug mode in production, default credentials, open CORS | Medium |
 | XSS | innerHTML without sanitization, dangerouslySetInnerHTML | High |
-| Insecure Deserialization | JSON.parse on untrusted input without validation | Medium |
+| Insecure Deserialization | Unsafe deserialization that reconstructs executable objects; validate JSON shape separately | Medium |
 | Known Vulnerabilities | Outdated dependencies with known CVEs | High |
 | Logging | Sensitive data in logs, missing audit trail | Medium |
 ```
@@ -232,7 +232,7 @@ description: Audit source code for security vulnerabilities against OWASP
 
 # Security Audit
 
-Systematic security review of the codebase against OWASP Top 10.
+Security review using a locally scoped checklist. Verify current OWASP categories before claiming OWASP coverage.
 
 ## Workflow
 
@@ -310,7 +310,7 @@ If you're not sure what skill to build first, Anthropic's own team recommends st
 1. **`/preflight`** -- pre-commit gates that stop you committing broken code. Run linter, type checker, and tests before every commit.
 2. **`/gotcha`** -- captures mistakes in real-time. When the agent makes a mistake, type `/gotcha Claude forgot --profile flightmap` and it auto-files the gotcha to the right skill.
 
-Preflight catches errors. Gotcha ensures the same error never happens twice. Build everything else from there.
+Preflight catches errors. Gotcha records a candidate regression; recurrence tests establish whether the procedure helps. Build everything else from there.
 
 **Key insight**: don't try to write a perfect skill on day one. Anthropic's best skills started as a few lines and one gotcha, then got better over time as people kept adding to them. Source: `raw/docs/applied-anthropic-playbook.md`.
 

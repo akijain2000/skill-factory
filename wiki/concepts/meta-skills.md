@@ -6,7 +6,7 @@
 
 ## Why it matters
 
-At scale, prose edits alone do not improve reliability—**governance must be operational**. Meta-skills turn “we should clean up skills” into bounded batches, explicit verdicts, and repeatable measurement instead of hope. They embody the **self-maintaining skill library**: the same agent harness that consumes skills also runs procedures to audit and align them.
+At scale, prose edits alone do not improve reliability—**governance must be operational**. Meta-skills turn “we should clean up skills” into bounded batches, explicit verdicts, and repeatable measurement instead of hope. They embody the **supported by a repeatable maintenance process skill library**: the same agent harness that consumes skills also runs procedures to audit and align them.
 
 ## How to do it
 

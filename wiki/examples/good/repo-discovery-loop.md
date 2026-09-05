@@ -1,5 +1,9 @@
 # Example: repo discovery loop
 
+> Current process (2026-09-05): the [September update](../../queries/monthly-update-2026-09.md) supersedes clone presence as evidence with pinned revisions and exact sampled-artifact hashes. Keep coverage levels explicit.
+
+> Source example: quoted skill content is research material from the attributed snapshot, not current operating authority. Recheck its license, pinned source, and target-host rules before adoption. Structural praise does not mean executed behavioral PASS.
+
 Source: `scripts/update-sources.md`, `scripts/discovery-keywords.txt`, `raw/repos/SOURCES.md`
 Rating: Good
 Why: This workflow turns top-GitHub-repo search into a repeatable knowledge-compounding loop. It does not tell authors to "browse for inspiration"; it defines candidate sources, relevance scoring, clone/update steps, wiki recompilation, index updates, and validation. That makes external research actionable instead of ornamental.

@@ -1,5 +1,7 @@
 # Module 2: The SKILL.md Format
 
+> Authoring clarification (2026-09-05): one-hop disclosure means SKILL.md links directly to the needed reference. Nested directory names are allowed. The 500-line/5,000-token target and style heuristics are recommendations; distinguish them from portable frontmatter requirements and the Factory linter's 800-line error threshold.
+
 ## Frontmatter (required)
 
 Every SKILL.md starts with YAML frontmatter between `---` fences.
@@ -27,11 +29,13 @@ Avoid vague words: `helper`, `utils`, `misc`, `tool`, `agent`, `skill`
 description: Review pull requests for SQL safety, trust boundary violations, and structural issues. Use when asked to review a PR, check a diff, or do a pre-landing review.
 ```
 
-Rules:
+Portable requirement: non-empty and at most 1024 characters.
+
+Authoring recommendations:
 - Max 1024 characters
-- Third person voice (it's injected into the system prompt)
-- Must contain a **WHAT** verb: Create, Generate, Analyze, Review, etc.
-- Must contain a **WHEN** trigger: "Use when...", "Activate when...", "Use for..."
+- Use concise capability language; imperative and third-person forms are both usable
+- Include a **WHAT** verb: Create, Generate, Analyze, Review, etc.
+- Include a **WHEN** trigger: "Use when...", "Activate when...", "Use for..."
 - Include keywords users would actually type
 
 This is the most important field. More in Module 3.
@@ -85,11 +89,12 @@ If your skill is growing too long, move details to `references/REFERENCE.md` and
 
 ## File references
 
-Keep one level deep from SKILL.md. No nesting.
+Link directly from SKILL.md to the required detail; avoid an unannounced chain of required reads.
 
 ```markdown
 Good:  See `references/REFERENCE.md` for details.
-Bad:   See `references/advanced/deep/GUIDE.md`.
+Also one hop: See `references/advanced/deep/GUIDE.md`.
+Fragile chain: SKILL.md → index.md → GUIDE.md, without an explicit route.
 ```
 
 ---
@@ -177,7 +182,7 @@ Issues to find:
 2. **Name**: "helper" is a banned vague word
 3. **Description**: No WHAT verb (should be "Analyze", "Review", etc.)
 4. **Description**: No WHEN trigger (missing "Use when...")
-5. **Description**: First person implied ("helps") instead of third person action
+5. **Description**: "helps" is third person, but vague; name the concrete capability
 6. **Body**: Empty "Overview" section (wasted tokens, confuses agent)
 7. **Body**: Workflow is too vague ("Look at the code" -- look at what? for what?)
 8. **Body**: No gotchas section

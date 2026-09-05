@@ -1,5 +1,7 @@
 # Skill Anti-Patterns: Catalog with Examples and Fixes
 
+> Evidence boundary: these are source-derived authoring heuristics. Static review does not prove an outcome improvement; apply the [evaluation contract](../concepts/skill-evaluations.md) before making that claim.
+
 This article consolidates documented mistakes from Skill Factory reference docs and recurring issues visible in large corpora (awesome-cursorrules, mega-skill repos). Each item includes a **symptom**, **example**, and **fix**. Targets **14+** patterns as requested.
 
 ## A. Discovery and naming (SkillCheck + agentskills.io)

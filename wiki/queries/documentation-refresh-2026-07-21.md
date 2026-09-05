@@ -1,5 +1,7 @@
 # Documentation Refresh - 2026-07-21
 
+> Historical receipt: counts, paths, and decisions below belong to this dated run (some source descriptions are truncated discovery metadata). Current source authority is the [September refresh](monthly-update-2026-09.md), revision lock, and artifact ledger.
+
 ## Scope
 
 Reviewed all 92 Markdown files present before this refresh:

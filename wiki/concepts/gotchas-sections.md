@@ -34,7 +34,7 @@ One practitioner built a `/gotcha` skill that automates gotcha maintenance. When
 
 The skill figures out which skill the mistake belongs to, opens that file, and adds the gotcha to the right section. This solves the core problem: **nobody goes back and updates their skills after writing them**. The /gotcha skill makes gotcha maintenance happen in real-time, in the flow of work.
 
-This is the most practical feedback loop for skill improvement: each mistake becomes a permanent correction with zero extra effort. Source: `raw/docs/applied-anthropic-playbook.md`.
+This is the most practical feedback loop for skill improvement: each mistake becomes a permanent correction with within the active workflow. Source: `raw/docs/applied-anthropic-playbook.md`.
 
 ## Sources
 

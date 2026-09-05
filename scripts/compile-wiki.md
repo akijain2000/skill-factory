@@ -4,14 +4,14 @@ These instructions tell an LLM how to compile `raw/` into `wiki/`. Read this fil
 
 ## Prerequisites
 
-- `raw/repos/` contains cloned skill repos
+- `raw/repos/` contains disposable ignored clones or pinned file snapshots, with revisions and sampled artifacts recorded in the source lock
 - `raw/docs/` contains saved web articles and specs as .md files
 
 ## Compilation Steps
 
 ### Step 1: Scan raw/docs/
 
-Read every .md file in `raw/docs/`. These are the authoritative references: official specs, best practices, anti-pattern articles. Extract key concepts, rules, and patterns.
+Read every .md file in `raw/docs/`. Classify authority: official specifications, vendor recommendations, and secondary articles have different evidentiary weight. Extract key concepts, rules, and patterns.
 
 Treat `raw/` as immutable evidence. Do not "clean up" or rewrite a capture while
 compiling. Put interpretation in the canonical wiki and preserve a link back to
@@ -65,47 +65,25 @@ For each core concept below, write an article in `wiki/concepts/`. Each article 
 [Real anti-pattern from the repos or articles, anonymized if needed]
 
 ## Sources
-- [raw/docs/filename.md](../raw/docs/filename.md)
-- [raw/repos/reponame/path/to/file](../raw/repos/reponame/path/to/file)
+- [raw/docs/filename.md](../../raw/docs/filename.md)
+- [raw/repos/reponame/path/to/file](../../raw/repos/reponame/path/to/file)
 ```
 
-**Concepts to write (one article each):**
+### Step 4: Reconcile the existing inventory
 
-1. `description-writing.md` - How to write descriptions that trigger correctly (WHAT verb + WHEN trigger + third person + keywords)
-2. `progressive-disclosure.md` - Three-phase loading model, 500-line budget, splitting into reference files
-3. `validation-loops.md` - Do work, validate, fix, repeat pattern
-4. `plan-validate-execute.md` - For batch/destructive operations: create plan, validate, then execute
-5. `gotchas-sections.md` - Environment-specific facts that defy assumptions; highest-value content
-6. `template-patterns.md` - Output format templates, input/output examples, conditional workflows
-7. `token-budget.md` - Context window economics, what to include vs omit, testing for necessity
-8. `host-compatibility.md` - How skills differ across Claude Code, Cursor, Codex, Gemini, Factory
-9. `skill-discovery.md` - How agents find and select skills: naming, description, frontmatter
-10. `feedback-loops.md` - Iterative development: Claude A writes, Claude B tests, observe, refine
-11. `checklist-workflows.md` - Multi-step workflows with explicit checklists for tracking progress
-12. `error-handling-in-scripts.md` - Solve, don't punt. Handle errors explicitly in bundled scripts.
-13. `naming-conventions.md` - Gerund form, domain-action pattern, words to avoid
-14. `degrees-of-freedom.md` - Matching instruction specificity to task fragility
-15. `skill-evaluations.md` - Routing tests, outcome graders, isolated repeated trials, skill-vs-baseline ablation, regression, and retirement
-16. `evidence-lifecycle.md` - Data placement, source locks, archive provenance,
-    eval fingerprints, checkpoints, privacy, and accepted/diagnostic boundaries
+Inventory every current concept, research, example, and query page against
+`wiki/INDEX.md`. Preserve existing owners and dated evidence; update an existing
+page before adding a new one. Add a concept only when the new learning has no
+suitable owner. Record a read/review disposition for every in-scope document.
 
-### Step 4: Write research articles
-
-For each research topic below, write an article in `wiki/research/`. Research articles are longer (800-1500 words) and more analytical.
-
-1. `landscape.md` - State of the skill ecosystem. For each repo analyzed: stars, skill count, format, host compatibility, strengths, weaknesses, notable patterns. Include a comparison table.
-2. `anatomy-of-a-good-skill.md` - Synthesized from the best skills across all repos. What the top 10% have in common. Concrete checklist.
-3. `anti-patterns.md` - All documented anti-patterns (14+) with examples and fixes.
-4. `host-differences.md` - Detailed comparison: Claude Code vs Cursor vs Codex vs Gemini vs Factory. Paths, discovery, frontmatter, extended fields, gotchas.
-5. `spec-reference.md` - The official SKILL.md spec distilled. Frontmatter fields, naming rules, description rules, progressive disclosure model, token budgets.
-6. `gstack-deep-dive.md` - How gstack works internally: template engine, host-specific generation, preamble tiers, skill routing, the review/ship/qa workflow.
-7. `openai-skills-analysis.md` - Analysis of OpenAI's curated skills: what they got right, patterns worth copying.
-8. `cursorrules-vs-skills.md` - How .cursorrules differ from SKILL.md. When to use each. Can patterns transfer?
+Do not use a fixed historical article list as a regeneration template. Current
+coverage includes evidence lifecycle, supply-chain inspection, retrieval and
+interference, and the latest dated source synthesis. Missing content must be
+reported explicitly rather than silently omitted from the regenerated index.
 
 ### Step 5: Curate examples
 
-Copy 3-5 exemplary skills into `wiki/examples/good/` with annotations explaining what makes them good.
-Copy 3-5 anti-pattern skills into `wiki/examples/bad/` with annotations explaining what's wrong.
+Inspect redistribution terms before adding examples. Prefer a short attributed excerpt plus original analysis and a pinned source link. Copy a full file only when its license permits; retain the license, attribution, revision, and a clear source-excerpt boundary. Preserve existing historical specimens.
 
 For each example, add a header comment:
 ```markdown

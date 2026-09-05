@@ -1,5 +1,7 @@
 # gstack Deep Dive: How the Skill Factory Works Internally
 
+> Evidence window: the analysis below describes the captured April 2026 source corpus. Counts, paths, host behavior, and costs are snapshot claims. Use the [September refresh](../queries/monthly-update-2026-09.md) and the target host's current documentation before operational adoption; source revision checks are not behavioral certification.
+
 gstack is a dual system: a **persistent browser runtime** (Bun + Playwright + localhost HTTP) and a **skill document factory** that keeps agent instructions synchronized with code. This article focuses on the **second** layer—templates, generation, routing, and validation—using `ARCHITECTURE.md`, `setup`, `scripts/gen-skill-docs.ts`, and representative `SKILL.md.tmpl` files.
 
 ## 1. Source of truth: templates vs committed output

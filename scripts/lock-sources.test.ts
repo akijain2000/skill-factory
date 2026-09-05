@@ -47,3 +47,10 @@ describe("lock-sources", () => {
       .toThrow("duplicate source id: alpha");
   });
 });
+
+test("rejects malformed source rows rather than silently dropping them", () => {
+  expect(parseManifest(manifest.replace("github.com/example/alpha", "https://github.com/example/alpha"))).toHaveLength(2);
+  expect(() => parseManifest(manifest.replace("github.com/example/alpha", "bad-url"))).toThrow("unsupported source URL");
+  expect(() => parseManifest(manifest.replace("2026-07-21", "2026-02-30"))).toThrow("invalid calendar date");
+  expect(() => parseManifest(manifest.replace("| ~10 |", "| ~10 | extra |"))).toThrow("invalid source table row");
+});

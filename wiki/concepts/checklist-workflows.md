@@ -10,7 +10,7 @@ Long free-form prose invites skipped steps (no tests, no user confirmation). Che
 
 ## How to do it
 
-1. **Order matters**: put sequencing errors impossible (validate before deploy).
+1. **Order matters**: make sequencing errors harder (validate before deploy).
 2. Keep each step **one action** or one decision point; split if it mixes concerns.
 3. Add **explicit outputs** per step ("echo branch name", "write plan to STDOUT") where gstack-style preamble shows value.
 4. For branches (React vs Vue), use **conditional** sub-checklists (antigravity anatomy pattern).

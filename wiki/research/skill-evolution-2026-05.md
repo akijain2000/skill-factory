@@ -60,7 +60,7 @@ Authoring implication: a browser QA skill should route by evidence need, not by 
 - Maintenance labs should include large-scale sparse scans, because top repos are now too large to clone naively.
 - The landscape article should treat product repos and host folders as first-class sources, not only dedicated skill repos.
 
-## Source notes
+## Sources
 
 - `raw/repos/affaan-m-ecc/CLAUDE.md` -- production plugin structure: agents, skills, hooks, commands, rules, MCP config, continuous learning.
 - `raw/repos/shanraisshan-claude-code-best-practice/best-practice/claude-subagents.md` -- subagent fields including skills, hooks, MCP servers, effort, memory, and initial prompts.

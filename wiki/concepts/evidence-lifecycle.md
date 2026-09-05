@@ -85,6 +85,18 @@ and a single successful prompt into `SKILL.md`, then calls the skill validated
 because static lint passes. The source, instruction, behavior, and operational
 proof boundaries are all lost.
 
+## Refresh evidence without erasing history
+
+Preserve the old lock before resolving current HEADs. Save an old/new per-source
+ledger and distinguish revision checks from file inspection. A moved repository
+name does not create an independent source, and a changed HEAD does not imply
+every skill changed. Hash supporting files as well as SKILL.md. Keep the final
+lock pinned to the bytes actually read during synthesis.
+
+The [September coverage dataset](../../raw/datasets/source-refresh-2026-09-05.json)
+retains previous sampled hashes, current revisions, canonical aliases, bounded
+discovery decisions, and exact artifact receipts.
+
 ## Sources
 
 - [`evals/README.md`](../../evals/README.md)

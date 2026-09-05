@@ -287,6 +287,7 @@ function loadCheckpoint(
   path: string,
   meta: CheckpointMeta,
   expectedKeys: Set<string>,
+  cases: EvalCase[],
 ): Map<string, RunRecord> {
   assert(existsSync(path), `checkpoint not found: ${path}`);
   const lines = readFileSync(path, "utf8").split("\n").filter(Boolean);
@@ -320,7 +321,19 @@ function loadCheckpoint(
     assert(expectedKeys.has(entry.key), `checkpoint contains unexpected run key: ${entry.key}`);
     assert(!runs.has(entry.key), `checkpoint contains duplicate run key: ${entry.key}`);
     assert(entry.key === runKey(entry.run.caseId, entry.run.mode, entry.run.trial), `checkpoint run key does not match its record: ${entry.key}`);
-    runs.set(entry.key, entry.run);
+    const run = entry.run;
+    const testCase = cases.find((item) => item.id === run.caseId)!;
+    assert([run.triggered, run.triggerPassed, run.checksPassed, run.passed].every((value) => typeof value === "boolean"), "checkpoint booleans are invalid");
+    assert(Array.isArray(run.checks) && run.checks.length === testCase.checks.length, "checkpoint checks do not match suite");
+    for (const [i, check] of run.checks.entries()) {
+      assert(check.id === testCase.checks[i].id && typeof check.passed === "boolean" && typeof check.detail === "string", "checkpoint check schema is invalid");
+    }
+    assert(run.checksPassed === run.checks.every((check) => check.passed)
+      && run.triggerPassed === (run.mode === "baseline" || run.triggered === testCase.shouldTrigger)
+      && run.passed === (run.checksPassed && run.triggerPassed), "checkpoint result is inconsistent");
+    assert(run.metrics && !Array.isArray(run.metrics) && Object.values(run.metrics).every((value) => typeof value === "number" && Number.isFinite(value)), "checkpoint metrics are invalid");
+    validateMetadata(run.metadata);
+    runs.set(entry.key, run);
   }
   return runs;
 }
@@ -500,14 +513,19 @@ async function runAdapter(
       `adapter metrics for ${testCase.id} must be finite numbers`,
     );
   }
-  if (parsed.metadata !== undefined) {
-    assert(
-      Object.entries(parsed.metadata).every(([key, value]) => /^[a-z][a-z0-9_]{0,63}$/.test(key)
-        && typeof value === "string" && value.length > 0 && value.length <= 256),
-      `adapter metadata for ${testCase.id} must use safe keys and 1-256 character string values`,
-    );
-  }
+  validateMetadata(parsed.metadata);
+  if (parsed.checks !== undefined) assert(parsed.checks && !Array.isArray(parsed.checks)
+    && Object.values(parsed.checks).every((value) => typeof value === "boolean"), "adapter checks must be booleans");
   return parsed;
+}
+
+function validateMetadata(metadata: unknown): asserts metadata is Record<string, string> {
+  assert(metadata && typeof metadata === "object" && !Array.isArray(metadata), "adapter metadata is required");
+  const values = metadata as Record<string, unknown>;
+  assert(Object.entries(values).every(([key, value]) => /^[a-z][a-z0-9_]{0,63}$/.test(key)
+    && typeof value === "string" && value.trim().length > 0 && value.length <= 256), "adapter metadata must contain safe non-empty strings");
+  assert(typeof values.model === "string" && typeof values.harness === "string", "adapter metadata requires model and harness identity");
+  assert(values.evidence_status === undefined || values.evidence_status === "accepted", "non-accepted evidence_status cannot produce behavioral evidence");
 }
 
 function rate(passed: number, total: number): number {
@@ -537,7 +555,7 @@ export async function evaluateSuite(
 
   if (options.resume) {
     assert(options.checkpointPath, "--resume requires a checkpoint path");
-    runsByKey = loadCheckpoint(options.checkpointPath, checkpointMeta, expectedKeys);
+    runsByKey = loadCheckpoint(options.checkpointPath, checkpointMeta, expectedKeys, context.suite.cases);
     reusedRuns = runsByKey.size;
   } else if (options.checkpointPath) {
     assert(!existsSync(options.checkpointPath), `checkpoint already exists; use --resume or choose a new path: ${options.checkpointPath}`);
