@@ -627,7 +627,8 @@
       "readCoverage": "full content reviewed",
       "disposition": "reviewed and retained",
       "beforeSha256": "6fac721b0f6634dc2d7b7a1b6a125c4c28abb42ec884e566c4987d9f7f35beb2",
-      "afterSha256": "6fac721b0f6634dc2d7b7a1b6a125c4c28abb42ec884e566c4987d9f7f35beb2"
+      "afterSha256": "1365b3ece973314d21659b19e89039f2918a8abd4bb134359edc34c5ec1aa6ec",
+      "publicationNote": "Normalized trailing blank line only before publication; historical content preserved."
     },
     {
       "path": "wiki/queries/private-router-eval-case-study-2026-07-21.md",

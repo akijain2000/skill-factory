@@ -43,4 +43,3 @@ The repaired skills passed structural validation and gained privacy-safe
 behavioral case definitions. A real isolated skill-versus-baseline adapter was
 not available, so behavioral validation remains blocked rather than inferred
 from the static pass.
-
